@@ -53,5 +53,5 @@ Answer based on the Baron & Kenny framework.
    False
 
 8. [TF] Bootstrapping requires the assumption of normality for the indirect effect.
-   False
-   *True
+   *False
+   True

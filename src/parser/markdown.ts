@@ -105,7 +105,7 @@ export function parseMarkdown(content: string): ParsedQuiz {
   
   const finalizeQuestion = () => {
     if (currentQuestion && currentQuestion.stem) {
-      const options = parseOptions(currentOptionLines);
+      let options = parseOptions(currentOptionLines);
       
       // Detect question type if not already set
       let type = currentQuestion.type || 'multiple_choice';
@@ -113,6 +113,29 @@ export function parseMarkdown(content: string): ParsedQuiz {
         type = 'true_false';
       } else if (options.length === 0 && type === 'multiple_choice') {
         type = 'short_answer';
+      }
+      
+      // For True/False questions without options, auto-generate them
+      // The correct answer is determined by the first option line marked with *
+      if (type === 'true_false' && options.length === 0) {
+        // Check if any option line indicates the correct answer
+        const correctAnswer = currentOptionLines.find(l => l.trim().match(/^\*?(True|False)$/i));
+        const isTrue = correctAnswer?.toLowerCase().includes('true') && correctAnswer?.startsWith('*');
+        options = [
+          { id: 'true', text: 'True', isCorrect: isTrue || false },
+          { id: 'false', text: 'False', isCorrect: !isTrue }
+        ];
+        // If we found a marked answer, use it
+        for (const line of currentOptionLines) {
+          if (line.trim().startsWith('*')) {
+            const isCorrectTrue = line.toLowerCase().includes('true');
+            options = [
+              { id: 'true', text: 'True', isCorrect: isCorrectTrue },
+              { id: 'false', text: 'False', isCorrect: !isCorrectTrue }
+            ];
+            break;
+          }
+        }
       }
       
       const question: Question = {
@@ -186,8 +209,12 @@ export function parseMarkdown(content: string): ParsedQuiz {
       continue;
     }
     
-    // Answer option (indented with letter or dash)
-    if (currentQuestion && (line.match(/^\s+[*]?[a-e]\)/) || line.match(/^\s+-\s/))) {
+    // Answer option (indented with letter, dash, or True/False)
+    if (currentQuestion && (
+      line.match(/^\s+[*]?[a-e]\)/) || 
+      line.match(/^\s+-\s/) ||
+      line.match(/^\s+\*?(True|False)$/i)
+    )) {
       currentOptionLines.push(line);
       continue;
     }
