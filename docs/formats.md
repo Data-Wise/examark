@@ -172,7 +172,7 @@ The converter automatically converts:
 
 ## Images
 
-Reference local images using standard Markdown syntax. They are bundled into the QTI package.
+Reference local images using standard Markdown syntax. Images are automatically **bundled into the QTI package** with an `imsmanifest.xml` for Canvas compatibility.
 
 ```markdown
 ## 1. What does this graph show?
@@ -182,6 +182,38 @@ Reference local images using standard Markdown syntax. They are bundled into the
 *a) Linear growth
 b)  Exponential growth
 ```
+
+### Supported Formats
+
+| Format | Extension | Notes |
+|--------|-----------|-------|
+| PNG | `.png` | Recommended for charts |
+| JPEG | `.jpg`, `.jpeg` | Good for photos |
+| GIF | `.gif` | Animated supported |
+| SVG | `.svg` | Vector graphics |
+| WebP | `.webp` | Modern format |
+
+### Path Requirements
+
+- Use **relative paths** from your Markdown file
+- Images should be in a subfolder (e.g., `assets/`, `images/`, `figures/`)
+- Paths are case-sensitive
+
+```
+quiz/
+├── my-quiz.md
+└── assets/
+    ├── chart1.png
+    └── diagram.svg
+```
+
+!!! success "How It Works"
+    The converter:
+
+    1. Finds all `![alt](path)` references in your questions
+    2. Copies the image files to an `images/` folder in the package
+    3. Generates `imsmanifest.xml` listing all resources
+    4. Creates `<img>` tags with relative paths in the QTI XML
 
 ---
 

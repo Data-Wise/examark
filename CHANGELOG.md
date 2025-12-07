@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.0] - 2025-12-07
+
+### Added
+
+- **Image Bundling for Canvas**: Images are now properly bundled in the QTI package with `imsmanifest.xml`.
+  - Supports PNG, JPEG, GIF, SVG, and WebP formats.
+  - Images copied to `images/` folder in package.
+  - Canvas now correctly displays images in imported questions.
+
+### Changed
+
+- **Canvas Emulator**: Updated to validate both QTI 1.2 and QTI 2.1 package formats.
+- **CLI Output**: Now shows count of bundled images.
+
+### Fixed
+
+- **Image Display**: Base64 data URIs were showing as placeholders in Canvas.
+  - Now uses IMS Content Packaging with bundled files instead.
+
+---
+
 ## [0.3.0] - 2025-12-07
 
 ### Changed

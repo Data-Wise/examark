@@ -2,11 +2,11 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-0.2.2-blue)
+![Version](https://img.shields.io/badge/version-0.4.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)
 
-**Convert Markdown questions to Canvas-compatible QTI 2.1 packages**
+**Convert Markdown questions to Canvas-compatible QTI 1.2 packages**
 
 [📖 Documentation](https://data-wise.github.io/canvas-qti-converter/) • [🐛 Report Bug](https://github.com/Data-Wise/canvas-qti-converter/issues) • [💡 Request Feature](https://github.com/Data-Wise/canvas-qti-converter/issues)
 
@@ -21,7 +21,7 @@
 | 📝 **Markdown First** | Write questions in simple Markdown syntax |
 | ✅ **Flexible Correct Markers** | Use `[correct]`, `✓`, `*`, or `**bold**` |
 | 🧮 **LaTeX Support** | Math equations `$...$` converted to Canvas format |
-| 🖼️ **Image Support** | Bundles images including R/Python-generated figures |
+| 🖼️ **Image Bundling** | Images automatically bundled in package for Canvas |
 | 🎓 **Canvas Emulator** | Predict import success before uploading |
 | 🛡️ **Built-in Validator** | Catches common import issues |
 

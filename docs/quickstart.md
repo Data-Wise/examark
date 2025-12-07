@@ -55,10 +55,11 @@ qti-convert quiz.md -o quiz.qti.zip
 Expected output:
 
 ```text
-✓ Generated QTI 2.1 Package: quiz.qti.zip
+✓ Generated QTI 1.2 Package: quiz.qti.zip
   • 3 questions
   • 1 section
-  • Folder structure: items/, tests/, imsmanifest.xml
+  • 0 images bundled
+  • Format: Canvas Classic Quizzes compatible
 ```
 
 ### 3. Verify Your Package
