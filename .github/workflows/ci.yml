@@ -6,38 +6,42 @@ on:
   pull_request:
     branches: [main]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: '20'
-      
+          bun-version: latest
+
       - name: Install dependencies
-        run: npm install
-      
+        run: bun install
+
       - name: Build
-        run: npm run build
-      
+        run: bun run build
+
       - name: Run tests
-        run: npm test
+        run: bun test
 
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: '20'
-      
+          bun-version: latest
+
       - name: Install dependencies
-        run: npm install
-      
+        run: bun install
+
       - name: Type check
-        run: npx tsc --noEmit
+        run: bun x tsc --noEmit
