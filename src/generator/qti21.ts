@@ -190,7 +190,7 @@ export function generateManifest21(quiz: ParsedQuiz): string {
   // Generate resource entries for each item with proper metadata
   const itemResources = quiz.questions.map(q => {
     const interactionType = getInteractionTypeName(q.type);
-    return `    <resource identifier="item_${q.id}" 
+    return `    <resource identifier="res_item_${q.id}" 
               type="imsqti_item_xmlv2p1" 
               href="items/item_${q.id}.xml">
       <metadata>
@@ -223,7 +223,7 @@ ${q.images ? q.images.map(img => `      <file href="items/${img}"/>`).join('\n')
   <resources>
     <resource identifier="test_resource" type="imsqti_test_xmlv2p1" href="tests/test.xml">
       <file href="tests/test.xml"/>
-${quiz.questions.map(q => `      <dependency identifierref="item_${q.id}"/>`).join('\n')}
+${quiz.questions.map(q => `      <dependency identifierref="res_item_${q.id}"/>`).join('\n')}
     </resource>
 
 ${itemResources}
