@@ -17,21 +17,37 @@ export function generateCanvasId(seed: string): string {
 /**
  * Escape XML special characters while converting LaTeX delimiters for Canvas
  * Canvas expects \(...\) for inline and \[...\] for display math
+ * Also converts markdown images to HTML img tags
  */
 function escapeXmlPreserveLaTeX(text: string): string {
-  // First, convert LaTeX delimiters from Quarto/Pandoc format to Canvas format
-  let result = text
+  // First, extract and preserve markdown images as placeholders
+  const images: string[] = [];
+  let result = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
+    const placeholder = `__IMG_PLACEHOLDER_${images.length}__`;
+    images.push(`<img src="${src}" alt="${alt}"/>`);
+    return placeholder;
+  });
+  
+  // Convert LaTeX delimiters from Quarto/Pandoc format to Canvas format
+  result = result
     // Convert display math: $$...$$ → \[...\]
     .replace(/\$\$([\s\S]*?)\$\$/g, '\\[$1\\]')
     // Convert inline math: $...$ → \(...\) (careful not to match \$)
     .replace(/(?<!\\)\$([^\$\n]+?)\$/g, '\\($1\\)');
   
-  // Then escape XML special characters
-  return result
+  // Escape XML special characters
+  result = result
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+  
+  // Restore image tags (they're already properly formatted HTML)
+  images.forEach((img, i) => {
+    result = result.replace(`__IMG_PLACEHOLDER_${i}__`, img);
+  });
+  
+  return result;
 }
 
 /**
@@ -223,21 +239,9 @@ function generateQuestionXml(question: Question): string {
 export function generateQTI(quiz: ParsedQuiz): { qti: string; assessmentIdent: string } {
   const assessmentIdent = generateCanvasId(`assessment_${quiz.title}`);
   
-  // Generate all questions
-  let allQuestionsXml = '';
-  
-  if (quiz.sections.length > 0) {
-    for (const section of quiz.sections) {
-      const sectionQuestions = quiz.questions
-        .filter(q => section.questionIds.includes(q.id))
-        .map(q => generateQuestionXml(q))
-        .join('');
-      
-      allQuestionsXml += sectionQuestions;
-    }
-  } else {
-    allQuestionsXml = quiz.questions.map(q => generateQuestionXml(q)).join('');
-  }
+  // Generate all questions - include every question regardless of section assignment
+  // Canvas puts all questions in a single root_section anyway
+  const allQuestionsXml = quiz.questions.map(q => generateQuestionXml(q)).join('');
 
   // Build the complete QTI document (compact format like Canvas)
   const qti = `<?xml version="1.0" encoding="UTF-8"?>` +
