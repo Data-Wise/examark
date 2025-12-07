@@ -63,6 +63,16 @@ The extension supports several output formats:
    examify exam.md -o exam.qti.zip
    ```
 
+   **Or Enable Auto-Generation:**
+
+   Add `qti-export: true` to your YAML to bundle automatically on render.
+
+   ```yaml
+   format:
+     exam-gfm:
+       qti-export: true
+   ```
+
 4. **Upload** the QTI zip to Canvas.
 
 ## Configuration
