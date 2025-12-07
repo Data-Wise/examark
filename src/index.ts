@@ -15,7 +15,7 @@ const program = new Command();
 program
   .name('qti-convert')
   .description('Convert Markdown/Text questions to Canvas QTI 2.1 format')
-  .version('0.2.0');
+  .version('0.2.1');
 
 program
   .command('verify')
