@@ -384,10 +384,8 @@ export function parseMarkdown(content: string): ParsedQuiz {
         // Include LaTeX in stem
         currentQuestion.stem += '\n\n' + trimmed;
       } else if (!trimmed.match(/^\d+\)\s/) && !trimmed.match(/^[a-e]\)/i)) {
-        // Regular description text
-        if (!currentQuestion.stem!.includes('\n')) {
-          currentQuestion.stem += '\n\n' + trimmed;
-        }
+        // Regular description text or image
+        currentQuestion.stem += '\n\n' + trimmed;
       }
     }
     
