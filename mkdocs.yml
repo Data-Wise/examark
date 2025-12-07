@@ -106,6 +106,8 @@ nav:
   - Tutorials:
     - R & Quarto: tutorials/quarto.md
     - Best Practices: tutorials/best-practices.md
+  - Extensions:
+    - Quarto Extension: extensions/quarto.md
   - Development:
     - Contributing: contributing.md
     - API Reference: reference.md

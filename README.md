@@ -58,6 +58,20 @@ c) 5
 
 [View all supported formats in the docs →](https://data-wise.github.io/examify/formats/)
 
+## 📦 Quarto Extension
+
+Examify includes a powerful Quarto extension for authoring exams in `.qmd` files.
+
+```bash
+# Install extension
+quarto add Data-Wise/examify
+
+# Render to Examify-ready Markdown
+quarto render exam.qmd --to exam-gfm
+```
+
+[Learn more about the Quarto Extension →](https://data-wise.github.io/examify/extensions/quarto/)
+
 ## 🔧 Commands
 
 | Command | Description |
