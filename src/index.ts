@@ -174,8 +174,12 @@ program
       // Create QTI 1.2 package (Canvas Classic Quizzes format)
       const tempDir = mkdtempSync(join(tmpdir(), 'qti12-'));
       const inputDir = dirname(resolve(input));
+      const imagesDir = join(tempDir, 'images');
       
-      // Create image resolver that reads local files and converts to base64 data URIs
+      // Track images that need to be bundled
+      const bundledImages: { path: string; filename: string }[] = [];
+      
+      // Create image resolver that copies files to package and returns relative paths
       const imageResolver: ImageResolver = (imagePath: string) => {
         try {
           // Resolve path relative to input file
@@ -185,36 +189,60 @@ program
             return null;
           }
           
-          // Read file and convert to base64
-          const imageData = readFileSync(fullPath);
-          const base64Data = imageData.toString('base64');
+          // Create images directory if needed
+          if (!existsSync(imagesDir)) {
+            mkdirSync(imagesDir, { recursive: true });
+          }
           
-          // Determine MIME type from extension
-          const ext = extname(imagePath).toLowerCase();
-          const mimeTypes: Record<string, string> = {
-            '.png': 'image/png',
-            '.jpg': 'image/jpeg',
-            '.jpeg': 'image/jpeg',
-            '.gif': 'image/gif',
-            '.svg': 'image/svg+xml',
-            '.webp': 'image/webp'
-          };
-          const mimeType = mimeTypes[ext] || 'application/octet-stream';
+          // Copy image to package
+          const imgFilename = basename(fullPath);
+          const destPath = join(imagesDir, imgFilename);
+          copyFileSync(fullPath, destPath);
           
-          return `data:${mimeType};base64,${base64Data}`;
+          // Track for manifest
+          bundledImages.push({ path: `images/${imgFilename}`, filename: imgFilename });
+          
+          // Return relative path for QTI XML
+          return `images/${imgFilename}`;
         } catch (error) {
-          console.warn(`Warning: Failed to read image ${imagePath}:`, error);
+          console.warn(`Warning: Failed to process image ${imagePath}:`, error);
           return null;
         }
       };
       
       try {
-        // Generate QTI 1.2 XML with embedded images
+        // Generate QTI 1.2 XML with bundled image references
         const { qti, assessmentIdent } = generateQTI(parsed, imageResolver);
         
         // Write the QTI XML file
         const qtiFilename = `${parsed.title.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}.xml`;
         writeFileSync(join(tempDir, qtiFilename), qti);
+        
+        // Generate imsmanifest.xml for Canvas to recognize images
+        const manifestId = `MANIFEST_${Date.now()}`;
+        const imageResources = bundledImages.map((img, i) => 
+          `    <resource identifier="IMG_${i}" type="webcontent" href="${img.path}">
+      <file href="${img.path}"/>
+    </resource>`
+        ).join('\n');
+        
+        const manifest = `<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="${manifestId}" 
+          xmlns="http://www.imsglobal.org/xsd/imscp_v1p1">
+  <metadata>
+    <schema>IMS Content</schema>
+    <schemaversion>1.1</schemaversion>
+  </metadata>
+  <organizations/>
+  <resources>
+    <resource identifier="QTI_RESOURCE" type="imsqti_xmlv1p2" href="${qtiFilename}">
+      <file href="${qtiFilename}"/>
+    </resource>
+${imageResources}
+  </resources>
+</manifest>`;
+        
+        writeFileSync(join(tempDir, 'imsmanifest.xml'), manifest);
         
         // Create zip file
         const outputZip = options.output || input.replace(/\.(md|txt)$/, '.qti.zip');
@@ -225,6 +253,7 @@ program
         console.log(`✓ Generated QTI 1.2 Package: ${outputZip}`);
         console.log(`  • ${parsed.questions.length} questions`);
         console.log(`  • ${parsed.sections.length} sections`);
+        console.log(`  • ${bundledImages.length} images bundled`);
         console.log(`  • Format: Canvas Classic Quizzes compatible`);
         
       } finally {
