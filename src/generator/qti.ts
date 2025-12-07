@@ -11,7 +11,9 @@ import { createHash } from 'crypto';
  * Generate a Canvas-style identifier (64-char hex hash)
  */
 export function generateCanvasId(seed: string): string {
-  return createHash('sha256').update(seed + Date.now() + Math.random()).digest('hex');
+  // Use a deterministic hash based on the seed (unique content identifier)
+  // We truncate to 32 chars to be safe, though QTI handles 64
+  return createHash('sha256').update(seed).digest('hex').substring(0, 32);
 }
 
 /**
