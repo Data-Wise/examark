@@ -2,13 +2,15 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-0.4.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)
+![Examify Logo](https://img.shields.io/badge/Examify-v0.4.0-7C3AED?style=for-the-badge&logo=markdown&logoColor=white)
 
-**Create exams from Markdown and export to Canvas QTI format**
+[![License](https://img.shields.io/badge/license-MIT-22C55E?style=for-the-badge)](LICENSE)
+[![Tests](https://img.shields.io/badge/tests-32%20passing-22C55E?style=for-the-badge)](https://github.com/Data-Wise/examify/actions)
+[![Node](https://img.shields.io/badge/node-≥18-3178C6?style=for-the-badge)](https://nodejs.org/)
 
-[📖 Documentation](https://data-wise.github.io/examify/) • [🐛 Report Bug](https://github.com/Data-Wise/examify/issues) • [💡 Request Feature](https://github.com/Data-Wise/examify/issues)
+**Create beautiful exams from Markdown and export to Canvas QTI format.**
+
+[📖 Read the Documentation](https://data-wise.github.io/examify/) • [🐛 Report Bug](https://github.com/Data-Wise/examify/issues) • [💡 Request Feature](https://github.com/Data-Wise/examify/issues)
 
 </div>
 
@@ -16,91 +18,54 @@
 
 ## ✨ Features
 
-| Feature | Description |
-|---------|-------------|
-| 📝 **Markdown First** | Write questions in simple Markdown syntax |
-| ✅ **Flexible Correct Markers** | Use `[correct]`, `✓`, `*`, or `**bold**` |
-| 🧮 **LaTeX Support** | Math equations `$...$` converted to Canvas format |
-| 🖼️ **Image Bundling** | Images automatically bundled in package for Canvas |
-| 🎓 **Canvas Emulator** | Predict import success before uploading |
-| 🛡️ **Built-in Validator** | Catches common import issues |
+- **📝 Markdown First**: Write questions in simple, readable Markdown. Focus on content, not XML.
+- **🧮 LaTeX Support**: Full equation support. We convert `$...$` to Canvas's expected format automatically.
+- **🖼️ Image Bundling**: References to local images? We bundle them into the QTI package with a proper manifest.
+- **🎓 Canvas Emulator**: Predict import success **before** you upload. Save hours of debugging.
+- **🛡️ 6 Question Types**: Multiple Choice, True/False, Multiple Answer, Essay, Short Answer, and Numeric.
 
 ## 🚀 Quick Start
 
 ```bash
-# Clone and install
+# 1. Install
 git clone https://github.com/Data-Wise/examify.git
 cd examify
 npm install && npm run build && npm link
 
-# Convert a file
+# 2. Convert your quiz
 examify quiz.md -o quiz.qti.zip
 
-# Predict Canvas import success
+# 3. Simulate import (optional but recommended)
 examify emulate-canvas quiz.qti.zip
 ```
 
-## 📄 Input Format
+## 📝 Input Format
+
+Questions must start with `## N.` (double hash + number + dot).
 
 ```markdown
-# Pool: Statistics Quiz
+# Statistics Quiz
 
-## 1. What is the mean of 2, 4, 6?
+## 1. What is the mean of 2, 4, 6? [2 pts]
 a) 3
-b) 4 [correct]
+b) **4** ✓
 c) 5
 
-## 2. [TF] Variance can be negative.
-*False
-True
+## 2. [TF] The sky is green. → False
 
-## 3. [Essay, 10pts] Explain the central limit theorem.
+## 3. [Essay, 10pts] Explain the Central Limit Theorem.
 ```
 
-### Correct Answer Markers
-
-| Marker | Example | Best For |
-|--------|---------|----------|
-| `[correct]` | `b) Answer [correct]` | Quarto (recommended) |
-| `✓` | `b) Answer ✓` | Visual editing |
-| `*` prefix | `*b) Answer` | Quick marking |
-| `**bold**` | `b) **Answer**` | Markdown native |
-
-### Question Types
-
-| Type | Syntax |
-|------|--------|
-| Multiple Choice | Default |
-| True/False | `[TF]` or `→ True/False` |
-| Multiple Answer | `[MultiAns]` |
-| Essay | `[Essay]` |
-| Short Answer | `[Short]` |
-
-## 🎓 Canvas Emulator
-
-Predict whether your QTI will import successfully:
-
-```bash
-$ examify emulate-canvas quiz.qti.zip
-
-🎓 Canvas Import Emulator
-
-📊 Analysis Results:
-   Items scanned: 7
-   Resources: 8
-   Has test structure: Yes
-
-✅ PREDICTION: Canvas import will likely SUCCEED
-```
+[View all supported formats in the docs →](https://data-wise.github.io/examify/formats/)
 
 ## 🔧 Commands
 
 | Command | Description |
 |---------|-------------|
-| `examify <file.md>` | Convert to QTI package |
-| `examify verify <file.zip>` | Validate package structure |
-| `examify emulate-canvas <file.zip>` | Predict Canvas import |
-| `examify check <file.md>` | Lint input file |
+| `examify <file.md>` | Convert Markdown to QTI package |
+| `examify verify <file.zip>` | Validate package structure & diagnostics |
+| `examify emulate-canvas <file.zip>` | Simulate Canvas import process |
+| `examify check <file.md>` | Lint input file for syntax errors |
 
 ## 🛠️ Development
 
@@ -108,13 +73,7 @@ $ examify emulate-canvas quiz.qti.zip
 npm install      # Install dependencies
 npm run build    # Build project
 npm test         # Run tests (32 passing)
-npm link         # Install globally
 ```
-
-## 📚 Documentation
-
-Full documentation with tutorials available at:
-**[https://data-wise.github.io/examify/](https://data-wise.github.io/examify/)**
 
 ## 📄 License
 
