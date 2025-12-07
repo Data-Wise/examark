@@ -13,8 +13,8 @@ import { execSync } from 'child_process';
 const program = new Command();
 
 program
-  .name('qti-convert')
-  .description('Convert Markdown/Text questions to Canvas QTI 1.2 format')
+  .name('examify')
+  .description('Create exams from Markdown and export to Canvas QTI format')
   .version('0.4.0');
 
 program

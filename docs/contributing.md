@@ -4,8 +4,8 @@ We love your input! We want to make contributing to this project as easy and tra
 
 ## Ways to Contribute
 
-- 🐛 **Report bugs** — Found an issue? [Open a bug report](https://github.com/Data-Wise/canvas-qti-converter/issues/new)
-- 💡 **Suggest features** — Have an idea? [Start a discussion](https://github.com/Data-Wise/canvas-qti-converter/issues/new)
+- 🐛 **Report bugs** — Found an issue? [Open a bug report](https://github.com/Data-Wise/canvas-examifyer/issues/new)
+- 💡 **Suggest features** — Have an idea? [Start a discussion](https://github.com/Data-Wise/canvas-examifyer/issues/new)
 - 🔧 **Submit fixes** — PRs are welcome for any bug fixes
 - 📚 **Improve docs** — Help us make the documentation better
 
@@ -20,8 +20,8 @@ We love your input! We want to make contributing to this project as easy and tra
 
 ```bash
 # Clone the repository
-git clone https://github.com/Data-Wise/canvas-qti-converter.git
-cd canvas-qti-converter
+git clone https://github.com/Data-Wise/canvas-examifyer.git
+cd canvas-examifyer
 
 # Install dependencies
 npm install
@@ -62,19 +62,19 @@ npm run build
 
 ```bash
 # Convert a test file
-qti-convert examples/sample-quiz.md -o test.qti.zip
+examify examples/sample-quiz.md -o test.qti.zip
 
 # Validate the output
-qti-convert verify test.qti.zip
+examify verify test.qti.zip
 
 # Simulate Canvas import
-qti-convert emulate-canvas test.qti.zip
+examify emulate-canvas test.qti.zip
 ```
 
 ## Project Structure
 
 ```text
-canvas-qti-converter/
+canvas-examifyer/
 ├── src/
 │   ├── cli.ts          # Command-line interface
 │   ├── parser.ts       # Markdown parsing logic
@@ -114,4 +114,4 @@ Be kind. We're all here to learn and build something useful together.
 
 ## Questions?
 
-Feel free to [open an issue](https://github.com/Data-Wise/canvas-qti-converter/issues) for any questions!
+Feel free to [open an issue](https://github.com/Data-Wise/canvas-examifyer/issues) for any questions!

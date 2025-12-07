@@ -6,8 +6,8 @@ Get started with Canvas QTI Converter in 5 minutes.
 
 ```bash
 # Clone the repository
-git clone https://github.com/Data-Wise/canvas-qti-converter.git
-cd canvas-qti-converter
+git clone https://github.com/Data-Wise/canvas-examifyer.git
+cd canvas-examifyer
 
 # Install dependencies
 npm install
@@ -49,7 +49,7 @@ Describe the main stages of evaporation, condensation, and precipitation.
 ### 2. Convert to QTI
 
 ```bash
-qti-convert quiz.md -o quiz.qti.zip
+examify quiz.md -o quiz.qti.zip
 ```
 
 Expected output:
@@ -65,7 +65,7 @@ Expected output:
 ### 3. Verify Your Package
 
 ```bash
-qti-convert emulate-canvas quiz.qti.zip
+examify emulate-canvas quiz.qti.zip
 ```
 
 Expected output:

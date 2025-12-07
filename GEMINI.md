@@ -2,9 +2,9 @@
 
 ## Project Overview
 
-- **Location**: `/Users/dt/dev-tools/canvas-qti-converter`
+- **Location**: `/Users/dt/dev-tools/canvas-examifyer`
 - **Purpose**: Convert Markdown questions to Canvas-compatible QTI 1.2 packages
-- **Documentation**: <https://data-wise.github.io/canvas-qti-converter/>
+- **Documentation**: <https://data-wise.github.io/canvas-examifyer/>
 - **Version**: 0.3.0
 
 ## Key Commands

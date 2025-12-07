@@ -1,10 +1,10 @@
 {
-  "name": "canvas-qti-converter",
+  "name": "examify",
   "version": "0.4.0",
-  "description": "Convert Markdown/Text question files to Canvas-compatible QTI 1.2 format",
+  "description": "Create exams from Markdown and export to Canvas QTI format",
   "main": "dist/index.js",
   "bin": {
-    "qti-convert": "dist/index.js"
+    "examify": "dist/index.js"
   },
   "type": "module",
   "scripts": {

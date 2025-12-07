@@ -4,8 +4,8 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/Data-Wise/canvas-qti-converter.git
-cd canvas-qti-converter
+git clone https://github.com/Data-Wise/canvas-examifyer.git
+cd canvas-examifyer
 
 # Install dependencies
 npm install
@@ -20,7 +20,7 @@ npm link
 ## Basic Conversion
 
 ```bash
-qti-convert questions.md
+examify questions.md
 # Output: questions.qti.zip
 ```
 
@@ -37,7 +37,7 @@ qti-convert questions.md
 Use the `verify` command to check an existing QTI package (zip or folder):
 
 ```bash
-qti-convert verify my-quiz.qti.zip
+examify verify my-quiz.qti.zip
 ```
 
 This performs:

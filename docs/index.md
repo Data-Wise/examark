@@ -1,7 +1,7 @@
 # Canvas QTI Converter
 
-[![Version](https://img.shields.io/badge/version-0.2.2-blue)](https://github.com/Data-Wise/canvas-qti-converter)
-[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/Data-Wise/canvas-qti-converter/blob/main/LICENSE)
+[![Version](https://img.shields.io/badge/version-0.2.2-blue)](https://github.com/Data-Wise/canvas-examifyer)
+[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/Data-Wise/canvas-examifyer/blob/main/LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/)
 
 <div class="feature-card" markdown>
@@ -43,8 +43,8 @@ Turn your simple Markdown files into fully-functional Canvas quiz packages.
 ## Quick Install
 
 ```bash
-git clone https://github.com/Data-Wise/canvas-qti-converter.git
-cd canvas-qti-converter
+git clone https://github.com/Data-Wise/canvas-examifyer.git
+cd canvas-examifyer
 npm install && npm run build && npm link
 ```
 
@@ -80,10 +80,10 @@ npm install && npm run build && npm link
 
 | Command | Description |
 |---------|-------------|
-| `qti-convert file.md` | Convert to QTI package |
-| `qti-convert verify file.qti.zip` | Validate package structure |
-| `qti-convert emulate-canvas file.qti.zip` | Predict Canvas import |
-| `qti-convert check file.md` | Lint input file |
+| `examify file.md` | Convert to QTI package |
+| `examify verify file.qti.zip` | Validate package structure |
+| `examify emulate-canvas file.qti.zip` | Predict Canvas import |
+| `examify check file.md` | Lint input file |
 
 ## What's New in v0.2.2
 
@@ -94,4 +94,4 @@ npm install && npm run build && npm link
     - **Image optimization** — Canvas-compatible paths
 
 [Get Started :material-arrow-right:](quickstart.md){ .md-button .md-button--primary }
-[View on GitHub :material-github:](https://github.com/Data-Wise/canvas-qti-converter){ .md-button }
+[View on GitHub :material-github:](https://github.com/Data-Wise/canvas-examifyer){ .md-button }

@@ -1,8 +1,8 @@
-site_name: Canvas QTI Converter
-site_description: Convert Markdown questions to Canvas-compatible QTI format with ease.
+site_name: Examify
+site_description: Create exams from Markdown and export to Canvas QTI format.
 site_author: "MediationVerse Team"
-repo_name: canvas-qti-converter
-repo_url: https://github.com/Data-Wise/canvas-qti-converter
+repo_name: examify
+repo_url: https://github.com/Data-Wise/examify
 edit_uri: edit/main/docs/
 
 theme:
@@ -60,7 +60,7 @@ extra:
   generator: false
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/Data-Wise/canvas-qti-converter
+      link: https://github.com/Data-Wise/examify
       name: GitHub Repository
   analytics:
     provider: google

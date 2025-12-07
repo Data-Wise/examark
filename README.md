@@ -1,4 +1,4 @@
-# Canvas QTI Converter
+# Examify
 
 <div align="center">
 
@@ -6,9 +6,9 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)
 
-**Convert Markdown questions to Canvas-compatible QTI 1.2 packages**
+**Create exams from Markdown and export to Canvas QTI format**
 
-[📖 Documentation](https://data-wise.github.io/canvas-qti-converter/) • [🐛 Report Bug](https://github.com/Data-Wise/canvas-qti-converter/issues) • [💡 Request Feature](https://github.com/Data-Wise/canvas-qti-converter/issues)
+[📖 Documentation](https://data-wise.github.io/examify/) • [🐛 Report Bug](https://github.com/Data-Wise/examify/issues) • [💡 Request Feature](https://github.com/Data-Wise/examify/issues)
 
 </div>
 
@@ -29,15 +29,15 @@
 
 ```bash
 # Clone and install
-git clone https://github.com/Data-Wise/canvas-qti-converter.git
-cd canvas-qti-converter
+git clone https://github.com/Data-Wise/examify.git
+cd examify
 npm install && npm run build && npm link
 
 # Convert a file
-qti-convert quiz.md -o quiz.qti.zip
+examify quiz.md -o quiz.qti.zip
 
 # Predict Canvas import success
-qti-convert emulate-canvas quiz.qti.zip
+examify emulate-canvas quiz.qti.zip
 ```
 
 ## 📄 Input Format
@@ -81,7 +81,7 @@ True
 Predict whether your QTI will import successfully:
 
 ```bash
-$ qti-convert emulate-canvas quiz.qti.zip
+$ examify emulate-canvas quiz.qti.zip
 
 🎓 Canvas Import Emulator
 
@@ -97,10 +97,10 @@ $ qti-convert emulate-canvas quiz.qti.zip
 
 | Command | Description |
 |---------|-------------|
-| `qti-convert <file.md>` | Convert to QTI package |
-| `qti-convert verify <file.zip>` | Validate package structure |
-| `qti-convert emulate-canvas <file.zip>` | Predict Canvas import |
-| `qti-convert check <file.md>` | Lint input file |
+| `examify <file.md>` | Convert to QTI package |
+| `examify verify <file.zip>` | Validate package structure |
+| `examify emulate-canvas <file.zip>` | Predict Canvas import |
+| `examify check <file.md>` | Lint input file |
 
 ## 🛠️ Development
 
@@ -114,7 +114,7 @@ npm link         # Install globally
 ## 📚 Documentation
 
 Full documentation with tutorials available at:
-**[https://data-wise.github.io/canvas-qti-converter/](https://data-wise.github.io/canvas-qti-converter/)**
+**[https://data-wise.github.io/examify/](https://data-wise.github.io/examify/)**
 
 ## 📄 License
 

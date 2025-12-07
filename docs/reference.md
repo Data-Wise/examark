@@ -9,7 +9,7 @@ Complete command reference for Canvas QTI Converter.
 Convert a Markdown file to QTI package.
 
 ```bash
-qti-convert <input> [options]
+examify <input> [options]
 ```
 
 **Options:**
@@ -24,13 +24,13 @@ qti-convert <input> [options]
 
 ```bash
 # Basic conversion
-qti-convert quiz.md
+examify quiz.md
 
 # Custom output path
-qti-convert quiz.md -o my-quiz.qti.zip
+examify quiz.md -o my-quiz.qti.zip
 
 # Preview without generating file
-qti-convert quiz.md --preview
+examify quiz.md --preview
 ```
 
 ---
@@ -40,14 +40,14 @@ qti-convert quiz.md --preview
 Validate an existing QTI package structure.
 
 ```bash
-qti-convert verify <path>
+examify verify <path>
 ```
 
 **Examples:**
 
 ```bash
-qti-convert verify quiz.qti.zip
-qti-convert verify ./qti-folder/
+examify verify quiz.qti.zip
+examify verify ./qti-folder/
 ```
 
 ---
@@ -57,7 +57,7 @@ qti-convert verify ./qti-folder/
 Simulate Canvas LMS import and predict success/failure.
 
 ```bash
-qti-convert emulate-canvas <path>
+examify emulate-canvas <path>
 ```
 
 **Output includes:**
@@ -74,15 +74,15 @@ qti-convert emulate-canvas <path>
 Lint a Markdown file for syntax errors.
 
 ```bash
-qti-convert check <input>
+examify check <input>
 # or
-qti-convert lint <input>
+examify lint <input>
 ```
 
 **Examples:**
 
 ```bash
-qti-convert check quiz.md
+examify check quiz.md
 ```
 
 ## Exit Codes

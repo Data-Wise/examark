@@ -5,7 +5,7 @@ The emulator predicts whether your QTI package will import successfully into Can
 ## Usage
 
 ```bash
-qti-convert emulate-canvas your-package.qti.zip
+examify emulate-canvas your-package.qti.zip
 ```
 
 ## What It Checks
@@ -84,7 +84,7 @@ This error means Canvas can't find the `correctResponse` element:
 
 ```bash
 # Verify package structure
-qti-convert verify your-package.qti.zip
+examify verify your-package.qti.zip
 ```
 
 Check that:
@@ -142,5 +142,5 @@ The converter handles this automatically. If equations still don't render:
 
 ### Need More Help?
 
-- [Open an issue](https://github.com/Data-Wise/canvas-qti-converter/issues) on GitHub
+- [Open an issue](https://github.com/Data-Wise/canvas-examifyer/issues) on GitHub
 - Check the [Canvas QTI documentation](https://community.canvaslms.com/t5/Canvas-Basics-Guide/What-is-QTI/ta-p/2)
