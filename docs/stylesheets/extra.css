@@ -1,0 +1,104 @@
+/* Custom styles for Canvas QTI Converter docs */
+
+:root {
+  /* Custom color scheme */
+  --md-primary-fg-color: #7C3AED;
+  --md-primary-fg-color--light: #A78BFA;
+  --md-primary-fg-color--dark: #5B21B6;
+  --md-accent-fg-color: #F59E0B;
+}
+
+/* Hero section styling */
+.md-typeset h1 {
+  font-weight: 700;
+  color: var(--md-primary-fg-color);
+}
+
+/* Modern card-like code blocks */
+.md-typeset pre {
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth hover effects for links */
+.md-typeset a {
+  transition: color 0.2s ease-in-out;
+}
+
+/* Feature cards styling */
+.feature-card {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-left: 4px solid var(--md-primary-fg-color);
+}
+
+[data-md-color-scheme="slate"] .feature-card {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+}
+
+/* Modern admonition styling */
+.md-typeset .admonition {
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Navigation enhancements */
+.md-nav__link {
+  transition: all 0.2s ease;
+}
+
+.md-nav__link:hover {
+  transform: translateX(4px);
+}
+
+/* Table styling */
+.md-typeset table:not([class]) {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--md-primary-fg-color);
+  color: white;
+}
+
+/* Button-like inline code */
+.md-typeset code {
+  border-radius: 6px;
+  padding: 0.2em 0.4em;
+}
+
+/* Footer styling */
+.md-footer {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero badge styling */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--md-primary-fg-color);
+  color: white;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+/* Command box styling */
+.command-box {
+  background: #1e1b4b;
+  color: #e0e7ff;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  margin: 1rem 0;
+}

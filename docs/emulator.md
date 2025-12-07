@@ -1,0 +1,73 @@
+# Canvas Import Emulator
+
+The emulator predicts whether your QTI package will import successfully into Canvas LMS.
+
+## Usage
+
+```bash
+qti-convert emulate-canvas your-package.qti.zip
+```
+
+## What It Checks
+
+| Check | Severity | Description |
+|-------|----------|-------------|
+| Correct answer defined | Error | Choice questions must have `correctResponse` |
+| Supported interactions | Error | Canvas only supports choice, text entry, extended text |
+| Image references | Error | All image files must exist in the package |
+| Stem content | Error | Questions must have non-empty text |
+| Option count | Error | Choice questions need at least 2 options |
+| Identifier format | Warning | Special characters may cause issues |
+| responseProcessing | Warning | Manual grading needed if missing |
+
+## Example Output
+
+### Success
+
+```
+🎓 Canvas Import Emulator
+
+📊 Analysis Results:
+   Items scanned: 7
+   Resources: 8
+   Has test structure: Yes
+
+✅ PREDICTION: Canvas import will likely SUCCEED
+```
+
+### Failure
+
+```
+❌ PREDICTION: Canvas import will likely FAIL
+
+🔴 Canvas Import Blockers:
+   • No correct answer defined in items/item_3.xml
+
+🔧 Suggested Fixes:
+   → Mark correct answers with [correct], ✓, or **bold**
+```
+
+## Common Issues
+
+### Images Not Showing
+
+If images don't appear in Canvas after import:
+
+1. Ensure images are in the `items/` folder
+2. Check that image paths are relative
+3. For R/Python-generated figures, verify they're rendered before conversion
+
+### "Couldn't determine correct answers"
+
+This error means Canvas can't find the `correctResponse` element:
+
+1. Mark at least one answer as correct in your Markdown
+2. Use `[correct]` suffix, checkmark `✓`, or bold `**answer**`
+
+## Pro Tips
+
+!!! tip "Run Before Import"
+    Always run the emulator before uploading to Canvas to catch issues early.
+
+!!! tip "R/Python Figures"
+    Generate all figures with Quarto/RMarkdown *before* running the converter.

@@ -1,5 +1,5 @@
 site_name: Canvas QTI Converter
-site_description: Convert Markdown/Text questions to Canvas-compatible QTI format.
+site_description: Convert Markdown questions to Canvas-compatible QTI format with ease.
 site_author: "MediationVerse Team"
 repo_name: canvas-qti-converter
 repo_url: https://github.com/Data-Wise/canvas-qti-converter
@@ -7,50 +7,103 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
+  custom_dir: docs/overrides
   features:
     - navigation.instant
+    - navigation.instant.prefetch
     - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
+    - navigation.path
     - navigation.top
     - navigation.indexes
+    - navigation.footer
     - toc.follow
+    - toc.integrate
     - content.code.copy
+    - content.code.annotate
     - content.action.edit
+    - content.tabs.link
+    - search.suggest
+    - search.highlight
+    - search.share
   language: en
+  font:
+    text: Inter
+    code: JetBrains Mono
   palette:
-    - scheme: default
-      primary: indigo
-      accent: deep purple
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: amber
       toggle:
-        icon: material/brightness-7
+        icon: material/weather-sunny
         name: Switch to dark mode
-    - scheme: slate
-      primary: indigo
-      accent: deep purple
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: amber
       toggle:
-        icon: material/brightness-4
+        icon: material/weather-night
         name: Switch to light mode
   icon:
     repo: fontawesome/brands/github
-  logo: material/library
+    logo: material/file-document-arrow-right
+    admonition:
+      note: fontawesome/solid/note-sticky
+      tip: fontawesome/solid/lightbulb
+      warning: fontawesome/solid/triangle-exclamation
+      example: fontawesome/solid/flask
 
 extra:
+  generator: false
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Data-Wise/canvas-qti-converter
+      name: GitHub Repository
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - tables
+  - attr_list
+  - md_in_html
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 plugins:
-  - search
+  - search:
+      separator: '[\s\-\_\.]+'
 
 nav:
   - Home: index.md
-  - Guide:
+  - Getting Started:
+    - Quick Start: quickstart.md
     - Usage: usage.md
-    - Formats: formats.md
+  - User Guide:
+    - Input Formats: formats.md
+    - Canvas Emulator: emulator.md
   - Development:
     - Contributing: contributing.md
-  - Reference:
-    - API: reference.md
+    - API Reference: reference.md
