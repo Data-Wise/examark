@@ -5,12 +5,16 @@
 - **Location**: `/Users/dt/dev-tools/examify`
 - **Purpose**: Create exams from Markdown and export to Canvas QTI format
 - **Documentation**: <https://data-wise.github.io/examify/>
-- **Version**: 0.4.0
+- **Version**: 0.4.0 (released 2025-12-07)
+- **Status**: ✅ Stable - All 32 tests passing
 
-## Key Commands
+## Quick Start
 
 ```bash
-# Convert markdown to QTI (output to scratch folder)
+# Install globally
+npm link
+
+# Convert markdown to QTI
 examify input.md -o scratch/output.qti.zip
 
 # Verify QTI package
@@ -18,23 +22,24 @@ examify verify package.qti.zip
 
 # Simulate Canvas import
 examify emulate-canvas package.qti.zip
-
-# Preview parsed questions
-examify input.md --preview
-
-# Lint input file
-examify check input.md
-
-# Run tests (32 tests)
-npm test
 ```
+
+## Key Commands
+
+| Command | Description |
+|---------|-------------|
+| `examify <file> -o <out.qti.zip>` | Convert Markdown to QTI |
+| `examify verify <pkg>` | Validate QTI package structure |
+| `examify emulate-canvas <pkg>` | Simulate Canvas import |
+| `examify <file> --preview` | Preview parsed questions |
+| `examify check <file>` | Lint input file |
 
 ## Development Commands
 
 ```bash
 npm install      # Install dependencies
 npm run build    # Build project
-npm test         # Run all tests
+npm test         # Run all tests (32 tests)
 npm link         # Install globally as 'examify'
 ```
 
@@ -45,7 +50,18 @@ npm link         # Install globally as 'examify'
 - **QTI format**: Uses QTI 1.2 (Canvas Classic Quizzes), not QTI 2.1
 - **Images**: Bundled in package with `imsmanifest.xml`
 
-## Input Format Requirements
+## Architecture
+
+```
+src/
+├── index.ts              # CLI entry point (Commander.js)
+├── parser/               # Markdown → Question objects
+├── generator/            # Question objects → QTI XML
+├── diagnostic/           # Validator + Canvas emulator
+└── utils/                # Shared utilities
+```
+
+## Input Format
 
 Questions MUST use `## N. Question` format (with ##):
 
@@ -96,12 +112,15 @@ b)  Exponential growth
 
 ## Folder Structure
 
-- `src/` - TypeScript source
-- `dist/` - Compiled JavaScript
-- `docs/` - MkDocs documentation
-- `examples/` - Sample input files
-- `scratch/` - **Generated test QTI files (always output here)**
-- `tests/` - Vitest test suite
+| Directory | Purpose |
+|-----------|---------|
+| `src/` | TypeScript source |
+| `dist/` | Compiled JavaScript |
+| `docs/` | MkDocs documentation |
+| `examples/` | Sample input files |
+| `scratch/` | Generated test QTI files (always output here) |
+| `tests/` | Vitest test suite |
+| `_extensions/` | Quarto extension (future integration) |
 
 ## Canvas Import Process
 
@@ -109,3 +128,25 @@ b)  Exponential growth
 2. Content Type: QTI .zip file
 3. Upload .qti.zip file
 4. Import → Check Quizzes → Manage Question Banks
+
+## Recent Changes (v0.4.0)
+
+- ✅ Image bundling with `imsmanifest.xml`
+- ✅ Canvas emulator validates QTI 1.2 packages
+- ✅ Project renamed from `canvas-qti-converter` to `examify`
+- ✅ Full documentation site at data-wise.github.io/examify
+
+## Workflows Available
+
+| Command | Description |
+|---------|-------------|
+| `/build-test` | Build, test, generate QTI from markdown |
+| `/convert-quiz` | Convert markdown to QTI and verify |
+| `/deploy-docs` | Deploy docs to GitHub Pages |
+| `/release` | Create new version release with tag |
+
+## Git Status
+
+- **Branch**: main
+- **Latest tag**: v0.4.0
+- **Remote**: origin/main (synced)
