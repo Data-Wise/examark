@@ -110,4 +110,5 @@ nav:
     - Quarto Extension: extensions/quarto.md
   - Development:
     - Contributing: contributing.md
+    - Extension Internals: development/extension.md
     - API Reference: reference.md
