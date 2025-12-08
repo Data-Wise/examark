@@ -81,21 +81,42 @@ examify --version
 
 Create `quiz.md`:
 
-```markdown
-# Statistics Quiz
+=== "Clean Syntax (Recommended)"
 
-# Section: Multiple Choice
+    ```markdown
+    # Statistics Quiz
 
-## 1. What is 2 + 2?
+    # Section: Multiple Choice
 
-a) Three
-b) **Four** ✓
-c) Five
+    1. [MC] What is 2 + 2? [2pts]
+    a) Three
+    b) Four [x] // Correct answer
+    c) Five
 
-## 2. [TF] The sky is blue. → True
+    2. [TF] The sky is blue. [1pt]
+    a) True [x]
+    b) False
 
-## 3. [Essay, 10pts] Explain the water cycle.
-```
+    3. [Essay, 10pts] Explain the water cycle.
+    ```
+
+=== "Traditional Syntax"
+
+    ```markdown
+    # Statistics Quiz
+
+    # Section: Multiple Choice
+
+    ## 1. What is 2 + 2?
+
+    a) Three
+    b) **Four** ✓
+    c) Five
+
+    ## 2. [TF] The sky is blue. → True
+
+    ## 3. [Essay, 10pts] Explain the water cycle.
+    ```
 
 ### 2. Convert to QTI
 
@@ -156,10 +177,45 @@ Start with a ready-made template:
 
 ---
 
+## Other Export Options
+
+### Plain Text (Paper Exams)
+
+Export for printing:
+
+```bash
+examify quiz.md -f text -o quiz.txt
+```
+
+### Batch Conversion
+
+Convert multiple files at once:
+
+```bash
+examify *.md -o output/
+```
+
+### Project Configuration
+
+Create `.examifyrc.json` for project settings:
+
+```json
+{
+  "defaultPoints": 2,
+  "outputDir": "output",
+  "validate": true
+}
+```
+
+See [Configuration](config.md) for all options.
+
+---
+
 ## Next Steps
 
 - [Input Formats](formats.md) — Complete question syntax guide
 - [Commands Reference](reference.md) — All CLI options
+- [Configuration](config.md) — Project settings
 - [Canvas Emulator](emulator.md) — Pre-import validation
 - [Tutorials](tutorials/index.md) — R/Quarto integration
 - [Quarto Extension](extensions/quarto.md) — Advanced authoring

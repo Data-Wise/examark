@@ -9,6 +9,8 @@ Complete command reference for Examify CLI.
 | Command | Purpose |
 |---------|---------|
 | `examify <file> -o <out.zip>` | Convert Markdown to QTI |
+| `examify <file> -f text` | Export as printable text |
+| `examify *.md -o output/` | Batch convert multiple files |
 | `examify verify <pkg>` | Validate package structure |
 | `examify emulate-canvas <pkg>` | Simulate Canvas import |
 | `examify check <file>` | Lint input file |
@@ -22,6 +24,7 @@ Complete command reference for Examify CLI.
 
 ```bash
 examify <input> [options]
+examify <pattern> -o <directory>   # Batch mode
 ```
 
 **What it does:**
@@ -29,31 +32,109 @@ examify <input> [options]
 - Parses your Markdown file for questions
 - Generates QTI 1.2 XML for Canvas Classic Quizzes
 - Bundles images with `imsmanifest.xml`
-- Creates a `.qti.zip` package
+- Creates a `.qti.zip` package (or `.txt` for text export)
 
 **When to use:**
 
-Converting your Markdown quiz files for Canvas import.
+Converting your Markdown quiz files for Canvas import or printable exams.
 
 **Options:**
 
 | Option | Description |
 |--------|-------------|
-| `-o, --output <file>` | Output path (default: `<input>.qti.zip`) |
+| `-o, --output <path>` | Output file or directory (batch mode) |
+| `-f, --format <type>` | Output format: `qti` (default) or `text` |
 | `-v, --validate` | Validate output after generating |
+| `-p, --points <n>` | Default points per question |
+| `-t, --title <title>` | Override quiz title |
 | `--preview` | Preview parsed questions, no file created |
+| `--no-answers` | Exclude answer key from text export |
 
-**Example:**
+**Examples:**
 
 ```bash
-# Basic conversion
+# Basic conversion to QTI
 examify quiz.md
 
 # Custom output path
 examify quiz.md -o output/my-quiz.qti.zip
 
+# Export as printable text
+examify quiz.md -f text
+
+# Text export without answers
+examify quiz.md -f text --no-answers
+
+# Batch convert all markdown files
+examify *.md -o output/
+
+# Set default points
+examify quiz.md -p 2
+
 # Preview without generating
 examify quiz.md --preview
+```
+
+---
+
+## Batch Conversion
+
+Convert multiple files at once using glob patterns:
+
+```bash
+# Convert all .md files in current directory
+examify *.md -o output/
+
+# Convert files from specific folder
+examify exams/*.md -o qti-packages/
+
+# Convert specific pattern
+examify midterm-*.md -o midterms/
+```
+
+**Notes:**
+
+- Output directory is created if it doesn't exist
+- Each file is named based on input: `quiz.md` → `quiz.qti.zip`
+- Errors in one file don't stop processing of others
+- Summary shows success/failure counts
+
+---
+
+## Text Export
+
+Export quizzes as plain text for paper exams:
+
+```bash
+examify quiz.md -f text
+examify quiz.md -f text -o exam.txt
+examify quiz.md -f text --no-answers
+```
+
+**Output includes:**
+
+- Quiz title and header
+- Name/Date fields for students
+- All questions formatted for printing
+- Answer key at the end (unless `--no-answers`)
+
+**Example output:**
+
+```text
+STATISTICS QUIZ 1
+Name: _________________________  Date: _________
+
+1. [2 pts] What is the mean of 2, 4, 6?
+   a) Three
+   b) Four
+   c) Five
+
+2. [1 pt] TRUE or FALSE: Variance can be negative.
+
+---
+ANSWER KEY
+1. b
+2. False
 ```
 
 ---

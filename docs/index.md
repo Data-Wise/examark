@@ -20,7 +20,7 @@
 
     ---
 
-    Write questions in simple, readable Markdown. Focus on content, not formatting.
+    Write questions in simple, readable Markdown. Clean syntax without headers for better HTML/PDF output.
 
 - :material-math-integral:{ .lg .middle } **LaTeX Math**
 
@@ -40,17 +40,29 @@
 
     Predict import success *before* uploading. Catch errors early.
 
-- :material-format-list-checks:{ .lg .middle } **6 Question Types**
+- :material-format-list-checks:{ .lg .middle } **8 Question Types**
 
     ---
 
-    Multiple choice, true/false, multiple answer, essay, short answer, and numeric.
+    Multiple choice, true/false, multiple answer, essay, short answer, numeric, matching, and fill-in-blanks.
+
+- :material-printer:{ .lg .middle } **Multiple Export Formats**
+
+    ---
+
+    Export to Canvas QTI or plain text for printable paper exams.
 
 - :material-language-python:{ .lg .middle } **Quarto Integration**
 
     ---
 
     Use with R/Python for dynamic, randomized exam generation.
+
+- :material-folder-multiple:{ .lg .middle } **Batch Conversion**
+
+    ---
+
+    Convert multiple files at once with glob patterns: `examify *.md -o output/`
 
 </div>
 
@@ -71,19 +83,33 @@ examify quiz.md -o quiz.qti.zip
 
 ## 📝 Example
 
-=== "Input (Markdown)"
+=== "Clean Syntax (Recommended)"
 
     ```markdown
     # Statistics Quiz
 
-    # Section: Multiple Choice
+    1. [MC] What is the mean of 2, 4, 6? [2pts]
+    a) Three
+    b) Four [x] // Correct answer
+    c) Five
+
+    2. [TF] Variance can be negative. [1pt]
+    a) True
+    b) False [x]
+
+    3. [Essay, 5pts] Explain the Central Limit Theorem.
+    ```
+
+=== "Traditional Syntax"
+
+    ```markdown
+    # Statistics Quiz
 
     ## 1. What is the mean of 2, 4, 6? [2 pts]
-
     a) Three
     b) **Four** ✓
     c) Five
-    
+
     ## 2. [TF] Variance can be negative. → False
 
     ## 3. [Essay, 5pts] Explain the Central Limit Theorem.
@@ -96,7 +122,7 @@ examify quiz.md -o quiz.qti.zip
       • 3 questions (MC, TF, Essay)
       • 1 section
       • 0 images bundled
-    
+
     ✅ Ready for Canvas import!
     ```
 
@@ -136,6 +162,8 @@ Start with a ready-made template:
 | Command | Description |
 |---------|-------------|
 | `examify file.md -o output.qti.zip` | Convert Markdown to QTI package |
+| `examify file.md -f text` | Export as printable plain text |
+| `examify *.md -o output/` | Batch convert multiple files |
 | `examify verify package.qti.zip` | Validate package structure |
 | `examify emulate-canvas package.qti.zip` | Simulate Canvas import |
 | `examify check file.md` | Lint input file for errors |
