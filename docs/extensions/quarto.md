@@ -4,20 +4,62 @@ Examify includes a powerful Quarto extension that allows you to author exams in 
 
 ## Installation
 
-### From Repository
+### Method 1: GitHub Installation (Recommended)
 
-To install the extension into your Quarto project:
+Install directly from the GitHub repository:
 
 ```bash
 quarto add Data-Wise/examify
 ```
 
-### Local Installation
+This will:
 
-If you have the `examify` repository cloned locally:
+1. Download the extension from GitHub
+2. Create `_extensions/exam/` in your project
+3. Prompt you to trust the extension
 
-1. Copy the `_extensions` folder from this repository into your Quarto project.
-2. Ensure you have the `exam` folder inside `_extensions`.
+!!! tip "Install a Specific Version"
+    Pin to a release tag for reproducible builds:
+    ```bash
+    quarto add Data-Wise/examify@v0.4.2
+    ```
+
+### Method 2: Project-Wide Installation
+
+For organization-wide extensions, install at the project root:
+
+```bash
+cd ~/my-quarto-project
+quarto add Data-Wise/examify
+```
+
+All `.qmd` files in the project will have access to the extension.
+
+### Method 3: Local/Development Installation
+
+If you have the repository cloned locally:
+
+```bash
+# Clone the repo
+git clone https://github.com/Data-Wise/examify.git
+
+# Copy the extension to your project
+cp -r examify/_extensions/exam your-project/_extensions/
+```
+
+### Verify Installation
+
+Check that the extension is installed:
+
+```bash
+ls _extensions/exam/
+```
+
+You should see:
+
+```text
+_extension.yml  exam-filter.lua  exam.scss  qti-post-render.js
+```
 
 ## Usage
 
