@@ -1,62 +1,103 @@
 # Input Formats
 
-Examify accepts a simple Markdown-based format for quiz questions.
+Examify accepts a simple Markdown-based format for quiz questions. This guide covers the complete syntax for all question types.
 
 ---
 
-## Structure
+## Quick Start
 
-Questions **must** use `## N. Question` format (with the `##` prefix).
+Create a file called `quiz.md`:
 
 ```markdown
-# Quiz Title
+# My Quiz
 
-# Section: Topic Name
+## 1. What is 2 + 2?
 
-## 1. Question text? [2 pts]
-
-1)  First option
-2)  **Correct option** ✓
-3)  Third option
-
-## 2. [TF] True/false statement. → True
-
-## 3. [Essay, 10pts] Open-ended question.
+a) 3
+b) **4** ✓
+c) 5
 ```
 
-### Key Elements
+Convert to Canvas QTI:
 
-| Element | Syntax | Example |
-|---------|--------|---------|
-| **Quiz title** | `# Title` | `# Statistics Final Exam` |
-| **Section** | `# Section: Name` | `# Section: Multiple Choice` |
-| **Question** | `## N. Text` | `## 1. What is 2+2?` |
-| **Points** | `[N pts]` | `## 1. Question [5 pts]` |
+```bash
+examify quiz.md -o quiz.qti.zip
+```
+
+---
+
+## Document Structure
+
+### Quiz Title
+
+The first `# Title` line becomes the quiz title:
+
+```markdown
+# Statistics Midterm Exam
+```
+
+### Sections
+
+Group questions into sections:
+
+```markdown
+# Section: Multiple Choice
+
+## 1. Question one...
+
+## 2. Question two...
+
+# Section: Essay Questions
+
+## 3. Essay question...
+```
+
+### Questions
+
+Questions **must** use `## N. Question` format:
+
+```markdown
+## 1. What is the capital of France? [2 pts]
+
+## 2. [TF] The Earth is round. → True
+
+## 3. [Essay, 10pts] Explain your reasoning.
+```
 
 ---
 
 ## Question Types
 
-### Multiple Choice
+### Multiple Choice (Default)
 
-Mark the correct answer with one of the supported markers.
+The default type. Mark the correct answer with one of the supported markers.
 
 ```markdown
 ## 1. What is 2 + 2? [2 pts]
 
-1)  Three
-2)  **Four** ✓
-3)  Five
+a) 3
+b) **4** ✓
+c) 5
+d) 6
 ```
 
-**Correct Answer Markers:**
+**Supported Answer Markers:**
 
-| Marker | Example | Best For |
-|--------|---------|----------|
-| `**Bold**` | `2)  **Answer**` | Visual emphasis |
-| `✓` checkmark | `2)  Answer ✓` | Quick marking |
-| `[correct]` | `2)  Answer [correct]` | Quarto compatibility |
-| `*` prefix | `*2)  Answer` | Traditional format |
+| Marker | Example | Notes |
+|--------|---------|-------|
+| `**Bold**` | `b) **Answer**` | Most visual |
+| `**Bold** ✓` | `b) **Answer** ✓` | With checkmark |
+| `[correct]` | `b) Answer [correct]` | Quarto-friendly |
+| `*` prefix | `*b) Answer` | Traditional format |
+
+All markers can be combined. These all mark option b as correct:
+
+```markdown
+b) **Correct answer**
+b) Correct answer ✓
+b) Answer [correct]
+*b) Answer
+```
 
 ---
 
@@ -64,86 +105,132 @@ Mark the correct answer with one of the supported markers.
 
 Use `[TF]` tag or arrow syntax.
 
+**Method 1: Arrow Syntax (Recommended)**
+
+Single-line format with answer in the header:
+
 ```markdown
-## 2. [TF] The sky is blue.
+## 2. [TF] The sky is blue. → True
+
+## 3. [TF] Water boils at 50°C. → False
+```
+
+**Method 2: Standard Options**
+
+```markdown
+## 4. [TF] The Earth is flat.
 
 *True
 False
 ```
 
-Or use arrow syntax for single-line format:
-
-```markdown
-## 3. The earth is round. → True
-
-## 4. Water freezes at 50°C. → False
-```
-
-**Arrow formats:** Use `→ True` or `-> True` in the question header.
+**Arrow Formats:** Use `→ True`, `→ False`, `-> True`, or `-> False`.
 
 ---
 
 ### Multiple Answers
 
-Use `[MultiAns]` tag for questions with multiple correct answers.
+Use `[MultiAns]` for questions with multiple correct answers.
 
 ```markdown
-## 5. [MultiAns] Which are measures of central tendency?
+## 5. [MultiAns, 4pts] Which are primary colors?
 
-*a) Mean
-*b) Median
-c)  Standard deviation
-*d) Mode
+*a) Red
+b) Orange
+*c) Blue
+d) Green
+*e) Yellow
 ```
 
----
-
-### Essay
-
-Use `[Essay]` tag. No answer options needed.
-
-```markdown
-## 6. [Essay, 10pts] Explain the process of photosynthesis.
-
-Provide at least three key steps in your explanation.
-```
+Mark all correct answers with `*` prefix.
 
 ---
 
 ### Short Answer
 
-Use `[Short]` tag for fill-in-the-blank questions.
+Use `[Short]` for fill-in-the-blank questions.
 
 ```markdown
-## 7. [Short] What Greek letter represents the population mean?
+## 6. [Short] The capital of France is
 
-Answer: μ
+Answer: Paris
 ```
+
+**Multiple Accepted Answers:**
+
+```markdown
+## 7. [Short] What is the SI unit of force?
+
+Answer: Newton
+Answer: N
+Answer: newton
+```
+
+Canvas matches case-insensitively.
 
 ---
 
 ### Numeric
 
-Use `[Numeric]` tag with optional tolerance.
+Use `[Numeric]` with a tolerance value.
 
 ```markdown
-## 8. Calculate the mean of 2, 4, 6, 8, 10. [3 pts] ± 0.1
+## 8. [Numeric, 3pts] Calculate the mean of 2, 4, 6, 8, 10.
 
-Answer: 6
+Answer: 6 ± 0.1
 ```
+
+**Tolerance Formats:**
+
+| Format | Meaning |
+|--------|---------|
+| `± 0` | Exact match required |
+| `± 0.01` | Allow small rounding error |
+| `± 5` | Allow range of values |
 
 ---
 
-## Custom Points
+### Essay
 
-Override default points per question using `[N pts]` syntax.
+Use `[Essay]` for open-ended questions. No answer options needed.
+
+```markdown
+## 9. [Essay, 10pts] Explain the process of photosynthesis.
+
+Describe at least three key steps in your explanation.
+Include the role of chlorophyll and sunlight.
+```
+
+Everything after the header becomes the question stem.
+
+---
+
+## Points
+
+### Default Points
+
+Questions default to 1 point unless specified.
+
+### Inline Points
+
+Use `[N pts]` or `[Npts]` syntax:
 
 ```markdown
 ## 1. Easy question [1 pt]
 
-## 2. [Essay, 10pts] Difficult essay question.
+## 2. Medium question [5 pts]
 
-## 3. Medium question [5 pts]
+## 3. Hard question [10pts]
+```
+
+### Combined with Type
+
+```markdown
+## 4. [Essay, 10pts] Describe...
+
+## 5. [MultiAns, 4pts] Select all...
+
+## 6. [Numeric, 3pts] Calculate...
 ```
 
 ---
@@ -152,72 +239,233 @@ Override default points per question using `[N pts]` syntax.
 
 Both inline and display math are supported.
 
+### Inline Math
+
+Use single dollar signs:
+
 ```markdown
 ## 1. In regression, what does $\beta_1$ represent?
 
-$$Y = \beta_0 + \beta_1 X + \epsilon$$
-
-1)  The y-intercept
-2)  **The slope** ✓
-3)  The error term
+The formula $y = mx + b$ describes a line.
 ```
+
+### Display Math
+
+Use double dollar signs:
+
+```markdown
+## 2. Which formula shows the quadratic equation?
+
+$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+
+a) Pythagorean theorem
+b) **Quadratic formula** ✓
+c) Euler's identity
+```
+
+### Canvas Compatibility
 
 Examify automatically converts:
 
-- `$...$` → `\(...\)` (inline)
-- `$$...$$` → `\[...\]` (display)
+| Markdown | Canvas |
+|----------|--------|
+| `$...$` | `\(...\)` |
+| `$$...$$` | `\[...\]` |
+
+Canvas renders math using MathJax.
 
 ---
 
 ## Images
 
-Reference local images using standard Markdown syntax. Images are automatically **bundled into the QTI package** with an `imsmanifest.xml` for Canvas compatibility.
+Images are automatically bundled into the QTI package.
+
+### Basic Syntax
 
 ```markdown
 ## 1. What does this graph show?
 
-![Graph](assets/graph.png)
+![Graph Description](assets/graph.png)
 
-*a) Linear growth
-b)  Exponential growth
+a) Linear growth
+b) **Exponential growth** ✓
+c) No relationship
 ```
 
 ### Supported Formats
 
-| Format | Extension | Notes |
-|--------|-----------|-------|
-| PNG | `.png` | Recommended for charts |
-| JPEG | `.jpg`, `.jpeg` | Good for photos |
-| GIF | `.gif` | Animated supported |
+| Format | Extension | Best For |
+|--------|-----------|----------|
+| PNG | `.png` | Charts, screenshots |
+| JPEG | `.jpg`, `.jpeg` | Photos |
 | SVG | `.svg` | Vector graphics |
+| GIF | `.gif` | Animations |
 | WebP | `.webp` | Modern format |
 
 ### Path Requirements
 
 - Use **relative paths** from your Markdown file
-- Images should be in a subfolder (e.g., `assets/`, `images/`)
-- Paths are case-sensitive
+- Recommended: Keep images in an `assets/` subfolder
+- Paths are **case-sensitive**
 
 ```
 quiz/
 ├── my-quiz.md
 └── assets/
     ├── chart1.png
-    └── diagram.svg
+    ├── diagram.svg
+    └── photo.jpg
 ```
 
-**How it works:** Examify finds all `![alt](path)` references, copies images to the package, generates `imsmanifest.xml`, and creates `<img>` tags in the QTI XML.
+### What Happens
+
+Examify:
+
+1. Finds all `![alt](path)` references
+2. Copies images into the QTI package
+3. Generates `imsmanifest.xml`
+4. Creates proper `<img>` tags in the QTI XML
+
+---
+
+## Code Blocks
+
+Include code examples in questions:
+
+````markdown
+## 1. What does this code output?
+
+```python
+def greet(name):
+    return f"Hello, {name}!"
+
+print(greet("World"))
+```
+
+a) Hello World
+b) **Hello, World!** ✓
+c) greet(World)
+d) Error
+````
+
+Code is preserved with syntax highlighting in Canvas.
 
 ---
 
 ## Solution Blocks
 
-Examify automatically ignores solution/proof blocks.
+Examify ignores solution content:
 
 ```html
-<div class="proof solution">
+<div class="solution">
   This content will NOT appear in Canvas.
 </div>
 ```
 
-**Quarto users:** Wrap solutions in `<div class="solution">` or `<div class="proof">` to exclude them from exports.
+Or use the proof class:
+
+```html
+<div class="proof">
+  Step-by-step solution...
+</div>
+```
+
+**Quarto Users:** Use `:::` blocks:
+
+```markdown
+::: {.solution}
+This is hidden in Canvas export.
+:::
+```
+
+---
+
+## Complete Example
+
+```markdown
+# Statistics Quiz 1
+
+# Section: Concepts
+
+## 1. Central Tendency [2 pts]
+
+Which measure is most affected by outliers?
+
+a) Mode
+b) Median
+c) **Mean** ✓
+d) Range
+
+## 2. [TF] The variance can be negative. → False
+
+# Section: Calculations
+
+## 3. [Numeric, 3pts] Calculate the z-score.
+
+Given: X = 85, μ = 70, σ = 10
+
+$$z = \frac{X - \mu}{\sigma}$$
+
+Answer: 1.5 ± 0.01
+
+# Section: Written Response
+
+## 4. [Essay, 10pts] Explain correlation vs causation.
+
+Provide an example of a spurious correlation.
+```
+
+---
+
+## Templates
+
+Ready-to-use templates in `examples/`:
+
+| Template | Description |
+|----------|-------------|
+| `starter-exam-md.md` | Minimal starter template |
+| `canvas-ready.md` | All question types for Canvas |
+| `canvas-validation.md` | Comprehensive test file |
+
+---
+
+## Validation
+
+Before uploading to Canvas:
+
+```bash
+# Check for syntax issues
+examify check quiz.md
+
+# Preview parsed questions
+examify quiz.md --preview
+
+# Simulate Canvas import
+examify emulate-canvas quiz.qti.zip
+```
+
+---
+
+## Troubleshooting
+
+### Question not detected
+
+- Ensure it starts with `## N.` (two hashes)
+- Check for proper spacing after `##`
+
+### Correct answer not found
+
+- Verify marker syntax (`**Bold**`, `✓`, `*` prefix)
+- Ensure the marker is on the answer line, not the question
+
+### Images missing
+
+- Check paths are relative
+- Verify files exist at the specified path
+- Use `examify verify quiz.qti.zip` to check bundling
+
+### Math not rendering
+
+- Ensure dollar signs are not escaped
+- Check for proper spacing around `$` symbols
+- Verify Canvas has MathJax enabled

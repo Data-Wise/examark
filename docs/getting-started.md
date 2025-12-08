@@ -110,9 +110,24 @@ examify --help
 
 ---
 
+## Templates
+
+Start with a ready-made template:
+
+| Template | Best For |
+|----------|----------|
+| [`starter-exam-md.md`](https://github.com/Data-Wise/examify/blob/main/examples/starter-exam-md.md) | Beginners - one example of each question type |
+| [`canvas-ready.md`](https://github.com/Data-Wise/examify/blob/main/examples/canvas-ready.md) | Full Canvas feature coverage |
+| [`canvas-validation.md`](https://github.com/Data-Wise/examify/blob/main/examples/canvas-validation.md) | Testing all features |
+
+**Quarto users:** See the [Quarto Extension](extensions/quarto.md) for `.qmd` templates.
+
+---
+
 ## Next Steps
 
+- [Input Formats](formats.md) — Complete question syntax guide
 - [Commands Reference](reference.md) — All CLI options
-- [Input Formats](formats.md) — Question syntax guide
 - [Canvas Emulator](emulator.md) — Pre-import validation
 - [Tutorials](tutorials/index.md) — R/Quarto integration
+- [Quarto Extension](extensions/quarto.md) — Advanced authoring
