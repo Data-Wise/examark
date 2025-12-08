@@ -1,0 +1,130 @@
+---
+title: "Statistics Quiz - Quarto Generated Figures"
+format: html
+---
+
+# Pool: Statistics with R-Generated Plots
+
+This quiz demonstrates how to use dynamically generated figures from R code chunks in your exam questions.
+
+# Section: Descriptive Statistics
+
+## 1. Histogram Interpretation [2 pts]
+
+```{r}
+#| echo: false
+#| fig-width: 5
+#| fig-height: 3.5
+#| label: fig-histogram
+
+set.seed(42)
+data <- rnorm(500, mean = 100, sd = 15)
+hist(data, 
+     main = "Distribution of Test Scores",
+     xlab = "Score", 
+     ylab = "Frequency",
+     col = "steelblue",
+     border = "white",
+     breaks = 20)
+abline(v = mean(data), col = "red", lwd = 2, lty = 2)
+```
+
+Based on the histogram above, which statement is most accurate?
+
+a) The distribution is right-skewed
+b) **The distribution is approximately normal** ✓
+c) The distribution is left-skewed
+d) The distribution is bimodal
+
+## 2. [TF] The red dashed line represents the median. → False
+
+# Section: Regression Analysis
+
+## 3. Scatter Plot Correlation [3 pts]
+
+```{r}
+#| echo: false
+#| fig-width: 5
+#| fig-height: 4
+#| label: fig-scatter
+
+set.seed(123)
+x <- seq(1, 50, length.out = 40)
+y <- 2 * x + 10 + rnorm(40, sd = 8)
+
+plot(x, y, 
+     pch = 19, 
+     col = "darkblue",
+     main = "Study Hours vs Exam Score",
+     xlab = "Study Hours",
+     ylab = "Exam Score")
+abline(lm(y ~ x), col = "red", lwd = 2)
+```
+
+What type of relationship does this scatter plot show?
+
+*a) Strong positive linear relationship
+b) Weak positive linear relationship
+c) Strong negative linear relationship
+d) No relationship
+
+## 4. Based on the regression line, approximately what score would you predict for 30 study hours? [2 pts]
+
+```{r}
+#| echo: false
+#| fig-width: 5
+#| fig-height: 4
+set.seed(123)
+x <- seq(1, 50, length.out = 40)
+y <- 2 * x + 10 + rnorm(40, sd = 8)
+plot(x, y, pch = 19, col = "darkblue",
+     main = "Study Hours vs Exam Score",
+     xlab = "Study Hours", ylab = "Exam Score")
+abline(lm(y ~ x), col = "red", lwd = 2)
+abline(v = 30, col = "gray", lty = 3)
+abline(h = 70, col = "gray", lty = 3)
+points(30, 70, pch = 4, col = "red", cex = 2, lwd = 2)
+```
+
+a) 50
+b) 60
+c) **70** ✓
+d) 80
+
+# Section: Probability Distributions
+
+## 5. Normal Distribution [2 pts]
+
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+#| label: fig-normal
+
+x <- seq(-4, 4, length.out = 200)
+y <- dnorm(x)
+
+plot(x, y, type = "l", lwd = 2, col = "darkblue",
+     main = "Standard Normal Distribution",
+     xlab = "Z-score", ylab = "Density")
+
+# Shade area between -1 and 1
+x_shade <- c(-1, seq(-1, 1, length.out = 100), 1)
+y_shade <- c(0, dnorm(seq(-1, 1, length.out = 100)), 0)
+polygon(x_shade, y_shade, col = rgb(0.2, 0.4, 0.8, 0.3), border = NA)
+
+# Add labels
+text(0, 0.15, "≈68%", cex = 1.2, font = 2)
+abline(v = c(-1, 1), col = "red", lty = 2)
+```
+
+The shaded region in the graph represents approximately what percentage of the data in a normal distribution?
+
+a) 50%
+b) **68%** ✓
+c) 95%
+d) 99%
+
+## 6. [Essay, 10pts] Interpretation
+
+Looking at the normal distribution above, explain the empirical rule (68-95-99.7 rule) and describe how it applies to real-world data.

@@ -1,0 +1,144 @@
+---
+title: "Data Science Quiz - Python Generated Figures"
+format: html
+---
+
+# Pool: Data Science with Python Plots
+
+This quiz uses Python matplotlib/seaborn to generate figures dynamically.
+
+# Section: Data Visualization
+
+## 1. Box Plot Analysis [3 pts]
+
+```{python}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(42)
+group_a = np.random.normal(75, 10, 50)
+group_b = np.random.normal(85, 5, 50)
+group_c = np.random.normal(70, 15, 50)
+
+fig, ax = plt.subplots(figsize=(6, 4))
+bp = ax.boxplot([group_a, group_b, group_c], 
+                labels=['Group A', 'Group B', 'Group C'],
+                patch_artist=True)
+
+colors = ['#3498db', '#e74c3c', '#2ecc71']
+for patch, color in zip(bp['boxes'], colors):
+    patch.set_facecolor(color)
+    patch.set_alpha(0.7)
+
+ax.set_ylabel('Score')
+ax.set_title('Test Scores by Group')
+plt.tight_layout()
+plt.show()
+```
+
+Based on the box plots, which group has the highest median score?
+
+a) Group A
+b) **Group B** ✓
+c) Group C
+d) Cannot be determined
+
+## 2. Which group shows the most variability (largest IQR)? [2 pts]
+
+a) Group A
+b) Group B
+c) **Group C** ✓
+d) They all have equal variability
+
+# Section: Time Series Analysis
+
+## 3. Trend Identification [3 pts]
+
+```{python}
+#| echo: false
+#| fig-width: 7
+#| fig-height: 4
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(123)
+months = np.arange(1, 25)
+sales = 100 + 5 * months + 20 * np.sin(months * np.pi / 6) + np.random.normal(0, 5, 24)
+
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.plot(months, sales, 'o-', color='#2c3e50', linewidth=2, markersize=6)
+ax.set_xlabel('Month')
+ax.set_ylabel('Sales (thousands)')
+ax.set_title('Monthly Sales Over Two Years')
+ax.set_xticks([1, 6, 12, 18, 24])
+ax.grid(alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+What patterns are visible in this time series?
+
+a) Only random noise
+b) Only a linear trend
+c) Only seasonal fluctuation
+d) **Both trend and seasonality** ✓
+
+# Section: Correlation Analysis
+
+## 4. Heat Map Interpretation [4 pts]
+
+```{python}
+#| echo: false
+#| fig-width: 5
+#| fig-height: 4
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(42)
+
+# Create correlation matrix
+corr_matrix = np.array([
+    [1.0, 0.8, -0.3, 0.2],
+    [0.8, 1.0, -0.4, 0.3],
+    [-0.3, -0.4, 1.0, -0.7],
+    [0.2, 0.3, -0.7, 1.0]
+])
+variables = ['Income', 'Education', 'Debt', 'Savings']
+
+fig, ax = plt.subplots(figsize=(5, 4))
+im = ax.imshow(corr_matrix, cmap='RdBu_r', vmin=-1, vmax=1)
+
+ax.set_xticks(range(len(variables)))
+ax.set_yticks(range(len(variables)))
+ax.set_xticklabels(variables, rotation=45, ha='right')
+ax.set_yticklabels(variables)
+
+for i in range(len(variables)):
+    for j in range(len(variables)):
+        ax.text(j, i, f'{corr_matrix[i, j]:.1f}', 
+                ha='center', va='center', color='black', fontsize=10)
+
+ax.set_title('Correlation Matrix')
+plt.colorbar(im, label='Correlation')
+plt.tight_layout()
+plt.show()
+```
+
+Which pair of variables has the strongest negative correlation?
+
+a) Income and Education
+b) Income and Debt
+c) **Debt and Savings** ✓
+d) Education and Savings
+
+## 5. [TF] Income and Education have a strong positive relationship. → True
+
+## 6. [Essay, 5pts] Analysis
+
+Based on the correlation matrix, explain why Debt and Savings might have a strong negative correlation. What real-world factors could explain this relationship?

@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.2] - 2025-12-07
+
+### Fixed
+
+- **Canvas Import**: Reverted `<dependency>` tags in manifest that caused Canvas import failures with complex questions containing figures.
+
+### Added
+
+- **Quarto Examples**: New example files demonstrating R and Python figure generation:
+  - `quarto-figures.qmd` — R histograms, scatter plots, normal distribution
+  - `quarto-python-figures.qmd` — Python box plots, time series, heatmaps
+  - `quarto-figures.md` — Markdown version referencing generated figures
+
+### Cleaned
+
+- Removed generated `.qti.zip` and `.xml` files from `examples/` folder.
+
 ## [0.4.1] - 2025-12-07
 
 ### Added

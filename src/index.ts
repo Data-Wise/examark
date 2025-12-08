@@ -15,7 +15,7 @@ const program = new Command();
 program
   .name('examify')
   .description('Create exams from Markdown and export to Canvas QTI format')
-  .version('0.4.1');
+  .version('0.4.2');
 
 program
   .command('verify')
