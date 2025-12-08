@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:  # Manual trigger from GitHub Actions UI
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -17,6 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for MkDocs
       
       - name: Configure Git Credentials
         run: |
@@ -26,11 +29,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
+          cache: 'pip'
+          cache-dependency-path: '**/mkdocs.yml'
           
-      - run: pip install mkdocs-material
+      - name: Install MkDocs
+        run: pip install mkdocs-material
       
       - name: Deploy to gh-pages
-        run: |
-          # Create .nojekyll file to bypass Jekyll processing
-          touch site/.nojekyll 2>/dev/null || true
-          mkdocs gh-deploy --force
+        run: mkdocs gh-deploy --force --clean

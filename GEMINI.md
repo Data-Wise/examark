@@ -157,6 +157,15 @@ Questions MUST use `## N. Question` format (with ##):
 | `/deploy-docs` | Deploy docs to GitHub Pages |
 | `/release` | `npm version patch` (Automated release) |
 
+## Deployment Troubleshooting
+
+If docs aren't updating after push to `main`:
+
+1. **Check Actions** - Verify "Publish Docs" succeeded in Actions tab
+2. **Wait 10 min** - GitHub Pages caches for 10 min (max-age=600)
+3. **Hard refresh** - Cmd+Shift+R (Mac) / Ctrl+Shift+R (Windows)
+4. **Manual deploy** - Actions → Publish Docs → Run workflow
+
 ## Git Status
 
 - **Branch**: dev
