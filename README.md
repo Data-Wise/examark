@@ -6,9 +6,9 @@
 
 <div style="margin-top: 20px">
 
-[![Version](https://img.shields.io/badge/Examify-v0.4.1-7C3AED?style=for-the-badge&logo=markdown&logoColor=white)](https://github.com/Data-Wise/examify/releases)
+[![Version](https://img.shields.io/badge/Examify-v0.4.2-7C3AED?style=for-the-badge&logo=markdown&logoColor=white)](https://github.com/Data-Wise/examify/releases)
 [![License](https://img.shields.io/badge/license-MIT-22C55E?style=for-the-badge)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-34%20passing-3178C6?style=for-the-badge)](https://github.com/Data-Wise/examify/actions)
+[![Tests](https://img.shields.io/badge/tests-35%20passing-3178C6?style=for-the-badge)](https://github.com/Data-Wise/examify/actions)
 [![Security](https://img.shields.io/badge/Security-Hardened-blueviolet?style=for-the-badge)](https://data-wise.github.io/examify/emulator/)
 
 </div>

@@ -106,6 +106,7 @@ nav:
     - Canvas Emulator: emulator.md
   - Tutorials:
     - R & Quarto: tutorials/quarto.md
+    - Quarto Examples: tutorials/quarto-examples.md
     - Extension Masterclass: tutorials/quarto-deep-dive.md
     - Best Practices: tutorials/best-practices.md
   - Extensions:
