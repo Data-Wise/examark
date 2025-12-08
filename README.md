@@ -27,28 +27,62 @@ Examify converts your Markdown exam files into QTI packages that Canvas can impo
 
 ## Installation
 
-**Try without installing:**
+### Try Without Installing
+
+Run Examify directly using npx (requires Node.js):
 
 ```bash
 npx examify myexam.md -o myexam.qti.zip
 ```
 
-**Install permanently:**
+### Mac
 
-| Platform | Command |
-|----------|---------|
-| **Mac** | `brew tap data-wise/tap && brew install examify` |
-| **Any (npm)** | `npm install -g examify` |
+**Using Homebrew (recommended):**
 
-<details>
-<summary>Developer setup</summary>
+```bash
+brew tap data-wise/tap
+brew install examify
+```
+
+**Using npm:**
+
+```bash
+npm install -g examify
+```
+
+### Windows
+
+**Step 1:** Install [Node.js](https://nodejs.org/) (version 18 or higher)
+
+**Step 2:** Open Command Prompt or PowerShell and run:
+
+```powershell
+npm install -g examify
+```
+
+**Step 3:** Verify installation:
+
+```powershell
+examify --version
+```
+
+### Linux
+
+```bash
+npm install -g examify
+```
+
+### Developer Setup
+
+For contributing or modifying the source:
 
 ```bash
 git clone https://github.com/Data-Wise/examify.git
-cd examify && npm install && npm run build && npm link
+cd examify
+npm install
+npm run build
+npm link
 ```
-
-</details>
 
 ---
 
