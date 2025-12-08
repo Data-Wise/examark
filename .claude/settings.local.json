@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git checkout:*)",
+      "Bash(git merge dev --no-ff -m \"$(cat <<''EOF''\nMerge dev: Release 0.5.0 - Clean syntax, text export, batch conversion\n\nNew features:\n- Clean syntax parser (no ## headers)\n- Plain text export (--format text)\n- Batch conversion (*.md)\n- Type marker aliases (case-insensitive)\n- [x] correct answer marker\n- // inline feedback\n- => matching separator\n- Config file support (.examifyrc.json)\n- Line numbers in errors\n- Matching [Match] and FMB [FMB] questions\n- Answer feedback (per-option and general)\n\nStats: +4,825 lines, 188 tests (was 142)\nEOF\n)\")",
+      "Bash(npm version:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
