@@ -98,6 +98,7 @@ nav:
   - Tutorials:
       - Overview: tutorials/index.md
       - R & Quarto: tutorials/quarto.md
+      - Dynamic Exams: tutorials/dynamic-exams.md
       - VS Code Snippets: tutorials/vscode-snippets.md
   - Quarto Extension: extensions/quarto.md
   - Troubleshooting: troubleshooting.md

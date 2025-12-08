@@ -1,0 +1,270 @@
+---
+title: "Dynamic Exam with R Code"
+# ============================================================
+# DYNAMIC QUESTIONS - Use R/Python to generate random exams
+# ============================================================
+#
+# This template demonstrates how to:
+#   - Generate random numbers for unique question variants
+#   - Compute correct answers programmatically
+#   - Create plots and embed them in questions
+#   - Generate multiple exam versions from one source
+#
+# Requirements:
+#   - R installed with knitr
+#   - OR Python with jupyter
+#
+# Workflow:
+#   1. Set a seed for reproducibility (or change for variants)
+#   2. quarto render dynamic-questions.qmd --to exam-gfm
+#   3. examify dynamic-questions.md -o exam.qti.zip
+# ============================================================
+
+format:
+  exam-gfm:
+    variant: +tex_math_dollars
+
+exam:
+  solutions: false
+  default-points: 2
+---
+
+```{r setup, include=FALSE}
+# ============================================================
+# SETUP CHUNK - Configure R and set random seed
+# ============================================================
+
+# Set seed for reproducibility (change this for different versions)
+set.seed(42)  # Version A
+# set.seed(43)  # Version B
+# set.seed(44)  # Version C
+
+# Load packages
+library(knitr)
+
+# Configure chunk options
+knitr::opts_chunk$set(
+  echo = FALSE,      # Don't show code in output
+  warning = FALSE,   # Suppress warnings
+  message = FALSE,   # Suppress messages
+  fig.path = "figures/",  # Save figures here
+  fig.width = 5,
+  fig.height = 4
+)
+```
+
+# Section: Randomized Calculations
+
+```{r q1-values}
+# Generate random values for Question 1
+q1_values <- sample(10:50, 5)
+q1_mean <- mean(q1_values)
+q1_sd <- sd(q1_values)
+
+# Generate distractors
+q1_wrong1 <- round(q1_mean + runif(1, 2, 5), 1)
+q1_wrong2 <- round(q1_mean - runif(1, 2, 5), 1)
+q1_wrong3 <- round(median(q1_values), 1)
+```
+
+## 1. Calculate the Mean [2 pts]
+
+Calculate the mean of the following data set:
+
+**`r paste(q1_values, collapse = ", ")`**
+
+a) `r q1_wrong1`
+b) `r q1_wrong2`
+c) **`r round(q1_mean, 1)`** [correct]
+d) `r q1_wrong3`
+
+```{r q2-values}
+# Generate random z-score problem
+q2_x <- sample(60:90, 1)
+q2_mu <- sample(65:75, 1)
+q2_sigma <- sample(c(5, 10, 15), 1)
+q2_z <- (q2_x - q2_mu) / q2_sigma
+
+# Distractors
+q2_wrong1 <- round((q2_x + q2_mu) / q2_sigma, 2)
+q2_wrong2 <- round((q2_mu - q2_x) / q2_sigma, 2)
+q2_wrong3 <- round(q2_x / q2_sigma, 2)
+```
+
+## 2. Z-Score Calculation [3 pts]
+
+A student scored `r q2_x` on an exam. If the class mean is `r q2_mu` with a standard deviation of `r q2_sigma`, what is the student's z-score?
+
+$$z = \frac{X - \mu}{\sigma}$$
+
+a) `r q2_wrong1`
+b) `r q2_wrong2`
+c) `r q2_wrong3`
+d) **`r round(q2_z, 2)`** [correct]
+
+# Section: Dynamically Generated Plots
+
+```{r histogram-data}
+# Generate random sample for histogram question
+hist_data <- rnorm(100, mean = 50, sd = 10)
+hist_skew <- round(moments::skewness(hist_data), 2)
+```
+
+```{r histogram-plot, fig.cap="Distribution of Scores"}
+#| label: fig-histogram
+#| fig-alt: "A histogram showing the distribution of exam scores"
+
+hist(hist_data, 
+     main = "Distribution of Exam Scores",
+     xlab = "Score", 
+     ylab = "Frequency",
+     col = "steelblue",
+     border = "white")
+abline(v = mean(hist_data), col = "red", lwd = 2, lty = 2)
+legend("topright", legend = "Mean", col = "red", lwd = 2, lty = 2)
+```
+
+## 3. Histogram Interpretation [2 pts]
+
+Examine the histogram above. The red dashed line represents the mean. Based on the shape, this distribution is approximately:
+
+a) Positively skewed
+b) Negatively skewed
+c) **Symmetric (normal)** [correct]
+d) Bimodal
+
+# Section: Regression Problems
+
+```{r regression-data}
+# Generate regression data
+n <- 30
+study_hours <- runif(n, 1, 10)
+exam_scores <- 50 + 4 * study_hours + rnorm(n, 0, 5)
+
+# Fit model
+model <- lm(exam_scores ~ study_hours)
+b0 <- round(coef(model)[1], 1)
+b1 <- round(coef(model)[2], 2)
+r_squared <- round(summary(model)$r.squared, 3)
+r_value <- round(sqrt(r_squared), 2)
+
+# Prediction question
+pred_hours <- sample(3:8, 1)
+pred_score <- round(b0 + b1 * pred_hours, 1)
+```
+
+```{r scatter-plot, fig.cap="Study Hours vs Exam Scores"}
+#| label: fig-scatter
+#| fig-alt: "Scatterplot of study hours versus exam scores with regression line"
+
+plot(study_hours, exam_scores,
+     main = "Study Hours vs. Exam Scores",
+     xlab = "Hours Studied",
+     ylab = "Exam Score",
+     pch = 19,
+     col = "steelblue")
+abline(model, col = "red", lwd = 2)
+```
+
+## 4. Regression Equation [2 pts]
+
+Based on the scatterplot above, a researcher found the following regression equation:
+
+$$\hat{Y} = `r b0` + `r b1`X$$
+
+Using this equation, predict the exam score for a student who studies `r pred_hours` hours.
+
+a) `r round(pred_score - 5, 1)`
+b) `r round(pred_score + 3, 1)`
+c) **`r pred_score`** [correct]
+d) `r round(pred_score - 8, 1)`
+
+## 5. Coefficient of Determination [2 pts]
+
+The correlation coefficient is $r = `r r_value`$. What is the coefficient of determination ($R^2$)?
+
+a) `r round(r_squared - 0.1, 3)`
+b) **`r r_squared`** [correct]
+c) `r round(r_squared + 0.15, 3)`
+d) `r r_value`
+
+# Section: Probability Questions
+
+```{r prob-values}
+# Generate probability values
+p_a <- round(runif(1, 0.2, 0.5), 2)
+p_b <- round(runif(1, 0.3, 0.6), 2)
+p_a_and_b <- round(p_a * p_b, 3)  # Independent events
+```
+
+## 6. [Numeric, 3pts] Joint Probability
+
+If P(A) = `r p_a` and P(B) = `r p_b`, and events A and B are independent, calculate P(A ∩ B).
+
+Answer: `r p_a_and_b` ± 0.001
+
+# Section: True/False with Computed Answers
+
+```{r tf-setup}
+# Randomly select which statements are true
+sample_data <- rnorm(30, mean = 100, sd = 15)
+sample_mean <- mean(sample_data)
+population_mean <- 100
+
+# T-test
+t_result <- t.test(sample_data, mu = population_mean)
+is_significant <- t_result$p.value < 0.05
+```
+
+## 7. [TF] A sample of 30 observations with mean `r round(sample_mean, 1)` is significantly different from a population mean of `r population_mean` at α = 0.05. → `r ifelse(is_significant, "True", "False")`
+
+# Section: Essay with Context
+
+```{r essay-context}
+essay_n <- sample(50:200, 1)
+essay_r <- round(runif(1, 0.1, 0.3), 2)
+```
+
+## 8. [Essay, 8pts] Statistical vs Practical Significance
+
+A researcher conducted a study with n = `r essay_n` participants and found a correlation of r = `r essay_r` (p < 0.05).
+
+Discuss whether this result is both statistically significant AND practically significant. Consider:
+- The sample size
+- The effect size
+- Real-world implications
+
+---
+
+<!--
+GENERATING MULTIPLE VERSIONS
+============================
+
+To create different exam versions:
+
+1. Change the seed at the top:
+   set.seed(42)  # Version A
+   set.seed(43)  # Version B
+   set.seed(44)  # Version C
+
+2. Render each version:
+   quarto render dynamic-questions.qmd --to exam-gfm
+   mv dynamic-questions.md version-a.md
+   
+   # Change seed, then:
+   quarto render dynamic-questions.qmd --to exam-gfm
+   mv dynamic-questions.md version-b.md
+
+3. Convert each to QTI:
+   examify version-a.md -o version-a.qti.zip
+   examify version-b.md -o version-b.qti.zip
+
+TIPS FOR DYNAMIC QUESTIONS
+==========================
+
+1. Always set a seed for reproducibility
+2. Round answers appropriately for students
+3. Generate plausible distractors (common errors)
+4. Test that all versions have valid answers
+5. Save figures with unique names per version if needed
+-->

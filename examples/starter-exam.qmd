@@ -1,0 +1,108 @@
+---
+title: "My First Exam"
+# ============================================================
+# STARTER TEMPLATE - Copy this file to begin authoring exams
+# ============================================================
+# 
+# Output Formats:
+#   exam-gfm    → Markdown for Canvas QTI (use with examify CLI)
+#   exam-html   → Preview in browser
+#   exam-pdf    → Printable student version
+#
+# Render command: quarto render starter-exam.qmd --to exam-gfm
+# Convert to QTI: examify starter-exam.md -o exam.qti.zip
+# ============================================================
+
+format:
+  exam-gfm: default
+  
+exam:
+  solutions: false      # Set to true for answer key
+  default-points: 1     # Default points per question
+---
+
+# Section: Multiple Choice
+
+## 1. Example Multiple Choice Question [2 pts]
+
+What is 2 + 2?
+
+a) 3
+b) **4** ✓
+c) 5
+d) 6
+
+## 2. Another Multiple Choice [2 pts]
+
+Which of the following is a primary color?
+
+a) Green
+b) **Blue** [correct]
+c) Orange
+d) Purple
+
+# Section: True/False
+
+## 3. [TF] The Earth orbits the Sun. → True
+
+## 4. [TF] Water freezes at 50°F. → False
+
+# Section: Multiple Answer
+
+## 5. [MultiAns, 3pts] Select all even numbers.
+
+*a) 2
+b) 3
+*c) 4
+d) 5
+*e) 6
+
+# Section: Short Answer
+
+## 6. [Short] The capital of France is
+
+Answer: Paris
+
+# Section: Numeric
+
+## 7. [Numeric, 2pts] Calculate 10 × 5
+
+Answer: 50 ± 0
+
+# Section: Essay
+
+## 8. [Essay, 10pts] Describe your learning goals.
+
+Write a brief paragraph about what you hope to learn in this course.
+
+---
+
+<!--
+QUICK REFERENCE
+================
+
+Question Headers:
+  ## N. Question text [N pts]    - Standard question
+  ## N. [TF] Statement → True    - True/False
+  ## N. [MultiAns] Question      - Multiple answers
+  ## N. [Short] Question         - Short answer
+  ## N. [Numeric] Question       - Numeric response
+  ## N. [Essay] Question         - Long answer
+
+Answer Markers (pick one style):
+  **Bold text** ✓    - Bold with checkmark
+  [correct]          - Suffix (Quarto-friendly)  
+  *a) Answer         - Asterisk prefix
+
+Points:
+  [2 pts] or [2pts]  - Inline in question header
+  [Essay, 10pts]     - Combined with type tag
+
+Sections:
+  # Section: Name    - Creates a section header
+
+Solutions (hidden by default):
+  ::: {.solution}
+  Your explanation here
+  :::
+-->
