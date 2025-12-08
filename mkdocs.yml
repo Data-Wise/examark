@@ -105,6 +105,7 @@ nav:
   - Guide:
       - Input Formats: formats.md
       - Commands Reference: reference.md
+      - Configuration: config.md
       - Canvas Emulator: emulator.md
       - Troubleshooting: troubleshooting.md
   - Tutorials:

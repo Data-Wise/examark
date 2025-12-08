@@ -8,20 +8,71 @@ Examify accepts a simple Markdown-based format for quiz questions. This guide co
 
 Create a file called `quiz.md`:
 
-```markdown
-# My Quiz
+=== "Clean Syntax (Recommended)"
 
-## 1. What is 2 + 2?
+    ```markdown
+    # My Quiz
 
-a) 3
-b) **4** ✓
-c) 5
-```
+    1. [MC] What is 2 + 2? [2pts]
+    a) 3
+    b) 4 [x]
+    c) 5
+    ```
+
+=== "Traditional Syntax"
+
+    ```markdown
+    # My Quiz
+
+    ## 1. What is 2 + 2?
+    a) 3
+    b) **4** ✓
+    c) 5
+    ```
 
 Convert to Canvas QTI:
 
 ```bash
 examify quiz.md -o quiz.qti.zip
+```
+
+---
+
+## Syntax Styles
+
+Examify supports two syntax styles. You can mix them in the same file.
+
+### Clean Syntax (Recommended)
+
+Use numbered questions without `##` headers. Better for Quarto HTML/PDF output:
+
+```markdown
+1. [TF] The sky is blue. [2pts]
+a) True [x]
+b) False
+
+2. [MC] What is variance? [3pts]
+a) Sum of values // Incorrect feedback
+b) Average squared deviation [x] // Correct!
+c) Standard deviation
+```
+
+**Requirements for clean syntax:**
+
+- Must have a type marker `[TF]`, `[MC]`, etc. OR
+- Must have points `[Npts]` OR
+- Must follow a section header
+
+### Traditional Syntax
+
+Use `## N.` headers (original format):
+
+```markdown
+## 1. What is the capital of France? [2 pts]
+
+## 2. [TF] The Earth is round. → True
+
+## 3. [Essay, 10pts] Explain your reasoning.
 ```
 
 ---
@@ -43,30 +94,33 @@ Group questions into sections:
 ```markdown
 # Section: Multiple Choice
 
-## 1. Question one...
+1. [MC] Question one... [2pts]
 
-## 2. Question two...
+2. [MC] Question two... [2pts]
 
 # Section: Essay Questions
 
-## 3. Essay question...
-```
-
-### Questions
-
-Questions **must** use `## N. Question` format:
-
-```markdown
-## 1. What is the capital of France? [2 pts]
-
-## 2. [TF] The Earth is round. → True
-
-## 3. [Essay, 10pts] Explain your reasoning.
+3. [Essay] Essay question... [10pts]
 ```
 
 ---
 
 ## Question Types
+
+Examify supports 8 question types. Use type markers in brackets:
+
+| Type | Markers (case-insensitive) |
+|------|---------------------------|
+| Multiple Choice | `[MC]` (default if no marker) |
+| True/False | `[TF]`, `[TrueFalse]`, `[True/False]`, `[T/F]` |
+| Multiple Answers | `[MA]`, `[MultiAns]`, `[SelectAll]`, `[MultipleAnswers]` |
+| Short Answer | `[Short]`, `[ShortAnswer]`, `[FillIn]`, `[FITB]` |
+| Numeric | `[Numeric]`, `[Num]`, `[Number]` |
+| Essay | `[Essay]`, `[LongAnswer]`, `[OpenEnded]` |
+| Matching | `[Match]`, `[Matching]` |
+| Fill-in-Multiple-Blanks | `[FMB]`, `[MultiBlanks]`, `[FillInMultiple]` |
+
+---
 
 ### Multiple Choice (Default)
 
@@ -85,19 +139,34 @@ d) 6
 
 | Marker | Example | Notes |
 |--------|---------|-------|
+| `[x]` | `b) Answer [x]` | Clean syntax (recommended) |
 | `**Bold**` | `b) **Answer**` | Most visual |
-| `**Bold** ✓` | `b) **Answer** ✓` | With checkmark |
+| `✓` | `b) Answer ✓` | With checkmark |
 | `[correct]` | `b) Answer [correct]` | Quarto-friendly |
 | `*` prefix | `*b) Answer` | Traditional format |
 
 All markers can be combined. These all mark option b as correct:
 
 ```markdown
+b) Answer [x]
 b) **Correct answer**
 b) Correct answer ✓
 b) Answer [correct]
 *b) Answer
 ```
+
+### Inline Feedback
+
+Add feedback for each answer option using `//`:
+
+```markdown
+1. [MC] What is 2 + 2? [2pts]
+a) 3 // Close, but not quite
+b) 4 [x] // Correct! 2 + 2 = 4
+c) 5 // Too high
+```
+
+Feedback appears in Canvas after students submit their answers.
 
 ---
 
@@ -202,6 +271,51 @@ Include the role of chlorophyll and sunlight.
 ```
 
 Everything after the header becomes the question stem.
+
+---
+
+### Matching
+
+Use `[Match]` for matching questions. Define pairs with `::` or `=>`:
+
+```markdown
+## 10. [Match, 4pts] Match statistics terms with definitions.
+
+- Mean :: Average of all values
+- Median :: Middle value when sorted
+- Mode :: Most frequent value
+- Range :: Difference between max and min
+```
+
+**Alternative syntax with `=>`:**
+
+```markdown
+1. [Match] Match the formula to its name. [3pts]
+- $\bar{x}$ => Sample mean
+- $s^2$ => Sample variance
+- $\sigma$ => Population standard deviation
+```
+
+---
+
+### Fill-in-Multiple-Blanks
+
+Use `[FMB]` for questions with multiple blanks:
+
+```markdown
+## 11. [FMB, 5pts] Complete the regression equation.
+
+The simple linear regression equation is [slope] times x plus [intercept].
+
+[slope]: beta_1, β1, b1
+[intercept]: beta_0, β0, b0
+```
+
+**Blank definitions:**
+
+- Define blanks at the end with `[blank_name]: answer1, answer2, ...`
+- Multiple accepted answers are comma-separated
+- Reference blanks in text with `[blank_name]`
 
 ---
 
@@ -382,38 +496,79 @@ This is hidden in Canvas export.
 
 ## Complete Example
 
-```markdown
-# Statistics Quiz 1
+=== "Clean Syntax"
 
-# Section: Concepts
+    ```markdown
+    # Statistics Quiz 1
 
-## 1. Central Tendency [2 pts]
+    # Section: Concepts
 
-Which measure is most affected by outliers?
+    1. [MC] Which measure is most affected by outliers? [2pts]
+    a) Mode
+    b) Median
+    c) Mean [x] // This is the correct answer
+    d) Range
 
-a) Mode
-b) Median
-c) **Mean** ✓
-d) Range
+    2. [TF] The variance can be negative. [1pt]
+    a) True
+    b) False [x]
 
-## 2. [TF] The variance can be negative. → False
+    # Section: Calculations
 
-# Section: Calculations
+    3. [Numeric, 3pts] Calculate the z-score.
 
-## 3. [Numeric, 3pts] Calculate the z-score.
+    Given: X = 85, μ = 70, σ = 10
 
-Given: X = 85, μ = 70, σ = 10
+    $$z = \frac{X - \mu}{\sigma}$$
 
-$$z = \frac{X - \mu}{\sigma}$$
+    Answer: 1.5 ± 0.01
 
-Answer: 1.5 ± 0.01
+    4. [Match, 4pts] Match terms with definitions.
+    - Mean => Average of values
+    - Median => Middle value
+    - Mode => Most frequent
 
-# Section: Written Response
+    # Section: Written Response
 
-## 4. [Essay, 10pts] Explain correlation vs causation.
+    5. [Essay, 10pts] Explain correlation vs causation.
 
-Provide an example of a spurious correlation.
-```
+    Provide an example of a spurious correlation.
+    ```
+
+=== "Traditional Syntax"
+
+    ```markdown
+    # Statistics Quiz 1
+
+    # Section: Concepts
+
+    ## 1. Central Tendency [2 pts]
+
+    Which measure is most affected by outliers?
+
+    a) Mode
+    b) Median
+    c) **Mean** ✓
+    d) Range
+
+    ## 2. [TF] The variance can be negative. → False
+
+    # Section: Calculations
+
+    ## 3. [Numeric, 3pts] Calculate the z-score.
+
+    Given: X = 85, μ = 70, σ = 10
+
+    $$z = \frac{X - \mu}{\sigma}$$
+
+    Answer: 1.5 ± 0.01
+
+    # Section: Written Response
+
+    ## 4. [Essay, 10pts] Explain correlation vs causation.
+
+    Provide an example of a spurious correlation.
+    ```
 
 ---
 
