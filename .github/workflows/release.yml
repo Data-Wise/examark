@@ -68,6 +68,10 @@ jobs:
           node-version: '22'
           registry-url: 'https://registry.npmjs.org'
 
+      # Trusted Publishing requires npm 11.5.1+
+      - name: Update npm for Trusted Publishing
+        run: npm install -g npm@latest
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
@@ -82,7 +86,7 @@ jobs:
       # Publish using OIDC (no NPM_TOKEN needed)
       # Trusted Publishing must be configured on npmjs.com first
       - name: Publish to npm
-        run: npm publish --access public
+        run: npm publish --access public --provenance
 
   # Update Homebrew tap
   update-homebrew:
