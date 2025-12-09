@@ -21,33 +21,35 @@ This will:
 !!! tip "Pin to a Version"
     For reproducible builds, install a specific release:
     ```bash
-    quarto add Data-Wise/examark@v0.6.1
+    quarto add Data-Wise/examark@v0.6.6
     ```
 
-### Method 2: Local Installation
+### Method 2: Create New Project from Template
 
-If you have the repository cloned:
+Start fresh with a ready-to-use template:
 
 ```bash
-cp -r examark/_extensions/exam your-project/_extensions/
+quarto use template Data-Wise/examark
 ```
 
 ### Verify Installation
 
 ```bash
-ls _extensions/exam/
-# Should show: _extension.yml  exam-filter.lua  exam.scss  qti-post-render.js
+quarto list extensions
+# Should show: exam  0.6.x  formats
 ```
 
 ## Quick Start
 
-1. Create a `.qmd` file with the `exam-qti` format:
+1. Create a `.qmd` file with the `exam-gfm` format:
 
 ```yaml
 ---
 title: "My Quiz"
-format:
-  exam-qti: default
+format: exam-gfm
+
+exam:
+  qti: true
 ---
 
 ## 1. What is 2 + 2?
@@ -60,32 +62,28 @@ c) 5
 2. Render to Markdown:
 
 ```bash
-quarto render quiz.qmd --to exam-qti
+quarto render quiz.qmd
 ```
 
-3. Convert to Canvas QTI:
+3. Convert to Canvas QTI (the command is shown in the render output):
 
 ```bash
 examark quiz.md -o quiz.qti.zip
 ```
 
 !!! note "LaTeX Math Works Automatically"
-    The `exam-qti` format preserves `$...$` and `$$...$$` math notation by default. No extra configuration needed!
+    The `exam-gfm` format preserves `$...$` and `$$...$$` math notation by default. No extra configuration needed!
 
 ## Available Formats
 
-| Format | Best For | Output |
-|--------|----------|--------|
-| `exam-qti` | LMS import (Canvas, Blackboard, Moodle) | Markdown → QTI |
-| `exam-html` | Browser preview | Interactive HTML |
-| `exam-pdf` | Printable exams | PDF (student version) |
-| `exam-pdf-solutions` | Answer keys | PDF (with solutions) |
-| `exam-docx` | Word editing | Microsoft Word |
-| `exam-odt` | LibreOffice/Google | OpenDocument |
-| `exam-typst` | Modern PDF | Typst PDF |
-
-!!! tip "Backward Compatibility"
-    `exam-gfm` still works as an alias for `exam-qti`.
+| Format | Output | Use Case |
+|--------|--------|----------|
+| `exam-gfm` | Markdown | QTI conversion via CLI (recommended) |
+| `exam-html` | HTML | Browser preview |
+| `exam-pdf` | PDF | Printable exams |
+| `exam-odt` | ODT | Google Docs, LibreOffice |
+| `exam-docx` | DOCX | Microsoft Word |
+| `exam-typst` | PDF | Modern PDF (Typst) |
 
 ### Multi-Format Rendering
 
@@ -93,7 +91,7 @@ Render to multiple formats simultaneously:
 
 ```yaml
 format:
-  exam-qti: default      # For LMS import
+  exam-gfm: default      # For LMS import
   exam-pdf: default      # For printing
   exam-html: default     # For preview
 ```
@@ -109,27 +107,46 @@ quarto render exam.qmd  # Renders all formats
 ```yaml
 ---
 title: "Statistics Midterm"
-format:
-  exam-qti: default      # LaTeX math enabled by default
+format: exam-gfm
 
 exam:
+  qti: true              # Enable QTI export instructions
   solutions: false       # Hide solution blocks
   default-points: 2      # Default points per question
-  include-answers: true  # Include answer markers (for QTI)
 ---
+```
+
+### Project Configuration (`_quarto.yml`)
+
+For multi-file projects, configure defaults in `_quarto.yml`:
+
+```yaml
+project:
+  type: default
+  output-dir: _output
+
+format:
+  exam-html: default     # Default format for all documents
+
+exam:
+  solutions: false
+  default-points: 2
 ```
 
 ### Full Configuration Reference
 
 ```yaml
 exam:
+  # QTI export
+  qti: true                  # Show examark command after render
+
   # Content options
   solutions: false           # Show/hide solution blocks
   default-points: 2          # Default points when not specified
   include-answers: true      # Include [correct] markers in output
   shuffle-answers: false     # Randomize answer order (HTML only)
   grading-table: true        # Show grading table (PDF)
-  
+
   # Typography (PDF/HTML)
   fonts:
     size: 11pt
@@ -138,7 +155,7 @@ exam:
     question-title-weight: 600
     question-desc-size: 1em
     question-desc-weight: 400
-  
+
   # Answer space (PDF only)
   answer-space:
     multiple-choice: 0cm
@@ -147,7 +164,7 @@ exam:
     numeric: 1.5cm
     essay: 5cm
     fill-blank: 1cm
-  
+
   # Headers/Footers (PDF only)
   header:
     left: "{{course.number}}"
@@ -233,9 +250,8 @@ c) 5
 
 | Format | Solutions Visible |
 |--------|-------------------|
-| `exam-qti` | Hidden |
+| `exam-gfm` | Hidden |
 | `exam-pdf` | Hidden |
-| `exam-pdf-solutions` | Visible |
 | `exam-html` | Hidden (default) |
 
 To show solutions in any format, set `exam.solutions: true`.
@@ -253,22 +269,28 @@ graph LR
     E --> F[Canvas Import]
 ```
 
-### Automatic QTI Generation
+### QTI Export with `exam.qti: true`
 
-Enable auto-export in your YAML:
+When you enable `exam.qti: true`, Quarto displays the examark command after rendering:
 
 ```yaml
-format:
-  exam-qti:
-    qti-export: true
-```
+---
+title: "My Quiz"
+format: exam-gfm
 
-Now `quarto render` automatically creates the QTI zip:
+exam:
+  qti: true
+---
+```
 
 ```bash
-quarto render exam.qmd --to exam-qti
-# Creates: exam.md AND exam.qti.zip
+quarto render exam.qmd
+# Output shows:
+# 📦 QTI Export: After render completes, run:
+#    examark exam.md -o exam.qti.zip
 ```
+
+This makes the two-step workflow clear and easy to follow.
 
 ## LaTeX Math
 
@@ -283,7 +305,7 @@ c) $\sigma = \sqrt{\sigma^2}$
 ```
 
 !!! tip "Math is enabled by default"
-    The `exam-qti` format includes `+tex_math_dollars` automatically. No extra configuration needed!
+    The `exam-gfm` format includes `+tex_math_dollars` automatically. No extra configuration needed!
 
 ## Images and Figures
 
@@ -313,15 +335,16 @@ plot(x, y)
 
 ## Templates
 
-We provide several ready-to-use templates in `examples/`:
+We provide several ready-to-use templates:
 
 | Template | Use Case |
 |----------|----------|
-| `starter-exam.qmd` | Minimal starter for beginners |
-| `canvas-export.qmd` | Canvas-focused with all question types |
-| `dynamic-questions.qmd` | R code for randomization |
-| `template.qmd` | Complete reference with PDF styling |
-| `template-solutions.qmd` | Answer key version |
+| `template.qmd` | Starter template with common question types |
+| `examples/minimal.qmd` | Minimal 3-question example |
+| `examples/starter-exam.qmd` | Full-featured starter for beginners |
+| `examples/canvas-export.qmd` | Canvas-focused with all question types |
+| `examples/dynamic-questions.qmd` | R code for randomization |
+| `examples/statistics-exam.qmd` | Real exam with LaTeX math |
 
 ## Troubleshooting
 

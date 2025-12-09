@@ -11,15 +11,22 @@ Copy this YAML block to start a new exam:
 ```yaml
 ---
 title: "My Exam Title"
-format:
-  exam-qti: default      # For Canvas/LMS import
-  exam-html: default     # For browser preview
-  exam-pdf: default      # For printing
+format: exam-gfm           # For Canvas/LMS import (recommended)
 
 exam:
-  solutions: false       # Set true for answer key
-  default-points: 2      # Default points per question
+  qti: true                # Show examark command after render
+  solutions: false         # Set true for answer key
+  default-points: 2        # Default points per question
 ---
+```
+
+For multiple outputs:
+
+```yaml
+format:
+  exam-gfm: default        # For Canvas/LMS import
+  exam-html: default       # For browser preview
+  exam-pdf: default        # For printing
 ```
 
 ---
@@ -29,8 +36,7 @@ exam:
 ### LMS Export (Canvas, Blackboard, Moodle)
 
 ```yaml
-format:
-  exam-qti: default
+format: exam-gfm
 ```
 
 Generates Markdown optimized for `examark` conversion to QTI 1.2.
@@ -82,10 +88,9 @@ Generate multiple outputs from one source:
 
 ```yaml
 format:
-  exam-qti: default       # Canvas import
-  exam-html: default      # Quick preview
-  exam-pdf: default       # Print version
-  exam-pdf-solutions: default  # Answer key
+  exam-gfm: default        # Canvas import
+  exam-html: default       # Quick preview
+  exam-pdf: default        # Print version
 ```
 
 ---
@@ -166,10 +171,10 @@ Available variables: `{{page}}`, `{{pages}}`, `{{course.number}}`
 ```yaml
 ---
 title: "Chapter 5 Quiz"
-format:
-  exam-qti: default
+format: exam-gfm
 
 exam:
+  qti: true
   solutions: false
   default-points: 2
 ---
@@ -207,12 +212,12 @@ exam:
 ---
 title: "Final Exam"
 format:
-  exam-qti: default       # Canvas import
-  exam-html: default      # Quick preview
-  exam-pdf: default       # Print version
-  exam-pdf-solutions: default  # Answer key
+  exam-gfm: default        # Canvas import
+  exam-html: default       # Quick preview
+  exam-pdf: default        # Print version
 
 exam:
+  qti: true
   solutions: false
   default-points: 2
   grading-table: true
@@ -225,10 +230,10 @@ exam:
 
 Each format has sensible defaults. Override only what you need.
 
-### exam-qti
+### exam-gfm
 
 ```yaml
-exam-qti:
+exam-gfm:
   variant: gfm+tex_math_dollars  # Preserves LaTeX math
   exam:
     solutions: false

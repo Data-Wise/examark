@@ -8,6 +8,29 @@ exam:
   default-points: 2
 ---
 
+<!--
+EXAMARK STARTER TEMPLATE
+========================
+
+This template creates a QTI package for Canvas/Blackboard/Moodle.
+
+Workflow:
+  1. Edit this file with your questions
+  2. Run: quarto render template.qmd
+  3. Run: examark template.md -o exam.qti.zip
+  4. Upload exam.qti.zip to your LMS
+
+Available formats:
+  - exam-gfm   → Markdown for QTI (recommended)
+  - exam-html  → Browser preview
+  - exam-pdf   → Printable exam
+
+Question types: [MC], [TF], [MA], [Short], [Numeric], [Essay], [Match], [FMB]
+
+More examples: https://github.com/Data-Wise/examark/tree/main/examples
+Documentation: https://data-wise.github.io/examark/
+-->
+
 # Section: Multiple Choice
 
 ## 1. Sample Question [2 pts]
@@ -19,23 +42,39 @@ b) Paris [x]
 c) Berlin
 d) Madrid
 
-## 2. [TF] The Earth is flat. [1 pt]
+## 2. Math Question [2 pts]
+
+What is the value of $x$ in $2x + 4 = 10$?
+
+a) $x = 2$
+b) $x = 3$ [x]
+c) $x = 4$
+d) $x = 5$
+
+# Section: True/False
+
+## 3. [TF] The Earth orbits the Sun. [1 pt]
+
+a) True [x]
+b) False
+
+## 4. [TF] Water boils at 50°C at sea level. [1 pt]
 
 a) True
 b) False [x]
 
 # Section: Short Answer
 
-## 3. [Short, 2pts] Name one programming language.
+## 5. [Short, 2pts] Name the largest planet in our solar system.
 
-Answer: Python
+Answer: Jupiter
 
-<!--
-Render to markdown for QTI conversion:
-  quarto render template.qmd
+## 6. [Numeric, 2pts] What is $\sqrt{144}$?
 
-Then convert to QTI package:
-  examark template.md -o exam.qti.zip
+Answer: 12 ± 0.01
 
-Upload the .qti.zip file to your LMS (Canvas, Blackboard, Moodle, etc.)
--->
+# Section: Essay
+
+## 7. [Essay, 10pts] Explain the scientific method.
+
+Describe the steps of the scientific method and why each step is important.

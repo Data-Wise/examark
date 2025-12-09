@@ -142,9 +142,9 @@ Local images automatically packaged into QTI.
 ### 🔬 Quarto Integration
 Dynamic questions with R/Python.
 ```yaml
-format:
-  exam-qti: default
-  exam-pdf: default
+format: exam-gfm
+exam:
+  qti: true
 ```
 
 </td>
@@ -269,8 +269,32 @@ Create `.examarkrc.json` for project defaults:
 Generate dynamic, randomized questions with R or Python:
 
 ```bash
+# Add to existing project
 quarto add Data-Wise/examark
+
+# Or create new project from template
+quarto use template Data-Wise/examark
 ```
+
+**Quick Example:**
+```yaml
+---
+title: "My Exam"
+format: exam-gfm
+exam:
+  qti: true
+---
+
+## 1. Random Question [2pts]
+
+What is `r sample(1:10, 1)` + `r sample(1:10, 1)`?
+
+a) `r 5`
+b) `r 10` [x]
+c) `r 15`
+```
+
+**Available formats:** `exam-html`, `exam-pdf`, `exam-gfm`, `exam-odt`, `exam-docx`, `exam-typst`
 
 📖 [Quarto Extension Guide →](https://data-wise.github.io/examark/extensions/quarto/)
 

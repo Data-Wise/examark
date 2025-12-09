@@ -217,7 +217,7 @@ plt.show()
 
 for seed in 100 200 300; do
     sed -i '' "s/set.seed([0-9]*)/set.seed($seed)/" exam.qmd
-    quarto render exam.qmd --to exam-gfm
+    quarto render exam.qmd
     mv exam.md "version-${seed}.md"
     examark "version-${seed}.md" -o "version-${seed}.qti.zip"
 done

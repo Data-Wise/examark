@@ -8,8 +8,8 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 
 - **Repo**: Data-Wise/examark
 - **Docs**: https://data-wise.github.io/examark/
-- **Version**: 0.6.5 | **Tests**: 195 passing
-- **Distribution**: npm (`examark`), Homebrew (`data-wise/tap/examark`)
+- **Version**: 0.6.6 | **Tests**: 226 passing
+- **Distribution**: npm (`examark`), Homebrew (`data-wise/tap/examark`), Quarto extension
 
 ## History
 
@@ -347,6 +347,107 @@ npm version patch   # Triggers: build → GitHub Release → npm publish → Hom
 **Required setup:**
 - **npm Trusted Publisher**: Configure on npmjs.com (Settings → Publishing access → Trusted Publishers → GitHub Actions with `Data-Wise/examark` and `release.yml`)
 - **`HOMEBREW_TAP_TOKEN`**: GitHub PAT with write access to Data-Wise/homebrew-tap
+
+## Quarto Extension
+
+The project includes a Quarto extension for authoring exams in `.qmd` files with dynamic content (R/Python code chunks).
+
+### Installation
+
+```bash
+# Add to existing project
+quarto add Data-Wise/examark
+
+# Create new project from template
+quarto use template Data-Wise/examark
+```
+
+### Available Formats
+
+| Format | Output | Use Case |
+|--------|--------|----------|
+| `exam-html` | HTML | Browser preview |
+| `exam-pdf` | PDF | Printable exams |
+| `exam-gfm` | Markdown | QTI conversion via CLI |
+| `exam-odt` | ODT | Google Docs, LibreOffice |
+| `exam-docx` | DOCX | Microsoft Word |
+| `exam-typst` | PDF | Modern PDF (Typst) |
+
+### Document YAML
+
+```yaml
+---
+title: "My Exam"
+format: exam-gfm        # or exam-html, exam-pdf, etc.
+
+exam:
+  qti: true             # Enable QTI export instructions
+  solutions: false      # Show/hide answer key
+  default-points: 2     # Default points per question
+---
+```
+
+### Project YAML (`_quarto.yml`)
+
+```yaml
+project:
+  type: default
+  output-dir: _output
+
+format:
+  exam-html: default    # Default format for all documents
+
+exam:
+  solutions: false
+  default-points: 2
+```
+
+### Extension Structure
+
+```
+_extensions/exam/
+├── _extension.yml      # Extension config (formats, version)
+├── exam-filter.lua     # Pandoc filter for exam processing
+├── exam.scss           # HTML theme styles
+└── qti-post-render.js  # Post-render script (unused currently)
+```
+
+### Key Files
+
+| File | Purpose |
+|------|---------|
+| `_extensions/exam/_extension.yml` | Defines formats: html, pdf, gfm, odt, docx, typst |
+| `_extensions/exam/exam-filter.lua` | Processes exam options, detects `exam.qti` |
+| `_quarto.yml` | Project config, default format |
+| `template.qmd` | Starter template for `quarto use template` |
+| `.quartoignore` | Files excluded from template distribution |
+
+### Format Key Syntax
+
+Extension formats use base format names in `_extension.yml`:
+```yaml
+contributes:
+  formats:
+    html:    # Users reference as exam-html
+    pdf:     # Users reference as exam-pdf
+    gfm:     # Users reference as exam-gfm
+```
+
+The full format name = extension directory name + base format (e.g., `exam` + `html` = `exam-html`).
+
+### QTI Export Workflow
+
+1. Add `exam.qti: true` to document YAML
+2. Render: `quarto render myexam.qmd`
+3. Filter outputs examark command to run
+4. Run: `examark myexam.md -o myexam.qti.zip`
+
+### Updating the Extension
+
+After modifying `_extensions/exam/`:
+1. Update version in `_extension.yml`
+2. Test with `quarto render examples/minimal.qmd`
+3. Commit and push (extension is distributed via GitHub)
 
 ## Testing Notes
 

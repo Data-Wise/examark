@@ -32,10 +32,10 @@ Create a file called `midterm.qmd`:
 ```yaml
 ---
 title: "Statistics Midterm"
-format:
-  exam-gfm:
-    variant: +tex_math_dollars
+format: exam-gfm
+
 exam:
+  qti: true
   solutions: false
   default-points: 2
 ---
@@ -57,10 +57,13 @@ d) 40
 ## Step 3: Render to Markdown
 
 ```bash
-quarto render midterm.qmd --to exam-gfm
+quarto render midterm.qmd
 ```
 
 This creates `midterm.md` with properly formatted questions for Examark.
+
+!!! tip "QTI Export Instructions"
+    With `exam.qti: true`, the render output shows the exact examark command to run.
 
 ## Step 4: Convert to Canvas QTI
 
@@ -175,13 +178,13 @@ Create a shell script `build_exams.sh`:
 
 # Build Version A
 sed -i '' 's/set.seed([0-9]*)/set.seed(100)/' midterm.qmd
-quarto render midterm.qmd --to exam-gfm
+quarto render midterm.qmd
 mv midterm.md version-a.md
 examark version-a.md -o version-a.qti.zip
 
 # Build Version B
 sed -i '' 's/set.seed([0-9]*)/set.seed(200)/' midterm.qmd
-quarto render midterm.qmd --to exam-gfm
+quarto render midterm.qmd
 mv midterm.md version-b.md
 examark version-b.md -o version-b.qti.zip
 

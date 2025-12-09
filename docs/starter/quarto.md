@@ -18,9 +18,10 @@ The simplest Quarto exam structure.
 ```yaml
 ---
 title: "Quick Quiz"
-format:
-  exam-qti: default
+format: exam-gfm
+
 exam:
+  qti: true
   solutions: false
   default-points: 2
 ---
@@ -28,7 +29,7 @@ exam:
 
 ```bash
 curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/examples/minimal.qmd
-quarto render minimal.qmd --to exam-qti
+quarto render minimal.qmd
 examark minimal.md -o quiz.qti.zip
 ```
 
@@ -44,7 +45,7 @@ Complete template with examples of every question type.
 
 ```bash
 curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/examples/starter-exam.qmd
-quarto render starter-exam.qmd --to exam-qti
+quarto render starter-exam.qmd
 ```
 
 [:material-download: Download starter-exam.qmd](https://github.com/Data-Wise/examark/raw/main/examples/starter-exam.qmd){ .md-button }
@@ -59,7 +60,7 @@ Statistics exam with R-generated random values and LaTeX math.
 
 ```bash
 curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/examples/statistics-exam.qmd
-quarto render statistics-exam.qmd --to exam-qti
+quarto render statistics-exam.qmd
 ```
 
 [:material-download: Download statistics-exam.qmd](https://github.com/Data-Wise/examark/raw/main/examples/statistics-exam.qmd){ .md-button }
@@ -115,7 +116,7 @@ graph LR
     C -->|import| D[Canvas LMS]
 ```
 
-1. **Write** your exam in `.qmd` format
-2. **Render** with `quarto render exam.qmd --to exam-qti`
+1. **Write** your exam in `.qmd` format with `format: exam-gfm`
+2. **Render** with `quarto render exam.qmd`
 3. **Convert** with `examark exam.md -o exam.qti.zip`
 4. **Import** the `.qti.zip` into Canvas

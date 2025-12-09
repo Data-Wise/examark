@@ -31,7 +31,7 @@ set.seed(42)
 
 # Generate random dataset
 n <- sample(20:30, 1)
-data_values <- round(rnorm(n, mean=50, sd=10), 1)
+data_values <- round(rnorm(n, mean = 50, sd = 10), 1)
 data_mean <- round(mean(data_values), 2)
 data_median <- round(median(data_values), 2)
 data_sd <- round(sd(data_values), 2)
@@ -39,7 +39,7 @@ data_sd <- round(sd(data_values), 2)
 # Probability values
 p_a <- round(runif(1, 0.2, 0.4), 2)
 p_b <- round(runif(1, 0.3, 0.5), 2)
-p_ab <- round(p_a * p_b, 4)  # Independent events
+p_ab <- round(p_a * p_b, 4) # Independent events
 ```
 
 # Section: Descriptive Statistics
