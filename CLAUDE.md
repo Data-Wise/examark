@@ -8,8 +8,23 @@ Examify converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 
 - **Repo**: Data-Wise/examify
 - **Docs**: https://data-wise.github.io/examify/
-- **Version**: 0.4.2 | **Tests**: 188 passing
+- **Version**: 0.5.0 | **Tests**: 188 passing
 - **Distribution**: npm (`examify`), Homebrew (`data-wise/tap/examify`)
+
+## Upcoming: Rename to Examark
+
+**Decision**: Rename project from `examify` to `examark` (examify name conflicts with existing company).
+
+**Rename Plan:**
+1. **Phase 1 - Prepare**: Update source code, support both config file names
+2. **Phase 2 - Execute**: Rename GitHub repo (preserves stars/history)
+3. **Phase 3 - Ecosystem**: npm publish + deprecate old, Homebrew formula, Quarto extension
+4. **Phase 4 - Communication**: Release notes, migration guide
+
+**Backward Compatibility:**
+- Support both `.examifyrc.json` and `.examarkrc.json`
+- npm deprecation notice on old package
+- GitHub auto-redirects old URLs
 
 ## Build & Test Commands
 
