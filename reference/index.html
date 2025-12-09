@@ -1261,6 +1261,10 @@
 <td>Validate package structure</td>
 </tr>
 <tr>
+<td><code>examark verify &lt;pkg&gt; --strict</code></td>
+<td>Strict validation for New Quizzes</td>
+</tr>
+<tr>
 <td><code>examark emulate-canvas &lt;pkg&gt;</code></td>
 <td>Simulate Canvas import</td>
 </tr>
@@ -1402,7 +1406,7 @@
 <hr />
 <h2 id="verify">verify</h2>
 <p><strong>Usage:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>examark<span class="w"> </span>verify<span class="w"> </span>&lt;path&gt;
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>examark<span class="w"> </span>verify<span class="w"> </span>&lt;path&gt;<span class="w"> </span><span class="o">[</span>options<span class="o">]</span>
 </span></code></pre></div>
 <p><strong>What it does:</strong></p>
 <ul>
@@ -1411,16 +1415,45 @@
 <li>Validates XML syntax</li>
 <li>Reports missing or malformed files</li>
 </ul>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--strict</code></td>
+<td>Enable strict validation for New Quizzes compatibility</td>
+</tr>
+</tbody>
+</table>
 <p><strong>When to use:</strong></p>
-<p>Checking an existing QTI package before Canvas import.</p>
-<p><strong>Example:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>examark<span class="w"> </span>verify<span class="w"> </span>quiz.qti.zip
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>examark<span class="w"> </span>verify<span class="w"> </span>./qti-folder/
+<p>Checking an existing QTI package before Canvas import. Use <code>--strict</code> for Canvas New Quizzes.</p>
+<p><strong>Examples:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Standard validation</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>examark<span class="w"> </span>verify<span class="w"> </span>quiz.qti.zip
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>examark<span class="w"> </span>verify<span class="w"> </span>./qti-folder/
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># Strict validation for New Quizzes</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>examark<span class="w"> </span>verify<span class="w"> </span>quiz.qti.zip<span class="w"> </span>--strict
 </span></code></pre></div>
+<p><strong>Strict Mode Checks:</strong></p>
+<p>When <code>--strict</code> is enabled, additional validations are performed:</p>
+<ul>
+<li>Assessment must have <code>ident</code> attribute</li>
+<li>Each item must have <code>itemmetadata</code> with <code>qtimetadata</code></li>
+<li>Each item must have <code>question_type</code> metadata</li>
+<li>Each item must have <code>points_possible</code> metadata</li>
+<li>Each item must have <code>resprocessing</code> element (for auto-graded questions)</li>
+<li>Item identifiers must be alphanumeric with underscores only</li>
+</ul>
 <hr />
 <h2 id="emulate-canvas">emulate-canvas</h2>
 <p><strong>Usage:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>examark<span class="w"> </span>emulate-canvas<span class="w"> </span>&lt;path&gt;
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>examark<span class="w"> </span>emulate-canvas<span class="w"> </span>&lt;path&gt;<span class="w"> </span><span class="o">[</span>options<span class="o">]</span>
 </span></code></pre></div>
 <p><strong>What it does:</strong></p>
 <ul>
@@ -1429,10 +1462,29 @@
 <li>Checks for duplicate IDs</li>
 <li>Predicts import success or failure</li>
 </ul>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--strict</code></td>
+<td>Enable strict validation for New Quizzes compatibility</td>
+</tr>
+</tbody>
+</table>
 <p><strong>When to use:</strong></p>
-<p>Before uploading to Canvas, especially for complex quizzes.</p>
-<p><strong>Example:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>examark<span class="w"> </span>emulate-canvas<span class="w"> </span>quiz.qti.zip
+<p>Before uploading to Canvas, especially for complex quizzes. Use <code>--strict</code> if targeting Canvas New Quizzes.</p>
+<p><strong>Examples:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Emulate Classic Quizzes import</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>examark<span class="w"> </span>emulate-canvas<span class="w"> </span>quiz.qti.zip
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Emulate New Quizzes import (stricter)</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>examark<span class="w"> </span>emulate-canvas<span class="w"> </span>quiz.qti.zip<span class="w"> </span>--strict
 </span></code></pre></div>
 <p><strong>Output includes:</strong></p>
 <ul>
