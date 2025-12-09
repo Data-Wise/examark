@@ -11,9 +11,15 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
     steps:
       - uses: actions/checkout@v6
-      
+
+      - name: Get version from tag
+        id: version
+        run: echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
@@ -24,10 +30,10 @@ jobs:
 
       - name: Build
         run: bun run build
-        
+
       # Create a zip of the dist folder for the release
       - name: Archive CLI Artifact
-        run: zip -r examify-cli.zip dist/ package.json README.md LICENSE
+        run: zip -r examark-cli.zip dist/ package.json README.md LICENSE
 
       # Create a zip of the extension for manual distribution
       - name: Archive Extension Artifact
@@ -35,12 +41,117 @@ jobs:
           mkdir -p extension-dist
           cp -r _extensions extension-dist/
           cd extension-dist
-          zip -r ../examify-extension.zip _extensions
+          zip -r ../examark-extension.zip _extensions
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            examify-cli.zip
-            examify-extension.zip
+            examark-cli.zip
+            examark-extension.zip
           generate_release_notes: true
+
+  # Publish to npm registry
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build
+        run: bun run build
+
+      - name: Publish to npm
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  # Update Homebrew tap
+  update-homebrew:
+    needs: [build, publish-npm]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for npm to propagate
+        run: sleep 30
+
+      - name: Get npm package info
+        id: npm-info
+        run: |
+          VERSION="${{ needs.build.outputs.version }}"
+          echo "Fetching npm info for examark@${VERSION}..."
+
+          # Wait for npm to have the new version (retry up to 5 times)
+          for i in {1..5}; do
+            TARBALL_URL=$(npm view examark@${VERSION} dist.tarball 2>/dev/null || echo "")
+            if [ -n "$TARBALL_URL" ]; then
+              break
+            fi
+            echo "Waiting for npm to propagate (attempt $i)..."
+            sleep 20
+          done
+
+          if [ -z "$TARBALL_URL" ]; then
+            echo "Error: Could not fetch npm package info"
+            exit 1
+          fi
+
+          # Download and compute SHA256
+          curl -sL "$TARBALL_URL" -o package.tgz
+          SHA256=$(shasum -a 256 package.tgz | cut -d' ' -f1)
+
+          echo "url=${TARBALL_URL}" >> $GITHUB_OUTPUT
+          echo "sha256=${SHA256}" >> $GITHUB_OUTPUT
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+
+      - name: Checkout homebrew-tap
+        uses: actions/checkout@v6
+        with:
+          repository: Data-Wise/homebrew-tap
+          token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+          path: homebrew-tap
+
+      - name: Update formula
+        run: |
+          cat > homebrew-tap/Formula/examark.rb << 'EOF'
+          class Examark < Formula
+            desc "Create exams from Markdown and export to Canvas QTI format"
+            homepage "https://data-wise.github.io/examark/"
+            url "${{ steps.npm-info.outputs.url }}"
+            sha256 "${{ steps.npm-info.outputs.sha256 }}"
+            license "MIT"
+
+            depends_on "node"
+
+            def install
+              system "npm", "install", *Language::Node.std_npm_install_args(libexec)
+              bin.install_symlink Dir["#{libexec}/bin/*"]
+            end
+
+            test do
+              assert_match "${{ steps.npm-info.outputs.version }}", shell_output("#{bin}/examark --version")
+            end
+          end
+          EOF
+
+      - name: Commit and push
+        run: |
+          cd homebrew-tap
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Formula/examark.rb
+          git commit -m "examark ${{ steps.npm-info.outputs.version }}" || echo "No changes to commit"
+          git push

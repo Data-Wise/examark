@@ -8,7 +8,7 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 
 - **Repo**: Data-Wise/examark
 - **Docs**: https://data-wise.github.io/examark/
-- **Version**: 0.6.0 | **Tests**: 195 passing
+- **Version**: 0.6.2 | **Tests**: 195 passing
 - **Distribution**: npm (`examark`), Homebrew (`data-wise/tap/examark`)
 
 ## History
@@ -325,14 +325,32 @@ Two validation stages:
 
 ## Development Rules
 
-1. Work on `dev` branch - merge to `main` only for releases
-2. Always run `npm run build` before testing
-3. Generated test output goes in `scratch/`
-4. Version sync: `npm version patch` auto-updates version in `src/index.ts`
+1. Always run `npm run build` before testing
+2. Generated test output goes in `scratch/`
+3. Version sync: `npm version patch` auto-updates version in `src/index.ts`
+
+## Release Automation
+
+Releases are fully automated via GitHub Actions (`.github/workflows/release.yml`):
+
+```bash
+npm version patch   # Triggers: build → GitHub Release → npm publish → Homebrew update
+```
+
+**What happens automatically:**
+1. Version bumped in package.json, src/index.ts, extension, README
+2. Git tag pushed
+3. GitHub Release created with CLI and extension zips
+4. Published to npm registry
+5. Homebrew tap formula updated
+
+**Required secrets** (in GitHub repo settings):
+- `NPM_TOKEN`: npm publish access token
+- `HOMEBREW_TAP_TOKEN`: PAT with `repo` scope for Data-Wise/homebrew-tap
 
 ## Testing Notes
 
-Tests use Vitest (188 tests). Test files mirror source structure:
+Tests use Vitest (195 tests). Test files mirror source structure:
 - `tests/parser.test.ts` - Markdown parsing (38 tests)
 - `tests/generator.test.ts` - QTI XML generation
 - `tests/text-generator.test.ts` - Plain text export

@@ -37,22 +37,34 @@ npm link
 
 ### 📦 Release Workflow
 
-We use **automated versioning**. To release a new version:
+We use **fully automated releases**. To release a new version:
 
-1. **Ensure you are on `dev` branch** and clean.
+1. **Ensure you are on `main` branch** with a clean working tree.
 2. Run the automated release command:
 
     ```bash
-    npm version patch  # v0.4.1 -> v0.4.2
+    npm version patch  # v0.6.1 -> v0.6.2
     # OR
-    npm version minor  # v0.4.x -> v0.5.0
+    npm version minor  # v0.6.x -> v0.7.0
+    # OR
+    npm version major  # v0.x.x -> v1.0.0
     ```
 
     **This command automatically:**
-    1. Bumps version in `package.json`, `src/index.ts`, `_extensions/.../_extension.yml`, and `README.md`.
-    2. Creates a git commit and tag.
-    3. Pushes to GitHub.
-    4. Triggers the GitHub Action to build and release artifacts.
+
+    1. Bumps version in `package.json`, `src/index.ts`, `_extensions/exam/_extension.yml`, and `README.md`
+    2. Creates a git commit and tag
+    3. Pushes to GitHub (triggers release workflow)
+
+    **The GitHub Actions workflow then:**
+
+    1. Builds the project
+    2. Creates a GitHub Release with:
+       - `examark-cli.zip` (CLI distribution)
+       - `examark-extension.zip` (Quarto extension)
+       - Auto-generated release notes
+    3. Publishes to **npm** (`npm install -g examark`)
+    4. Updates **Homebrew tap** (`brew upgrade examark`)
 
 ### Manual Release (Fallback)
 
@@ -63,8 +75,22 @@ bun scripts/sync-version.ts
 git add -A
 git commit -m "chore: bump version to vX.Y.Z"
 git tag vX.Y.Z
-git push origin dev --tags
+git push origin main --tags
 ```
+
+Then manually:
+
+- Publish to npm: `npm publish --access public`
+- Update Homebrew: Edit `Formula/examark.rb` in the [homebrew-tap](https://github.com/Data-Wise/homebrew-tap) repo
+
+### Required Secrets
+
+For full automation, these secrets must be configured in GitHub repository settings:
+
+| Secret | Purpose |
+|--------|---------|
+| `NPM_TOKEN` | npm publish access token ([create here](https://www.npmjs.com/settings/~/tokens)) |
+| `HOMEBREW_TAP_TOKEN` | Personal access token with `repo` scope for homebrew-tap |
 
 ### Running Tests
 
@@ -77,7 +103,7 @@ npm run test:watch
 ```
 
 !!! tip "Test Coverage"
-    We use Vitest for testing. All 32 tests should pass before submitting a PR.
+    We use Vitest for testing. All 195 tests should pass before submitting a PR.
 
 ### Code Quality
 
