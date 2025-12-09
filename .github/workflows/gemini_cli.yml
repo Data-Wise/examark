@@ -20,7 +20,7 @@ jobs:
     name: Gemini Assistant
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       # Using a hypothetical action slug based on the description
       # In a real scenario, this would be specific (e.g., google-github-actions/gemini-cli)
