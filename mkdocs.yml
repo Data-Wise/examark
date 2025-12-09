@@ -105,6 +105,7 @@ nav:
   - User Guide:
       - Input Formats: formats.md
       - Commands Reference: reference.md
+      - YAML Options: reference/yaml-options.md
       - Configuration: config.md
       - Troubleshooting: troubleshooting.md
   - Quarto Extension:
@@ -116,5 +117,8 @@ nav:
       - R & Quarto: tutorials/quarto.md
       - Dynamic Exams: tutorials/dynamic-exams.md
       - VS Code Snippets: tutorials/vscode-snippets.md
-  - Templates: templates.md
+  - Templates:
+      - starter/index.md
+      - Markdown: starter/markdown.md
+      - Quarto: starter/quarto.md
   - Contributing: contributing.md

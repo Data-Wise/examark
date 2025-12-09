@@ -1,0 +1,119 @@
+---
+title: "Statistics 101 - Midterm Exam"
+# ============================================================
+# STATISTICS EXAM TEMPLATE WITH DYNAMIC R-GENERATED VALUES
+# ============================================================
+#
+# This template demonstrates:
+#   - LaTeX math formulas in questions
+#   - R-generated random values for unique exams
+#   - Multiple question types for statistics courses
+#
+# Workflow:
+#   quarto render statistics-exam.qmd --to exam-qti
+#   examark statistics-exam.md -o stats-midterm.qti.zip
+# ============================================================
+
+format:
+  exam-qti: default
+  exam-html: default
+
+exam:
+  solutions: false
+  default-points: 2
+---
+
+```{r}
+#| include: false
+# Set seed for reproducibility (change for different versions)
+set.seed(42)
+
+# Generate random dataset
+n <- sample(20:30, 1)
+data_values <- round(rnorm(n, mean=50, sd=10), 1)
+data_mean <- round(mean(data_values), 2)
+data_median <- round(median(data_values), 2)
+data_sd <- round(sd(data_values), 2)
+
+# Probability values
+p_a <- round(runif(1, 0.2, 0.4), 2)
+p_b <- round(runif(1, 0.3, 0.5), 2)
+p_ab <- round(p_a * p_b, 4)  # Independent events
+```
+
+# Section: Descriptive Statistics
+
+## 1. [MC] The mean of a dataset is calculated by: [2pts]
+
+a) Finding the middle value when sorted
+b) Finding the most frequent value
+c) Summing all values and dividing by the count [x]
+d) Subtracting the minimum from the maximum
+
+## 2. [MC] For the following `r n` observations, the sample mean is approximately: [2pts]
+
+Data: `r paste(head(data_values, 8), collapse=", ")`, ...
+
+a) `r round(data_mean - 5, 1)`
+b) `r round(data_mean - 2, 1)`
+c) `r data_mean` [x]
+d) `r round(data_mean + 3, 1)`
+
+## 3. [Numeric] Calculate the sample size from the following summary statistics: [2pts]
+
+Given: $\sum x_i = `r round(sum(data_values), 1)`$ and $\bar{x} = `r data_mean`$
+
+Answer: `r n` ± 0
+
+# Section: Probability
+
+## 4. [MC] The probability of any event must be between: [2pts]
+
+a) -1 and 1
+b) 0 and 1 [x]
+c) 0 and 100
+d) $-\infty$ and $+\infty$
+
+## 5. [TF] If $P(A) = `r p_a`$ and $P(B) = `r p_b`$, and A and B are independent, then $P(A \cap B) = `r p_ab`$. [2pts]
+
+a) True [x]
+b) False
+
+# Section: Formulas
+
+## 6. [MC] The formula for sample variance is: [3pts]
+
+a) $s^2 = \frac{\sum(x_i - \bar{x})}{n}$
+b) $s^2 = \frac{\sum(x_i - \bar{x})^2}{n-1}$ [x]
+c) $s^2 = \frac{\sum(x_i - \bar{x})^2}{n}$
+d) $s^2 = \sqrt{\frac{\sum(x_i - \bar{x})^2}{n-1}}$
+
+## 7. [Numeric] Given $\bar{x} = `r data_mean`$ and $s = `r data_sd`$ with $n = `r n`$, calculate the standard error (SE) to 2 decimal places. [3pts]
+
+The formula is: $SE = \frac{s}{\sqrt{n}}$
+
+Answer: `r round(data_sd / sqrt(n), 2)` ± 0.05
+
+# Section: Application
+
+## 8. [Essay, 10pts] A researcher claims the average score is `r round(data_mean + 5, 0)` points.
+
+You collected a sample of `r n` observations with:
+
+- Sample mean: $\bar{x} = `r data_mean`$
+- Sample standard deviation: $s = `r data_sd`$
+
+Explain how you would test this claim using a hypothesis test. Include:
+
+- Null and alternative hypotheses
+- Test statistic formula
+- Decision criteria at $\alpha = 0.05$
+
+<!--
+Statistics exam template with:
+- R-generated random values for unique exam versions
+- LaTeX math formulas
+- Multiple question types
+
+To generate a new version, change set.seed(42) to a different number.
+-->

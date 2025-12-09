@@ -28,7 +28,15 @@
       "Bash(echo:*)",
       "Bash(done)",
       "Bash(mkdocs build:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(chmod:*)",
+      "Bash(python3:*)",
+      "Bash(xattr:*)",
+      "Bash(xxd:*)",
+      "Bash(pip show:*)",
+      "Bash(mkdocs:*)",
+      "Bash(/opt/homebrew/bin/python3.13:*)"
     ],
     "deny": [],
     "ask": []
