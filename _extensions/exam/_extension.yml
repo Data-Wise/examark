@@ -1,30 +1,44 @@
 title: Quarto Exam Extension
 author: Davood Tofighi
-version: 0.6.5
+version: 0.6.6
 quarto-required: ">=1.4.0"
 
-# Shared exam options used across all formats
-# Users can override these in their document YAML
+# Extension directory is "exam", so users reference formats as:
+#   exam-html, exam-pdf, exam-gfm, exam-odt, exam-docx, exam-typst
+#
+# QTI Export: Add `exam.qti: true` to any format to enable QTI generation
+# Example:
+#   format: exam-html
+#   exam:
+#     qti: true
+#
+# For solutions, use: exam.solutions: true
+
 contributes:
   formats:
     # =========================================
-    # HTML Preview Format
+    # Common options for all formats
     # =========================================
-    exam-html:
-      toc: false
-      number-sections: false
-      theme: 
-        - cosmo
-        - exam.scss
+    common:
       filters:
         - exam-filter.lua
-      # Shared exam options
       exam:
         solutions: false
         default-points: 2
+        qti: false
+
+    # =========================================
+    # HTML Preview Format (exam-html)
+    # =========================================
+    html:
+      toc: false
+      number-sections: false
+      theme:
+        - cosmo
+        - exam.scss
+      exam:
         grading-table: true
         shuffle-answers: false
-        # Styling (applied via CSS variables)
         fonts:
           size: 11pt
           section-size: 1.2em
@@ -32,23 +46,19 @@ contributes:
           question-title-weight: 600
           question-desc-size: 1em
           question-desc-weight: 400
-        # Answer space (ignored in HTML, for PDF only)
         answer-space:
           short-answer: 2cm
           essay: 5cm
-    
+
     # =========================================
-    # PDF Format (Student Version)
+    # PDF Format (exam-pdf)
+    # Use exam.solutions: true for answer key
     # =========================================
-    exam-pdf:
+    pdf:
       documentclass: article
       fontsize: 10pt
       geometry: margin=1in
-      filters:
-        - exam-filter.lua
       exam:
-        solutions: false
-        default-points: 2
         grading-table: true
         fonts:
           size: 10pt
@@ -66,44 +76,16 @@ contributes:
           right: "Name: _______"
         footer:
           center: "Page {{page}} of {{pages}}"
-    
+
     # =========================================
-    # PDF Format (With Solutions)
+    # ODT Format (exam-odt)
+    # OpenDocument for Google Docs, LibreOffice
     # =========================================
-    exam-pdf-solutions:
-      documentclass: article
-      fontsize: 10pt
-      geometry: margin=1in
-      filters:
-        - exam-filter.lua
-      exam:
-        solutions: true
-        default-points: 2
-        grading-table: true
-        fonts:
-          size: 10pt
-          question-size: 1em
-          question-weight: 600
-        answer-space:
-          short-answer: 0cm
-          essay: 0cm
-        header:
-          left: "SOLUTIONS"
-          right: "{{course.number}}"
-    
-    # =========================================
-    # ODT Format (OpenDocument - Google Docs, LibreOffice)
-    # Matches PDF format as closely as possible
-    # =========================================
-    exam-odt:
+    odt:
       toc: false
       number-sections: false
-      filters:
-        - exam-filter.lua
       exam:
-        solutions: false
         grading-table: true
-        default-points: 2
         fonts:
           size: 10pt
           question-size: 1em
@@ -112,89 +94,34 @@ contributes:
         answer-space:
           short-answer: 2cm
           essay: 5cm
-        
-    exam-odt-solutions:
-      toc: false
-      number-sections: false
-      filters:
-        - exam-filter.lua
-      exam:
-        solutions: true
-        grading-table: true
-        fonts:
-          size: 10pt
-          question-size: 1em
-          question-weight: 600
-        answer-space:
-          short-answer: 0cm
-          essay: 0cm
 
     # =========================================
-    # DOCX Format (Microsoft Office)
+    # DOCX Format (exam-docx)
+    # Microsoft Office
     # =========================================
-    exam-docx:
+    docx:
       toc: false
-      filters:
-        - exam-filter.lua
       exam:
-        solutions: false
-        grading-table: true
-        
-    exam-docx-solutions:
-      toc: false
-      filters:
-        - exam-filter.lua
-      exam:
-        solutions: true
         grading-table: true
 
     # =========================================
-    # QTI Export (for Canvas, Blackboard, Moodle, etc.)
+    # GFM Format (exam-gfm)
+    # GitHub Flavored Markdown for QTI export
+    # Recommended format when using exam.qti: true
     # =========================================
-    exam-qti:
+    gfm:
       variant: gfm+tex_math_dollars
-      filters:
-        - exam-filter.lua
-      post-render:
-        - qti-post-render.js
       exam:
-        solutions: false
-        default-points: 2
-        # Include answer markers for QTI parsing
-        include-answers: true
-
-    # Backward compatibility alias
-    exam-gfm:
-      variant: gfm+tex_math_dollars
-      filters:
-        - exam-filter.lua
-      post-render:
-        - qti-post-render.js
-      exam:
-        solutions: false
-        default-points: 2
         include-answers: true
 
     # =========================================
-    # Typst Format (Modern PDF)
+    # Typst Format (exam-typst)
+    # Modern PDF alternative
     # =========================================
-    exam-typst:
+    typst:
       fontsize: 10pt
       margin:
         x: 1in
         y: 1in
-      filters:
-        - exam-filter.lua
       exam:
-        solutions: false
         grading-table: true
-        
-    exam-typst-solutions:
-      fontsize: 10pt
-      margin:
-        x: 1in
-        y: 1in
-      filters:
-        - exam-filter.lua
-      exam:
-        solutions: true

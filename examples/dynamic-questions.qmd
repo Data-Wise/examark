@@ -16,13 +16,12 @@ title: "Dynamic Exam with R Code"
 #
 # Workflow:
 #   1. Set a seed for reproducibility (or change for variants)
-#   2. quarto render dynamic-questions.qmd --to exam-qti
+#   2. quarto render dynamic-questions.qmd --to exam-gfm
 #   3. examark dynamic-questions.md -o exam.qti.zip
 # ============================================================
 
 format:
-  exam-qti:
-    variant: +tex_math_dollars
+  exam-gfm: default
 
 exam:
   solutions: false
@@ -248,11 +247,11 @@ To create different exam versions:
    set.seed(44)  # Version C
 
 2. Render each version:
-   quarto render dynamic-questions.qmd --to exam-qti
+   quarto render dynamic-questions.qmd --to exam-gfm
    mv dynamic-questions.md version-a.md
    
    # Change seed, then:
-   quarto render dynamic-questions.qmd --to exam-qti
+   quarto render dynamic-questions.qmd --to exam-gfm
    mv dynamic-questions.md version-b.md
 
 3. Convert each to QTI:

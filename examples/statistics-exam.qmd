@@ -10,12 +10,12 @@ title: "Statistics 101 - Midterm Exam"
 #   - Multiple question types for statistics courses
 #
 # Workflow:
-#   quarto render statistics-exam.qmd --to exam-qti
+#   quarto render statistics-exam.qmd --to exam-gfm
 #   examark statistics-exam.md -o stats-midterm.qti.zip
 # ============================================================
 
 format:
-  exam-qti: default
+  exam-gfm: default
   exam-html: default
 
 exam:

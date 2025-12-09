@@ -5,16 +5,16 @@ title: "My First Exam"
 # ============================================================
 #
 # Output Formats:
-#   exam-qti    → Markdown for LMS import (Canvas, Blackboard, Moodle)
+#   exam-gfm    → Markdown for LMS import (Canvas, Blackboard, Moodle)
 #   exam-html   → Preview in browser
 #   exam-pdf    → Printable student version
 #
-# Render command: quarto render starter-exam.qmd --to exam-qti
+# Render command: quarto render starter-exam.qmd --to exam-gfm
 # Convert to QTI: examark starter-exam.md -o exam.qti.zip
 # ============================================================
 
 format:
-  exam-qti: default
+  exam-gfm: default
 
 exam:
   solutions: false      # Set to true for answer key

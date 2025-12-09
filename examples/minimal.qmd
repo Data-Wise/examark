@@ -1,7 +1,8 @@
 ---
 title: "Quick Quiz"
-format:
-  exam-qti: default
+format: exam-gfm
+exam:
+  qti: true
 ---
 
 1. [MC] What is 2 + 2? [2pts]
@@ -16,6 +17,6 @@ b) False
 3. [Essay, 5pts] Explain your answer.
 
 <!--
-Render:  quarto render minimal.qmd --to exam-qti
+Render:  quarto render minimal.qmd --to exam-gfm
 Convert: examark minimal.md -o quiz.qti.zip
 -->

@@ -10,24 +10,21 @@ title: "Canvas Quiz Export Template"
 #
 # Workflow:
 #   1. Edit this file with your questions
-#   2. quarto render canvas-export.qmd --to exam-qti
+#   2. quarto render canvas-export.qmd --to exam-gfm
 #   3. examark canvas-export.md -o quiz.qti.zip
 #   4. Upload quiz.qti.zip to Canvas (Settings → Import Content)
 #
-# OR enable auto-export (uncomment qti-export below):
-#   quarto render canvas-export.qmd --to exam-qti
-#   → Automatically creates canvas-export.qti.zip
+# OR enable auto-export:
+#   quarto render canvas-export.qmd --to exam-gfm
+#   → Creates canvas-export.md, then run examark to create QTI
 # ============================================================
 
-format:
-  exam-qti:
-    variant: +tex_math_dollars
-    # qti-export: true  # Uncomment to auto-generate QTI on render
+format: exam-gfm
 
 exam:
+  qti: true              # Enable QTI export
   solutions: false
   default-points: 2
-  include-answers: true   # Required for QTI parsing
 ---
 
 # Pool: Statistics Quiz 1
