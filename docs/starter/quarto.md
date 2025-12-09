@@ -28,12 +28,12 @@ exam:
 ```
 
 ```bash
-curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/examples/minimal.qmd
+curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/templates/quarto/minimal.qmd
 quarto render minimal.qmd
 examark minimal.md -o quiz.qti.zip
 ```
 
-[:material-download: Download minimal.qmd](https://github.com/Data-Wise/examark/raw/main/examples/minimal.qmd){ .md-button }
+[:material-download: Download minimal.qmd](https://github.com/Data-Wise/examark/raw/main/templates/quarto/minimal.qmd){ .md-button }
 
 ---
 
@@ -44,26 +44,11 @@ examark minimal.md -o quiz.qti.zip
 Complete template with examples of every question type.
 
 ```bash
-curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/examples/starter-exam.qmd
-quarto render starter-exam.qmd
+curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/templates/quarto/starter.qmd
+quarto render starter.qmd
 ```
 
-[:material-download: Download starter-exam.qmd](https://github.com/Data-Wise/examark/raw/main/examples/starter-exam.qmd){ .md-button }
-
----
-
-## Statistics Exam (Dynamic)
-
-**Best for:** Math/stats courses with randomized values
-
-Statistics exam with R-generated random values and LaTeX math.
-
-```bash
-curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/examples/statistics-exam.qmd
-quarto render statistics-exam.qmd
-```
-
-[:material-download: Download statistics-exam.qmd](https://github.com/Data-Wise/examark/raw/main/examples/statistics-exam.qmd){ .md-button }
+[:material-download: Download starter.qmd](https://github.com/Data-Wise/examark/raw/main/templates/quarto/starter.qmd){ .md-button }
 
 ---
 
@@ -74,10 +59,11 @@ quarto render statistics-exam.qmd
 Template showing how to generate unique question variants using R.
 
 ```bash
-curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/examples/dynamic-questions.qmd
+curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/templates/quarto/dynamic.qmd
+quarto render dynamic.qmd
 ```
 
-[:material-download: Download dynamic-questions.qmd](https://github.com/Data-Wise/examark/raw/main/examples/dynamic-questions.qmd){ .md-button }
+[:material-download: Download dynamic.qmd](https://github.com/Data-Wise/examark/raw/main/templates/quarto/dynamic.qmd){ .md-button }
 
 ---
 
@@ -88,10 +74,11 @@ curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/examples/dynami
 Template with R-generated plots embedded in questions.
 
 ```bash
-curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/examples/quarto-figures.qmd
+curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/templates/quarto/with-figures.qmd
+quarto render with-figures.qmd
 ```
 
-[:material-download: Download quarto-figures.qmd](https://github.com/Data-Wise/examark/raw/main/examples/quarto-figures.qmd){ .md-button }
+[:material-download: Download with-figures.qmd](https://github.com/Data-Wise/examark/raw/main/templates/quarto/with-figures.qmd){ .md-button }
 
 ---
 
@@ -101,9 +88,20 @@ curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/examples/quarto
 |----------|---------|---------|----------|
 | Minimal | No | No | Quick start |
 | Starter | No | No | Real exams |
-| Statistics | Yes | No | STEM courses |
-| Dynamic | Yes | No | Practice problems |
-| With Figures | Yes | Yes | Data analysis |
+| Dynamic | Yes | No | Randomized problems |
+| With Figures | Yes | Yes | Data visualization |
+
+---
+
+## Example Files
+
+Looking for more examples? Check out the [examples/quarto/](https://github.com/Data-Wise/examark/tree/main/examples/quarto) folder:
+
+| Example | Description |
+|---------|-------------|
+| `statistics-exam.qmd` | Real statistics exam with LaTeX math |
+| `canvas-export.qmd` | Canvas-focused with all question types |
+| `python-figures.qmd` | Python-generated plots |
 
 ---
 

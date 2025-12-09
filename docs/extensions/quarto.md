@@ -335,16 +335,22 @@ plot(x, y)
 
 ## Templates
 
-We provide several ready-to-use templates:
+We provide ready-to-use templates in the [`templates/quarto/`](https://github.com/Data-Wise/examark/tree/main/templates/quarto) folder:
 
 | Template | Use Case |
 |----------|----------|
-| `template.qmd` | Starter template with common question types |
-| `examples/minimal.qmd` | Minimal 3-question example |
-| `examples/starter-exam.qmd` | Full-featured starter for beginners |
-| `examples/canvas-export.qmd` | Canvas-focused with all question types |
-| `examples/dynamic-questions.qmd` | R code for randomization |
-| `examples/statistics-exam.qmd` | Real exam with LaTeX math |
+| `minimal.qmd` | Minimal 3-question example |
+| `starter.qmd` | Full-featured starter for beginners |
+| `dynamic.qmd` | R code for randomization |
+| `with-figures.qmd` | R-generated plots |
+
+More examples in [`examples/quarto/`](https://github.com/Data-Wise/examark/tree/main/examples/quarto):
+
+| Example | Description |
+|---------|-------------|
+| `statistics-exam.qmd` | Real statistics exam with LaTeX |
+| `canvas-export.qmd` | Canvas-focused with all question types |
+| `python-figures.qmd` | Python-generated plots |
 
 ## Troubleshooting
 

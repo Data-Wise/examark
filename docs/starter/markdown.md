@@ -13,24 +13,31 @@ The simplest possible exam with just 3 questions.
 ```markdown
 # Quick Quiz
 
-1. [MC] What is 2 + 2? [2pts]
-a) Three
-b) Four [x]
-c) Five
+## 1. Sample Multiple Choice [2 pts]
 
-2. [TF] The sky is blue. [1pt]
+What is the capital of France?
+
+a) London
+b) Paris [x]
+c) Berlin
+d) Madrid
+
+## 2. [TF] The Earth orbits the Sun. [1 pt]
+
 a) True [x]
 b) False
 
-3. [Essay, 5pts] Explain your answer.
+## 3. [Short] Name the largest planet in our solar system. [2 pts]
+
+Answer: Jupiter
 ```
 
 ```bash
-curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/examples/minimal.md
+curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/templates/markdown/minimal.md
 examark minimal.md -o quiz.qti.zip
 ```
 
-[:material-download: Download minimal.md](https://github.com/Data-Wise/examark/raw/main/examples/minimal.md){ .md-button }
+[:material-download: Download minimal.md](https://github.com/Data-Wise/examark/raw/main/templates/markdown/minimal.md){ .md-button }
 
 ---
 
@@ -41,50 +48,26 @@ examark minimal.md -o quiz.qti.zip
 Complete template with all question types and helpful comments.
 
 ```bash
-curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/examples/starter-exam-md.md
-examark starter-exam-md.md -o exam.qti.zip
+curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/templates/markdown/starter.md
+examark starter.md -o exam.qti.zip
 ```
 
-[:material-download: Download starter-exam-md.md](https://github.com/Data-Wise/examark/raw/main/examples/starter-exam-md.md){ .md-button }
+[:material-download: Download starter.md](https://github.com/Data-Wise/examark/raw/main/templates/markdown/starter.md){ .md-button }
 
 ---
 
-## Statistics Exam
+## All Question Types
 
-**Best for:** Math/science courses with LaTeX formulas
+**Best for:** Reference, comprehensive feature demo
 
-Real-world statistics exam demonstrating LaTeX math support.
-
-```markdown
-## 6. [MC] The formula for sample variance is: [3pts]
-
-a) $s^2 = \frac{\sum(x_i - \bar{x})}{n}$
-b) $s^2 = \frac{\sum(x_i - \bar{x})^2}{n-1}$ [x]
-c) $s^2 = \frac{\sum(x_i - \bar{x})^2}{n}$
-d) $s^2 = \sqrt{\frac{\sum(x_i - \bar{x})^2}{n-1}}$
-```
+Full exam demonstrating all 8 question types and formatting options.
 
 ```bash
-curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/examples/statistics-exam.md
-examark statistics-exam.md -o stats-midterm.qti.zip
+curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/templates/markdown/all-question-types.md
+examark all-question-types.md -o comprehensive.qti.zip
 ```
 
-[:material-download: Download statistics-exam.md](https://github.com/Data-Wise/examark/raw/main/examples/statistics-exam.md){ .md-button }
-
----
-
-## Comprehensive Template
-
-**Best for:** Reference, edge cases, full feature demo
-
-Full exam with all 21 question types and formatting options.
-
-```bash
-curl -O https://raw.githubusercontent.com/Data-Wise/examark/main/examples/canvas-ready.md
-examark canvas-ready.md -o comprehensive.qti.zip
-```
-
-[:material-download: Download canvas-ready.md](https://github.com/Data-Wise/examark/raw/main/examples/canvas-ready.md){ .md-button }
+[:material-download: Download all-question-types.md](https://github.com/Data-Wise/examark/raw/main/templates/markdown/all-question-types.md){ .md-button }
 
 ---
 
@@ -94,5 +77,17 @@ examark canvas-ready.md -o comprehensive.qti.zip
 |----------|-----------|------|----------|
 | Minimal | 3 | No | Quick start |
 | Starter | 8 | No | Real exams |
-| Statistics | 8 | Yes | STEM courses |
-| Comprehensive | 21 | Yes | Reference |
+| All Question Types | 21 | Yes | Reference |
+
+---
+
+## Example Files
+
+Looking for more examples? Check out the [examples/markdown/](https://github.com/Data-Wise/examark/tree/main/examples/markdown) folder:
+
+| Example | Description |
+|---------|-------------|
+| `statistics-exam.md` | Real statistics exam with LaTeX math |
+| `with-images.md` | Questions with embedded images |
+| `validation-test.md` | Canvas validation edge cases |
+| `edge-cases.md` | Various edge cases for testing |

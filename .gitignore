@@ -28,11 +28,19 @@ tmp/
 # Scratch
 scratch/
 
-# Extension copies in examples (source is _extensions/)
-examples/_extensions/
+# Extension copies (source is _extensions/)
+templates/**/_extensions/
+examples/**/_extensions/
 
 # Quarto output
 _output/
+**/*_files/
+
+# Rendered outputs from Quarto (keep source .qmd files)
+templates/**/*.html
+templates/**/*.pdf
+examples/**/*.html
+examples/**/*.pdf
 
 # Documentation
 site/

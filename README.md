@@ -249,18 +249,18 @@ Create `.examarkrc.json` for project defaults:
 
 | Template | Description |
 |----------|-------------|
-| [minimal.md](examples/minimal.md) | 3 questions — quickest start |
-| [starter-exam-md.md](examples/starter-exam-md.md) | One of each question type |
-| [statistics-exam.md](examples/statistics-exam.md) | Real exam with LaTeX math |
-| [canvas-ready.md](examples/canvas-ready.md) | Comprehensive — 21 questions |
+| [minimal.md](templates/markdown/minimal.md) | 3 questions — quickest start |
+| [starter.md](templates/markdown/starter.md) | One of each question type |
+| [all-question-types.md](templates/markdown/all-question-types.md) | Comprehensive — all 8 types |
 
 **Quarto (for R/Python users):**
 
 | Template | Description |
 |----------|-------------|
-| [minimal.qmd](examples/minimal.qmd) | Simplest Quarto template |
-| [starter-exam.qmd](examples/starter-exam.qmd) | Full-featured starter |
-| [dynamic-questions.qmd](examples/dynamic-questions.qmd) | Randomized questions with R |
+| [minimal.qmd](templates/quarto/minimal.qmd) | Simplest Quarto template |
+| [starter.qmd](templates/quarto/starter.qmd) | Full-featured starter |
+| [dynamic.qmd](templates/quarto/dynamic.qmd) | Randomized questions with R |
+| [with-figures.qmd](templates/quarto/with-figures.qmd) | R-generated plots |
 
 ---
 
