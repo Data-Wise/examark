@@ -1,10 +1,10 @@
-site_name: Examify
+site_name: Examark
 site_description: Create exams from Markdown and export to Canvas QTI format.
 site_author: "Data-Wise"
-repo_name: examify
-repo_url: https://github.com/Data-Wise/examify
+repo_name: examark
+repo_url: https://github.com/Data-Wise/examark
 edit_uri: edit/main/docs/
-site_url: https://data-wise.github.io/examify/
+site_url: https://data-wise.github.io/examark/
 
 theme:
   name: material

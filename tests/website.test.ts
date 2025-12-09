@@ -29,7 +29,7 @@ describe('Documentation Website Tests', () => {
 
     it('should have correct site name', () => {
       const config = readFileSync(mkdocsPath, 'utf-8');
-      expect(config).toContain('site_name: Examify');
+      expect(config).toContain('site_name: Examark');
     });
 
     it('should have header tabs enabled', () => {
@@ -129,7 +129,7 @@ describe('Documentation Website Tests', () => {
 
     it('should have npm badge', () => {
       const content = readFileSync(join(docsDir, 'index.md'), 'utf-8');
-      expect(content).toContain('img.shields.io/npm/v/examify');
+      expect(content).toContain('img.shields.io/npm/v/examark');
     });
 
     it('should have CI status badge', () => {

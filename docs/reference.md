@@ -1,6 +1,6 @@
 # Commands Reference
 
-Complete command reference for Examify CLI.
+Complete command reference for Examark CLI.
 
 ---
 
@@ -8,23 +8,23 @@ Complete command reference for Examify CLI.
 
 | Command | Purpose |
 |---------|---------|
-| `examify <file> -o <out.zip>` | Convert Markdown to QTI |
-| `examify <file> -f text` | Export as printable text |
-| `examify *.md -o output/` | Batch convert multiple files |
-| `examify verify <pkg>` | Validate package structure |
-| `examify emulate-canvas <pkg>` | Simulate Canvas import |
-| `examify check <file>` | Lint input file |
-| `examify <file> --preview` | Preview parsed questions |
+| `examark <file> -o <out.zip>` | Convert Markdown to QTI |
+| `examark <file> -f text` | Export as printable text |
+| `examark *.md -o output/` | Batch convert multiple files |
+| `examark verify <pkg>` | Validate package structure |
+| `examark emulate-canvas <pkg>` | Simulate Canvas import |
+| `examark check <file>` | Lint input file |
+| `examark <file> --preview` | Preview parsed questions |
 
 ---
 
-## examify (convert)
+## examark (convert)
 
 **Usage:**
 
 ```bash
-examify <input> [options]
-examify <pattern> -o <directory>   # Batch mode
+examark <input> [options]
+examark <pattern> -o <directory>   # Batch mode
 ```
 
 **What it does:**
@@ -54,25 +54,25 @@ Converting your Markdown quiz files for Canvas import or printable exams.
 
 ```bash
 # Basic conversion to QTI
-examify quiz.md
+examark quiz.md
 
 # Custom output path
-examify quiz.md -o output/my-quiz.qti.zip
+examark quiz.md -o output/my-quiz.qti.zip
 
 # Export as printable text
-examify quiz.md -f text
+examark quiz.md -f text
 
 # Text export without answers
-examify quiz.md -f text --no-answers
+examark quiz.md -f text --no-answers
 
 # Batch convert all markdown files
-examify *.md -o output/
+examark *.md -o output/
 
 # Set default points
-examify quiz.md -p 2
+examark quiz.md -p 2
 
 # Preview without generating
-examify quiz.md --preview
+examark quiz.md --preview
 ```
 
 ---
@@ -83,13 +83,13 @@ Convert multiple files at once using glob patterns:
 
 ```bash
 # Convert all .md files in current directory
-examify *.md -o output/
+examark *.md -o output/
 
 # Convert files from specific folder
-examify exams/*.md -o qti-packages/
+examark exams/*.md -o qti-packages/
 
 # Convert specific pattern
-examify midterm-*.md -o midterms/
+examark midterm-*.md -o midterms/
 ```
 
 **Notes:**
@@ -106,9 +106,9 @@ examify midterm-*.md -o midterms/
 Export quizzes as plain text for paper exams:
 
 ```bash
-examify quiz.md -f text
-examify quiz.md -f text -o exam.txt
-examify quiz.md -f text --no-answers
+examark quiz.md -f text
+examark quiz.md -f text -o exam.txt
+examark quiz.md -f text --no-answers
 ```
 
 **Output includes:**
@@ -144,7 +144,7 @@ ANSWER KEY
 **Usage:**
 
 ```bash
-examify verify <path>
+examark verify <path>
 ```
 
 **What it does:**
@@ -161,8 +161,8 @@ Checking an existing QTI package before Canvas import.
 **Example:**
 
 ```bash
-examify verify quiz.qti.zip
-examify verify ./qti-folder/
+examark verify quiz.qti.zip
+examark verify ./qti-folder/
 ```
 
 ---
@@ -172,7 +172,7 @@ examify verify ./qti-folder/
 **Usage:**
 
 ```bash
-examify emulate-canvas <path>
+examark emulate-canvas <path>
 ```
 
 **What it does:**
@@ -189,7 +189,7 @@ Before uploading to Canvas, especially for complex quizzes.
 **Example:**
 
 ```bash
-examify emulate-canvas quiz.qti.zip
+examark emulate-canvas quiz.qti.zip
 ```
 
 **Output includes:**
@@ -206,9 +206,9 @@ examify emulate-canvas quiz.qti.zip
 **Usage:**
 
 ```bash
-examify check <input>
+examark check <input>
 # or
-examify lint <input>
+examark lint <input>
 ```
 
 **What it does:**
@@ -225,7 +225,7 @@ Before conversion to catch input errors early.
 **Example:**
 
 ```bash
-examify check quiz.md
+examark check quiz.md
 ```
 
 ---

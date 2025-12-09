@@ -39,7 +39,7 @@ describe('Deployment Tests', () => {
     const readme = readFileSync(join(__dirname, '..', 'README.md'), 'utf-8');
 
     it('should have npm badge', () => {
-      expect(readme).toContain('img.shields.io/npm/v/examify');
+      expect(readme).toContain('img.shields.io/npm/v/examark');
     });
 
     it('should have CI status badge', () => {
@@ -57,9 +57,9 @@ describe('Deployment Tests', () => {
     });
 
     it('should link badges to correct URLs', () => {
-      expect(readme).toContain('https://www.npmjs.com/package/examify');
-      expect(readme).toContain('https://github.com/Data-Wise/examify/actions');
-      expect(readme).toContain('https://data-wise.github.io/examify/');
+      expect(readme).toContain('https://www.npmjs.com/package/examark');
+      expect(readme).toContain('https://github.com/Data-Wise/examark/actions');
+      expect(readme).toContain('https://data-wise.github.io/examark/');
     });
   });
 
@@ -67,7 +67,7 @@ describe('Deployment Tests', () => {
     it('should return HTTP 200', () => {
       try {
         const result = execSync(
-          'curl -s -o /dev/null -w "%{http_code}" https://data-wise.github.io/examify/',
+          'curl -s -o /dev/null -w "%{http_code}" https://data-wise.github.io/examark/',
           { encoding: 'utf-8', stdio: 'pipe' }
         );
         expect(result.trim()).toBe('200');
@@ -79,7 +79,7 @@ describe('Deployment Tests', () => {
     it('should have Getting Started page', () => {
       try {
         const result = execSync(
-          'curl -s -o /dev/null -w "%{http_code}" https://data-wise.github.io/examify/getting-started/',
+          'curl -s -o /dev/null -w "%{http_code}" https://data-wise.github.io/examark/getting-started/',
           { encoding: 'utf-8', stdio: 'pipe' }
         );
         expect(result.trim()).toBe('200');
@@ -91,7 +91,7 @@ describe('Deployment Tests', () => {
     it('should have installation instructions', () => {
       try {
         const result = execSync(
-          'curl -s https://data-wise.github.io/examify/getting-started/',
+          'curl -s https://data-wise.github.io/examark/getting-started/',
           { encoding: 'utf-8', stdio: 'pipe' }
         );
         expect(result).toContain('install');
@@ -104,11 +104,11 @@ describe('Deployment Tests', () => {
   describe('npm Registry (Network)', () => {
     it('should have package on npm', () => {
       try {
-        const result = execSync('npm view examify name', {
+        const result = execSync('npm view examark name', {
           encoding: 'utf-8',
           stdio: 'pipe'
         });
-        expect(result.trim()).toBe('examify');
+        expect(result.trim()).toBe('examark');
       } catch (e) {
         console.log('Skipping npm check (network unavailable)');
       }
@@ -116,7 +116,7 @@ describe('Deployment Tests', () => {
 
     it('should have correct homepage on npm', () => {
       try {
-        const result = execSync('npm view examify homepage', {
+        const result = execSync('npm view examark homepage', {
           encoding: 'utf-8',
           stdio: 'pipe'
         });
@@ -128,11 +128,11 @@ describe('Deployment Tests', () => {
 
     it('should have repository on npm', () => {
       try {
-        const result = execSync('npm view examify repository.url', {
+        const result = execSync('npm view examark repository.url', {
           encoding: 'utf-8',
           stdio: 'pipe'
         });
-        expect(result.trim()).toContain('github.com/Data-Wise/examify');
+        expect(result.trim()).toContain('github.com/Data-Wise/examark');
       } catch (e) {
         console.log('Skipping npm check (network unavailable)');
       }
@@ -148,7 +148,7 @@ describe('Deployment Tests', () => {
     });
 
     it('should have npx quick start in getting-started', () => {
-      expect(gettingStarted).toContain('npx examify');
+      expect(gettingStarted).toContain('npx examark');
     });
 
     it('should have Homebrew instructions', () => {
@@ -156,7 +156,7 @@ describe('Deployment Tests', () => {
     });
 
     it('should have npm install instructions', () => {
-      expect(gettingStarted).toContain('npm install -g examify');
+      expect(gettingStarted).toContain('npm install -g examark');
     });
 
     it('should have developer install instructions', () => {
@@ -168,7 +168,7 @@ describe('Deployment Tests', () => {
     const mkdocs = readFileSync(join(__dirname, '..', 'mkdocs.yml'), 'utf-8');
 
     it('should have correct site URL', () => {
-      expect(mkdocs).toContain('site_url: https://data-wise.github.io/examify/');
+      expect(mkdocs).toContain('site_url: https://data-wise.github.io/examark/');
     });
 
     it('should have Material theme', () => {

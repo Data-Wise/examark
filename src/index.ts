@@ -16,9 +16,9 @@ import { globSync } from 'glob';
 const program = new Command();
 
 program
-  .name('examify')
+  .name('examark')
   .description('Create exams from Markdown and export to Canvas QTI format')
-  .version('0.5.0');
+  .version('0.6.0');
 
 program
   .command('verify')

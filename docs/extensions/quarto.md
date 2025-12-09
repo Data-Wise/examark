@@ -1,6 +1,6 @@
 # Quarto Exam Extension
 
-Examify includes a powerful Quarto extension that allows you to author exams in Quarto (`.qmd`) and export them to multiple formats, including Canvas-ready QTI, HTML previews, printable PDFs, and more.
+Examark includes a powerful Quarto extension that allows you to author exams in Quarto (`.qmd`) and export them to multiple formats, including Canvas-ready QTI, HTML previews, printable PDFs, and more.
 
 ## Installation
 
@@ -9,7 +9,7 @@ Examify includes a powerful Quarto extension that allows you to author exams in 
 Install directly from the GitHub repository:
 
 ```bash
-quarto add Data-Wise/examify
+quarto add Data-Wise/examark
 ```
 
 This will:
@@ -21,7 +21,7 @@ This will:
 !!! tip "Pin to a Version"
     For reproducible builds, install a specific release:
     ```bash
-    quarto add Data-Wise/examify@v0.4.2
+    quarto add Data-Wise/examark@v0.4.2
     ```
 
 ### Method 2: Local Installation
@@ -29,7 +29,7 @@ This will:
 If you have the repository cloned:
 
 ```bash
-cp -r examify/_extensions/exam your-project/_extensions/
+cp -r examark/_extensions/exam your-project/_extensions/
 ```
 
 ### Verify Installation
@@ -66,7 +66,7 @@ quarto render quiz.qmd --to exam-gfm
 3. Convert to Canvas QTI:
 
 ```bash
-examify quiz.md -o quiz.qti.zip
+examark quiz.md -o quiz.qti.zip
 ```
 
 ## Available Formats
@@ -243,7 +243,7 @@ To show solutions in any format, set `exam.solutions: true`.
 graph LR
     A[exam.qmd] --> B[quarto render]
     B --> C[exam.md]
-    C --> D[examify]
+    C --> D[examark]
     D --> E[exam.qti.zip]
     E --> F[Canvas Import]
 ```
@@ -351,7 +351,7 @@ exam:
 Run the emulator to diagnose:
 
 ```bash
-examify emulate-canvas exam.qti.zip
+examark emulate-canvas exam.qti.zip
 ```
 
 Common fixes:

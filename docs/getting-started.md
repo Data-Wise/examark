@@ -1,6 +1,6 @@
 # Getting Started
 
-Get up and running with Examify in minutes.
+Get up and running with Examark in minutes.
 
 ---
 
@@ -8,13 +8,13 @@ Get up and running with Examify in minutes.
 
 ### Quick Start (No Install Needed)
 
-Run Examify directly using npx (requires Node.js):
+Run Examark directly using npx (requires Node.js):
 
 ```bash
-npx examify quiz.md -o quiz.qti.zip
+npx examark quiz.md -o quiz.qti.zip
 ```
 
-This downloads and runs Examify on-demand. Perfect for trying it out!
+This downloads and runs Examark on-demand. Perfect for trying it out!
 
 ---
 
@@ -26,7 +26,7 @@ This downloads and runs Examify on-demand. Perfect for trying it out!
 
     ```bash
     brew tap data-wise/tap
-    brew install examify
+    brew install examark
     ```
     
     Homebrew handles the Node.js dependency automatically.
@@ -34,7 +34,7 @@ This downloads and runs Examify on-demand. Perfect for trying it out!
 === "Mac/Linux (npm)"
 
     ```bash
-    npm install -g examify
+    npm install -g examark
     ```
     
     Requires [Node.js 18+](https://nodejs.org/).
@@ -46,13 +46,13 @@ This downloads and runs Examify on-demand. Perfect for trying it out!
     **Step 2:** Open Command Prompt or PowerShell and run:
 
     ```powershell
-    npm install -g examify
+    npm install -g examark
     ```
 
     **Step 3:** Verify installation:
 
     ```powershell
-    examify --version
+    examark --version
     ```
 
 === "Developer"
@@ -60,8 +60,8 @@ This downloads and runs Examify on-demand. Perfect for trying it out!
     For contributing or modifying the source:
 
     ```bash
-    git clone https://github.com/Data-Wise/examify.git
-    cd examify
+    git clone https://github.com/Data-Wise/examark.git
+    cd examark
     npm install
     npm run build
     npm link
@@ -70,7 +70,7 @@ This downloads and runs Examify on-demand. Perfect for trying it out!
 ### Verify Installation
 
 ```bash
-examify --version
+examark --version
 ```
 
 ---
@@ -121,7 +121,7 @@ Create `quiz.md`:
 ### 2. Convert to QTI
 
 ```bash
-examify quiz.md -o quiz.qti.zip
+examark quiz.md -o quiz.qti.zip
 ```
 
 Output:
@@ -136,7 +136,7 @@ Output:
 ### 3. Verify the package
 
 ```bash
-examify emulate-canvas quiz.qti.zip
+examark emulate-canvas quiz.qti.zip
 ```
 
 Output:
@@ -160,8 +160,8 @@ Start with a ready-made template:
 
 | Template | Questions | Best For |
 |----------|-----------|----------|
-| [`starter-exam-md.md`](https://github.com/Data-Wise/examify/blob/main/examples/starter-exam-md.md) | 7 | Beginners |
-| [`canvas-ready.md`](https://github.com/Data-Wise/examify/blob/main/examples/canvas-ready.md) | 21 | Full feature coverage |
+| [`starter-exam-md.md`](https://github.com/Data-Wise/examark/blob/main/examples/starter-exam-md.md) | 7 | Beginners |
+| [`canvas-ready.md`](https://github.com/Data-Wise/examark/blob/main/examples/canvas-ready.md) | 21 | Full feature coverage |
 
 **Quarto users:** See the [Quarto Extension](extensions/quarto.md) for `.qmd` templates.
 
@@ -184,7 +184,7 @@ Start with a ready-made template:
 Export for printing:
 
 ```bash
-examify quiz.md -f text -o quiz.txt
+examark quiz.md -f text -o quiz.txt
 ```
 
 ### Batch Conversion
@@ -192,12 +192,12 @@ examify quiz.md -f text -o quiz.txt
 Convert multiple files at once:
 
 ```bash
-examify *.md -o output/
+examark *.md -o output/
 ```
 
 ### Project Configuration
 
-Create `.examifyrc.json` for project settings:
+Create `.examarkrc.json` for project settings:
 
 ```json
 {

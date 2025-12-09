@@ -4,8 +4,8 @@ We love your input! We want to make contributing to this project as easy and tra
 
 ## Ways to Contribute
 
-- 🐛 **Report bugs** — Found an issue? [Open a bug report](https://github.com/Data-Wise/examify/issues/new)
-- 💡 **Suggest features** — Have an idea? [Start a discussion](https://github.com/Data-Wise/examify/issues/new)
+- 🐛 **Report bugs** — Found an issue? [Open a bug report](https://github.com/Data-Wise/examark/issues/new)
+- 💡 **Suggest features** — Have an idea? [Start a discussion](https://github.com/Data-Wise/examark/issues/new)
 - 🔧 **Submit fixes** — PRs are welcome for any bug fixes
 - 📚 **Improve docs** — Help us make the documentation better
 
@@ -20,8 +20,8 @@ We love your input! We want to make contributing to this project as easy and tra
 
 ```bash
 # Clone the repository
-git clone https://github.com/Data-Wise/examify.git
-cd examify
+git clone https://github.com/Data-Wise/examark.git
+cd examark
 
 # Install dependencies
 npm install
@@ -93,19 +93,19 @@ npm run build
 
 ```bash
 # Convert a test file
-examify examples/sample-quiz.md -o test.qti.zip
+examark examples/sample-quiz.md -o test.qti.zip
 
 # Validate the output
-examify verify test.qti.zip
+examark verify test.qti.zip
 
 # Simulate Canvas import
-examify emulate-canvas test.qti.zip
+examark emulate-canvas test.qti.zip
 ```
 
 ## Project Structure
 
 ```text
-examify/
+examark/
 ├── src/
 │   ├── index.ts        # CLI entry point
 │   ├── parser/         # Markdown parsing logic
@@ -145,4 +145,4 @@ Be kind. We're all here to learn and build something useful together.
 
 ## Questions?
 
-Feel free to [open an issue](https://github.com/Data-Wise/examify/issues) for any questions!
+Feel free to [open an issue](https://github.com/Data-Wise/examark/issues) for any questions!

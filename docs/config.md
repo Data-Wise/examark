@@ -1,15 +1,15 @@
 # Configuration
 
-Examify supports project-level configuration through JSON config files.
+Examark supports project-level configuration through JSON config files.
 
 ---
 
 ## Config Files
 
-Examify searches for config files in this order:
+Examark searches for config files in this order:
 
-1. `.examifyrc.json` (recommended)
-2. `examify.config.json`
+1. `.examarkrc.json` (recommended)
+2. `examark.config.json`
 
 The search starts from the input file's directory and moves up to the filesystem root.
 
@@ -17,7 +17,7 @@ The search starts from the input file's directory and moves up to the filesystem
 
 ## Creating a Config File
 
-Create `.examifyrc.json` in your project root:
+Create `.examarkrc.json` in your project root:
 
 ```json
 {
@@ -99,10 +99,10 @@ Command-line options always take precedence over config file settings:
 
 ```bash
 # Uses config file defaultPoints
-examify quiz.md
+examark quiz.md
 
 # CLI overrides config file
-examify quiz.md -p 5
+examark quiz.md -p 5
 ```
 
 ---
@@ -111,7 +111,7 @@ examify quiz.md -p 5
 
 ```
 my-course/
-├── .examifyrc.json      # Project config
+├── .examarkrc.json      # Project config
 ├── exams/
 │   ├── midterm.md
 │   └── final.md
@@ -120,7 +120,7 @@ my-course/
     └── final.qti.zip
 ```
 
-**`.examifyrc.json`:**
+**`.examarkrc.json`:**
 
 ```json
 {
@@ -134,8 +134,8 @@ my-course/
 
 ```bash
 cd my-course
-examify exams/midterm.md    # Output: output/midterm.qti.zip
-examify exams/*.md -o output/  # Batch convert all exams
+examark exams/midterm.md    # Output: output/midterm.qti.zip
+examark exams/*.md -o output/  # Batch convert all exams
 ```
 
 ---
@@ -147,10 +147,10 @@ For monorepos with multiple courses, place config files in each course directory
 ```
 courses/
 ├── statistics/
-│   ├── .examifyrc.json   # Statistics-specific settings
+│   ├── .examarkrc.json   # Statistics-specific settings
 │   └── quizzes/
 ├── calculus/
-│   ├── .examifyrc.json   # Calculus-specific settings
+│   ├── .examarkrc.json   # Calculus-specific settings
 │   └── quizzes/
 ```
 

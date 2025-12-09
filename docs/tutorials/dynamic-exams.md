@@ -219,7 +219,7 @@ for seed in 100 200 300; do
     sed -i '' "s/set.seed([0-9]*)/set.seed($seed)/" exam.qmd
     quarto render exam.qmd --to exam-gfm
     mv exam.md "version-${seed}.md"
-    examify "version-${seed}.md" -o "version-${seed}.qti.zip"
+    examark "version-${seed}.md" -o "version-${seed}.qti.zip"
 done
 ```
 
@@ -361,8 +361,8 @@ format:
 
 Download ready-to-use templates:
 
-- [dynamic-questions.qmd](https://github.com/Data-Wise/examify/blob/main/examples/dynamic-questions.qmd) — Full R integration example
-- [canvas-export.qmd](https://github.com/Data-Wise/examify/blob/main/examples/canvas-export.qmd) — Canvas-optimized template
+- [dynamic-questions.qmd](https://github.com/Data-Wise/examark/blob/main/examples/dynamic-questions.qmd) — Full R integration example
+- [canvas-export.qmd](https://github.com/Data-Wise/examark/blob/main/examples/canvas-export.qmd) — Canvas-optimized template
 
 ---
 

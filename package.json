@@ -1,19 +1,19 @@
 {
-  "name": "examify",
-  "version": "0.5.0",
+  "name": "examark",
+  "version": "0.6.0",
   "description": "Create exams from Markdown and export to Canvas QTI format",
   "main": "dist/index.js",
   "bin": {
-    "examify": "dist/index.js"
+    "examark": "dist/index.js"
   },
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Data-Wise/examify.git"
+    "url": "https://github.com/Data-Wise/examark.git"
   },
-  "homepage": "https://data-wise.github.io/examify/",
+  "homepage": "https://data-wise.github.io/examark/",
   "bugs": {
-    "url": "https://github.com/Data-Wise/examify/issues"
+    "url": "https://github.com/Data-Wise/examark/issues"
   },
   "author": "Data-Wise",
   "license": "MIT",

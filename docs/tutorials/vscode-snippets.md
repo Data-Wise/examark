@@ -1,17 +1,17 @@
 # VS Code Snippets
 
-Examify includes built-in snippets for fast exam authoring in VS Code, Positron, and VS Codium.
+Examark includes built-in snippets for fast exam authoring in VS Code, Positron, and VS Codium.
 
 ## Installation
 
 The snippets are included in the repository. To use them:
 
-1. Clone or download Examify
+1. Clone or download Examark
 2. Open the folder in VS Code/Positron
 3. Start typing a prefix and press **Tab**
 
 !!! tip "Project-Level Snippets"
-    Copy `.vscode/examify.code-snippets` to any project to get snippets there too.
+    Copy `.vscode/examark.code-snippets` to any project to get snippets there too.
 
 ## Available Snippets
 
@@ -71,7 +71,7 @@ Use **Tab** to jump between placeholders.
 
 ## Customizing
 
-Edit `.vscode/examify.code-snippets` to add your own snippets or modify existing ones.
+Edit `.vscode/examark.code-snippets` to add your own snippets or modify existing ones.
 
 ```json
 "My Custom Question": {

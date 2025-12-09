@@ -9,7 +9,7 @@ describe('Config Loading', () => {
 
   beforeEach(() => {
     // Create a unique test directory
-    testDir = join(tmpdir(), `examify-config-test-${Date.now()}`);
+    testDir = join(tmpdir(), `examark-config-test-${Date.now()}`);
     mkdirSync(testDir, { recursive: true });
   });
 
@@ -26,8 +26,8 @@ describe('Config Loading', () => {
     expect(config).toEqual({});
   });
 
-  it('should load .examifyrc.json from input directory', () => {
-    const configPath = join(testDir, '.examifyrc.json');
+  it('should load .examarkrc.json from input directory', () => {
+    const configPath = join(testDir, '.examarkrc.json');
     const inputPath = join(testDir, 'test.md');
 
     writeFileSync(configPath, JSON.stringify({
@@ -41,8 +41,8 @@ describe('Config Loading', () => {
     expect(config.validate).toBe(true);
   });
 
-  it('should load examify.config.json as alternative', () => {
-    const configPath = join(testDir, 'examify.config.json');
+  it('should load examark.config.json as alternative', () => {
+    const configPath = join(testDir, 'examark.config.json');
     const inputPath = join(testDir, 'test.md');
 
     writeFileSync(configPath, JSON.stringify({
@@ -56,9 +56,9 @@ describe('Config Loading', () => {
     expect(config.outputDir).toBe('./output');
   });
 
-  it('should prefer .examifyrc.json over examify.config.json', () => {
-    const rcPath = join(testDir, '.examifyrc.json');
-    const configPath = join(testDir, 'examify.config.json');
+  it('should prefer .examarkrc.json over examark.config.json', () => {
+    const rcPath = join(testDir, '.examarkrc.json');
+    const configPath = join(testDir, 'examark.config.json');
     const inputPath = join(testDir, 'test.md');
 
     writeFileSync(rcPath, JSON.stringify({ defaultPoints: 10 }));
@@ -73,7 +73,7 @@ describe('Config Loading', () => {
     const subDir = join(testDir, 'subdir');
     mkdirSync(subDir);
 
-    const configPath = join(testDir, '.examifyrc.json');
+    const configPath = join(testDir, '.examarkrc.json');
     const inputPath = join(subDir, 'test.md');
 
     writeFileSync(configPath, JSON.stringify({ defaultPoints: 3 }));
@@ -84,7 +84,7 @@ describe('Config Loading', () => {
   });
 
   it('should validate config values', () => {
-    const configPath = join(testDir, '.examifyrc.json');
+    const configPath = join(testDir, '.examarkrc.json');
     const inputPath = join(testDir, 'test.md');
 
     writeFileSync(configPath, JSON.stringify({
@@ -103,7 +103,7 @@ describe('Config Loading', () => {
   });
 
   it('should handle malformed JSON gracefully', () => {
-    const configPath = join(testDir, '.examifyrc.json');
+    const configPath = join(testDir, '.examarkrc.json');
     const inputPath = join(testDir, 'test.md');
 
     writeFileSync(configPath, '{ invalid json }');

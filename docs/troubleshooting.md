@@ -1,6 +1,6 @@
 # Troubleshooting
 
-Common issues and solutions for Examify.
+Common issues and solutions for Examark.
 
 ---
 
@@ -9,14 +9,14 @@ Common issues and solutions for Examify.
 Run these commands to check your setup:
 
 ```bash
-# Check Examify is installed
-examify --version
+# Check Examark is installed
+examark --version
 
 # Validate your input file
-examify check quiz.md
+examark check quiz.md
 
 # Test package structure
-examify verify quiz.qti.zip
+examark verify quiz.qti.zip
 ```
 
 ---
@@ -25,7 +25,7 @@ examify verify quiz.qti.zip
 
 ### Node.js version error
 
-**Symptom:** `Error: Examify requires Node.js 18+`
+**Symptom:** `Error: Examark requires Node.js 18+`
 
 **Solution:**
 
@@ -40,7 +40,7 @@ nvm use 18
 
 ### Command not found after npm link
 
-**Symptom:** `zsh: command not found: examify`
+**Symptom:** `zsh: command not found: examark`
 
 **Solution:**
 
@@ -50,7 +50,7 @@ npm run build
 npm link
 
 # Or use npx
-npx examify quiz.md -o quiz.qti.zip
+npx examark quiz.md -o quiz.qti.zip
 ```
 
 ---
@@ -118,13 +118,13 @@ ls -la assets/
 3. If still missing, run the Canvas emulator to diagnose:
 
 ```bash
-examify emulate-canvas quiz.qti.zip
+examark emulate-canvas quiz.qti.zip
 ```
 
 ---
 
 ## Getting Help
 
-- Check [GitHub Issues](https://github.com/Data-Wise/examify/issues)
+- Check [GitHub Issues](https://github.com/Data-Wise/examark/issues)
 - See [Contributing Guide](contributing.md) to report bugs
 - Review [Input Formats](formats.md) for syntax reference

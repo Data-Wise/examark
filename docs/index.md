@@ -1,14 +1,14 @@
-# Examify
+# Examark
 
 **Create exams from Markdown and export to Canvas QTI format.**
 
-[![npm](https://img.shields.io/npm/v/examify?style=flat-square&logo=npm&color=CB3837)](https://www.npmjs.com/package/examify)
-[![CI](https://img.shields.io/github/actions/workflow/status/Data-Wise/examify/ci.yml?style=flat-square&logo=github&label=CI)](https://github.com/Data-Wise/examify/actions/workflows/ci.yml)
-[![Docs](https://img.shields.io/github/actions/workflow/status/Data-Wise/examify/publish_docs.yml?style=flat-square&logo=github&label=Docs)](https://github.com/Data-Wise/examify/actions/workflows/publish_docs.yml)
-[![License](https://img.shields.io/badge/license-MIT-22C55E?style=flat-square)](https://github.com/Data-Wise/examify/blob/main/LICENSE)
+[![npm](https://img.shields.io/npm/v/examark?style=flat-square&logo=npm&color=CB3837)](https://www.npmjs.com/package/examark)
+[![CI](https://img.shields.io/github/actions/workflow/status/Data-Wise/examark/ci.yml?style=flat-square&logo=github&label=CI)](https://github.com/Data-Wise/examark/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/github/actions/workflow/status/Data-Wise/examark/publish_docs.yml?style=flat-square&logo=github&label=Docs)](https://github.com/Data-Wise/examark/actions/workflows/publish_docs.yml)
+[![License](https://img.shields.io/badge/license-MIT-22C55E?style=flat-square)](https://github.com/Data-Wise/examark/blob/main/LICENSE)
 
 [Get Started :material-arrow-right:](getting-started.md){ .md-button .md-button--primary }
-[View on GitHub :material-github:](https://github.com/Data-Wise/examify){ .md-button }
+[View on GitHub :material-github:](https://github.com/Data-Wise/examark){ .md-button }
 
 ---
 
@@ -62,7 +62,7 @@
 
     ---
 
-    Convert multiple files at once with glob patterns: `examify *.md -o output/`
+    Convert multiple files at once with glob patterns: `examark *.md -o output/`
 
 </div>
 
@@ -72,11 +72,11 @@
 
 ```bash
 # No install needed!
-npx examify quiz.md -o quiz.qti.zip
+npx examark quiz.md -o quiz.qti.zip
 
 # Or install globally
-npm install -g examify
-examify quiz.md -o quiz.qti.zip
+npm install -g examark
+examark quiz.md -o quiz.qti.zip
 ```
 
 ---
@@ -132,7 +132,7 @@ examify quiz.md -o quiz.qti.zip
 
 ```mermaid
 graph LR
-    A[quiz.md] --> B[examify]
+    A[quiz.md] --> B[examark]
     B --> C[quiz.qti.zip]
     C --> D[Canvas Import]
     B --> E[emulate-canvas]
@@ -149,9 +149,9 @@ Start with a ready-made template:
 
 | Template | Questions | Best For |
 |----------|-----------|----------|
-| [`starter-exam-md.md`](https://github.com/Data-Wise/examify/blob/main/examples/starter-exam-md.md) | 7 | Beginners |
-| [`canvas-ready.md`](https://github.com/Data-Wise/examify/blob/main/examples/canvas-ready.md) | 21 | Full feature coverage |
-| [`canvas-validation.md`](https://github.com/Data-Wise/examify/blob/main/examples/canvas-validation.md) | 9 | Testing all features |
+| [`starter-exam-md.md`](https://github.com/Data-Wise/examark/blob/main/examples/starter-exam-md.md) | 7 | Beginners |
+| [`canvas-ready.md`](https://github.com/Data-Wise/examark/blob/main/examples/canvas-ready.md) | 21 | Full feature coverage |
+| [`canvas-validation.md`](https://github.com/Data-Wise/examark/blob/main/examples/canvas-validation.md) | 9 | Testing all features |
 
 **Quarto Users:** Check out the [Quarto Extension](extensions/quarto.md) for `.qmd` templates with R/Python code.
 
@@ -161,13 +161,13 @@ Start with a ready-made template:
 
 | Command | Description |
 |---------|-------------|
-| `examify file.md -o output.qti.zip` | Convert Markdown to QTI package |
-| `examify file.md -f text` | Export as printable plain text |
-| `examify *.md -o output/` | Batch convert multiple files |
-| `examify verify package.qti.zip` | Validate package structure |
-| `examify emulate-canvas package.qti.zip` | Simulate Canvas import |
-| `examify check file.md` | Lint input file for errors |
-| `examify file.md --preview` | Preview parsed questions |
+| `examark file.md -o output.qti.zip` | Convert Markdown to QTI package |
+| `examark file.md -f text` | Export as printable plain text |
+| `examark *.md -o output/` | Batch convert multiple files |
+| `examark verify package.qti.zip` | Validate package structure |
+| `examark emulate-canvas package.qti.zip` | Simulate Canvas import |
+| `examark check file.md` | Lint input file for errors |
+| `examark file.md --preview` | Preview parsed questions |
 
 See [Commands Reference](reference.md) for all options.
 

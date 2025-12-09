@@ -1,30 +1,30 @@
-# Examify
+# Examark
 
 <div align="center">
 
-![Examify Hero](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,16,18,20&height=200&section=header&text=Examify&fontSize=80&animation=fadeIn&fontAlignY=35&desc=Markdown%20→%20Canvas%20Quizzes&descAlignY=55&descSize=22&fontColor=ffffff)
+![Examark Hero](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,16,18,20&height=200&section=header&text=Examark&fontSize=80&animation=fadeIn&fontAlignY=35&desc=Markdown%20→%20Canvas%20Quizzes&descAlignY=55&descSize=22&fontColor=ffffff)
 
-[![npm version](https://img.shields.io/npm/v/examify?style=flat-square&logo=npm&color=CB3837)](https://www.npmjs.com/package/examify)
-[![CI](https://img.shields.io/github/actions/workflow/status/Data-Wise/examify/ci.yml?branch=main&style=flat-square&logo=github&label=CI)](https://github.com/Data-Wise/examify/actions/workflows/ci.yml)
-[![Docs](https://img.shields.io/github/actions/workflow/status/Data-Wise/examify/publish_docs.yml?branch=main&style=flat-square&logo=readthedocs&logoColor=white&label=Docs)](https://data-wise.github.io/examify/)
+[![npm version](https://img.shields.io/npm/v/examark?style=flat-square&logo=npm&color=CB3837)](https://www.npmjs.com/package/examark)
+[![CI](https://img.shields.io/github/actions/workflow/status/Data-Wise/examark/ci.yml?branch=main&style=flat-square&logo=github&label=CI)](https://github.com/Data-Wise/examark/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/github/actions/workflow/status/Data-Wise/examark/publish_docs.yml?branch=main&style=flat-square&logo=readthedocs&logoColor=white&label=Docs)](https://data-wise.github.io/examark/)
 [![License](https://img.shields.io/badge/license-MIT-22C55E?style=flat-square)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D18-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
 
 **Write exams in Markdown. Export to Canvas in seconds.**
 
-[Documentation](https://data-wise.github.io/examify/) · [Getting Started](https://data-wise.github.io/examify/getting-started/) · [Report Bug](https://github.com/Data-Wise/examify/issues)
+[Documentation](https://data-wise.github.io/examark/) · [Getting Started](https://data-wise.github.io/examark/getting-started/) · [Report Bug](https://github.com/Data-Wise/examark/issues)
 
 </div>
 
 ---
 
-## Why Examify?
+## Why Examark?
 
 Stop clicking through Canvas forms. **Write once, export anywhere.**
 
 ```
 ┌─────────────────┐      ┌──────────┐      ┌─────────────────┐
-│   quiz.md       │ ───▶ │ examify  │ ───▶ │  quiz.qti.zip   │
+│   quiz.md       │ ───▶ │ examark  │ ───▶ │  quiz.qti.zip   │
 │   (Markdown)    │      │          │      │  (Canvas-ready) │
 └─────────────────┘      └──────────┘      └─────────────────┘
                               │
@@ -44,7 +44,7 @@ Stop clicking through Canvas forms. **Write once, export anywhere.**
 **No installation needed** — try it now:
 
 ```bash
-npx examify quiz.md -o quiz.qti.zip
+npx examark quiz.md -o quiz.qti.zip
 ```
 
 ### Write Your Exam
@@ -67,8 +67,8 @@ b) False [x]
 ### Convert & Import
 
 ```bash
-examify midterm.md -o midterm.qti.zip    # For Canvas
-examify midterm.md -f text                # For printing
+examark midterm.md -o midterm.qti.zip    # For Canvas
+examark midterm.md -f text                # For printing
 ```
 
 Then: **Canvas → Settings → Import Content → QTI .zip**
@@ -119,10 +119,10 @@ $$\bar{x} = \frac{\sum x_i}{n}$$
 
 ### 🔧 Powerful CLI
 ```bash
-examify *.md -o output/     # Batch convert
-examify quiz.md -f text     # Paper exams
-examify emulate-canvas pkg  # Pre-validate
-examify check quiz.md       # Lint syntax
+examark *.md -o output/     # Batch convert
+examark quiz.md -f text     # Paper exams
+examark emulate-canvas pkg  # Pre-validate
+examark check quiz.md       # Lint syntax
 ```
 
 </td>
@@ -160,7 +160,7 @@ format:
 
 ```bash
 brew tap data-wise/tap
-brew install examify
+brew install examark
 ```
 </details>
 
@@ -168,7 +168,7 @@ brew install examify
 <summary><b>npm</b> — All platforms</summary>
 
 ```bash
-npm install -g examify
+npm install -g examark
 ```
 Requires [Node.js 18+](https://nodejs.org/)
 </details>
@@ -177,16 +177,16 @@ Requires [Node.js 18+](https://nodejs.org/)
 <summary><b>Windows</b></summary>
 
 1. Install [Node.js](https://nodejs.org/) (v18+)
-2. Run: `npm install -g examify`
-3. Verify: `examify --version`
+2. Run: `npm install -g examark`
+3. Verify: `examark --version`
 </details>
 
 <details>
 <summary><b>From Source</b></summary>
 
 ```bash
-git clone https://github.com/Data-Wise/examify.git
-cd examify && npm install && npm run build && npm link
+git clone https://github.com/Data-Wise/examark.git
+cd examark && npm install && npm run build && npm link
 ```
 </details>
 
@@ -196,13 +196,13 @@ cd examify && npm install && npm run build && npm link
 
 | Command | Description |
 |---------|-------------|
-| `examify <file.md>` | Convert to QTI (default: `file.qti.zip`) |
-| `examify <file.md> -f text` | Export as printable plain text |
-| `examify *.md -o output/` | Batch convert multiple files |
-| `examify emulate-canvas <pkg>` | Simulate Canvas import |
-| `examify verify <pkg>` | Validate QTI package |
-| `examify check <file.md>` | Lint markdown for errors |
-| `examify --preview` | Preview parsed questions (JSON) |
+| `examark <file.md>` | Convert to QTI (default: `file.qti.zip`) |
+| `examark <file.md> -f text` | Export as printable plain text |
+| `examark *.md -o output/` | Batch convert multiple files |
+| `examark emulate-canvas <pkg>` | Simulate Canvas import |
+| `examark verify <pkg>` | Validate QTI package |
+| `examark check <file.md>` | Lint markdown for errors |
+| `examark --preview` | Preview parsed questions (JSON) |
 
 **Options:** `-o <output>` · `-p <points>` · `-t <title>` · `--no-answers` · `-v`
 
@@ -210,7 +210,7 @@ cd examify && npm install && npm run build && npm link
 
 ## Configuration
 
-Create `.examifyrc.json` for project defaults:
+Create `.examarkrc.json` for project defaults:
 
 ```json
 {
@@ -236,10 +236,10 @@ Create `.examifyrc.json` for project defaults:
 Generate dynamic, randomized questions with R or Python:
 
 ```bash
-quarto add Data-Wise/examify
+quarto add Data-Wise/examark
 ```
 
-📖 [Quarto Extension Guide →](https://data-wise.github.io/examify/extensions/quarto/)
+📖 [Quarto Extension Guide →](https://data-wise.github.io/examark/extensions/quarto/)
 
 ---
 
@@ -247,17 +247,17 @@ quarto add Data-Wise/examify
 
 | | |
 |---|---|
-| 📚 [**Full Docs**](https://data-wise.github.io/examify/) | Complete reference |
-| 🚀 [Getting Started](https://data-wise.github.io/examify/getting-started/) | Install + first quiz |
-| 📝 [Input Formats](https://data-wise.github.io/examify/formats/) | Question syntax |
-| ⚙️ [Configuration](https://data-wise.github.io/examify/config/) | Project settings |
-| 🎓 [Tutorials](https://data-wise.github.io/examify/tutorials/) | R/Quarto, VS Code |
+| 📚 [**Full Docs**](https://data-wise.github.io/examark/) | Complete reference |
+| 🚀 [Getting Started](https://data-wise.github.io/examark/getting-started/) | Install + first quiz |
+| 📝 [Input Formats](https://data-wise.github.io/examark/formats/) | Question syntax |
+| ⚙️ [Configuration](https://data-wise.github.io/examark/config/) | Project settings |
+| 🎓 [Tutorials](https://data-wise.github.io/examark/tutorials/) | R/Quarto, VS Code |
 
 ---
 
 <div align="center">
 
-**[Get Started →](https://data-wise.github.io/examify/getting-started/)**
+**[Get Started →](https://data-wise.github.io/examark/getting-started/)**
 
 Made with ❤️ by [Data-Wise](https://github.com/Data-Wise) · [MIT License](LICENSE)
 

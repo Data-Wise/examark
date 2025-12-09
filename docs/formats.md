@@ -1,6 +1,6 @@
 # Input Formats
 
-Examify accepts a simple Markdown-based format for quiz questions. This guide covers the complete syntax for all question types.
+Examark accepts a simple Markdown-based format for quiz questions. This guide covers the complete syntax for all question types.
 
 ---
 
@@ -33,14 +33,14 @@ Create a file called `quiz.md`:
 Convert to Canvas QTI:
 
 ```bash
-examify quiz.md -o quiz.qti.zip
+examark quiz.md -o quiz.qti.zip
 ```
 
 ---
 
 ## Syntax Styles
 
-Examify supports two syntax styles. You can mix them in the same file.
+Examark supports two syntax styles. You can mix them in the same file.
 
 ### Clean Syntax (Recommended)
 
@@ -107,7 +107,7 @@ Group questions into sections:
 
 ## Question Types
 
-Examify supports 8 question types. Use type markers in brackets:
+Examark supports 8 question types. Use type markers in brackets:
 
 | Type | Markers (case-insensitive) |
 |------|---------------------------|
@@ -379,7 +379,7 @@ c) Euler's identity
 
 ### Canvas Compatibility
 
-Examify automatically converts:
+Examark automatically converts:
 
 | Markdown | Canvas |
 |----------|--------|
@@ -433,7 +433,7 @@ quiz/
 
 ### What Happens
 
-Examify:
+Examark:
 
 1. Finds all `![alt](path)` references
 2. Copies images into the QTI package
@@ -468,7 +468,7 @@ Code is preserved with syntax highlighting in Canvas.
 
 ## Solution Blocks
 
-Examify ignores solution content:
+Examark ignores solution content:
 
 ```html
 <div class="solution">
@@ -590,13 +590,13 @@ Before uploading to Canvas:
 
 ```bash
 # Check for syntax issues
-examify check quiz.md
+examark check quiz.md
 
 # Preview parsed questions
-examify quiz.md --preview
+examark quiz.md --preview
 
 # Simulate Canvas import
-examify emulate-canvas quiz.qti.zip
+examark emulate-canvas quiz.qti.zip
 ```
 
 ---
@@ -617,7 +617,7 @@ examify emulate-canvas quiz.qti.zip
 
 - Check paths are relative
 - Verify files exist at the specified path
-- Use `examify verify quiz.qti.zip` to check bundling
+- Use `examark verify quiz.qti.zip` to check bundling
 
 ### Math not rendering
 

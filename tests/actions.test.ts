@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { execSync } from 'child_process';
 
 describe('GitHub Actions Monitoring', () => {
-  const REPO = 'Data-Wise/examify';
+  const REPO = 'Data-Wise/examark';
   const API_BASE = `https://api.github.com/repos/${REPO}/actions`;
 
   describe('API Endpoints', () => {

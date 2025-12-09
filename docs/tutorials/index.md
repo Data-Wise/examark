@@ -1,6 +1,6 @@
 # Tutorials
 
-Learn how to create exams with Examify through step-by-step guides.
+Learn how to create exams with Examark through step-by-step guides.
 
 ---
 
@@ -8,7 +8,7 @@ Learn how to create exams with Examify through step-by-step guides.
 
 ### [R & Quarto Integration](quarto.md)
 
-Use Examify with R and Quarto for reproducible exam authoring. Generate randomized questions with R code and export to Canvas.
+Use Examark with R and Quarto for reproducible exam authoring. Generate randomized questions with R code and export to Canvas.
 
 ### [Dynamic Exams with Code](dynamic-exams.md)
 

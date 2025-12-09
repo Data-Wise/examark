@@ -1,15 +1,16 @@
 /**
- * Configuration file support for Examify
- * Loads settings from .examifyrc.json or examify.config.json
+ * Configuration file support for Examark
+ * Loads settings from .examarkrc.json, examark.config.json
+ * Also supports legacy .examifyrc.json, examify.config.json for backward compatibility
  */
 
 import { existsSync, readFileSync } from 'fs';
 import { join, dirname } from 'path';
 
 /**
- * Configuration options for Examify
+ * Configuration options for Examark
  */
-export interface ExamifyConfig {
+export interface ExamarkConfig {
   /** Default points per question (default: 1) */
   defaultPoints?: number;
   /** Default output directory for QTI files */
@@ -20,10 +21,15 @@ export interface ExamifyConfig {
   title?: string;
 }
 
+/** @deprecated Use ExamarkConfig instead */
+export type ExamifyConfig = ExamarkConfig;
+
 /** Config file names to search for (in priority order) */
 const CONFIG_FILES = [
-  '.examifyrc.json',
-  'examify.config.json',
+  '.examarkrc.json',
+  'examark.config.json',
+  '.examifyrc.json',      // Legacy support
+  'examify.config.json',  // Legacy support
 ];
 
 /**
@@ -31,7 +37,7 @@ const CONFIG_FILES = [
  * @param inputPath - Path to input file (search starts from its directory)
  * @returns Loaded config or empty object if not found
  */
-export function loadConfig(inputPath?: string): ExamifyConfig {
+export function loadConfig(inputPath?: string): ExamarkConfig {
   const startDir = inputPath ? dirname(inputPath) : process.cwd();
   const configPath = findConfigFile(startDir);
 
@@ -41,7 +47,7 @@ export function loadConfig(inputPath?: string): ExamifyConfig {
 
   try {
     const content = readFileSync(configPath, 'utf-8');
-    const config = JSON.parse(content) as ExamifyConfig;
+    const config = JSON.parse(content) as ExamarkConfig;
     return validateConfig(config);
   } catch (error) {
     console.warn(`Warning: Failed to load config from ${configPath}: ${error instanceof Error ? error.message : error}`);
@@ -82,8 +88,8 @@ function findConfigFile(startDir: string): string | null {
 /**
  * Validate and sanitize config values
  */
-function validateConfig(config: ExamifyConfig): ExamifyConfig {
-  const validated: ExamifyConfig = {};
+function validateConfig(config: ExamarkConfig): ExamarkConfig {
+  const validated: ExamarkConfig = {};
 
   if (typeof config.defaultPoints === 'number' && config.defaultPoints > 0) {
     validated.defaultPoints = config.defaultPoints;
@@ -109,8 +115,8 @@ function validateConfig(config: ExamifyConfig): ExamifyConfig {
  */
 export function mergeWithConfig<T extends Record<string, unknown>>(
   cliOptions: T,
-  config: ExamifyConfig
-): T & ExamifyConfig {
+  config: ExamarkConfig
+): T & ExamarkConfig {
   return {
     ...config,
     ...cliOptions,

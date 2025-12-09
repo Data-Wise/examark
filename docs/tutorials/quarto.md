@@ -15,12 +15,12 @@ This tutorial walks you through creating a statistics exam using Quarto and R, t
 
 - [Quarto](https://quarto.org) installed (≥ 1.4.0)
 - [R](https://r-project.org) installed (for dynamic questions)
-- [Examify](../getting-started.md) installed globally
+- [Examark](../getting-started.md) installed globally
 
 ## Step 1: Install the Extension
 
 ```bash
-quarto add Data-Wise/examify
+quarto add Data-Wise/examark
 ```
 
 This creates `_extensions/exam/` in your project with the Lua filters and styling.
@@ -60,12 +60,12 @@ d) 40
 quarto render midterm.qmd --to exam-gfm
 ```
 
-This creates `midterm.md` with properly formatted questions for Examify.
+This creates `midterm.md` with properly formatted questions for Examark.
 
 ## Step 4: Convert to Canvas QTI
 
 ```bash
-examify midterm.md -o midterm.qti.zip
+examark midterm.md -o midterm.qti.zip
 ```
 
 ## Step 5: Upload to Canvas
@@ -177,17 +177,17 @@ Create a shell script `build_exams.sh`:
 sed -i '' 's/set.seed([0-9]*)/set.seed(100)/' midterm.qmd
 quarto render midterm.qmd --to exam-gfm
 mv midterm.md version-a.md
-examify version-a.md -o version-a.qti.zip
+examark version-a.md -o version-a.qti.zip
 
 # Build Version B
 sed -i '' 's/set.seed([0-9]*)/set.seed(200)/' midterm.qmd
 quarto render midterm.qmd --to exam-gfm
 mv midterm.md version-b.md
-examify version-b.md -o version-b.qti.zip
+examark version-b.md -o version-b.qti.zip
 
 # Verify both
-examify verify version-a.qti.zip
-examify verify version-b.qti.zip
+examark verify version-a.qti.zip
+examark verify version-b.qti.zip
 ```
 
 ---
@@ -233,7 +233,7 @@ open midterm.html  # Check formatting
 Run the Canvas emulator before uploading:
 
 ```bash
-examify emulate-canvas midterm.qti.zip
+examark emulate-canvas midterm.qti.zip
 ```
 
 ---
@@ -243,7 +243,7 @@ examify emulate-canvas midterm.qti.zip
 ```mermaid
 graph TD
     A[midterm.qmd] -->|quarto render| B[midterm.md]
-    B -->|examify| C[midterm.qti.zip]
+    B -->|examark| C[midterm.qti.zip]
     C -->|upload| D[Canvas]
     
     A -->|quarto render| E[midterm.pdf]

@@ -1,11 +1,11 @@
 # Canvas Import Emulator
 
-The **Examify** emulator predicts whether your QTI package will import successfully into Canvas LMS.
+The **Examark** emulator predicts whether your QTI package will import successfully into Canvas LMS.
 
 ## Usage
 
 ```bash
-examify emulate-canvas your-package.qti.zip
+examark emulate-canvas your-package.qti.zip
 ```
 
 ## What It Checks
@@ -72,7 +72,7 @@ This error means Canvas can't find the `correctResponse` element:
     Always run the emulator before uploading to Canvas to catch issues early.
 
 !!! tip "R/Python Figures"
-    Generate all figures with Quarto/RMarkdown *before* running Examify.
+    Generate all figures with Quarto/RMarkdown *before* running Examark.
 
 ---
 
@@ -86,7 +86,7 @@ This error means Canvas can't find the `correctResponse` element:
 
 ```bash
 # Verify package structure
-examify verify your-package.qti.zip
+examark verify your-package.qti.zip
 ```
 
 Check that:
@@ -122,7 +122,7 @@ Check that:
 | `$x^2$` | `\(x^2\)` |
 | `$$\sum_{i=1}^n$$` | `\[\sum_{i=1}^n\]` |
 
-Examify handles this automatically. If equations still don't render:
+Examark handles this automatically. If equations still don't render:
 
 1. Check Canvas has MathJax enabled
 2. Verify no conflicting HTML entities (`&lt;` vs `<`)
@@ -144,5 +144,5 @@ Examify handles this automatically. If equations still don't render:
 
 ### Need More Help?
 
-- [Open an issue](https://github.com/Data-Wise/examify/issues) on GitHub
+- [Open an issue](https://github.com/Data-Wise/examark/issues) on GitHub
 - Check the [Canvas QTI documentation](https://community.canvaslms.com/t5/Canvas-Basics-Guide/What-is-QTI/ta-p/2)

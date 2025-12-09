@@ -10,7 +10,7 @@ describe('Installation Tests', () => {
     );
 
     it('should have correct package name', () => {
-      expect(packageJson.name).toBe('examify');
+      expect(packageJson.name).toBe('examark');
     });
 
     it('should have valid version format', () => {
@@ -19,7 +19,7 @@ describe('Installation Tests', () => {
 
     it('should have bin entry for CLI', () => {
       expect(packageJson.bin).toBeDefined();
-      expect(packageJson.bin.examify).toBe('dist/index.js');
+      expect(packageJson.bin.examark).toBe('dist/index.js');
     });
 
     it('should have Node.js engine requirement', () => {
@@ -103,7 +103,7 @@ describe('Installation Tests', () => {
         cwd: join(__dirname, '..'),
         encoding: 'utf-8'
       });
-      expect(result).toContain('examify');
+      expect(result).toContain('examark');
       expect(result).toContain('Options');
     });
 
@@ -124,7 +124,7 @@ describe('Installation Tests', () => {
   describe('npm Package (Live Registry)', () => {
     it('should be published on npm', () => {
       try {
-        const result = execSync('npm view examify version', {
+        const result = execSync('npm view examark version', {
           encoding: 'utf-8',
           stdio: 'pipe'
         });
@@ -141,7 +141,7 @@ describe('Installation Tests', () => {
       );
       
       try {
-        const npmVersion = execSync('npm view examify version', {
+        const npmVersion = execSync('npm view examark version', {
           encoding: 'utf-8',
           stdio: 'pipe'
         }).trim();
