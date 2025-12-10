@@ -32,7 +32,7 @@ format:
 # Default exam options (merged with extension defaults)
 exam:
   solutions: false
-  default-points: 2
+  default-points: 1
 
 # Extension: exam (auto-loaded from _extensions/exam/)
 # Available formats: exam-html, exam-pdf, exam-gfm, exam-odt, exam-docx, exam-typst
