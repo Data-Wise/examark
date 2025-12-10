@@ -120,6 +120,7 @@ nav:
   - Tutorials:
       - tutorials/index.md
       - Your First Quiz: tutorials/first-quiz.md
+      - Item Banks & Random Quizzes: tutorials/item-banks.md
       - R & Quarto: tutorials/quarto.md
       - Dynamic Exams: tutorials/dynamic-exams.md
       - VS Code Snippets: tutorials/vscode-snippets.md
@@ -130,4 +131,5 @@ nav:
   - Resources:
       - Troubleshooting: troubleshooting.md
       - Input Formats (Legacy): formats.md
+      - Site Design: DESIGN.md
       - Contributing: contributing.md

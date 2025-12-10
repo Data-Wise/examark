@@ -116,7 +116,7 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 | Numeric ranges | `Answer: 5-10` syntax | Accept range of values |
 
 **Medium-term:**
-- Question pools/banks support (random question selection)
+- Question pools/Item Banks workflow documentation
 - QTI 2.1 export format (`src/generator/qti21.ts` exists, needs integration)
 - Question weighting/partial credit
 - More detailed error messages with line numbers
@@ -131,9 +131,33 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 
 ### Research Notes (Dec 2025)
 
+**Canvas Quiz Systems:**
 - UNM Canvas: Both Classic and New Quizzes enabled, no migration deadline
 - Canvas QTI 2.1: Supported in both quiz types
 - New Quizzes: Stricter validation, same QTI format
+
+**Question Banks vs Item Banks:**
+
+| System | Quiz Type | QTI Import | Random Selection |
+|--------|-----------|------------|------------------|
+| **Question Banks** | Classic Quizzes | ✅ QTI 1.2/2.1 | Via Question Groups |
+| **Item Banks** | New Quizzes | ✅ QTI 1.2/2.x | "Randomly select N" option |
+
+**Import Paths (Both Work!):**
+
+1. **Classic Quizzes:** Course Import → QTI package → Creates Quiz + Question Bank
+2. **Item Banks (New Quizzes):** Manage Item Banks → Import Content → Upload QTI .zip
+3. **New Quizzes:** Build Quiz → Import from QTI (creates new quiz only, cannot modify existing)
+
+**Key Differences:**
+- Question Banks: Course-specific
+- Item Banks: User-owned, shareable across courses
+- Both support QTI 1.2 and 2.1 imports
+
+**Canvas Roadmap (Q4 2025 - Q1 2026):**
+- Direct Item Bank import via Course Import (no need to attach to quiz first)
+- Enhanced migration tools for Classic → New conversion
+- Better API for third-party integrations
 
 ## Build & Test Commands
 

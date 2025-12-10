@@ -6,6 +6,10 @@ Learn how to create exams with Examark through step-by-step guides.
 
 ## Available Tutorials
 
+### [Item Banks & Random Quizzes](item-banks.md)
+
+Import questions into Canvas Item Banks for creating quizzes with randomly selected questions. Essential for reducing collaboration concerns in large classes.
+
 ### [R & Quarto Integration](quarto.md)
 
 Use Examark with R and Quarto for reproducible exam authoring. Generate randomized questions with R code and export to Canvas.

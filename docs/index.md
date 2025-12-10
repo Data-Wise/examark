@@ -64,6 +64,12 @@
 
     Convert multiple files at once with glob patterns: `examark *.md -o output/`
 
+- :material-bank:{ .lg .middle } **[Item Banks Support](tutorials/item-banks.md)**
+
+    ---
+
+    Import directly to Canvas Item Banks for random question selection across quizzes.
+
 </div>
 
 ---

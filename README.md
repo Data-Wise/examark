@@ -73,6 +73,17 @@ examark midterm.md -f text                # For printing
 
 Then: **Canvas → Settings → Import Content → QTI .zip**
 
+### Or Import to Item Banks (New Quizzes)
+
+For random question selection across quizzes:
+
+1. **Quizzes → ⋮ → Manage Item Banks**
+2. **+ Add Bank** → Name your bank
+3. **⋮ → Import Content** → Upload `.qti.zip`
+4. Create quiz → **Add from Item Bank** → **Randomly select N questions**
+
+📖 [Item Banks Tutorial →](https://data-wise.github.io/examark/tutorials/item-banks/)
+
 ---
 
 ## Features
@@ -306,7 +317,8 @@ c) `r 15`
 |---|---|
 | 📚 [**Full Docs**](https://data-wise.github.io/examark/) | Complete reference |
 | 🚀 [Getting Started](https://data-wise.github.io/examark/getting-started/) | Install + first quiz |
-| 📝 [Input Formats](https://data-wise.github.io/examark/formats/) | Question syntax |
+| 📝 [Markdown Syntax](https://data-wise.github.io/examark/markdown/) | Question syntax |
+| 🏦 [Item Banks](https://data-wise.github.io/examark/tutorials/item-banks/) | Random quizzes |
 | ⚙️ [Configuration](https://data-wise.github.io/examark/config/) | Project settings |
 | 🎓 [Tutorials](https://data-wise.github.io/examark/tutorials/) | R/Quarto, VS Code |
 
