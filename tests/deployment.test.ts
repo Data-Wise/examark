@@ -152,7 +152,7 @@ describe('Deployment Tests', () => {
     });
 
     it('should have Homebrew instructions', () => {
-      expect(gettingStarted).toContain('brew tap data-wise');
+      expect(gettingStarted).toContain('brew install data-wise/tap/examark');
     });
 
     it('should have npm install instructions', () => {

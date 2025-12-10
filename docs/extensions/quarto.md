@@ -1,42 +1,72 @@
 # Quarto Exam Extension
 
-Examark includes a powerful Quarto extension that allows you to author exams in Quarto (`.qmd`) and export them to multiple formats, including Canvas-ready QTI, HTML previews, printable PDFs, and more.
+The Examark Quarto extension lets you author exams in `.qmd` files with R/Python code for dynamic content, then export to multiple formats: HTML preview, PDF, DOCX, and **QTI for Canvas**.
+
+!!! warning "Two Separate Components"
+    **Quarto extension** (authoring + preview) ≠ **CLI tool** (QTI conversion)
+
+    - **Extension only:** `quarto add Data-Wise/examark` → preview formats (HTML/PDF)
+    - **CLI only:** `npm install -g examark` → QTI conversion
+    - **Both:** Required for complete `.qmd` → Canvas workflow
+
+---
 
 ## Installation
 
-### Method 1: GitHub Installation (Recommended)
-
-Install directly from the GitHub repository:
+### Extension Only (Preview Formats)
 
 ```bash
 quarto add Data-Wise/examark
 ```
 
-This will:
+**What you get:**
+- Formats: `exam-html`, `exam-pdf`, `exam-odt`, `exam-docx`, `exam-typst`
+- Dynamic questions with R/Python
+- Solution toggle
+- LaTeX math support
 
-1. Download the extension from GitHub
-2. Create `_extensions/exam/` in your project
-3. Prompt you to trust the extension
+**What you DON'T get:** QTI export (see "Complete Setup" below)
 
-!!! tip "Pin to a Version"
-    For reproducible builds, install a specific release:
-    ```bash
-    quarto add Data-Wise/examark@v0.6.6
-    ```
+---
 
-### Method 2: Create New Project from Template
+### Complete Setup (Preview + QTI)
 
-Start fresh with a ready-to-use template:
+For full workflow including Canvas export:
+
+```bash
+# Step 1: Quarto extension
+quarto add Data-Wise/examark
+
+# Step 2: CLI tool
+npm install -g examark
+```
+
+**Workflow:**
+```bash
+quarto render exam.qmd --to exam-gfm  # Render
+examark exam.md -o exam.qti.zip       # Convert
+```
+
+---
+
+### Start from Template
 
 ```bash
 quarto use template Data-Wise/examark
 ```
+
+Creates new project with example `.qmd` files.
+
+---
 
 ### Verify Installation
 
 ```bash
 quarto list extensions
 # Should show: exam  0.6.x  formats
+
+examark --version
+# Should show: 0.6.x (if CLI installed)
 ```
 
 ## Quick Start

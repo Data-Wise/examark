@@ -1,70 +1,132 @@
 # Getting Started
 
-Get up and running with Examark in minutes.
+Get up and running with Examark in under 5 minutes.
+
+---
+
+## Which Installation Path?
+
+Choose based on your workflow:
+
+| You Want To... | Install This |
+|----------------|-------------|
+| **Convert `.md` files to Canvas quizzes** | CLI tool (see below) |
+| **Author `.qmd` files with R/Python (preview only)** | `quarto add Data-Wise/examark` |
+| **Author `.qmd` files AND export to Canvas** | Both extension + CLI |
 
 ---
 
 ## Installation
 
-### Quick Start (No Install Needed)
+### ⚡ One-Line (No Install)
 
-Run Examark directly using npx (requires Node.js):
+**Try it now** — no installation required:
 
 ```bash
 npx examark quiz.md -o quiz.qti.zip
 ```
 
-This downloads and runs Examark on-demand. Perfect for trying it out!
+Perfect for one-time conversions or trying Examark.
+
+**Requirements:** [Node.js](https://nodejs.org/) ≥18
 
 ---
 
-### Permanent Install
+### 📦 Permanent Install
 
-=== "Mac (Homebrew)"
+=== "macOS"
 
-    **Recommended for Mac users:**
+    **Option 1: Homebrew (Recommended)**
 
     ```bash
-    brew tap data-wise/tap
-    brew install examark
+    brew install data-wise/tap/examark
     ```
-    
-    Homebrew handles the Node.js dependency automatically.
 
-=== "Mac/Linux (npm)"
+    Installs CLI + dependencies. No Node.js setup needed.
+
+    **Option 2: npm**
 
     ```bash
     npm install -g examark
     ```
-    
+
     Requires [Node.js 18+](https://nodejs.org/).
 
 === "Windows"
 
-    **Never used Node.js before?** No problem! Here's the complete guide:
+    **Step 1: Install Node.js** (if not already installed)
 
-    1. **Download Node.js** from [nodejs.org](https://nodejs.org/) — click the big green "LTS" button
-    2. **Run the installer** — accept all defaults, click Next through everything
-    3. **Open Command Prompt** — search "cmd" in Start menu
-    4. **Verify Node installed:** type `node --version` and press Enter
-    5. **Install examark:**
+    1. Go to [nodejs.org](https://nodejs.org/)
+    2. Click green **"LTS"** button (recommended version)
+    3. Run installer with all defaults
+    4. Open **Command Prompt** (`Windows + R` → type `cmd`)
+    5. Verify: `node --version` (should show v18.x.x+)
 
-    ```powershell
+    **Step 2: Install Examark**
+
+    ```cmd
     npm install -g examark
     ```
 
-    6. **Verify it worked:**
+    **Step 3: Verify**
 
-    ```powershell
+    ```cmd
     examark --version
     ```
 
-    !!! tip "Quickest Option"
-        Skip the global install and just use `npx examark quiz.md` — it runs without installing!
+    !!! tip "Skip Installation"
+        Use `npx examark quiz.md` to run without installing!
 
-=== "Developer"
+=== "Linux"
 
-    For contributing or modifying the source:
+    **Ubuntu/Debian:**
+
+    ```bash
+    # Install Node.js 18+ (if needed)
+    curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+
+    # Install Examark
+    npm install -g examark
+    ```
+
+    **Fedora/RHEL:**
+
+    ```bash
+    # Install Node.js 18+ (if needed)
+    curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash -
+    sudo dnf install nodejs
+
+    # Install Examark
+    npm install -g examark
+    ```
+
+=== "Quarto Extension"
+
+    **For Quarto users authoring `.qmd` files:**
+
+    ```bash
+    quarto add Data-Wise/examark
+    ```
+
+    !!! warning "QTI Export Requires CLI"
+        The Quarto extension only provides authoring and preview formats (`exam-html`, `exam-pdf`, etc.).
+
+        **To export QTI packages for Canvas**, also install the CLI:
+
+        ```bash
+        npm install -g examark
+        ```
+
+        Then workflow is:
+        ```bash
+        quarto render exam.qmd --to exam-gfm  # Render
+        examark exam.md -o exam.qti.zip       # Convert
+        ```
+
+=== "Advanced"
+
+    **Install from source:**
 
     ```bash
     git clone https://github.com/Data-Wise/examark.git
@@ -74,7 +136,13 @@ This downloads and runs Examark on-demand. Perfect for trying it out!
     npm link
     ```
 
-### Verify Installation
+    **Install specific version:**
+
+    ```bash
+    npm install -g examark@0.6.6
+    ```
+
+### ✅ Verify Installation
 
 ```bash
 examark --version

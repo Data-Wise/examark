@@ -166,59 +166,272 @@ exam:
 
 ## Installation
 
-### Option 1: No Installation (Recommended for beginners)
+### 🚀 Choose Your Path
 
-Run directly without installing anything (requires [Node.js](https://nodejs.org/)):
+<table>
+<tr>
+<td width="33%">
+
+#### 📝 Markdown Only
+Write `.md` files → Canvas
+
+</td>
+<td width="33%">
+
+#### 📊 Quarto Only
+Author `.qmd` → HTML/PDF
+
+</td>
+<td width="33%">
+
+#### 📊🎯 Quarto + Canvas
+Author `.qmd` → Canvas
+
+</td>
+</tr>
+<tr>
+<td>
+
+**One-Line Install:**
+```bash
+npx examark quiz.md
+```
+No install needed!
+
+</td>
+<td>
+
+**One-Line Install:**
+```bash
+quarto add Data-Wise/examark
+```
+Extension only.
+
+</td>
+<td>
+
+**Two Steps:**
+```bash
+quarto add Data-Wise/examark
+npm install -g examark
+```
+Extension + CLI.
+
+</td>
+</tr>
+</table>
+
+---
+
+### 📦 Detailed Installation Guide
+
+<details open>
+<summary><b>⚡ One-Line (No Install) — Try It Now</b></summary>
+
+**For Markdown users who want to convert `.md` → QTI immediately:**
 
 ```bash
 npx examark quiz.md -o quiz.qti.zip
 ```
 
-This downloads and runs examark automatically. Perfect for trying it out!
+**What this does:**
+- Downloads `examark` temporarily to npm cache
+- Converts your markdown file to QTI
+- No permanent installation
+
+**Requirements:** [Node.js](https://nodejs.org/) ≥18 (see Windows/Mac setup below)
+
+**When to use:** Quick one-off conversions, trying examark without committing
+
+</details>
 
 ---
 
-### Option 2: Install Globally
+<details>
+<summary><b>👤 Average User — Permanent Install</b></summary>
 
-For frequent use, install once and run anytime:
+### For Markdown Users (Static Exams)
 
-**Mac (Homebrew):**
+Install once, use forever:
+
+**macOS:**
 ```bash
-brew tap data-wise/tap
-brew install examark
+# Option A: Homebrew (recommended)
+brew install data-wise/tap/examark
+
+# Option B: npm
+npm install -g examark
 ```
 
-**Windows / Mac / Linux (npm):**
+**Windows:**
 ```bash
 npm install -g examark
 ```
 
-After installing, just run:
+**Linux:**
+```bash
+npm install -g examark
+```
+
+**Usage:**
 ```bash
 examark quiz.md -o quiz.qti.zip
+examark *.md -o output/           # Batch convert
 ```
 
 ---
 
-### First Time on Windows?
+### For Quarto Users (Preview Only - No QTI)
 
-If you've never used Node.js before:
+Install Quarto extension for authoring and preview:
 
-1. **Download Node.js** from [nodejs.org](https://nodejs.org/) — click the big green "LTS" button
-2. **Run the installer** — accept all defaults, click Next through everything
-3. **Open Command Prompt** or PowerShell (search "cmd" in Start menu)
-4. **Verify it worked:** `node --version` (should show a version number)
-5. **Run examark:** `npx examark quiz.md -o quiz.qti.zip`
+```bash
+quarto add Data-Wise/examark
+```
 
-That's it! No complicated setup needed.
+**What you get:**
+- Formats: `exam-html`, `exam-pdf`, `exam-odt`, `exam-docx`, `exam-typst`
+- LaTeX math support
+- Solution toggle (`exam.solutions: true/false`)
+
+**What you DON'T get:** QTI conversion (see "Quarto + QTI" below)
+
+**Usage:**
+```bash
+quarto render exam.qmd --to exam-html    # Preview in browser
+quarto render exam.qmd --to exam-pdf     # Print version
+```
+
+---
+
+### For Quarto Users (Full Workflow - Preview + QTI)
+
+Install both extension (authoring) and CLI (QTI conversion):
+
+```bash
+# Step 1: Quarto extension
+quarto add Data-Wise/examark
+
+# Step 2: CLI tool
+npm install -g examark        # Windows/Linux
+brew install data-wise/tap/examark  # macOS (alternative)
+```
+
+**Complete workflow:**
+```bash
+# 1. Author exam
+vim exam.qmd
+
+# 2. Render to markdown
+quarto render exam.qmd --to exam-gfm
+
+# 3. Convert to QTI
+examark exam.md -o exam.qti.zip
+
+# 4. Upload to Canvas
+open exam.qti.zip  # Drag to Canvas → Import Content
+```
+
+> **💡 Tip:** Use `npx examark` instead of installing globally if you prefer
+
+</details>
+
+---
 
 <details>
-<summary><b>Advanced: Install from source</b></summary>
+<summary><b>🔰 First-Time Setup (Windows/Mac)</b></summary>
+
+### Windows Users
+
+**If you've never used Node.js:**
+
+1. **Install Node.js** → [nodejs.org](https://nodejs.org/)
+   - Click green **"LTS"** button
+   - Run installer, accept all defaults
+   - Click through everything
+
+2. **Open Terminal:**
+   - Press `Windows + R`
+   - Type `cmd` and press Enter
+
+3. **Test it works:**
+   ```cmd
+   node --version
+   ```
+   Should show: `v18.x.x` or higher
+
+4. **Use examark:**
+   ```cmd
+   npx examark quiz.md -o quiz.qti.zip
+   ```
+
+**Permanent install:**
+```cmd
+npm install -g examark
+```
+
+---
+
+### macOS Users
+
+**Recommended: Homebrew (easiest)**
+
+1. **Install Homebrew** (if not installed):
+   ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+
+2. **Install examark:**
+   ```bash
+   brew install data-wise/tap/examark
+   ```
+
+**Alternative: npm**
+
+1. **Install Node.js** → [nodejs.org](https://nodejs.org/)
+
+2. **Install examark:**
+   ```bash
+   npm install -g examark
+   ```
+
+</details>
+
+---
+
+<details>
+<summary><b>🛠️ Advanced Users</b></summary>
+
+### Install from Source
 
 ```bash
 git clone https://github.com/Data-Wise/examark.git
-cd examark && npm install && npm run build && npm link
+cd examark
+npm install
+npm run build
+npm link
 ```
+
+### Install Specific Version
+
+```bash
+npm install -g examark@0.6.6
+```
+
+### Update to Latest
+
+```bash
+npm update -g examark       # npm
+brew upgrade examark        # Homebrew
+```
+
+### Uninstall
+
+```bash
+npm uninstall -g examark    # npm
+brew uninstall examark      # Homebrew
+```
+
 </details>
 
 ---
@@ -275,39 +488,67 @@ Create `.examarkrc.json` for project defaults:
 
 ---
 
-## For Quarto Users
+## Quarto Integration
 
-Generate dynamic, randomized questions with R or Python:
+Generate dynamic, randomized questions with R or Python code.
+
+### Quick Start
 
 ```bash
-# Add to existing project
+# Add extension to existing project
 quarto add Data-Wise/examark
 
-# Or create new project from template
+# Or start from template
 quarto use template Data-Wise/examark
 ```
 
-**Quick Example:**
+> **⚠️ Note:** This only installs the Quarto extension (for authoring/preview).
+> To export QTI packages, also install the CLI: `npm install -g examark`
+
+### Example: Dynamic Questions
+
 ```yaml
 ---
-title: "My Exam"
-format: exam-gfm
+title: "Statistics Exam"
+format: exam-html      # Preview in browser
 exam:
-  qti: true
+  solutions: false
+  default-points: 1
 ---
 
-## 1. Random Question [2pts]
+## 1. Random Calculation [2pts]
 
-What is `r sample(1:10, 1)` + `r sample(1:10, 1)`?
+What is `r x <- sample(1:10, 1); x` + `r y <- sample(1:10, 1); y`?
 
-a) `r 5`
-b) `r 10` [x]
-c) `r 15`
+a) `r x + y - 2`
+b) `r x + y` [x]
+c) `r x + y + 2`
 ```
 
-**Available formats:** `exam-html`, `exam-pdf`, `exam-gfm`, `exam-odt`, `exam-docx`, `exam-typst`
+### Available Formats
 
-📖 [Quarto Extension Guide →](https://data-wise.github.io/examark/extensions/quarto/)
+| Format | Output | Use Case |
+|--------|--------|----------|
+| `exam-html` | HTML | Browser preview |
+| `exam-pdf` | PDF | Print exams |
+| `exam-gfm` | Markdown | QTI conversion (use with CLI) |
+| `exam-odt` | ODT | Google Docs, LibreOffice |
+| `exam-docx` | DOCX | Microsoft Word |
+| `exam-typst` | PDF | Modern typesetting |
+
+### Complete QTI Workflow
+
+```bash
+# 1. Render to markdown
+quarto render exam.qmd --to exam-gfm
+
+# 2. Convert to QTI (requires CLI installed)
+examark exam.md -o exam.qti.zip
+
+# 3. Upload to Canvas
+```
+
+📖 [Full Quarto Guide →](https://data-wise.github.io/examark/extensions/quarto/) · [Dynamic Examples →](https://data-wise.github.io/examark/tutorials/dynamic-exams/)
 
 ---
 
