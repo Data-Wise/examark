@@ -33,9 +33,9 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 **v0.6.0** (Dec 2025): Renamed from `examify` to `examark` to avoid company name conflict.
 
 **Backward Compatibility:**
-- Config files: Both `.examarkrc.json` and legacy `.examifyrc.json` supported
-- npm: `examify` deprecated with redirect message
-- Homebrew: `examify` formula deprecated
+- Config files: Both `.examarkrc.json` and `.examifyrc.json` supported
+- npm: `examify` package redirects to `examark`
+- Homebrew: `examify` formula redirects to `examark`
 - GitHub: Old URLs auto-redirect
 
 ## Project Status
@@ -595,11 +595,11 @@ docs/
 │   └── quarto.md              # Quarto extension guide
 ├── tutorials/                  # Step-by-step guides
 ├── starter/                    # Template documentation
+├── DESIGN.md                   # Documentation architecture
 ├── config.md                   # Configuration
 ├── emulator.md                 # Canvas emulator
 ├── reference.md                # CLI commands
 ├── troubleshooting.md          # Common issues
-├── formats.md                  # Legacy input formats
 └── contributing.md             # Developer guide
 ```
 

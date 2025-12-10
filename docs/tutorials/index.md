@@ -27,6 +27,6 @@ Speed up exam authoring in VS Code with custom snippets for question types and f
 ## Quick Links
 
 - [Getting Started](../getting-started.md) — First-time setup
-- [Input Formats](../formats.md) — Question syntax reference
+- [Markdown Syntax](../markdown/syntax.md) — Question syntax reference
 - [Quarto Extension](../extensions/quarto.md) — Full configuration options
 - [Commands Reference](../reference.md) — CLI options

@@ -74,7 +74,7 @@ npx examark quiz.md -o quiz.qti.zip
 
 ## What's Next?
 
-- [Input Formats](../formats.md) — Learn all question types
+- [Question Types](../markdown/question-types.md) — Learn all question types
 - [Templates](../starter/index.md) — Download ready-made examples
 - [Commands Reference](../reference.md) — All CLI options
 

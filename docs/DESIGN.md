@@ -38,7 +38,7 @@ Home                          # Landing page with features overview
 │   └── Quarto                # .qmd templates
 └── Resources/                # Additional materials
     ├── Troubleshooting       # Common issues
-    ├── Input Formats         # Legacy reference
+    ├── Site Design           # Documentation architecture
     └── Contributing          # Development guide
 ```
 
@@ -73,9 +73,9 @@ docs/
 │   └── quarto.md
 ├── stylesheets/              # Custom CSS
 │   └── extra.css
+├── DESIGN.md                 # Documentation architecture
 ├── config.md                 # Configuration
 ├── emulator.md               # Canvas emulator
-├── formats.md                # Legacy input formats
 ├── reference.md              # CLI reference
 ├── troubleshooting.md        # Common issues
 └── contributing.md           # Developer guide

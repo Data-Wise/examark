@@ -119,4 +119,4 @@ Examark supports two syntax styles that can be mixed in the same file:
 
 - [Getting Started](../getting-started.md) — Installation and first quiz
 - [Templates](../starter/index.md) — Ready-to-use examples
-- [Input Formats](../formats.md) — Complete reference (legacy page)
+- [Tutorials](../tutorials/index.md) — Step-by-step guides

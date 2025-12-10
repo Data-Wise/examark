@@ -223,7 +223,7 @@ See [Configuration](config.md) for all options.
 
 ## Next Steps
 
-- [Input Formats](formats.md) — Complete question syntax guide
+- [Markdown Syntax](markdown/syntax.md) — Complete question syntax guide
 - [Commands Reference](reference.md) — All CLI options
 - [Configuration](config.md) — Project settings
 - [Canvas Emulator](emulator.md) — Pre-import validation

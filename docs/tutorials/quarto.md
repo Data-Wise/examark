@@ -287,4 +287,4 @@ Ensure you have:
 
 - [Dynamic Exams Tutorial](dynamic-exams.md) — Advanced R/Python techniques
 - [Extension Reference](../extensions/quarto.md) — Full configuration options
-- [Input Formats](../formats.md) — All question type syntax
+- [Markdown Syntax](../markdown/syntax.md) — All question type syntax

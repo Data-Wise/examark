@@ -130,6 +130,5 @@ nav:
       - Quarto: starter/quarto.md
   - Resources:
       - Troubleshooting: troubleshooting.md
-      - Input Formats (Legacy): formats.md
       - Site Design: DESIGN.md
       - Contributing: contributing.md

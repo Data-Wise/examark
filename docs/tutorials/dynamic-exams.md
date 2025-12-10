@@ -369,5 +369,5 @@ Download ready-to-use templates:
 ## Next Steps
 
 - [Extension Reference](../extensions/quarto.md) — All configuration options
-- [Input Formats](../formats.md) — Question type syntax
+- [Markdown Syntax](../markdown/syntax.md) — Question type syntax
 - [Troubleshooting](../troubleshooting.md) — Common issues

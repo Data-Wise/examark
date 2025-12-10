@@ -52,8 +52,8 @@ describe('Documentation Website Tests', () => {
       expect(existsSync(join(docsDir, 'getting-started.md'))).toBe(true);
     });
 
-    it('should have formats.md input guide', () => {
-      expect(existsSync(join(docsDir, 'formats.md'))).toBe(true);
+    it('should have markdown syntax guide', () => {
+      expect(existsSync(join(docsDir, 'markdown', 'syntax.md'))).toBe(true);
     });
 
     it('should have reference.md commands reference', () => {
@@ -149,30 +149,30 @@ describe('Documentation Website Tests', () => {
     });
   });
 
-  describe('Formats Guide Content', () => {
+  describe('Markdown Syntax Guide Content', () => {
     it('should document all question types', () => {
-      const content = readFileSync(join(docsDir, 'formats.md'), 'utf-8');
+      const content = readFileSync(join(docsDir, 'markdown', 'syntax.md'), 'utf-8');
       expect(content).toContain('Multiple Choice');
-      expect(content).toContain('True / False');
-      expect(content).toContain('Multiple Answers');
+      expect(content).toContain('True/False');
+      expect(content).toContain('Multiple Answer');
       expect(content).toContain('Short Answer');
       expect(content).toContain('Essay');
     });
 
     it('should have answer marker documentation', () => {
-      const content = readFileSync(join(docsDir, 'formats.md'), 'utf-8');
-      expect(content).toContain('**Bold**');
+      const content = readFileSync(join(docsDir, 'markdown', 'syntax.md'), 'utf-8');
+      expect(content).toContain('[x]');
       expect(content).toContain('[correct]');
     });
 
     it('should document LaTeX math', () => {
-      const content = readFileSync(join(docsDir, 'formats.md'), 'utf-8');
+      const content = readFileSync(join(docsDir, 'markdown', 'latex.md'), 'utf-8');
       expect(content).toContain('LaTeX');
-      expect(content).toContain('$...$');
+      expect(content).toContain('inline math');
     });
 
     it('should document image handling', () => {
-      const content = readFileSync(join(docsDir, 'formats.md'), 'utf-8');
+      const content = readFileSync(join(docsDir, 'markdown', 'images.md'), 'utf-8');
       expect(content).toContain('Images');
       expect(content).toContain('bundled');
     });
@@ -191,8 +191,8 @@ describe('Documentation Website Tests', () => {
       expect(existsSync(join(siteDir, 'getting-started', 'index.html'))).toBe(true);
     });
 
-    it('should generate formats page', () => {
-      expect(existsSync(join(siteDir, 'formats', 'index.html'))).toBe(true);
+    it('should generate markdown syntax page', () => {
+      expect(existsSync(join(siteDir, 'markdown', 'syntax', 'index.html'))).toBe(true);
     });
 
     it('should generate tutorials section', () => {

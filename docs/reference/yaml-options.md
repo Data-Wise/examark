@@ -270,6 +270,6 @@ exam-html:
 
 ## See Also
 
-- [Input Formats](../formats.md) - Question syntax reference
+- [Markdown Syntax](../markdown/syntax.md) - Question syntax reference
 - [Quarto Extension](../extensions/quarto.md) - Installation and setup
 - [Templates](../starter/index.md) - Ready-to-use examples

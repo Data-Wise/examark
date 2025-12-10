@@ -127,4 +127,4 @@ examark emulate-canvas quiz.qti.zip
 
 - Check [GitHub Issues](https://github.com/Data-Wise/examark/issues)
 - See [Contributing Guide](contributing.md) to report bugs
-- Review [Input Formats](formats.md) for syntax reference
+- Review [Markdown Syntax](markdown/syntax.md) for syntax reference
