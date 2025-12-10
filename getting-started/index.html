@@ -566,6 +566,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#which-installation-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which Installation Path?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -578,10 +589,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#quick-start-no-install-needed" class="md-nav__link">
+  <a href="#one-line-no-install" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick Start (No Install Needed)
+        ⚡ One-Line (No Install)
       
     </span>
   </a>
@@ -592,7 +603,7 @@
   <a href="#permanent-install" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Permanent Install
+        📦 Permanent Install
       
     </span>
   </a>
@@ -603,7 +614,7 @@
   <a href="#verify-installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verify Installation
+        ✅ Verify Installation
       
     </span>
   </a>
@@ -1818,6 +1829,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#which-installation-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which Installation Path?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1830,10 +1852,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#quick-start-no-install-needed" class="md-nav__link">
+  <a href="#one-line-no-install" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick Start (No Install Needed)
+        ⚡ One-Line (No Install)
       
     </span>
   </a>
@@ -1844,7 +1866,7 @@
   <a href="#permanent-install" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Permanent Install
+        📦 Permanent Install
       
     </span>
   </a>
@@ -1855,7 +1877,7 @@
   <a href="#verify-installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verify Installation
+        ✅ Verify Installation
       
     </span>
   </a>
@@ -2034,64 +2056,124 @@
 
 
 <h1 id="getting-started">Getting Started</h1>
-<p>Get up and running with Examark in minutes.</p>
+<p>Get up and running with Examark in under 5 minutes.</p>
+<hr />
+<h2 id="which-installation-path">Which Installation Path?</h2>
+<p>Choose based on your workflow:</p>
+<table>
+<thead>
+<tr>
+<th>You Want To...</th>
+<th>Install This</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Convert <code>.md</code> files to Canvas quizzes</strong></td>
+<td>CLI tool (see below)</td>
+</tr>
+<tr>
+<td><strong>Author <code>.qmd</code> files with R/Python (preview only)</strong></td>
+<td><code>quarto add Data-Wise/examark</code></td>
+</tr>
+<tr>
+<td><strong>Author <code>.qmd</code> files AND export to Canvas</strong></td>
+<td>Both extension + CLI</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2 id="installation">Installation</h2>
-<h3 id="quick-start-no-install-needed">Quick Start (No Install Needed)</h3>
-<p>Run Examark directly using npx (requires Node.js):</p>
+<h3 id="one-line-no-install">⚡ One-Line (No Install)</h3>
+<p><strong>Try it now</strong> — no installation required:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>npx<span class="w"> </span>examark<span class="w"> </span>quiz.md<span class="w"> </span>-o<span class="w"> </span>quiz.qti.zip
 </span></code></pre></div>
-<p>This downloads and runs Examark on-demand. Perfect for trying it out!</p>
+<p>Perfect for one-time conversions or trying Examark.</p>
+<p><strong>Requirements:</strong> <a href="https://nodejs.org/">Node.js</a> ≥18</p>
 <hr />
-<h3 id="permanent-install">Permanent Install</h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Mac (Homebrew)</label><label for="__tabbed_1_2">Mac/Linux (npm)</label><label for="__tabbed_1_3">Windows</label><label for="__tabbed_1_4">Developer</label></div>
+<h3 id="permanent-install">📦 Permanent Install</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">macOS</label><label for="__tabbed_1_2">Windows</label><label for="__tabbed_1_3">Linux</label><label for="__tabbed_1_4">Quarto Extension</label><label for="__tabbed_1_5">Advanced</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><strong>Recommended for Mac users:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>brew<span class="w"> </span>tap<span class="w"> </span>data-wise/tap
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>brew<span class="w"> </span>install<span class="w"> </span>examark
+<p><strong>Option 1: Homebrew (Recommended)</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>brew<span class="w"> </span>install<span class="w"> </span>data-wise/tap/examark
 </span></code></pre></div>
-<p>Homebrew handles the Node.js dependency automatically.</p>
-</div>
-<div class="tabbed-block">
+<p>Installs CLI + dependencies. No Node.js setup needed.</p>
+<p><strong>Option 2: npm</strong></p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>examark
 </span></code></pre></div>
 <p>Requires <a href="https://nodejs.org/">Node.js 18+</a>.</p>
 </div>
 <div class="tabbed-block">
-<p><strong>Never used Node.js before?</strong> No problem! Here's the complete guide:</p>
+<p><strong>Step 1: Install Node.js</strong> (if not already installed)</p>
 <ol>
-<li><strong>Download Node.js</strong> from <a href="https://nodejs.org/">nodejs.org</a> — click the big green "LTS" button</li>
-<li><strong>Run the installer</strong> — accept all defaults, click Next through everything</li>
-<li><strong>Open Command Prompt</strong> — search "cmd" in Start menu</li>
-<li><strong>Verify Node installed:</strong> type <code>node --version</code> and press Enter</li>
-<li><strong>Install examark:</strong></li>
+<li>Go to <a href="https://nodejs.org/">nodejs.org</a></li>
+<li>Click green <strong>"LTS"</strong> button (recommended version)</li>
+<li>Run installer with all defaults</li>
+<li>Open <strong>Command Prompt</strong> (<code>Windows + R</code> → type <code>cmd</code>)</li>
+<li>Verify: <code>node --version</code> (should show v18.x.x+)</li>
 </ol>
-<div class="language-powershell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">npm</span> <span class="n">install</span> <span class="n">-g</span> <span class="n">examark</span>
+<p><strong>Step 2: Install Examark</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>npm install -g examark
 </span></code></pre></div>
-<ol>
-<li><strong>Verify it worked:</strong></li>
-</ol>
-<div class="language-powershell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">examark</span> <span class="p">-</span><span class="n">-version</span>
+<p><strong>Step 3: Verify</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>examark --version
 </span></code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Quickest Option</p>
-<p>Skip the global install and just use <code>npx examark quiz.md</code> — it runs without installing!</p>
+<p class="admonition-title">Skip Installation</p>
+<p>Use <code>npx examark quiz.md</code> to run without installing!</p>
 </div>
 </div>
 <div class="tabbed-block">
-<p>For contributing or modifying the source:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Data-Wise/examark.git
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>examark
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>npm<span class="w"> </span>install
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>npm<span class="w"> </span>run<span class="w"> </span>build
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>npm<span class="w"> </span>link
+<p><strong>Ubuntu/Debian:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Install Node.js 18+ (if needed)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://deb.nodesource.com/setup_lts.x<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>-E<span class="w"> </span>bash<span class="w"> </span>-
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nodejs
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Install Examark</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>examark
+</span></code></pre></div>
+<p><strong>Fedora/RHEL:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Install Node.js 18+ (if needed)</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://rpm.nodesource.com/setup_lts.x<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>bash<span class="w"> </span>-
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>nodejs
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># Install Examark</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>examark
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><strong>For Quarto users authoring <code>.qmd</code> files:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>quarto<span class="w"> </span>add<span class="w"> </span>Data-Wise/examark
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">QTI Export Requires CLI</p>
+<p>The Quarto extension only provides authoring and preview formats (<code>exam-html</code>, <code>exam-pdf</code>, etc.).</p>
+<p><strong>To export QTI packages for Canvas</strong>, also install the CLI:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>examark
+</span></code></pre></div>
+<p>Then workflow is:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>quarto<span class="w"> </span>render<span class="w"> </span>exam.qmd<span class="w"> </span>--to<span class="w"> </span>exam-gfm<span class="w">  </span><span class="c1"># Render</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>examark<span class="w"> </span>exam.md<span class="w"> </span>-o<span class="w"> </span>exam.qti.zip<span class="w">       </span><span class="c1"># Convert</span>
+</span></code></pre></div></p>
+</div>
+</div>
+<div class="tabbed-block">
+<p><strong>Install from source:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Data-Wise/examark.git
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">cd</span><span class="w"> </span>examark
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>npm<span class="w"> </span>install
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>npm<span class="w"> </span>run<span class="w"> </span>build
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>npm<span class="w"> </span>link
+</span></code></pre></div>
+<p><strong>Install specific version:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>examark@0.6.6
 </span></code></pre></div>
 </div>
 </div>
 </div>
-<h3 id="verify-installation">Verify Installation</h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>examark<span class="w"> </span>--version
+<h3 id="verify-installation">✅ Verify Installation</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>examark<span class="w"> </span>--version
 </span></code></pre></div>
 <hr />
 <h2 id="first-conversion">First Conversion</h2>
@@ -2100,61 +2182,61 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Clean Syntax (Recommended)</label><label for="__tabbed_2_2">Traditional Syntax</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="gh"># Statistics Quiz</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="gh"># Section: Multiple Choice</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">1.</span> [MC] What is 2 + 2? [2pts]
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>a) Three
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>b) Four [x] // Correct answer
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>c) Five
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="k">2.</span> [TF] The sky is blue. [1pt]
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>a) True [x]
-</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>b) False
-</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
-</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="k">3.</span> [Essay, 10pts] Explain the water cycle.
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="gh"># Statistics Quiz</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="gh"># Section: Multiple Choice</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="k">1.</span> [MC] What is 2 + 2? [2pts]
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>a) Three
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>b) Four [x] // Correct answer
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>c) Five
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="k">2.</span> [TF] The sky is blue. [1pt]
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>a) True [x]
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>b) False
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="k">3.</span> [Essay, 10pts] Explain the water cycle.
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="gh"># Statistics Quiz</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="gh"># Section: Multiple Choice</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="gu">## 1. What is 2 + 2?</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>a) Three
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>b) <span class="gs">**Four**</span> ✓
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>c) Five
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="gu">## 2. [TF] The sky is blue. → True</span>
-</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>
-</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="gu">## 3. [Essay, 10pts] Explain the water cycle.</span>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="gh"># Statistics Quiz</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="gh"># Section: Multiple Choice</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="gu">## 1. What is 2 + 2?</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>a) Three
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>b) <span class="gs">**Four**</span> ✓
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>c) Five
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="gu">## 2. [TF] The sky is blue. → True</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="gu">## 3. [Essay, 10pts] Explain the water cycle.</span>
 </span></code></pre></div>
 </div>
 </div>
 </div>
 <h3 id="2-convert-to-qti">2. Convert to QTI</h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>examark<span class="w"> </span>quiz.md<span class="w"> </span>-o<span class="w"> </span>quiz.qti.zip
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>examark<span class="w"> </span>quiz.md<span class="w"> </span>-o<span class="w"> </span>quiz.qti.zip
 </span></code></pre></div>
 <p>Output:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>✓ Generated QTI 1.2 Package: quiz.qti.zip
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  • 3 questions
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  • 1 section
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>  • 0 images bundled
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>✓ Generated QTI 1.2 Package: quiz.qti.zip
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>  • 3 questions
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>  • 1 section
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>  • 0 images bundled
 </span></code></pre></div>
 <h3 id="3-verify-the-package">3. Verify the package</h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>examark<span class="w"> </span>emulate-canvas<span class="w"> </span>quiz.qti.zip
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>examark<span class="w"> </span>emulate-canvas<span class="w"> </span>quiz.qti.zip
 </span></code></pre></div>
 <p>Output:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>🎓 Canvas Import Emulator
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>📊 Analysis Results:
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>   Items scanned: 3
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>   Resources: 4
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>   Has test structure: Yes
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>✅ PREDICTION: Canvas import will likely SUCCEED
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>🎓 Canvas Import Emulator
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>📊 Analysis Results:
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>   Items scanned: 3
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>   Resources: 4
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>   Has test structure: Yes
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>✅ PREDICTION: Canvas import will likely SUCCEED
 </span></code></pre></div>
 <hr />
 <h2 id="templates">Templates</h2>
@@ -2200,19 +2282,19 @@
 <h2 id="other-export-options">Other Export Options</h2>
 <h3 id="plain-text-paper-exams">Plain Text (Paper Exams)</h3>
 <p>Export for printing:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>examark<span class="w"> </span>quiz.md<span class="w"> </span>-f<span class="w"> </span>text<span class="w"> </span>-o<span class="w"> </span>quiz.txt
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>examark<span class="w"> </span>quiz.md<span class="w"> </span>-f<span class="w"> </span>text<span class="w"> </span>-o<span class="w"> </span>quiz.txt
 </span></code></pre></div>
 <h3 id="batch-conversion">Batch Conversion</h3>
 <p>Convert multiple files at once:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>examark<span class="w"> </span>*.md<span class="w"> </span>-o<span class="w"> </span>output/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>examark<span class="w"> </span>*.md<span class="w"> </span>-o<span class="w"> </span>output/
 </span></code></pre></div>
 <h3 id="project-configuration">Project Configuration</h3>
 <p>Create <code>.examarkrc.json</code> for project settings:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">{</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="nt">&quot;defaultPoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span><span class="nt">&quot;outputDir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;output&quot;</span><span class="p">,</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span><span class="nt">&quot;validate&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">{</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span><span class="nt">&quot;defaultPoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span><span class="nt">&quot;outputDir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;output&quot;</span><span class="p">,</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">  </span><span class="nt">&quot;validate&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>See <a href="../config/">Configuration</a> for all options.</p>
 <hr />
