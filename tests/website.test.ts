@@ -209,9 +209,14 @@ describe('Documentation Website Tests', () => {
   });
 
   describe('Navigation Structure', () => {
-    it('should have Guide section in nav', () => {
+    it('should have Markdown section in nav', () => {
       const config = readFileSync(join(__dirname, '..', 'mkdocs.yml'), 'utf-8');
-      expect(config).toContain('Guide:');
+      expect(config).toContain('Markdown:');
+    });
+
+    it('should have CLI Reference section in nav', () => {
+      const config = readFileSync(join(__dirname, '..', 'mkdocs.yml'), 'utf-8');
+      expect(config).toContain('CLI Reference:');
     });
 
     it('should have Tutorials section in nav', () => {
