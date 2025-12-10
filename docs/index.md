@@ -40,7 +40,7 @@
 
     Predict import success *before* uploading. Catch errors early.
 
-- :material-format-list-checks:{ .lg .middle } **[8 Question Types](question-types.md)**
+- :material-format-list-checks:{ .lg .middle } **[8 Question Types](markdown/question-types.md)**
 
     ---
 
@@ -183,7 +183,7 @@ See [Commands Reference](reference.md) for all options.
 
     Installation and your first quiz in 5 minutes.
 
-- :material-format-list-bulleted:{ .lg .middle } **[Input Formats](formats.md)**
+- :material-format-list-bulleted:{ .lg .middle } **[Markdown Syntax](markdown/index.md)**
 
     Complete question syntax reference.
 

@@ -349,6 +349,6 @@ Include:
 
 ## See Also
 
-- [Input Formats](formats.md) — Complete syntax reference
-- [Getting Started](getting-started.md) — Your first quiz
-- [Templates](starter/index.md) — Ready-to-use examples
+- [Syntax Reference](syntax.md) — Complete syntax reference
+- [Getting Started](../getting-started.md) — Your first quiz
+- [Templates](../starter/index.md) — Ready-to-use examples

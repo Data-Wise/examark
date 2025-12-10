@@ -102,16 +102,21 @@ plugins:
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
-  - User Guide:
-      - Question Types: question-types.md
-      - Input Formats: formats.md
-      - Commands Reference: reference.md
+  - Markdown:
+      - markdown/index.md
+      - Question Types: markdown/question-types.md
+      - Syntax Reference: markdown/syntax.md
+      - LaTeX Math: markdown/latex.md
+      - Images & Media: markdown/images.md
+      - Feedback: markdown/feedback.md
+      - Document Structure: markdown/structure.md
+  - CLI Reference:
+      - Commands: reference.md
       - YAML Options: reference/yaml-options.md
       - Configuration: config.md
-      - Troubleshooting: troubleshooting.md
+      - Canvas Emulator: emulator.md
   - Quarto Extension:
       - Overview: extensions/quarto.md
-      - Canvas Workflow: emulator.md
   - Tutorials:
       - tutorials/index.md
       - Your First Quiz: tutorials/first-quiz.md
@@ -122,4 +127,7 @@ nav:
       - starter/index.md
       - Markdown: starter/markdown.md
       - Quarto: starter/quarto.md
-  - Contributing: contributing.md
+  - Resources:
+      - Troubleshooting: troubleshooting.md
+      - Input Formats (Legacy): formats.md
+      - Contributing: contributing.md
