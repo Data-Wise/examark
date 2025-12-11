@@ -1,0 +1,82 @@
+#!/bin/bash
+# qti-render: Render Quarto exam and automatically generate QTI package
+#
+# Usage: ./qti-render FINAL_EXAM_EXAMARK.qmd
+#
+# Only generates QTI if exam.qti: true is set in the YAML frontmatter
+
+set -e
+
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 <exam.qmd>"
+  exit 1
+fi
+
+QMD_FILE="$1"
+BASE="${QMD_FILE%.qmd}"
+MD_FILE="${BASE}.md"
+QTI_FILE="${BASE}.qti.zip"
+
+# Check if exam.qti: true is set in YAML frontmatter
+check_qti_enabled() {
+  local file="$1"
+
+  # Extract YAML frontmatter (between --- markers)
+  local yaml=$(awk '/^---$/{flag=!flag; next} flag' "$file")
+
+  # Check for exam.qti: true or exam:\n  qti: true
+  if echo "$yaml" | grep -q "qti:[[:space:]]*true"; then
+    return 0  # true
+  else
+    return 1  # false
+  fi
+}
+
+echo "📝 Rendering Quarto document..."
+quarto render "$QMD_FILE" --to exam-gfm
+
+if [ -f "$MD_FILE" ]; then
+
+  # Check if QTI generation is enabled
+  if check_qti_enabled "$QMD_FILE"; then
+    echo ""
+    echo "📦 Generating QTI package..."
+
+    if command -v examark &> /dev/null; then
+      examark "$MD_FILE" -o "$QTI_FILE"
+    elif [ -f "dist/index.js" ]; then
+      node dist/index.js "$MD_FILE" -o "$QTI_FILE"
+    else
+      echo "❌ examark not found. Install with: npm install -g examark"
+      exit 1
+    fi
+
+    echo ""
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "✅ Exam Generated Successfully"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "📁 Files created:"
+    echo "   • $MD_FILE (markdown)"
+    echo "   • $QTI_FILE (Canvas QTI package)"
+    echo ""
+    echo "📤 Next step: Upload $QTI_FILE to Canvas"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+  else
+    echo ""
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "ℹ️  QTI Generation Skipped"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "📁 File created:"
+    echo "   • $MD_FILE (markdown only)"
+    echo ""
+    echo "💡 To enable QTI generation, add to your YAML:"
+    echo "   exam:"
+    echo "     qti: true"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+  fi
+else
+  echo "❌ Markdown file not found: $MD_FILE"
+  exit 1
+fi
