@@ -229,7 +229,7 @@ Answer: 3.14 ± 0.01
 
 ### Short Answer
 
-Multiple accepted answers:
+Multiple accepted answers (two equivalent syntaxes):
 
 ```markdown
 1. [Short] Capital of France? [2pts]
@@ -237,6 +237,15 @@ Multiple accepted answers:
 Answer: Paris
 Answer: paris
 Answer: PARIS
+```
+
+Or using `=` syntax (one answer per line):
+
+```markdown
+2. [Short] What pattern indicates unequal variance? [2pts]
+= funnel
+= funnel shape
+= fan shape
 ```
 
 ---

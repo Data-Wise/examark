@@ -11,7 +11,17 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 - **Version**: 0.6.6 | **Tests**: 249 total (14 new torture tests: 11 passing, 3 with validator bugs)
 - **Distribution**: npm (`examark`), Homebrew (`data-wise/tap/examark`), Quarto extension
 
-## Recent Changes (Dec 2025)
+## Recent Changes (Mar 2026)
+
+**Short Answer `= answer` Syntax (Mar 4):**
+- Added: `= answer` syntax for short answer questions with multiple acceptable answers
+- Each `=` line is parsed as a separate correct answer variant
+- QTI generator now emits separate `<respcondition>` blocks per acceptable answer
+- Both `Answer: text` (inline) and `= text` (multi-line) syntaxes supported
+- Files changed: `src/parser/markdown.ts`, `src/generator/qti.ts`
+- Tests: 262 passing (no regressions)
+
+## Previous Changes (Dec 2025)
 
 **Quarto GFM Compatibility Enhancements (Dec 11):**
 - Fixed: Inline code formatting - backticks now convert to `<code>` tags in QTI
@@ -452,6 +462,22 @@ The correlation r ranges from [blank1] to [blank2].
 | Inline `//` | `a) Answer [x] // This is why it's correct` |
 | Blockquote `>` | Line after option: `> Feedback text` |
 | General | `> [feedback] Shown after submission` |
+
+### Short Answer Formats
+
+Two syntaxes for acceptable answers:
+
+| Syntax           | Example                  |
+|------------------|--------------------------|
+| Inline `Answer:` | `Answer: Paris`          |
+| Multi-line `=`   | `= Paris` (one per line) |
+
+```markdown
+34. [Short] What analysis examines one factor at each level of another? [2pts]
+= simple effects
+= simple effect analysis
+= simple effects analysis
+```
 
 ### Matching Separators
 

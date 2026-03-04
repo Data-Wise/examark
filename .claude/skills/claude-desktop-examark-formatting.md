@@ -124,6 +124,13 @@ Answer: Rome
 Answer: rome
 ```
 
+Or using `=` syntax (one answer per line):
+```markdown
+6. [Short] What is the capital of Italy? [1pt]
+= Rome
+= rome
+```
+
 ### Numerical
 ```markdown
 7. [Num] What is 10 × 5? [2pts]

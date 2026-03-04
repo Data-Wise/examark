@@ -63,10 +63,12 @@ function escapeXmlPreserveLaTeX(text: string, imageResolver?: ImageResolver): st
   result = result.replace(/<a\s+href=["']#[^"']*["']\s+class=["']quarto-xref["'][^>]*>(.*?)<\/a>/gi, '$1');
 
   // Extract and preserve inline code (backticks) as placeholders
+  // The code content must be XML-escaped so <, >, & are valid in the QTI XML
   const codeSnippets: string[] = [];
   result = result.replace(/`([^`]+)`/g, (match, code) => {
     const placeholder = `__CODE_PLACEHOLDER_${codeSnippets.length}__`;
-    codeSnippets.push(`<code>${code}</code>`);
+    const escapedCode = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    codeSnippets.push(`<code>${escapedCode}</code>`);
     return placeholder;
   });
 
@@ -335,10 +337,11 @@ function generateResprocessing(
   }
 
   // Short Answer / Fill in Blank: Check against TEXT value
+  // Multiple acceptable answers use multiple varequal in one conditionvar (OR logic)
   if (question.type === 'short_answer' || question.type === 'fill_in_blank') {
-    const correctOption = generatedOptions.find(go => go.option.isCorrect);
+    const correctOptions = generatedOptions.filter(go => go.option.isCorrect);
 
-    if (!correctOption) {
+    if (correctOptions.length === 0) {
       return `<resprocessing>` +
         `<outcomes>` +
         `<decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>` +
@@ -346,13 +349,17 @@ function generateResprocessing(
         `</resprocessing>`;
     }
 
+    const varequals = correctOptions.map(co =>
+      `<varequal respident="response1">${escapeXmlPreserveLaTeX(co.option.text)}</varequal>`
+    ).join('');
+
     return `<resprocessing>` +
       `<outcomes>` +
       `<decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>` +
       `</outcomes>` +
       `<respcondition continue="No">` +
       `<conditionvar>` +
-      `<varequal respident="response1">${escapeXmlPreserveLaTeX(correctOption.option.text)}</varequal>` +
+      varequals +
       `</conditionvar>` +
       `<setvar actoin="Set" varname="SCORE">100</setvar>` +
       `</respcondition>` +
@@ -362,10 +369,16 @@ function generateResprocessing(
   const correctOptions = generatedOptions.filter(go => go.option.isCorrect);
   if (correctOptions.length === 0) return '';
 
-  // For multiple_answers questions, use "and" logic for all correct answers
-  if (question.type === 'multiple_answers' && correctOptions.length > 1) {
-    const varequals = correctOptions.map(co =>
+  // For multiple_answers questions: correct options must be selected AND incorrect must NOT be selected
+  if (question.type === 'multiple_answers' && correctOptions.length > 0) {
+    const incorrectOptions = generatedOptions.filter(go => !go.option.isCorrect);
+
+    const correctVarequals = correctOptions.map(co =>
       `<varequal respident="response1">${co.ident}</varequal>`
+    ).join('');
+
+    const incorrectNotVarequals = incorrectOptions.map(io =>
+      `<not><varequal respident="response1">${io.ident}</varequal></not>`
     ).join('');
 
     return `<resprocessing>` +
@@ -374,7 +387,7 @@ function generateResprocessing(
       `</outcomes>` +
       `<respcondition continue="No">` +
       `<conditionvar>` +
-      `<and>${varequals}</and>` +
+      `<and>${correctVarequals}${incorrectNotVarequals}</and>` +
       `</conditionvar>` +
       `<setvar actoin="Set" varname="SCORE">100</setvar>` +
       `</respcondition>` +
@@ -476,11 +489,12 @@ function generateQuestionXml(question: Question, imageResolver?: ImageResolver):
       `</response_str>`;
   } else {
     // Multiple choice, multiple answers, true/false
+    const cardinality = question.type === 'multiple_answers' ? 'Multiple' : 'Single';
     const escapedStem = escapeXmlPreserveLaTeX(question.stem, imageResolver);
     presentationContent = `<material>` +
       `<mattext texttype="text/html">${escapedStem}</mattext>` +
       `</material>` +
-      `<response_lid ident="response1" rcardinality="Single">` +
+      `<response_lid ident="response1" rcardinality="${cardinality}">` +
       `<render_choice>` +
       `${generateOptionsXml(generatedOptions)}` +
       `</render_choice>` +
