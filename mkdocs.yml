@@ -115,11 +115,13 @@ nav:
       - YAML Options: reference/yaml-options.md
       - Configuration: config.md
       - Canvas Emulator: emulator.md
+      - Canvas Quick Reference: reference/REFCARD-CANVAS.md
   - Quarto Extension:
       - Overview: extensions/quarto.md
   - Tutorials:
       - tutorials/index.md
       - Your First Quiz: tutorials/first-quiz.md
+      - Canvas Workflow: tutorials/canvas-workflow.md
       - Item Banks & Random Quizzes: tutorials/item-banks.md
       - R & Quarto: tutorials/quarto.md
       - Dynamic Exams: tutorials/dynamic-exams.md
