@@ -112,7 +112,7 @@ Fill-in-the-blank with typed response. Multiple accepted answers supported.
     Answer: H2O
     ```
 
-=== "Multiple Accepted Answers"
+=== "Multiple Accepted Answers (inline)"
 
     ```markdown
     6. [Short] What is the SI unit of force? [2pts]
@@ -121,6 +121,16 @@ Fill-in-the-blank with typed response. Multiple accepted answers supported.
     Answer: N
     Answer: newton
     Answer: newtons
+    ```
+
+=== "Multiple Accepted Answers (= syntax)"
+
+    ```markdown
+    7. [Short] What pattern indicates unequal variance? [2pts]
+    = funnel
+    = funnel shape
+    = fan shape
+    = megaphone
     ```
 
 **Aliases:** `[ShortAnswer]`, `[FillIn]`, `[FITB]`, `[FIB]`
@@ -288,7 +298,7 @@ Multiple blanks within a single question stem.
 | Multiple Choice | `[MC]` | `[x]`, `**bold**`, `✓` | Single best answer |
 | True/False | `[TF]` | `→ True/False` or `[x]` | Binary facts |
 | Multiple Answers | `[MA]` | `*` prefix on each | Select all that apply |
-| Short Answer | `[Short]` | `Answer: text` | Fill in the blank |
+| Short Answer | `[Short]` | `Answer: text` or `= text` | Fill in the blank |
 | Numerical | `[Num]` | `Answer: N ± tolerance` | Calculated values |
 | Essay | `[Essay]` | None (manual grade) | Open-ended response |
 | Matching | `[Match]` | `item => match` | Pair relationships |

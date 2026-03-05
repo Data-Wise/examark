@@ -12,7 +12,10 @@ examark emulate-canvas your-package.qti.zip
 
 | Check | Severity | Description |
 |-------|----------|-------------|
-| Correct answer defined | Error | Choice questions must have `correctResponse` |
+| Correct answer defined | Error | MC/TF questions must have a correct answer marked |
+| MA cardinality | Error | Multiple Answers questions must use `rcardinality="Multiple"` |
+| MA incorrect exclusion | Error | MA resprocessing must include `<not>` for each incorrect option |
+| Short answer answers | Error | Short answer questions must have at least one accepted answer |
 | Supported interactions | Error | Canvas only supports choice, text entry, extended text |
 | Image references | Error | All image files must exist in the package |
 | Stem content | Error | Questions must have non-empty text |
@@ -20,6 +23,7 @@ examark emulate-canvas your-package.qti.zip
 | Security | Error | No XSS vectors (`<script>`, `javascript:`) allowed |
 | Path Safety | Error | Resources cannot use `../` traversal |
 | Identifier format | Warning | Special characters may cause issues |
+| MC multiple correct | Warning | Canvas uses only first correct answer for MC questions |
 | responseProcessing | Warning | Manual grading needed if missing |
 
 ## Example Output
@@ -61,10 +65,22 @@ If images don't appear in Canvas after import:
 
 ### "Couldn't determine correct answers"
 
-This error means Canvas can't find the `correctResponse` element:
+This error means Canvas can't find the `correctResponse` element or the QTI structure is wrong for the question type:
 
-1. Mark at least one answer as correct in your Markdown
-2. Use `[correct]` suffix, checkmark `✓`, or bold `**answer**`
+**For Multiple Choice / True-False:**
+
+1. Mark exactly one answer as correct in your Markdown
+2. Use `[correct]` suffix, checkmark `✓`, or `[x]` marker
+
+**For Multiple Answers (`[MA]`):**
+
+1. Mark 2 or more answers as correct with `*` prefix
+2. Ensure at least 2 correct options are defined — Canvas requires this for MA questions
+
+**For Short Answer (`[Short]`):**
+
+1. Add accepted answer(s) using `Answer: text` or `= text` syntax
+2. Multiple accepted answers: use `= answer` on separate lines
 
 ## Pro Tips
 

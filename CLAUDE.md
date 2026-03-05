@@ -8,10 +8,43 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 
 - **Repo**: Data-Wise/examark
 - **Docs**: https://data-wise.github.io/examark/
-- **Version**: 0.6.6 | **Tests**: 249 total (14 new torture tests: 11 passing, 3 with validator bugs)
+- **Version**: 0.6.6 | **Tests**: 265 passing (0 failures — all torture-quarto tests now fixed)
 - **Distribution**: npm (`examark`), Homebrew (`data-wise/tap/examark`), Quarto extension
 
-## Recent Changes (Dec 2025)
+## Recent Changes (Mar 2026)
+
+**Short Answer `= answer` Syntax (Mar 4):**
+- Added: `= answer` syntax for short answer questions with multiple acceptable answers
+- Each `=` line is parsed as a separate correct answer variant
+- QTI generator emits multiple `<varequal>` in one `<conditionvar>` (implicit OR, per QTI 1.2 spec)
+- Both `Answer: text` (inline) and `= text` (multi-line) syntaxes supported
+- Files changed: `src/parser/markdown.ts`, `src/generator/qti.ts`
+- Tests: 265 passing (0 failures)
+
+**Quarto Post-Render Hook (Mar 4):**
+
+- Fixed: `_quarto-post-render.sh` restored from git history (was missing from working tree)
+- Fixed: `_quarto.yml` post-render path changed to `./_quarto-post-render.sh` (Quarto 1.8/Deno requires `./` prefix)
+- Result: `quarto render exam.qmd --to exam-gfm` now auto-generates `.qti.zip` via post-render hook
+- Updated: `_quarto.yml` render list includes `exam/*.qmd` for project-scoped rendering
+- Created: `exam/exam1-questions.qmd` — Quarto source for STAT 454/545 Midterm Exam 1 (multi-format)
+- Created: `exam/exam1-questions.tex` — standalone LaTeX version using `exam` document class
+
+**Documentation Site (Mar 4):**
+- Added: `docs/tutorials/canvas-workflow.md` — full Canvas import guide with mermaid diagram
+- Added: `docs/reference/REFCARD-CANVAS.md` — one-page Canvas quick reference
+- Updated: `docs/emulator.md` — 4 new validator checks in "What It Checks" table
+- Updated: `docs/index.md` — Recent Updates (March 2026) section
+- Updated: `docs/tutorials/index.md` — Canvas Workflow tutorial linked
+- Updated: `docs/extensions/quarto.md` — `= syntax` + automatic QTI post-render workflow
+- Updated: `mkdocs.yml` — both new pages in nav
+- Audit: `AUDIT-CONTENT-INVENTORY.md` — full doc audit (28 files, P3 gap: MA tutorial)
+
+**Remaining P3 items:**
+- `docs/tutorials/multiple-answers.md` — dedicated MA Canvas guide (1-2 hrs, low urgency)
+- `docs/tutorials/quarto.md` — add `= syntax` + canvas-workflow cross-link (~10 min)
+
+## Previous Changes (Dec 2025)
 
 **Quarto GFM Compatibility Enhancements (Dec 11):**
 - Fixed: Inline code formatting - backticks now convert to `<code>` tags in QTI
@@ -69,7 +102,7 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
   - Q28: Matching questions with code
   - Q29: Fill-in-multiple-blanks with code and LaTeX
   - Q30: Ultimate torture question (all features combined)
-- Status: 11/14 tests passing, 3 failures due to validator XML parsing bugs (not fixture issues)
+- Status: 14/14 tests passing ✅ (validator XML parsing fixed Mar 4)
 - QTI Generation: ✅ All 30 questions generate successfully
 
 **Claude Skills Package (Dec 10):**
@@ -172,21 +205,10 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 
 ### Known Issues 🐛
 
-**Validator XML Parsing (Non-Critical):**
-- **Issue**: Validator miscounts items in torture-quarto.qti.zip (reports 3 instead of 30)
-- **Root Cause**: `fast-xml-parser` library returning incorrect item array from section.item
-- **Impact**: 3 torture tests fail validation, but QTI generation works perfectly
-- **Workaround**: Manual XML grep confirms all 30 items exist and are valid
-- **Status**: Needs investigation of XML parser configuration (line 439 in validator.ts)
-- **Files Affected**:
-  - `src/diagnostic/validator.ts:439` - Item counting logic
-  - `tests/torture-quarto.test.ts` - 3 failing validation tests
+*No open issues.* All torture-quarto tests now pass (fixed Mar 4, 2026):
 
-**Parser HTML Div Handling (Minor):**
-- **Issue**: Multi-line HTML `<div>` tags in question stems not fully captured
-- **Example**: Q20 in torture-quarto.md (figure div with multi-line img tag)
-- **Impact**: 1 test fails to find Q20 by stem content
-- **Status**: Parser works for most HTML, edge case with complex multi-line divs
+- **Validator XML Parsing**: Fixed — XML invalidity from unescaped `<code>` content caused `fast-xml-parser` to silently truncate. Fixed by XML-escaping inline code content before wrapping in `<code>` tags.
+- **Parser HTML Div (Q20)**: Fixed — figure blocks inside active questions now appended to stem directly instead of queued as `pendingFigure`.
 
 ### Delivery Strategy 📦
 
@@ -452,6 +474,22 @@ The correlation r ranges from [blank1] to [blank2].
 | Inline `//` | `a) Answer [x] // This is why it's correct` |
 | Blockquote `>` | Line after option: `> Feedback text` |
 | General | `> [feedback] Shown after submission` |
+
+### Short Answer Formats
+
+Two syntaxes for acceptable answers:
+
+| Syntax           | Example                  |
+|------------------|--------------------------|
+| Inline `Answer:` | `Answer: Paris`          |
+| Multi-line `=`   | `= Paris` (one per line) |
+
+```markdown
+34. [Short] What analysis examines one factor at each level of another? [2pts]
+= simple effects
+= simple effect analysis
+= simple effects analysis
+```
 
 ### Matching Separators
 
@@ -865,13 +903,13 @@ Tests use Vitest (249 tests total). Test files mirror source structure:
 - `tests/templates.test.ts` - Template files
 - `tests/website.test.ts` - Documentation site
 - `tests/torture.test.ts` - General torture tests (XSS, edge cases)
-- `tests/torture-quarto.test.ts` - **NEW**: Quarto GFM torture tests (14 tests, 11 passing)
+- `tests/torture-quarto.test.ts` - Quarto GFM torture tests (14 tests, all passing as of Mar 4)
 
 **Torture Test Suite**:
 - **Fixture**: `tests/fixtures/torture-quarto.md` (30 comprehensive edge case questions)
 - **Purpose**: Stress-test parser, generator, and validator with Quarto GFM features
 - **Coverage**: Inline code, LaTeX math, comparison operators, negative numbers, HTML, feedback, all question types
-- **Status**: QTI generation ✅ working perfectly; 3 tests fail due to validator XML parsing bugs (see Known Issues)
+- **Status**: All 14 tests passing ✅ (XML parsing and figure div bugs fixed Mar 4)
 - **Run**: `npm test -- tests/torture-quarto.test.ts`
 
 ## Documentation Site

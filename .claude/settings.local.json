@@ -54,7 +54,8 @@
       "Bash(node:*)",
       "Bash(git restore:*)",
       "Bash(./install.sh)",
-      "Bash(do)"
+      "Bash(do)",
+      "Bash(git worktree:*)"
     ],
     "deny": [],
     "ask": []
