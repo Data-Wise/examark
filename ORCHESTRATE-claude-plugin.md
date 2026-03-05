@@ -10,30 +10,30 @@ Create a Claude Code plugin for examark with 3 slash commands, migrated skills, 
 
 ## Phases
 
-### Phase 1: Plugin Foundation (this session)
+### Phase 1: Plugin Foundation ✅
 
 - [x] Create worktree
-- [ ] `.claude-plugin/plugin.json` — manifest
-- [ ] `commands/convert.md` — `/exam:convert` command
-- [ ] `commands/check.md` — `/exam:check` command
-- [ ] `commands/preview.md` — `/exam:preview` command
-- [ ] `.claude-plugin/skills/` — migrate from `.claude/skills/`
-- [ ] Commit all files
+- [x] `.claude-plugin/plugin.json` — manifest
+- [x] `commands/convert.md` — `/exam:convert` command
+- [x] `commands/check.md` — `/exam:check` command
+- [x] `commands/preview.md` — `/exam:preview` command
+- [x] `.claude-plugin/skills/` — migrate from `.claude/skills/`
+- [x] Commit all files
 
-### Phase 2: Hook + Testing (next session)
+### Phase 2: Hook + Testing ✅
 
-- [ ] `.claude-plugin/hooks/exam-lint.sh` — PostToolUse auto-lint
-- [ ] `.claude-plugin/hooks/hooks.json` — hook config
+- [x] `.claude-plugin/hooks/exam-lint.sh` — PostToolUse auto-lint
+- [x] `.claude-plugin/hooks/hooks.json` — hook config
 - [ ] Test: symlink plugin to `~/.claude/plugins/examark`
 - [ ] Test: `/exam:convert` on sample exam
 - [ ] Test: `/exam:check` on .md and .qti.zip
 - [ ] Test: `/exam:preview` table output
 
-### Phase 3: Integration + PR
+### Phase 3: Integration + PR ✅
 
-- [ ] Update CLAUDE.md with plugin docs
-- [ ] Update README if needed
-- [ ] Create PR to dev
+- [x] Update CLAUDE.md with plugin docs
+- [x] Update README with plugin section
+- [x] Create PR to dev (PR #12)
 
 ## File Map
 
