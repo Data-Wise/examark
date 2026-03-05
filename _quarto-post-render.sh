@@ -24,13 +24,12 @@ if [[ "$RENDERED_FILE" == *.md ]]; then
   echo ""
   echo "📦 Generating QTI package..."
 
-  # Try to find examark
-  if command -v examark &> /dev/null; then
-    examark "$RENDERED_FILE" -o "$QTI_FILE"
-    echo "✅ QTI package ready: $QTI_FILE"
-  elif [ -f "dist/index.js" ]; then
-    # Development mode
+  # Prefer local dev build if available (ensures latest fixes are used)
+  if [ -f "dist/index.js" ]; then
     node dist/index.js "$RENDERED_FILE" -o "$QTI_FILE"
+    echo "✅ QTI package ready: $QTI_FILE"
+  elif command -v examark &> /dev/null; then
+    examark "$RENDERED_FILE" -o "$QTI_FILE"
     echo "✅ QTI package ready: $QTI_FILE"
   else
     echo "⚠️  examark not found. Install with: npm install -g examark"
