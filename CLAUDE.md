@@ -19,7 +19,21 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 - QTI generator emits multiple `<varequal>` in one `<conditionvar>` (implicit OR, per QTI 1.2 spec)
 - Both `Answer: text` (inline) and `= text` (multi-line) syntaxes supported
 - Files changed: `src/parser/markdown.ts`, `src/generator/qti.ts`
-- Tests: 262 passing (no regressions)
+- Tests: 265 passing (0 failures)
+
+**Documentation Site (Mar 4):**
+- Added: `docs/tutorials/canvas-workflow.md` — full Canvas import guide with mermaid diagram
+- Added: `docs/reference/REFCARD-CANVAS.md` — one-page Canvas quick reference
+- Updated: `docs/emulator.md` — 4 new validator checks in "What It Checks" table
+- Updated: `docs/index.md` — Recent Updates (March 2026) section
+- Updated: `docs/tutorials/index.md` — Canvas Workflow tutorial linked
+- Updated: `docs/extensions/quarto.md` — `= syntax` added to Short Answer section
+- Updated: `mkdocs.yml` — both new pages in nav
+- Audit: `AUDIT-CONTENT-INVENTORY.md` — full doc audit (28 files, P3 gap: MA tutorial)
+
+**Remaining P3 items:**
+- `docs/tutorials/multiple-answers.md` — dedicated MA Canvas guide (1-2 hrs, low urgency)
+- `docs/tutorials/quarto.md` — add `= syntax` + canvas-workflow cross-link (~10 min)
 
 ## Previous Changes (Dec 2025)
 
