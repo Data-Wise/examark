@@ -12,13 +12,13 @@
         <meta name="author" content="Data-Wise">
       
       
-        <link rel="canonical" href="https://data-wise.github.io/examark/tutorials/vscode-snippets/">
+        <link rel="canonical" href="https://data-wise.github.io/examark/tutorials/canvas-workflow/">
       
       
-        <link rel="prev" href="../dynamic-exams/">
+        <link rel="prev" href="../first-quiz/">
       
       
-        <link rel="next" href="../../starter/">
+        <link rel="next" href="../item-banks/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>VS Code Snippets - Examark</title>
+        <title>Canvas Workflow - Examark</title>
       
     
     
@@ -107,7 +107,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vs-code-snippets" class="md-skip">
+        <a href="#canvas-import-workflow" class="md-skip">
           Skip to content
         </a>
       
@@ -143,7 +143,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VS Code Snippets
+              Canvas Workflow
             
           </span>
         </div>
@@ -1198,10 +1198,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../canvas-workflow/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canvas Workflow
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1217,6 +1244,270 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-question-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Question Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#correct-answer-markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correct Answer Markers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#short-answer-multiple-accepted-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Short Answer: Multiple Accepted Answers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-answers-getting-full-credit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple Answers: Getting Full Credit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation Pipeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-the-emulator-catches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the emulator catches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#success-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Success output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failure-output-with-fix-hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure output (with fix hints)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quarto-canvas-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quarto → Canvas Workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quarto → Canvas Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic (Recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-to-canvas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importing to Canvas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Importing to Canvas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#item-banks-new-quizzes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Item Banks (New Quizzes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Errors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#couldnt-determine-correct-answers-for-multiple-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Couldn't determine correct answers" for Multiple Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-correct-answers-for-short-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "No correct answers" for Short Answer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#images-not-appearing-in-canvas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Images Not Appearing in Canvas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-not-importing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Points Not Importing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1310,37 +1601,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    VS Code Snippets
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../vscode-snippets/" class="md-nav__link">
         
   
   
@@ -1356,120 +1620,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#available-snippets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Available Snippets
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Available Snippets">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#question-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Question Types
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Structure
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#figures-images" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Figures &amp; Images
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#other" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Other
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage Example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#customizing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Customizing
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1794,10 +1944,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation
+        How It Works
       
     </span>
   </a>
@@ -1805,22 +1955,66 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#available-snippets" class="md-nav__link">
+  <a href="#supported-question-types" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Available Snippets
+        Supported Question Types
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Available Snippets">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#correct-answer-markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correct Answer Markers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#short-answer-multiple-accepted-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Short Answer: Multiple Accepted Answers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-answers-getting-full-credit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple Answers: Getting Full Credit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation Pipeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation Pipeline">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#question-types" class="md-nav__link">
+  <a href="#what-the-emulator-catches" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Question Types
+        What the emulator catches
       
     </span>
   </a>
@@ -1828,10 +2022,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#structure" class="md-nav__link">
+  <a href="#success-output" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Structure
+        Success output
       
     </span>
   </a>
@@ -1839,21 +2033,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#figures-images" class="md-nav__link">
+  <a href="#failure-output-with-fix-hints" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Figures &amp; Images
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#other" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Other
+        Failure output (with fix hints)
       
     </span>
   </a>
@@ -1866,21 +2049,138 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#usage-example" class="md-nav__link">
+  <a href="#quarto-canvas-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Usage Example
+        Quarto → Canvas Workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quarto → Canvas Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic (Recommended)
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#customizing" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#manual" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Customizing
+        Manual
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-to-canvas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importing to Canvas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Importing to Canvas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#item-banks-new-quizzes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Item Banks (New Quizzes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Errors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#couldnt-determine-correct-answers-for-multiple-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Couldn't determine correct answers" for Multiple Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-correct-answers-for-short-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "No correct answers" for Short Answer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#images-not-appearing-in-canvas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Images Not Appearing in Canvas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#points-not-importing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Points Not Importing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
       
     </span>
   </a>
@@ -1952,7 +2252,7 @@
 
 
   
-    <a href="https://github.com/Data-Wise/examark/edit/main/docs/tutorials/vscode-snippets.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/Data-Wise/examark/edit/main/docs/tutorials/canvas-workflow.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1960,163 +2260,368 @@
   
 
 
-<h1 id="vs-code-snippets">VS Code Snippets</h1>
-<p>Examark includes built-in snippets for fast exam authoring in VS Code, Positron, and VS Codium.</p>
-<h2 id="installation">Installation</h2>
-<p>The snippets are included in the repository. To use them:</p>
+<h1 id="canvas-import-workflow">Canvas Import Workflow</h1>
+<p>Everything you need to get from Markdown to a successfully imported Canvas quiz.</p>
+<hr />
+<h2 id="how-it-works">How It Works</h2>
+<pre class="mermaid"><code>flowchart LR
+    A["exam.md"] --&gt; B["examark"]
+    B --&gt; C["exam.qti.zip"]
+    C --&gt; D["emulate-canvas"]
+    D --&gt;|"✅ Pass"| E["Canvas Import"]
+    D --&gt;|"❌ Errors"| F["Fix Issues"]
+    F --&gt; A
+
+    style A fill:#4A90D9,color:#fff
+    style C fill:#7B68EE,color:#fff
+    style E fill:#22C55E,color:#fff
+    style F fill:#EF4444,color:#fff</code></pre>
+<p><strong>The three-step loop:</strong></p>
 <ol>
-<li>Clone or download Examark</li>
-<li>Open the folder in VS Code/Positron</li>
-<li>Start typing a prefix and press <strong>Tab</strong></li>
+<li><strong>Write</strong> your exam in Markdown (<code>.md</code> or <code>.qmd</code>)</li>
+<li><strong>Convert</strong> to QTI with <code>examark</code></li>
+<li><strong>Validate</strong> with <code>emulate-canvas</code> — catch errors before uploading</li>
 </ol>
-<div class="admonition tip">
-<p class="admonition-title">Project-Level Snippets</p>
-<p>Copy <code>.vscode/examark.code-snippets</code> to any project to get snippets there too.</p>
+<p>Run the emulator until you see <code>✅ PREDICTION: Canvas import will likely SUCCEED</code>, then upload.</p>
+<hr />
+<h2 id="supported-question-types">Supported Question Types</h2>
+<p>Canvas supports these question types from Examark:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Marker</th>
+<th>Canvas Name</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Multiple Choice</td>
+<td><code>[MC]</code></td>
+<td>Multiple Choice</td>
+<td>One correct answer</td>
+</tr>
+<tr>
+<td>True/False</td>
+<td><code>[TF]</code></td>
+<td>True/False</td>
+<td>Binary questions</td>
+</tr>
+<tr>
+<td>Multiple Answers</td>
+<td><code>[MA]</code></td>
+<td>Multiple Answers</td>
+<td>2+ correct answers required</td>
+</tr>
+<tr>
+<td>Short Answer</td>
+<td><code>[Short]</code></td>
+<td>Fill in the Blank</td>
+<td>Accepts multiple answers</td>
+</tr>
+<tr>
+<td>Essay</td>
+<td><code>[Essay]</code></td>
+<td>Essay</td>
+<td>Manually graded</td>
+</tr>
+<tr>
+<td>Numerical</td>
+<td><code>[Num]</code></td>
+<td>Numerical</td>
+<td>Exact value or range</td>
+</tr>
+<tr>
+<td>Matching</td>
+<td><code>[Match]</code></td>
+<td>Matching</td>
+<td>Pair relationships</td>
+</tr>
+<tr>
+<td>Fill in Multiple Blanks</td>
+<td><code>[FMB]</code></td>
+<td>Fill in Multiple Blanks</td>
+<td>Multiple blanks in stem</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="correct-answer-markers">Correct Answer Markers</h2>
+<p>All markers are case-insensitive and interchangeable:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Recommended</label><label for="__tabbed_1_2">Checkmark</label><label for="__tabbed_1_3">Star prefix (Multiple Answers)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">1.</span> [MC] What is the mean of 2, 4, 6? [2pts]
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>a) Three
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>b) Four [x]
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>c) Five
+</span></code></pre></div>
 </div>
-<h2 id="available-snippets">Available Snippets</h2>
-<h3 id="question-types">Question Types</h3>
-<table>
-<thead>
-<tr>
-<th>Prefix</th>
-<th>Expands To</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>mcq</code></td>
-<td>Multiple choice (4 options)</td>
-</tr>
-<tr>
-<td><code>mcq5</code></td>
-<td>Multiple choice (5 options)</td>
-</tr>
-<tr>
-<td><code>tfq</code></td>
-<td>True/False question (compact)</td>
-</tr>
-<tr>
-<td><code>tf</code></td>
-<td>True/False with explicit options</td>
-</tr>
-<tr>
-<td><code>essay</code></td>
-<td>Essay question</td>
-</tr>
-<tr>
-<td><code>short</code></td>
-<td>Short answer with auto-grading</td>
-</tr>
-<tr>
-<td><code>numeric</code></td>
-<td>Numeric with tolerance</td>
-</tr>
-<tr>
-<td><code>multians</code></td>
-<td>Multiple answer (select all that apply)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="structure">Structure</h3>
-<table>
-<thead>
-<tr>
-<th>Prefix</th>
-<th>Expands To</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>examhead</code></td>
-<td>Exam pool + section headers</td>
-</tr>
-<tr>
-<td><code>section</code></td>
-<td>Section header</td>
-</tr>
-<tr>
-<td><code>pool</code></td>
-<td>Question pool header</td>
-</tr>
-</tbody>
-</table>
-<h3 id="figures-images">Figures &amp; Images</h3>
-<table>
-<thead>
-<tr>
-<th>Prefix</th>
-<th>Expands To</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>mcqimg</code></td>
-<td>Question with embedded image</td>
-</tr>
-<tr>
-<td><code>rfig</code></td>
-<td>R code chunk for figures (Quarto)</td>
-</tr>
-<tr>
-<td><code>pyfig</code></td>
-<td>Python code chunk for figures (Quarto)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="other">Other</h3>
-<table>
-<thead>
-<tr>
-<th>Prefix</th>
-<th>Expands To</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>solution</code></td>
-<td>Solution block (hidden in student version)</td>
-</tr>
-<tr>
-<td><code>examyaml</code></td>
-<td>Quarto YAML header</td>
-</tr>
-<tr>
-<td><code>imath</code></td>
-<td>Inline LaTeX math</td>
-</tr>
-<tr>
-<td><code>dmath</code></td>
-<td>Display LaTeX block</td>
-</tr>
-<tr>
-<td><code>statq</code></td>
-<td>Statistics formula question</td>
-</tr>
-</tbody>
-</table>
-<h2 id="usage-example">Usage Example</h2>
-<p>Type <code>mcq</code> and press Tab:</p>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gu">## 1. Question text [2 pts]</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>a) Option A
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>b) Option B
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>c) <span class="gs">**Correct Answer**</span> ✓
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>d) Option D
+<div class="tabbed-block">
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">1.</span> [MC] What is the mean of 2, 4, 6? [2pts]
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>a) Three
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>b) Four ✓
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>c) Five
 </span></code></pre></div>
-<p>Use <strong>Tab</strong> to jump between placeholders.</p>
-<h2 id="customizing">Customizing</h2>
-<p>Edit <code>.vscode/examark.code-snippets</code> to add your own snippets or modify existing ones.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&quot;My Custom Question&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;myq&quot;</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="s2">&quot;## ${1:1}. ${2:Question} [${3:2} pts]&quot;</span><span class="p">,</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="s2">&quot;a) ${4:A}&quot;</span><span class="p">,</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="s2">&quot;b) **${5:B}** ✓&quot;</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="p">],</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My custom question type&quot;</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">}</span>
+</div>
+<div class="tabbed-block">
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">2.</span> [MA] Which are measures of spread? [3pts]
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>*a) Variance
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>b) Mean
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>*c) Standard deviation
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>*d) Range
 </span></code></pre></div>
+</div>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>Marker</th>
+<th>Example</th>
+<th>Use For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[x]</code></td>
+<td><code>b) Answer [x]</code></td>
+<td>MC, TF, MA</td>
+</tr>
+<tr>
+<td><code>✓</code> or <code>✔</code></td>
+<td><code>b) Answer ✓</code></td>
+<td>MC, TF, MA</td>
+</tr>
+<tr>
+<td><code>[correct]</code></td>
+<td><code>b) Answer [correct]</code></td>
+<td>MC, TF, MA</td>
+</tr>
+<tr>
+<td><code>**bold**</code></td>
+<td><code>b) **Answer**</code></td>
+<td>MC, TF (legacy)</td>
+</tr>
+<tr>
+<td><code>*</code> prefix</td>
+<td><code>*b) Answer</code></td>
+<td>MA (select-all)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="short-answer-multiple-accepted-answers">Short Answer: Multiple Accepted Answers</h2>
+<p>Two equivalent syntaxes:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">= syntax (Recommended)</label><label for="__tabbed_2_2">Answer: syntax</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">5.</span> [Short] What pattern indicates unequal variance? [2pts]
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>= funnel
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>= funnel shape
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>= fan shape
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>= megaphone
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">5.</span> [Short] What pattern indicates unequal variance? [2pts]
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Answer: funnel
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Answer: funnel shape
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Answer: fan shape
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>The <code>=</code> syntax is preferred for readability when listing multiple acceptable answers. Both parse identically.</p>
+<div class="admonition note">
+<p class="admonition-title">Case Sensitivity</p>
+<p>Canvas short answer matching is case-insensitive by default. List the most common spellings/phrasings.</p>
+</div>
+<hr />
+<h2 id="multiple-answers-getting-full-credit">Multiple Answers: Getting Full Credit</h2>
+<p>Canvas Multiple Answers questions grade students on selecting <strong>all correct</strong> options and <strong>none of the incorrect</strong> ones. The QTI structure must explicitly exclude incorrect options.</p>
+<p><strong>Correct format:</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">3.</span> [MA] Which assumptions does OLS regression require? [4pts]
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>*a) Linearity
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>b) Large sample size
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>*c) Independence of errors
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>*d) Homoscedasticity
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>e) Normality of predictors
+</span></code></pre></div>
+<p>The <code>*</code> prefix marks correct answers. Examark automatically generates the required <code>&lt;not&gt;&lt;varequal&gt;</code> exclusions for incorrect options in the QTI output.</p>
+<div class="admonition warning">
+<p class="admonition-title">Minimum 2 correct answers</p>
+<p>Canvas rejects MA questions with fewer than 2 correct answers. The validator will flag this as a blocking error.</p>
+</div>
+<hr />
+<h2 id="validation-pipeline">Validation Pipeline</h2>
+<p>Run validation before uploading:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Step 1: Check the Markdown source</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>examark<span class="w"> </span>check<span class="w"> </span>exam.md
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Step 2: Convert</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>examark<span class="w"> </span>exam.md<span class="w"> </span>-o<span class="w"> </span>exam.qti.zip
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Step 3: Emulate Canvas import</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>examark<span class="w"> </span>emulate-canvas<span class="w"> </span>exam.qti.zip
+</span></code></pre></div>
+<h3 id="what-the-emulator-catches">What the emulator catches</h3>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What It Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MA cardinality</strong></td>
+<td>MA questions must use <code>rcardinality="Multiple"</code></td>
+</tr>
+<tr>
+<td><strong>MA incorrect exclusion</strong></td>
+<td>Canvas needs explicit <code>&lt;not&gt;</code> for each wrong option</td>
+</tr>
+<tr>
+<td><strong>Short answer answers</strong></td>
+<td>Short answer must have at least one accepted answer</td>
+</tr>
+<tr>
+<td><strong>Correct answer defined</strong></td>
+<td>MC/TF must have a correct answer marked</td>
+</tr>
+<tr>
+<td><strong>Option count</strong></td>
+<td>Need at least 2 answer choices</td>
+</tr>
+<tr>
+<td><strong>Image references</strong></td>
+<td>All bundled images must exist</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>No XSS vectors allowed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="success-output">Success output</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>🎓 Canvas Import Emulator
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>📊 Analysis Results:
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>   Items scanned: 18
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>   Resources: 19
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>   Has test structure: Yes
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>✅ PREDICTION: Canvas import will likely SUCCEED
+</span></code></pre></div>
+<h3 id="failure-output-with-fix-hints">Failure output (with fix hints)</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>❌ PREDICTION: Canvas import will likely FAIL
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>🔴 Canvas Import Blockers:
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>   • Multiple answers question q3: rcardinality=&quot;Single&quot; (must be &quot;Multiple&quot;)
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>   • Short answer question q7: no correct answers defined
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>🔧 Suggested Fixes:
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>   → Q3: Add a second correct answer with * prefix
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>   → Q7: Add &quot;Answer: text&quot; or &quot;= text&quot; line after question stem
+</span></code></pre></div>
+<hr />
+<h2 id="quarto-canvas-workflow">Quarto → Canvas Workflow</h2>
+<p>For Quarto (<code>.qmd</code>) files with R/Python code:</p>
+<h3 id="automatic-recommended">Automatic (Recommended)</h3>
+<p>Add a post-render hook to <code>_quarto.yml</code> — QTI is generated automatically after every render:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">project</span><span class="p">:</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="nt">output-dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_output</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="nt">render</span><span class="p">:</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;exam/*.qmd&quot;</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="nt">post-render</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./_quarto-post-render.sh</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># One command does both steps</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>quarto<span class="w"> </span>render<span class="w"> </span>exam.qmd<span class="w"> </span>--to<span class="w"> </span>exam-gfm
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># ✅ QTI package ready: _output/exam/exam.qti.zip</span>
+</span></code></pre></div>
+<p>The <code>_quarto-post-render.sh</code> script is included in the starter template (<code>quarto use template Data-Wise/examark</code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Quarto 1.8+ path requirement</p>
+<p>Use <code>post-render: ./_quarto-post-render.sh</code> with the <code>./</code> prefix. Bare filenames fail in Quarto 1.8+ due to Deno path resolution.</p>
+</div>
+<h3 id="manual">Manual</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Step 1: Render to GFM (Markdown)</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>quarto<span class="w"> </span>render<span class="w"> </span>exam.qmd<span class="w"> </span>--to<span class="w"> </span>exam-gfm
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Step 2: Convert to QTI</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>examark<span class="w"> </span>_output/exam/exam.md<span class="w"> </span>-o<span class="w"> </span>exam.qti.zip
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Step 3: Validate</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>examark<span class="w"> </span>emulate-canvas<span class="w"> </span>exam.qti.zip
+</span></code></pre></div>
+<p>Or add <code>exam.qti: true</code> to your YAML frontmatter — Quarto prints the exact <code>examark</code> command to run after rendering.</p>
+<div class="admonition tip">
+<p class="admonition-title">R-generated figures</p>
+<p>Examark automatically bundles R-generated plots from Quarto code chunks into the QTI package. Run <code>quarto render</code> before <code>examark</code> so all figures are generated first.</p>
+</div>
+<hr />
+<h2 id="importing-to-canvas">Importing to Canvas</h2>
+<p>After <code>emulate-canvas</code> shows ✅:</p>
+<ol>
+<li>Go to <strong>Course Settings</strong> → <strong>Import Course Content</strong></li>
+<li>Select <strong>QTI .zip file</strong> as Content Type</li>
+<li>Upload your <code>.qti.zip</code> file</li>
+<li>Click <strong>Import</strong></li>
+<li>Find imported questions in <strong>Quizzes</strong> → <strong>Question Banks</strong></li>
+</ol>
+<h3 id="item-banks-new-quizzes">Item Banks (New Quizzes)</h3>
+<p>To import directly to an Item Bank:</p>
+<ol>
+<li>Go to <strong>Course Settings</strong> → <strong>Manage Item Banks</strong></li>
+<li>Click <strong>Import Content</strong></li>
+<li>Upload your <code>.qti.zip</code></li>
+</ol>
+<p>Item Banks work with Canvas New Quizzes and support random question selection. See the <a href="../item-banks/">Item Banks tutorial</a>.</p>
+<hr />
+<h2 id="common-errors">Common Errors</h2>
+<h3 id="couldnt-determine-correct-answers-for-multiple-answers">"Couldn't determine correct answers" for Multiple Answers</h3>
+<p><strong>Cause:</strong> QTI <code>rcardinality</code> set to <code>"Single"</code> instead of <code>"Multiple"</code>.</p>
+<p><strong>Fix:</strong> Ensure your MA questions use <code>*</code> prefix markers:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">2.</span> [MA] Which are valid? [2pts]
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="ge">*a) Option A   ← *</span> marks correct
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>b) Option B
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>*c) Option C
+</span></code></pre></div>
+<p>Examark automatically sets <code>rcardinality="Multiple"</code> for <code>[MA]</code> questions.</p>
+<hr />
+<h3 id="no-correct-answers-for-short-answer">"No correct answers" for Short Answer</h3>
+<p><strong>Fix:</strong> Add accepted answers after the question stem:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">6.</span> [Short] Define heteroscedasticity. [2pts]
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>= unequal variance
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>= non-constant variance
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>= heteroskedasticity
+</span></code></pre></div>
+<hr />
+<h3 id="images-not-appearing-in-canvas">Images Not Appearing in Canvas</h3>
+<p><strong>Fix:</strong> Ensure your image paths are relative and images are present at render time:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>![<span class="nt">Residual Plot</span>](<span class="na">images/residual-plot.png</span>)
+</span></code></pre></div>
+<p>Examark bundles images relative to the input file directory.</p>
+<hr />
+<h3 id="points-not-importing">Points Not Importing</h3>
+<p>Canvas uses the points from QTI metadata. Specify per-question:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">1.</span> [MC] Question text? [5pts]
+</span></code></pre></div>
+<p>Or set a project default in <code>.examarkrc.json</code>:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;defaultPoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<hr />
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../../markdown/question-types/">Question Types Gallery</a></li>
+<li><a href="../../markdown/syntax/">Syntax Reference</a></li>
+<li><a href="../../emulator/">Canvas Emulator</a></li>
+<li><a href="../item-banks/">Item Banks</a></li>
+<li><a href="../quarto/">Quarto Integration</a></li>
+</ul>
 
 
 
@@ -2154,7 +2659,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../dynamic-exams/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Dynamic Exams">
+          <a href="../first-quiz/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Your First Quiz">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2164,20 +2669,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Dynamic Exams
+                Your First Quiz
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../starter/" class="md-footer__link md-footer__link--next" aria-label="Next: Templates">
+          <a href="../item-banks/" class="md-footer__link md-footer__link--next" aria-label="Next: Item Banks &amp; Random Quizzes">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Templates
+                Item Banks & Random Quizzes
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -18,14 +18,14 @@
         <link rel="prev" href="../config/">
       
       
-        <link rel="next" href="../extensions/quarto/">
+        <link rel="next" href="../reference/REFCARD-CANVAS/">
       
       
         
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
     
     
       
@@ -799,6 +799,8 @@
       
         
       
+        
+      
     
     
     
@@ -1189,6 +1191,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/REFCARD-CANVAS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canvas Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1310,6 +1340,8 @@
       
         
       
+        
+      
     
     
     
@@ -1379,6 +1411,34 @@
     
   
     Your First Quiz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/canvas-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canvas Workflow
   
 
     
@@ -2096,7 +2156,22 @@
 <tr>
 <td>Correct answer defined</td>
 <td>Error</td>
-<td>Choice questions must have <code>correctResponse</code></td>
+<td>MC/TF questions must have a correct answer marked</td>
+</tr>
+<tr>
+<td>MA cardinality</td>
+<td>Error</td>
+<td>Multiple Answers questions must use <code>rcardinality="Multiple"</code></td>
+</tr>
+<tr>
+<td>MA incorrect exclusion</td>
+<td>Error</td>
+<td>MA resprocessing must include <code>&lt;not&gt;</code> for each incorrect option</td>
+</tr>
+<tr>
+<td>Short answer answers</td>
+<td>Error</td>
+<td>Short answer questions must have at least one accepted answer</td>
 </tr>
 <tr>
 <td>Supported interactions</td>
@@ -2134,6 +2209,11 @@
 <td>Special characters may cause issues</td>
 </tr>
 <tr>
+<td>MC multiple correct</td>
+<td>Warning</td>
+<td>Canvas uses only first correct answer for MC questions</td>
+</tr>
+<tr>
 <td>responseProcessing</td>
 <td>Warning</td>
 <td>Manual grading needed if missing</td>
@@ -2169,10 +2249,21 @@
 <li>For R/Python-generated figures, verify they're rendered before conversion</li>
 </ol>
 <h3 id="couldnt-determine-correct-answers">"Couldn't determine correct answers"</h3>
-<p>This error means Canvas can't find the <code>correctResponse</code> element:</p>
+<p>This error means Canvas can't find the <code>correctResponse</code> element or the QTI structure is wrong for the question type:</p>
+<p><strong>For Multiple Choice / True-False:</strong></p>
 <ol>
-<li>Mark at least one answer as correct in your Markdown</li>
-<li>Use <code>[correct]</code> suffix, checkmark <code>✓</code>, or bold <code>**answer**</code></li>
+<li>Mark exactly one answer as correct in your Markdown</li>
+<li>Use <code>[correct]</code> suffix, checkmark <code>✓</code>, or <code>[x]</code> marker</li>
+</ol>
+<p><strong>For Multiple Answers (<code>[MA]</code>):</strong></p>
+<ol>
+<li>Mark 2 or more answers as correct with <code>*</code> prefix</li>
+<li>Ensure at least 2 correct options are defined — Canvas requires this for MA questions</li>
+</ol>
+<p><strong>For Short Answer (<code>[Short]</code>):</strong></p>
+<ol>
+<li>Add accepted answer(s) using <code>Answer: text</code> or <code>= text</code> syntax</li>
+<li>Multiple accepted answers: use <code>= answer</code> on separate lines</li>
 </ol>
 <h2 id="pro-tips">Pro Tips</h2>
 <div class="admonition tip">
@@ -2317,13 +2408,13 @@
         
         
           
-          <a href="../extensions/quarto/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
+          <a href="../reference/REFCARD-CANVAS/" class="md-footer__link md-footer__link--next" aria-label="Next: Canvas Quick Reference">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Overview
+                Canvas Quick Reference
               </div>
             </div>
             <div class="md-footer__button md-icon">
