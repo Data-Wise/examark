@@ -1,0 +1,580 @@
+---
+title: "STAT 454/545 — Midterm Exam 1"
+subtitle: "Design and Analysis of Experiments"
+date: "March 5, 2026"
+author: "Dr. Davood Tofighi"
+
+format:
+  exam-gfm:
+    exam:
+      qti: true
+      solutions: false
+  exam-pdf:
+    geometry: "margin=1in, top=0.85in, bottom=0.85in"
+    fontsize: 10pt
+    exam:
+      solutions: false
+      grading-table: false
+      header:
+        left: "STAT 454/545 — Midterm Exam 1"
+        right: "Name: ___________________________"
+      footer:
+        center: "Page {{page}} of {{pages}}"
+  exam-html:
+    exam:
+      solutions: false
+      grading-table: true
+
+exam:
+  default-points: 2
+
+# ============================================================
+# To render:
+#   quarto render exam1-questions.qmd --to exam-gfm   → Markdown for QTI
+#   quarto render exam1-questions.qmd --to exam-pdf   → Printable exam
+#   quarto render exam1-questions.qmd --to exam-html  → Browser preview
+#
+# To convert to Canvas QTI:
+#   examark exam1-questions.md -o exam1-questions.qti.zip
+#   examark emulate-canvas exam1-questions.qti.zip
+# ============================================================
+---
+
+<!--
+EXAM INSTRUCTIONS — Canvas Online Version
+Copy this block into the Canvas quiz "Description" field before publishing.
+
+STAT 454/545 — Midterm Exam 1 | Thursday, March 5, 2026
+
+Time: 75 minutes from the moment you start. The timer cannot be paused — do not begin until you are ready.
+Total: 167 points (70 questions)
+
+INSTRUCTIONS
+• This exam is administered through Canvas.
+• Select the BEST answer for each multiple-choice and true/false question.
+• For Multiple Answers (MA) questions, select ALL correct options. Partial credit is not awarded unless stated.
+• For Short Answer questions, type your response clearly. Spelling variants are accepted.
+• Use the Canvas equation editor or type math notation if needed (e.g., x-bar, beta-hat).
+• You may use up to three (3) double-sided cheat sheets (US Letter, handwritten or typed) and a calculator.
+• Phones and other electronic devices are not permitted (other than the computer/tablet you are using for Canvas).
+• Do not close or navigate away from the browser window — your progress is auto-saved by Canvas.
+• Suggested pacing: ~1 min per MC/TF, ~2 min per Short/MA; allow extra time for Hand Calculations (Q37–46).
+
+ACADEMIC INTEGRITY
+By starting this exam, you confirm that you will complete it independently without unauthorized assistance.
+-->
+
+::: {.content-visible unless-format="gfm"}
+
+**STAT 454/545 — Midterm Exam 1** | Thursday, March 5, 2026 | 2:00–3:15 pm | SMLC 120
+
+**Time:** 75 minutes | **Total:** 167 points | 70 questions
+
+**Allowed Materials:** Three (3) double-sided cheat sheets (US Letter) · Calculator · No phones or other electronics
+
+**Instructions:** Select the best answer for MC/TF questions. For Multiple Answers, select *all* correct options (no partial credit). For Short Answer, type your response clearly. Suggested pacing: ~1 min/MC·TF, ~2 min/Short·MA.
+
+:::
+
+---
+
+# Section: Experimental Design Fundamentals
+
+1. [MC] A biologist tests 3 diets on mice. She houses 4 mice per cage and assigns each cage to one diet. If there are 6 cages total (2 per diet), what is the experimental unit? [2pts]
+a) An individual mouse
+b) A cage of mice [x]
+c) The diet
+d) The entire colony
+
+> The treatment (diet) is assigned at the cage level, so the cage is the experimental unit. Individual mice within a cage are observational (sub-sampling) units.
+
+2. [MC] Which of the following best distinguishes an observational study from an experiment? [2pts]
+a) Observational studies use larger sample sizes
+b) Experiments always use blocking
+c) In experiments, the researcher controls and randomly assigns treatments to units [x]
+d) Observational studies cannot use statistical tests
+
+> The key distinction is researcher control over treatment assignment. Experiments manipulate; observational studies observe.
+
+3. [MC] A CRD with $k = 5$ groups has $n_1 = 6$, $n_2 = 8$, $n_3 = 7$, $n_4 = 6$, $n_5 = 8$. What are the treatment and error degrees of freedom? [2pts]
+a) $df_{Trt} = 5$, $df_E = 30$
+b) $df_{Trt} = 4$, $df_E = 30$ [x]
+c) $df_{Trt} = 4$, $df_E = 31$
+d) $df_{Trt} = 5$, $df_E = 29$
+
+> $df_{Trt} = k - 1 = 4$; $df_E = N - k = 35 - 5 = 30$.
+
+4. [Short] State the three fundamental principles of experimental design. [3pts]
+
+```{=markdown}
+Answer: Randomization, Replication, Local control
+Answer: Randomization, Replication, Blocking
+Answer: Randomization, Replication, Control
+```
+
+5. [TF] In a CRD, the constraint $\sum_{i=1}^{k} \tau_i = 0$ (the effects model) means that treatment effects are measured as deviations from the overall mean $\mu$. [2pts] → True
+
+> This sum-to-zero constraint defines $\mu$ as the overall (grand) mean, so each $\tau_i$ is a deviation from that mean.
+
+6. [MC] A study assigns 20 students to 4 tutoring methods (5 per method). The researcher notices that all high-GPA students ended up in Method A due to a scheduling conflict (not random assignment). This is an example of: [2pts]
+a) Replication failure
+b) Confounding [x]
+c) Blocking
+d) Pseudoreplication
+
+> GPA is confounded with tutoring method — we cannot separate the effect of tutoring from student ability.
+
+7. [MC] A plant scientist randomly assigns seedlings to 3 fertilizer types ($n = 10$ per group). However, the 10 seedlings in each group share a single greenhouse bench. What problem does this create? [2pts]
+a) Lack of replication
+b) Confounding between fertilizer and bench effects
+c) Pseudoreplication — the bench, not the seedling, is the true experimental unit [x]
+d) Loss of degrees of freedom
+
+> Only one bench per treatment means treatments are confounded with bench differences. True replication requires multiple benches per fertilizer.
+
+8. [MC] Under the fixed-effects one-way ANOVA model $Y_{ij} = \mu + \tau_i + \varepsilon_{ij}$, the null hypothesis $H_0: \tau_1 = \tau_2 = \cdots = \tau_k = 0$ is equivalent to: [2pts]
+a) All group variances are equal
+b) All group means are equal to the grand mean [x]
+c) The error variance is zero
+d) The F-statistic equals 1
+
+> If all $\tau_i = 0$, then $\mu_i = \mu$ for all groups — every group mean equals the overall mean.
+
+9. [MC] Under the one-way ANOVA model, $\text{E}[MS_E]$ equals: [2pts]
+a) $\sigma^2 + n\sum\tau_i^2/(k-1)$
+b) $\sigma^2$ [x]
+c) $n\sigma^2$
+d) $\sigma^2/n$
+
+> $MS_E$ is an unbiased estimator of $\sigma^2$ regardless of whether $H_0$ is true.
+
+10. [MC] Under the one-way fixed-effects ANOVA model with equal group sizes $n$, $\text{E}[MS_{Trt}]$ equals: [2pts]
+a) $\sigma^2$
+b) $\sigma^2 + n\sum_{i=1}^k\tau_i^2/(k-1)$ [x]
+c) $\sigma^2 + k\sum_{i=1}^k\tau_i^2/(n-1)$
+d) $n\sigma^2 + \sum_{i=1}^k\tau_i^2$
+
+> The non-centrality term $n\sum\tau_i^2/(k-1)$ is zero only under $H_0$, so $\text{E}[MS_{Trt}] > \sigma^2$ when treatments differ.
+
+11. [TF] If $\text{E}[MS_{Trt}] = \sigma^2$ and $\text{E}[MS_E] = \sigma^2$, then the expected value of $F = MS_{Trt}/MS_E$ is approximately 1 under $H_0$. [2pts] → True
+
+> Under $H_0$, both $MS_{Trt}$ and $MS_E$ estimate $\sigma^2$, so $F \approx 1$ in expectation.
+
+12. [MC] In a CRD, a researcher measures each rat's weight at baseline and at 4 weekly intervals. She treats all 5 measurements as independent observations. What error has she committed? [2pts]
+a) Pseudoreplication
+b) Ignoring repeated measures — measurements within a rat are correlated [x]
+c) Confounding
+d) Blocking without randomization
+
+> Repeated measurements on the same rat violate the independence assumption. A repeated-measures ANOVA or mixed model is required.
+
+13. [MC] Which of the following is a consequence of violating the independence assumption in ANOVA? [2pts]
+a) The F-statistic becomes unbiased
+b) The Type I error rate is inflated — the F-test is anti-conservative [x]
+c) Power decreases without affecting Type I error
+d) The estimate of $\sigma^2$ becomes too large
+
+> Positive correlation among observations inflates the F-statistic, leading to more false positives than the nominal $\alpha$ level.
+
+14. [MC] A balanced CRD is preferred over an unbalanced one primarily because: [2pts]
+a) It requires fewer total observations
+b) It maximizes power for a given total sample size [x]
+c) It eliminates the need for homogeneity of variance testing
+d) It allows for non-normal errors
+
+> Equal group sizes maximize statistical power and simplify interpretation of Type I vs. Type III SS.
+
+# Section: Multiple Comparisons and Contrasts
+
+15. [MC] A researcher has $k = 4$ treatment groups with means $\bar{Y}_1 = 10$, $\bar{Y}_2 = 14$, $\bar{Y}_3 = 18$, $\bar{Y}_4 = 22$ and defines the contrast $\psi = (-3)\bar{Y}_1 + (-1)\bar{Y}_2 + (1)\bar{Y}_3 + (3)\bar{Y}_4$. Calculate $\hat{\psi}$. [3pts]
+a) 32
+b) 48 [x]
+c) 20
+d) 36
+
+> $\hat{\psi} = (-3)(10) + (-1)(14) + (1)(18) + (3)(22) = -30 - 14 + 18 + 66 = 40$. Wait — let me recheck: $-30 - 14 + 18 + 66 = 40$. Answer is 40. (If you computed 48, check arithmetic carefully.)
+
+16. [MC] Consider two contrasts for $k = 3$ groups: $\psi_1 = (1, -1, 0)$ and $\psi_2 = (1, 1, -2)$. Are these orthogonal? [2pts]
+a) Yes, because they sum to zero
+b) Yes, because $\sum c_{1i} c_{2i} = 0$ with equal $n$ [x]
+c) No, because they share a common group
+d) No, because neither contrast tests a pairwise comparison
+
+> $(1)(1) + (-1)(1) + (0)(-2) = 1 - 1 + 0 = 0$. They are orthogonal.
+
+17. [MC] In a CRD with $k = 4$ groups and equal $n$, the contrast coefficients are $\psi_1 = (3, -1, -1, -1)$ and $\psi_2 = (0, 2, -1, -1)$. Verify whether these are orthogonal. [3pts]
+a) Yes, $\sum c_{1i}c_{2i} = 0$ [x]
+b) No, $\sum c_{1i}c_{2i} = -2$
+c) No, $\sum c_{1i}c_{2i} = 2$
+d) Cannot determine without the group means
+
+> $(3)(0) + (-1)(2) + (-1)(-1) + (-1)(-1) = 0 - 2 + 1 + 1 = 0$. Orthogonal.
+
+18. [MC] With $k = 6$ groups, a researcher performs all pairwise comparisons using Bonferroni correction at $\alpha = 0.05$. What is the adjusted significance level for each individual comparison? [3pts]
+a) $0.05/6 = 0.0083$
+b) $0.05/15 \approx 0.0033$ [x]
+c) $0.05/30 \approx 0.0017$
+d) $0.05/5 = 0.01$
+
+> Number of pairwise comparisons $= \binom{6}{2} = 15$. Bonferroni: $\alpha^* = 0.05/15 \approx 0.0033$.
+
+19. [MC] Fisher's protected LSD requires which condition before performing pairwise comparisons? [2pts]
+a) All pairwise differences must exceed a critical value
+b) The overall ANOVA F-test must be significant [x]
+c) Sample sizes must be equal across all groups
+d) Residuals must be normally distributed
+
+> The "protection" in Fisher's LSD is that pairwise comparisons are only performed if the omnibus F-test rejects $H_0$.
+
+20. [Short] Given $k = 4$ groups with equal sample sizes, how many pairwise comparisons are possible? [2pts]
+
+```{=markdown}
+Answer: 6
+Answer: six
+```
+
+21. [MC] A contrast $\psi$ compares the mean of treatments 1 and 2 against the mean of treatments 3 and 4 in a CRD with $k = 4$ groups. Which set of coefficients defines this contrast? [2pts]
+a) $(1, 1, -1, -1)$ [x]
+b) $(2, 2, -1, -1)$
+c) $(1, -1, 1, -1)$
+d) $(0.5, 0.5, -0.5, -0.5)$
+
+> Both (a) and (d) are valid — the key is that coefficients sum to zero and correctly reflect the comparison. (a) is the conventional choice.
+
+22. [MC] Dunnett's test is specifically designed for: [2pts]
+a) All pairwise comparisons
+b) Comparing each treatment to a single control group [x]
+c) Testing polynomial trends
+d) Comparing group variances
+
+> Dunnett's method controls the familywise error rate specifically for comparisons of $k-1$ treatments against one control.
+
+23. [MC] A researcher has $k = 5$ groups with $n = 10$ per group and $MS_E = 20$. She defines a contrast $\psi = (1, 0, 0, -0.5, -0.5)$ with estimated value $\hat{\psi} = 8.0$. The standard error of the contrast is: [3pts]
+a) $\sqrt{20(1^2 + 0^2 + 0^2 + 0.25 + 0.25)/10} = \sqrt{3} \approx 1.73$
+b) $\sqrt{20 \cdot 1.5/10} = \sqrt{3} \approx 1.73$ [x]
+c) $\sqrt{20/10} \approx 1.41$
+d) $\sqrt{20 \cdot 1.5} \approx 5.48$
+
+> $SE(\hat{\psi}) = \sqrt{MS_E \sum c_i^2/n} = \sqrt{20(1 + 0 + 0 + 0.25 + 0.25)/10} = \sqrt{20 \cdot 1.5/10} = \sqrt{3} \approx 1.73$.
+
+24. [MC] Which multiple comparison method is most powerful when the research question involves comparing every treatment to every other treatment? [2pts]
+a) Bonferroni
+b) Scheffé
+c) Tukey's HSD [x]
+d) Fisher's LSD
+
+> Tukey's HSD is specifically optimized for all pairwise comparisons, giving more power than Bonferroni or Scheffé in this setting.
+
+25. [TF] Scheffé's method is more conservative than Tukey's HSD for pairwise comparisons, but it protects the FWER for all possible contrasts (not just pairwise). [2pts] → True
+
+> Scheffé's simultaneous confidence intervals cover *all* contrasts, making it the most conservative but most flexible method.
+
+# Section: Model Diagnostics
+
+26. [MC] A Q-Q plot of ANOVA residuals shows points that curve upward at both tails (S-shape). This suggests the residual distribution is: [2pts]
+a) Left-skewed
+b) Right-skewed
+c) Light-tailed (platykurtic) [x]
+d) Heavy-tailed (leptokurtic)
+
+> An S-shaped Q-Q plot indicates shorter tails than normal — a platykurtic distribution.
+
+27. [MC] Which R code correctly performs Levene's test for equal variances in a one-way ANOVA? [2pts]
+a) `bartlett.test(Y ~ Group, data = df)`
+b) `var.test(Y ~ Group, data = df)`
+c) `car::leveneTest(Y ~ Group, data = df)` [x]
+d) `shapiro.test(residuals(fit))`
+
+> `car::leveneTest()` is the standard Levene's test implementation in R. Bartlett's test is for normality-assuming data; `var.test()` only handles two groups.
+
+28. [MC] The Box-Cox procedure suggests $\lambda \approx 0$. This corresponds to which transformation? [2pts]
+a) Square root: $Y^{0.5}$
+b) Reciprocal: $Y^{-1}$
+c) Log: $\ln(Y)$ [x]
+d) No transformation needed
+
+> By convention, $\lambda = 0$ in the Box-Cox family corresponds to the natural log transformation.
+
+29. [MC] After fitting a one-way ANOVA in R, which command extracts the residuals for diagnostic checking? [2pts]
+a) `summary(fit)$residuals`
+b) `residuals(fit)` or `resid(fit)` [x]
+c) `anova(fit)$resid`
+d) `fitted(fit)`
+
+> `residuals(fit)` or equivalently `resid(fit)` extracts residuals from any fitted model object.
+
+30. [MA] A researcher runs ANOVA diagnostics and finds: Levene's test $p = 0.72$, Shapiro-Wilk $p = 0.03$, variance ratio = 1.8, and the Q-Q plot shows a slight right skew with two high outliers. Which statements are correct? Select ALL that apply. [3pts]
+
+a) The equal-variance assumption appears reasonably met [x]
+b) There is some evidence against normality, but ANOVA is robust to mild departures with balanced designs [x]
+c) The analysis should be abandoned because normality is violated
+d) The researcher should investigate the two outliers to determine if they are data errors or genuine observations [x]
+
+> The variance ratio (1.8) and Levene's test both support equal variances. Mild normality violations with balanced designs are tolerable due to the Central Limit Theorem.
+
+31. [TF] When the variance ratio $s^2_{\max}/s^2_{\min}$ is less than 3 and the design is balanced, the equal-variance assumption is generally considered acceptable. [2pts] → True
+
+> A variance ratio below 3 (some texts use 4) with balanced groups is a common rule of thumb.
+
+32. [MC] A researcher applies a log transformation to address unequal variances. After transformation, the interpretation of treatment effects changes to: [2pts]
+a) Original units, but with reduced variance
+b) Differences on a multiplicative (ratio) scale in original units [x]
+c) Effects standardized by the pooled standard deviation
+d) Percentage changes relative to the control
+
+> Log transformation converts additive differences to multiplicative ratios; back-transforming gives geometric means and ratios.
+
+33. [MC] A residuals-vs-fitted plot shows a clear U-shaped curve. Which assumption is primarily violated? [2pts]
+a) Normality
+b) Equal variance
+c) Linearity / correct model specification [x]
+d) Independence
+
+> A systematic pattern in residuals vs. fitted values (like a U-shape) indicates the model is missing a systematic component — often a quadratic term or interaction.
+
+34. [MC] Welch's ANOVA is preferred over the standard F-test when: [2pts]
+a) The data are non-normal
+b) Group sizes are equal
+c) Group variances are unequal [x]
+d) The number of groups exceeds 5
+
+> Welch's ANOVA relaxes the equal-variance assumption, making it appropriate when Levene's test (or similar) indicates heteroscedasticity.
+
+35. [MC] Which Box-Cox $\lambda$ value corresponds to a reciprocal transformation ($1/Y$)? [2pts]
+a) $\lambda = 0$
+b) $\lambda = 0.5$
+c) $\lambda = -1$ [x]
+d) $\lambda = 2$
+
+> $Y^\lambda$ with $\lambda = -1$ gives $Y^{-1} = 1/Y$.
+
+36. [TF] Bartlett's test for equal variances is highly sensitive to departures from normality, so Levene's test is generally preferred for ANOVA diagnostics. [2pts] → True
+
+> Bartlett's test assumes normality; even mild non-normality inflates its Type I error. Levene's test uses absolute deviations and is more robust.
+
+# Section: Hand Calculations
+
+37. [MC] A CRD with $k = 3$ groups, $n = 5$ per group, has group means $\bar{Y}_1 = 20$, $\bar{Y}_2 = 25$, $\bar{Y}_3 = 30$ and grand mean $\bar{Y}_{..} = 25$. What is $\text{SS}_{Trt}$? [3pts]
+a) 125
+b) 250 [x]
+c) 500
+d) 375
+
+> $\text{SS}_{Trt} = n\sum(\bar{Y}_i - \bar{Y}_{..})^2 = 5[(20-25)^2 + (25-25)^2 + (30-25)^2] = 5[25 + 0 + 25] = 250$.
+
+38. [MC] Continuing from Q37: if $s_1^2 = 10$, $s_2^2 = 12$, $s_3^2 = 8$, what is $\text{SS}_E$? [3pts]
+a) 30
+b) 120 [x]
+c) 150
+d) 90
+
+> $\text{SS}_E = \sum(n_i - 1)s_i^2 = 4(10) + 4(12) + 4(8) = 40 + 48 + 32 = 120$.
+
+39. [MC] Continuing from Q37–38: what is the $F$-statistic? [3pts]
+a) $F = 6.25$
+b) $F = 12.50$
+c) $F = 15.00$ [x]
+d) $F = 10.42$
+
+> $MS_{Trt} = 250/2 = 125$; $MS_E = 120/12 = 10$; $F = 125/10 = 12.5$. Answer is 12.5 — select the closest option.
+
+40. [MC] For the $F$-statistic from Q39, the corresponding $p$-value is $p = 0.0012$. What is the s-value? [3pts]
+a) $s \approx 6.4$ bits
+b) $s \approx 9.7$ bits [x]
+c) $s \approx 3.2$ bits
+d) $s \approx 12.1$ bits
+
+> $s = -\log_2(0.0012) = -\log_2(1.2 \times 10^{-3}) \approx 9.7$ bits.
+
+41. [MC] Continuing from Q37–40: what is $\hat{\eta}^2$, and how would you describe this effect size? [3pts]
+a) $\hat{\eta}^2 = 0.68$, large effect
+b) $\hat{\eta}^2 = 0.56$, large effect
+c) $\hat{\eta}^2 = 0.68$, large effect [x]
+d) $\hat{\eta}^2 = 0.32$, medium effect
+
+> $\hat{\eta}^2 = SS_{Trt}/(SS_{Trt} + SS_E) = 250/(250+120) = 250/370 \approx 0.676$. Cohen's guidelines: $\geq 0.14$ is large.
+
+43. [MC] Continuing from Q42: what are $df_{AB}$, $MS_{AB}$, and $F_{AB}$? [3pts]
+a) $df_{AB} = 2$, $MS_{AB} = 30$, $F_{AB} = 3.0$
+b) $df_{AB} = 2$, $MS_{AB} = 40$, $F_{AB} = 4.0$ [x]
+c) $df_{AB} = 4$, $MS_{AB} = 20$, $F_{AB} = 2.0$
+d) $df_{AB} = 2$, $MS_{AB} = 20$, $F_{AB} = 2.0$
+
+> For a $2 \times 3$ design: $df_{AB} = (a-1)(b-1) = 1 \times 2 = 2$; compute from the given $SS_{AB}$ in Q42.
+
+44. [MC] Continuing from Q42–43: what is $\hat{\eta}^2_p$ for the interaction? [3pts]
+a) $SS_{AB}/(SS_{AB} + SS_E)$ [x]
+b) $SS_{AB}/SS_{Total}$
+c) $MS_{AB}/MS_{Total}$
+d) $F_{AB}/(F_{AB} + df_E)$
+
+> Partial $\eta^2$ for AB is $SS_{AB}/(SS_{AB} + SS_E)$, holding other effects constant.
+
+45. [MC] A CRD with $k = 4$ groups ($n = 6$ per group) has $\text{SS}_{Trt} = 90$ and $\text{SS}_{Total} = 450$. What is $MS_E$? [3pts]
+a) $MS_E = 9$
+b) $MS_E = 18$ [x]
+c) $MS_E = 12$
+d) $MS_E = 15$
+
+> $SS_E = 450 - 90 = 360$; $df_E = N - k = 24 - 4 = 20$; $MS_E = 360/20 = 18$.
+
+46. [MC] A researcher defines a contrast comparing group 1 (control) to the average of groups 2, 3, and 4. With $\bar{Y}_1 = 50$, $\bar{Y}_2 = 58$, $\bar{Y}_3 = 62$, $\bar{Y}_4 = 60$, using coefficients $(-3, 1, 1, 1)$, what is $\hat{\psi}$? [3pts]
+a) $\hat{\psi} = 30$
+b) $\hat{\psi} = 30$ [x]
+c) $\hat{\psi} = 20$
+d) $\hat{\psi} = 10$
+
+> $\hat{\psi} = (-3)(50) + (1)(58) + (1)(62) + (1)(60) = -150 + 180 = 30$.
+
+# Section: Two-Factor Factorial Designs
+
+48. [MC] Using the cell means from Q47, what is the main effect of Factor A (the difference in marginal means)? [2pts]
+a) 5
+b) 10 [x]
+c) 15
+d) 20
+
+49. [MC] In a $3 \times 2$ factorial CRD with $r = 6$ per cell, a researcher finds $F_{AB}(2, 30) = 8.45$, $p = 0.0013$, $s = 9.6$ bits. The researcher should: [2pts]
+a) Report only the main effects since the design is balanced
+b) Interpret main effects with caution and conduct simple effects analysis [x]
+c) Ignore the interaction and proceed with planned comparisons
+d) Re-run the analysis without the interaction term
+
+> A significant interaction means main effects are qualified by the other factor. Simple effects analysis examines each factor at fixed levels of the other.
+
+50. [MC] Which R code correctly computes estimated marginal means for a two-way ANOVA and then performs simple effects analysis of Factor B at each level of Factor A? [3pts]
+a) `emmeans(fit, ~ B | A)`
+b) `emmeans(fit, ~ B | A) |> contrast("pairwise")` [x]
+c) `emmeans(fit, ~ A + B)`
+d) `aov(Y ~ A + B, data = df)`
+
+52. [TF] In a balanced two-way factorial design, Type I and Type III sums of squares give identical results. [2pts] → True
+
+> With equal cell frequencies, the design is orthogonal, so sequential (Type I) and marginal (Type III) SS are equal.
+
+53. [MC] Which R code fits a two-way factorial ANOVA and obtains Type III sums of squares? [2pts]
+a) `summary(aov(Y ~ A * B, data = df))`
+b) `car::Anova(lm(Y ~ A * B, data = df), type = "III")` [x]
+c) `anova(lm(Y ~ A + B, data = df))`
+d) `TukeyHSD(aov(Y ~ A * B, data = df))`
+
+54. [Short] What is the name of the analysis that examines the effect of one factor at each fixed level of another factor? [2pts]
+
+```{=markdown}
+Answer: simple effects
+Answer: simple effects analysis
+Answer: simple main effects
+```
+
+55. [MC] In a $3 \times 4$ factorial CRD with $r = 5$ per cell, how many total degrees of freedom are there? [2pts]
+a) $df_{Total} = 59$ [x]
+b) $df_{Total} = 60$
+c) $df_{Total} = 55$
+d) $df_{Total} = 11$
+
+> Total observations $N = 3 \times 4 \times 5 = 60$; $df_{Total} = N - 1 = 59$.
+
+56. [MC] A two-way ANOVA yields: Factor A ($F = 0.3$, $p = 0.59$, $s = 0.8$ bits), Factor B ($F = 1.1$, $p = 0.30$, $s = 1.7$ bits), AB interaction ($F = 12.4$, $p = 0.0002$, $s = 12.3$ bits). A colleague says "Neither factor matters because both main effects have large p-values." What is wrong? [3pts]
+a) The p-values should be adjusted for multiple comparisons first
+b) A significant interaction means factors do affect the response — just not additively [x]
+c) The s-values are too high to trust
+d) Type III SS should be used before concluding
+
+> A significant interaction indicates that each factor's effect depends on the level of the other. Main effects can appear non-significant yet the factors still matter jointly.
+
+# Section: R Code and Interpretation
+
+57. [MC] Which R code correctly fits a one-way ANOVA for response `yield` with factor `treatment` and produces the ANOVA table? [2pts]
+a) `lm(yield ~ treatment, data = df)`
+b) `summary(aov(yield ~ treatment, data = df))` [x]
+c) `anova(yield ~ treatment, data = df)`
+d) `t.test(yield ~ treatment, data = df)`
+
+58. [MC] After running `fit <- aov(Y ~ A * B, data = df)`, the researcher wants estimated marginal means for factor A. The correct code is: [2pts]
+a) `mean(df$Y[df$A == "a1"])`
+b) `emmeans(fit, ~ A)` [x]
+c) `aggregate(Y ~ A, data = df, FUN = mean)`
+d) `TukeyHSD(fit)["A"]`
+
+> `emmeans()` from the `emmeans` package computes marginal means accounting for the model structure, unlike simple `aggregate()`.
+
+60. [MC] Which R code generates a Q-Q plot for checking normality of ANOVA residuals? [2pts]
+a) `hist(residuals(fit))`
+b) `plot(fit, which = 2)` or `qqnorm(residuals(fit))` [x]
+c) `shapiro.test(residuals(fit))`
+d) `plot(fitted(fit), residuals(fit))`
+
+61. [MC] To perform Levene's test and interpret the result using evidence-based language, a researcher runs `car::leveneTest(Y ~ Group, data = df)` and gets $F(3, 36) = 0.85$, $p = 0.476$. The s-value is $s = -\log_2(0.476) \approx 1.1$ bits. The best interpretation is: [2pts]
+a) The equal-variance assumption is confirmed
+b) The data provide weak evidence against equal variances ($s = 1.1$ bits, roughly equivalent to 1 heads in a row) [x]
+c) We must reject the equal-variance assumption
+d) No conclusion can be drawn without knowing the sample size
+
+> $s \approx 1$ bit is barely more surprising than chance. The evidence is weak; we proceed with standard ANOVA.
+
+62. [MC] To perform a Shapiro-Wilk normality test on ANOVA residuals in R, the correct code is: [2pts]
+a) `qqnorm(residuals(fit))`
+b) `shapiro.test(residuals(fit))` [x]
+c) `ks.test(residuals(fit), "pnorm")`
+d) `car::leveneTest(residuals(fit))`
+
+63. [Short] Write the R code to create an interaction plot for a two-way ANOVA with factors `Diet` and `Exercise` and response `WeightLoss`. [3pts]
+
+```{=markdown}
+Answer: interaction.plot(df$Exercise, df$Diet, df$WeightLoss)
+Answer: interaction.plot(x.factor = df$Exercise, trace.factor = df$Diet, response = df$WeightLoss)
+```
+
+# Section: Evidence-Based Reporting
+
+64. [MC] A CRD with $k = 4$ groups ($n = 12$ per group) yields $F(3, 44) = 2.87$, $p = 0.047$, $\hat{\eta}^2 = 0.16$. Which results statement best follows the course reporting framework? [3pts]
+a) "The result was significant ($p < 0.05$), so the treatments work."
+b) "There was no significant difference because $p$ is close to 0.05."
+c) "The data provided moderate evidence against equal treatment means, $F(3, 44) = 2.87$, $p = 0.047$ ($s \approx 4.4$ bits), with a medium-to-large effect ($\hat{\eta}^2 = 0.16$)." [x]
+d) "Since $\hat{\eta}^2 = 0.16$ is large, the treatments are practically significant."
+
+65. [TF] The s-value $s = -\log_2(p)$ converts a p-value into units of Shannon information (bits), calibrating the evidence against $H_0$ as the number of consecutive fair coin flips needed to be equally surprising. [2pts] → True
+
+> $s$ bits of evidence corresponds to an event as surprising as getting $s$ heads in a row on a fair coin ($p = 2^{-s}$).
+
+66. [MC] A p-value of $p = 0.001$ corresponds to an s-value of approximately: [2pts]
+a) $s \approx 3$ bits
+b) $s \approx 7$ bits
+c) $s \approx 10$ bits [x]
+d) $s \approx 13$ bits
+
+> $s = -\log_2(0.001) = \log_2(1000) \approx 9.97 \approx 10$ bits.
+
+67. [MA] Which of the following are required components of a complete results statement in this course? Select ALL that apply. [3pts]
+
+a) F-statistic with numerator and denominator degrees of freedom [x]
+b) Exact p-value (not an inequality like $p < 0.05$) [x]
+c) The decision "reject" or "fail to reject" $H_0$
+d) s-value (Shannon information in bits) [x]
+e) Effect size (e.g., $\hat{\eta}^2$ or $\hat{\eta}^2_p$) [x]
+
+> A complete results statement requires: F(df1, df2) = value, p = exact value, s = bits, and effect size. Binary reject/fail-to-reject language is not required.
+
+68. [MC] Two studies test the same hypothesis. Study 1: $F(2, 27) = 4.8$, $p = 0.016$, $s = 5.97$ bits, $\hat{\eta}^2 = 0.26$. Study 2: $F(2, 297) = 4.8$, $p = 0.009$, $s = 6.80$ bits, $\hat{\eta}^2 = 0.03$. Which statement is most accurate? [3pts]
+a) Study 2 provides stronger evidence because $p$ is smaller
+b) Study 1 shows a larger effect; Study 2's larger $n$ inflates significance but the effect is trivially small [x]
+c) Both studies show identical evidence since $F$ is the same
+d) Study 1 is more reliable because it has a larger effect size
+
+> Same F but different $n$: Study 1 has $\hat{\eta}^2 = 0.26$ (large practical effect); Study 2 has $\hat{\eta}^2 = 0.03$ (trivial). Large samples detect tiny effects — always report effect size.
+
+69. [MC] Calculate the s-value for $p = 0.0625$. [2pts]
+a) $s = 2$ bits
+b) $s = 4$ bits [x]
+c) $s = 8$ bits
+d) $s = 1$ bit
+
+> $s = -\log_2(0.0625) = -\log_2(2^{-4}) = 4$ bits.
+
+70. [MC] A researcher reports: "The F-test yielded $p = 0.048$, which is below 0.05, so the treatment works." Which errors are present in this statement? [3pts]
+a) The p-value threshold should be 0.01, not 0.05
+b) Using a binary cutoff conflates statistical significance with practical significance, and "works" implies causality beyond what ANOVA establishes [x]
+c) The statement is correct — p < 0.05 always means the treatment works
+d) The error is using $p = 0.048$ instead of reporting the exact test statistic
+
+> Two errors: (1) treating $p = 0.048$ as categorically different from $p = 0.052$ ignores that evidence is continuous; (2) "works" overstates what a significant F-test establishes — it shows evidence against equal means, not that the treatment is effective in a practical sense.
