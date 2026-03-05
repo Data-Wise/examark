@@ -116,8 +116,9 @@ nav:
       - Configuration: config.md
       - Canvas Emulator: emulator.md
       - Canvas Quick Reference: reference/REFCARD-CANVAS.md
-  - Quarto Extension:
-      - Overview: extensions/quarto.md
+  - Extensions:
+      - Quarto: extensions/quarto.md
+      - Claude Code Plugin: extensions/claude-plugin.md
   - Tutorials:
       - tutorials/index.md
       - Your First Quiz: tutorials/first-quiz.md
