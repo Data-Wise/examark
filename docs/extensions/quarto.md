@@ -244,6 +244,16 @@ e) 9
 Answer: Paris
 ```
 
+For multiple acceptable answers, use `= answer` syntax (one per line):
+
+```markdown
+## 6. [Short] What is the term for non-constant residual variance?
+
+= heteroscedasticity
+= heteroskedasticity
+= non-constant variance
+```
+
 ### Numeric
 
 ```markdown
