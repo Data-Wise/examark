@@ -202,28 +202,44 @@ examark emulate-canvas exam.qti.zip
 
 For Quarto (`.qmd`) files with R/Python code:
 
+### Automatic (Recommended)
+
+Add a post-render hook to `_quarto.yml` — QTI is generated automatically after every render:
+
+```yaml
+project:
+  type: default
+  output-dir: _output
+  render:
+    - "exam/*.qmd"
+  post-render: ./_quarto-post-render.sh
+```
+
+```bash
+# One command does both steps
+quarto render exam.qmd --to exam-gfm
+# ✅ QTI package ready: _output/exam/exam.qti.zip
+```
+
+The `_quarto-post-render.sh` script is included in the starter template (`quarto use template Data-Wise/examark`).
+
+!!! note "Quarto 1.8+ path requirement"
+    Use `post-render: ./_quarto-post-render.sh` with the `./` prefix. Bare filenames fail in Quarto 1.8+ due to Deno path resolution.
+
+### Manual
+
 ```bash
 # Step 1: Render to GFM (Markdown)
 quarto render exam.qmd --to exam-gfm
 
 # Step 2: Convert to QTI
-examark exam.md -o exam.qti.zip
+examark _output/exam/exam.md -o exam.qti.zip
 
 # Step 3: Validate
 examark emulate-canvas exam.qti.zip
 ```
 
-Or add `exam.qti: true` to your YAML frontmatter and Quarto will print the `examark` command after render:
-
-```yaml
----
-title: "Statistics Midterm"
-format: exam-gfm
-exam:
-  qti: true
-  solutions: false
----
-```
+Or add `exam.qti: true` to your YAML frontmatter — Quarto prints the exact `examark` command to run after rendering.
 
 !!! tip "R-generated figures"
     Examark automatically bundles R-generated plots from Quarto code chunks into the QTI package. Run `quarto render` before `examark` so all figures are generated first.

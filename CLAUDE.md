@@ -21,13 +21,22 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 - Files changed: `src/parser/markdown.ts`, `src/generator/qti.ts`
 - Tests: 265 passing (0 failures)
 
+**Quarto Post-Render Hook (Mar 4):**
+
+- Fixed: `_quarto-post-render.sh` restored from git history (was missing from working tree)
+- Fixed: `_quarto.yml` post-render path changed to `./_quarto-post-render.sh` (Quarto 1.8/Deno requires `./` prefix)
+- Result: `quarto render exam.qmd --to exam-gfm` now auto-generates `.qti.zip` via post-render hook
+- Updated: `_quarto.yml` render list includes `exam/*.qmd` for project-scoped rendering
+- Created: `exam/exam1-questions.qmd` — Quarto source for STAT 454/545 Midterm Exam 1 (multi-format)
+- Created: `exam/exam1-questions.tex` — standalone LaTeX version using `exam` document class
+
 **Documentation Site (Mar 4):**
 - Added: `docs/tutorials/canvas-workflow.md` — full Canvas import guide with mermaid diagram
 - Added: `docs/reference/REFCARD-CANVAS.md` — one-page Canvas quick reference
 - Updated: `docs/emulator.md` — 4 new validator checks in "What It Checks" table
 - Updated: `docs/index.md` — Recent Updates (March 2026) section
 - Updated: `docs/tutorials/index.md` — Canvas Workflow tutorial linked
-- Updated: `docs/extensions/quarto.md` — `= syntax` added to Short Answer section
+- Updated: `docs/extensions/quarto.md` — `= syntax` + automatic QTI post-render workflow
 - Updated: `mkdocs.yml` — both new pages in nav
 - Audit: `AUDIT-CONTENT-INVENTORY.md` — full doc audit (28 files, P3 gap: MA tutorial)
 
