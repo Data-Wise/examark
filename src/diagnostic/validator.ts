@@ -582,7 +582,7 @@ export class QtiValidator {
           const responseLabels = renderChoice.response_label || [];
           const labels = Array.isArray(responseLabels) ? responseLabels : [responseLabels];
 
-          if (labels.length < 2) {
+          if (labels.length < 2 && questionType !== 'essay_question' && questionType !== 'numerical_question') {
             report.errors.push(`Canvas import may fail: Less than 2 answer options for item ${itemIdent}`);
           }
 
