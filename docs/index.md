@@ -74,6 +74,31 @@
 
 ---
 
+## 🆕 Recent Updates (March 2026)
+
+**Short Answer `= answer` syntax:**
+
+Multiple acceptable answers for short answer questions now support a cleaner multi-line format:
+
+```markdown
+1. [Short] What pattern indicates unequal variance? [2pts]
+= funnel
+= funnel shape
+= fan shape
+```
+
+Both `Answer: text` (original) and `= text` (new) syntaxes are fully supported. See [Short Answer syntax](markdown/question-types.md#short-answer).
+
+**Canvas QTI reliability improvements:**
+
+The emulator and validator now catch additional Canvas import blockers:
+
+- Multiple Answers (`[MA]`) questions missing `rcardinality="Multiple"` — previously caused silent "couldn't determine correct answers" errors in Canvas
+- MA questions missing incorrect-option exclusions in resprocessing
+- Short answer questions with no accepted answers defined
+
+---
+
 ## 🚀 Quick Start
 
 ```bash
