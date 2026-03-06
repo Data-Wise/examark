@@ -54,3 +54,17 @@ site/
 
 # Final exam files (working copies)
 FINAL_EXAM*
+
+# Exam working outputs (keep source .md/.qmd files)
+exam/*.qti.zip
+exam/*.tex
+exam/*.pdf
+exam/*.rtf
+exam/*.txt
+
+# Brainstorm artifacts
+BRAINSTORM-*.md
+AUDIT-*.md
+
+# Claude guard state
+.claude/guard-session-counts
