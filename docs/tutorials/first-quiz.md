@@ -1,5 +1,13 @@
 # Your First Quiz
 
+> **TL;DR** (30 seconds)
+> - **What:** Create and import your first Canvas quiz from Markdown
+> - **Why:** Fastest way to verify Examark works with your Canvas instance
+> - **How:** Write 3 questions in `.md`, run `examark`, upload to Canvas
+> - **Next:** [Question Types](../markdown/question-types.md) to explore all 8 question types
+
+**5 minutes** | Beginner | 4 steps
+
 Create and import a quiz into Canvas in under 5 minutes.
 
 ---

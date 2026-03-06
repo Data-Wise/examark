@@ -1,5 +1,11 @@
 # Troubleshooting
 
+> **TL;DR** (30 seconds)
+> - **What:** Fix common Examark conversion and Canvas import problems
+> - **Why:** Most issues are solved by one diagnostic command
+> - **How:** `examark emulate-canvas quiz.qti.zip` — catches 90% of import failures
+> - **Next:** [Contributing](contributing.md) to report bugs that aren't covered here
+
 Common issues and solutions for Examark.
 
 ---

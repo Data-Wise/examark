@@ -1,5 +1,11 @@
 # Getting Started
 
+> **TL;DR** (30 seconds)
+> - **What:** Install Examark and convert your first Markdown file to a Canvas quiz
+> - **Why:** Skip the manual quiz builder — write exams in Markdown, import in one click
+> - **How:** `npm install -g examark && examark quiz.md -o quiz.qti.zip`
+> - **Next:** [Your First Quiz](tutorials/first-quiz.md) for a step-by-step walkthrough
+
 Get up and running with Examark in under 5 minutes.
 
 ---

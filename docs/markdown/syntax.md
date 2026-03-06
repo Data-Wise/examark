@@ -1,5 +1,11 @@
 # Syntax Reference
 
+> **TL;DR** (30 seconds)
+> - **What:** Complete Markdown syntax for writing Canvas-compatible exams
+> - **Why:** One syntax reference for all 8 question types, answer markers, and formatting
+> - **How:** Use `1. [MC] Question text` for clean syntax or `## 1. Question` for traditional
+> - **Next:** [Question Types Gallery](question-types.md) for visual examples
+
 Complete reference for Examark's Markdown syntax.
 
 ---
