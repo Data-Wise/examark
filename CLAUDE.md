@@ -207,7 +207,14 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 
 ### In Progress 🚧
 
-*No active development items currently.*
+**Markdown Tables → HTML in QTI Generator:**
+- **Branch**: `feature/markdown-tables-to-html` (worktree at `~/.git-worktrees/examark/feature-md-tables`)
+- **Spec**: `docs/specs/SPEC-markdown-tables-to-html-2026-03-06.md`
+- **ORCHESTRATE**: `ORCHESTRATE-markdown-tables.md` in worktree
+- **What**: Convert markdown pipe tables to HTML `<table>` during QTI generation so Canvas renders tables correctly
+- **Scope**: Stems, answer options, feedback blocks, LaTeX cells, column alignment
+- **Key decision**: Use Canvas `ic-Table` CSS class + inline style fallback; generator-only approach (no parser changes)
+- **Status**: Spec complete, research done (3/4 risks resolved), ready for implementation
 
 ### Known Issues 🐛
 
