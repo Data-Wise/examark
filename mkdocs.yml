@@ -102,6 +102,7 @@ plugins:
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
+  - Visual Workflows: workflows.md
   - Markdown:
       - markdown/index.md
       - Question Types: markdown/question-types.md
