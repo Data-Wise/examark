@@ -1748,10 +1748,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#release-workflow" class="md-nav__link">
+  <a href="#release-workflow-maintainers-only" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📦 Release Workflow
+        📦 Release Workflow (Maintainers Only)
       
     </span>
   </a>
@@ -2012,10 +2012,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#release-workflow" class="md-nav__link">
+  <a href="#release-workflow-maintainers-only" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📦 Release Workflow
+        📦 Release Workflow (Maintainers Only)
       
     </span>
   </a>
@@ -2274,10 +2274,10 @@
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>npm<span class="w"> </span>link
 </span></code></pre></div>
 <h2 id="development-workflow">Development Workflow</h2>
-<h3 id="release-workflow">📦 Release Workflow</h3>
+<h3 id="release-workflow-maintainers-only">📦 Release Workflow (Maintainers Only)</h3>
 <p>We use <strong>fully automated releases</strong>. To release a new version:</p>
 <ol>
-<li><strong>Ensure you are on <code>main</code> branch</strong> with a clean working tree.</li>
+<li><strong>Ensure you are on <code>dev</code> branch</strong> with a clean working tree, merged to <code>main</code> via PR.</li>
 <li>
 <p>Run the automated release command:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>npm<span class="w"> </span>version<span class="w"> </span>patch<span class="w">  </span><span class="c1"># v0.6.1 -&gt; v0.6.2</span>
@@ -2385,11 +2385,11 @@
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>npm<span class="w"> </span><span class="nb">test</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Run in watch mode (auto-rerun on changes)</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>npm<span class="w"> </span>run<span class="w"> </span>test:watch
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>npm<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--<span class="w"> </span>--watch
 </span></code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Test Coverage</p>
-<p>We use Vitest for testing. All 233 tests should pass before submitting a PR.</p>
+<p>We use Vitest for testing. All 265+ tests should pass before submitting a PR.</p>
 </div>
 <h3 id="code-quality">Code Quality</h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Type checking</span>
@@ -2423,16 +2423,23 @@
 <h2 id="pull-request-process">Pull Request Process</h2>
 <ol>
 <li><strong>Fork</strong> the repository</li>
-<li><strong>Create</strong> a feature branch (<code>git checkout -b feature/amazing-feature</code>)</li>
-<li><strong>Make</strong> your changes with tests</li>
+<li>
+<p><strong>Create</strong> a feature branch from <code>dev</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>dev
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/amazing-feature
+</span></code></pre></div>
+</li>
+<li>
+<p><strong>Make</strong> your changes with tests</p>
+</li>
 <li><strong>Commit</strong> using <a href="https://www.conventionalcommits.org/">conventional commits</a></li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: add amazing new feature&quot;</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;fix: resolve parsing issue&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: add amazing new feature&quot;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;fix: resolve parsing issue&quot;</span>
 </span></code></pre></div>
 <ol>
 <li><strong>Push</strong> to your fork</li>
-<li><strong>Open</strong> a Pull Request</li>
+<li><strong>Open</strong> a Pull Request <strong>targeting <code>dev</code></strong> (not <code>main</code>)</li>
 </ol>
 <h3 id="pr-checklist">PR Checklist</h3>
 <ul class="task-list">
