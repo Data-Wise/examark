@@ -1,5 +1,11 @@
 # Canvas Import Workflow
 
+> **TL;DR** (30 seconds)
+> - **What:** End-to-end guide: Markdown file to working Canvas quiz
+> - **Why:** The complete happy path with validation at every step
+> - **How:** Write `.md` → `examark convert` → `emulate-canvas` → Canvas Import
+> - **Next:** [Your First Quiz](first-quiz.md) if you haven't installed Examark yet
+
 Everything you need to get from Markdown to a successfully imported Canvas quiz.
 
 ---

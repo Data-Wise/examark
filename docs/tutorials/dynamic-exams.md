@@ -1,5 +1,7 @@
 # Dynamic Exams with R & Python
 
+**15 minutes** | Intermediate | Requires Quarto + R or Python
+
 This advanced tutorial covers programmatic exam generation using R and Python code in Quarto documents.
 
 ## Overview

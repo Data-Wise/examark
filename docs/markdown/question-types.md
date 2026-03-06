@@ -1,5 +1,11 @@
 # Question Types Gallery
 
+> **TL;DR** (30 seconds)
+> - **What:** Visual gallery of all 8 question types with copy-paste Markdown examples
+> - **Why:** See exactly what each question type looks like before writing your exam
+> - **How:** Pick a type below, copy the Markdown, customize for your content
+> - **Next:** [Syntax Reference](syntax.md) for the complete formatting rules
+
 Examark supports 8 question types for Canvas LMS. Each type includes examples showing the Markdown syntax and how it appears in Canvas.
 
 ---

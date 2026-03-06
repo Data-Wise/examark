@@ -1,5 +1,11 @@
 # Contributing
 
+> **TL;DR** (30 seconds)
+> - **What:** How to contribute bug reports, features, and code to Examark
+> - **Why:** PRs welcome — the project is actively maintained
+> - **How:** Fork, branch from `dev`, commit with conventional commits, open PR
+> - **Next:** [Development Setup](#development-setup) to get your local environment ready
+
 We love your input! We want to make contributing to this project as easy and transparent as possible.
 
 ## Ways to Contribute

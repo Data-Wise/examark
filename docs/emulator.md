@@ -1,5 +1,11 @@
 # Canvas Import Emulator
 
+> **TL;DR** (30 seconds)
+> - **What:** Predicts whether Canvas will accept your QTI package before you upload
+> - **Why:** Catch broken answers, missing images, and format errors locally
+> - **How:** `examark emulate-canvas quiz.qti.zip`
+> - **Next:** [Troubleshooting](troubleshooting.md) if the emulator flags issues
+
 The **Examark** emulator predicts whether your QTI package will import successfully into Canvas LMS.
 
 ## Usage
