@@ -262,6 +262,17 @@ html {
   margin: 2.5rem 0;
 }
 
+/* ===== MERMAID OVERFLOW FIX ===== */
+.md-typeset .mermaid {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.md-typeset .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .hero-section {
