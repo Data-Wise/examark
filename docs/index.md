@@ -58,6 +58,12 @@
 
     Use with R/Python for dynamic, randomized exam generation.
 
+- :material-robot:{ .lg .middle } **[Claude Code Plugin](extensions/claude-plugin.md)**
+
+    ---
+
+    Slash commands and auto-lint for exam authoring directly in Claude Code.
+
 - :material-folder-multiple:{ .lg .middle } **Batch Conversion**
 
     ---
@@ -75,6 +81,10 @@
 ---
 
 ## 🆕 Recent Updates (March 2026)
+
+**Claude Code Plugin:**
+
+Use examark directly from [Claude Code](https://claude.ai/code) with 3 slash commands (`/exam:convert`, `/exam:check`, `/exam:preview`) and an auto-lint hook that catches errors as you write. See the [plugin guide](extensions/claude-plugin.md).
 
 **Short Answer `= answer` syntax:**
 

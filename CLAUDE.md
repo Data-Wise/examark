@@ -9,9 +9,15 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 - **Repo**: Data-Wise/examark
 - **Docs**: https://data-wise.github.io/examark/
 - **Version**: 0.6.6 | **Tests**: 265 passing (0 failures — all torture-quarto tests now fixed)
-- **Distribution**: npm (`examark`), Homebrew (`data-wise/tap/examark`), Quarto extension
+- **Distribution**: npm (`examark`), Homebrew (`data-wise/tap/examark`), Quarto extension, Claude Code plugin
 
 ## Recent Changes (Mar 2026)
+
+**Claude Code Plugin (Mar 5):**
+- Added: `.claude-plugin/` with plugin manifest, 3 commands, 5 skills, auto-lint hook
+- Commands: `/exam:convert`, `/exam:check`, `/exam:preview`
+- Hook: PostToolUse auto-lint on Edit/Write of exam `.md` files
+- Skills migrated from `.claude/skills/` to `.claude-plugin/skills/`
 
 **Short Answer `= answer` Syntax (Mar 4):**
 - Added: `= answer` syntax for short answer questions with multiple acceptable answers
@@ -624,67 +630,75 @@ Two validation stages:
 2. Generated test output goes in `scratch/`
 3. Version sync: `npm version patch` auto-updates version in `src/index.ts`
 
-## Claude Skills
+## Claude Code Plugin
+
+**Location**: `.claude-plugin/` (plugin manifest, 3 commands, 5 skills, 1 hook)
+
+The examark Claude Code plugin provides slash commands and auto-lint for exam authoring workflows.
+
+### Commands
+
+| Command | Description |
+|---------|-------------|
+| `/exam:convert <file>` | Convert .md/.qmd to QTI package (auto-detects Quarto) |
+| `/exam:check <file>` | Lint markdown or verify QTI package (auto-detects type) |
+| `/exam:preview <file>` | Show formatted question summary table |
+
+### Plugin Skills
+
+| File | Source | Purpose |
+|------|--------|---------|
+| `exam-formatting.md` | `claude-desktop-examark-formatting.md` | Syntax rules & validation |
+| `exam-generation.md` | `claude-desktop-exam-generation.md` | Question patterns & templates |
+| `exam-quick-ref.md` | `examark-quick-reference.md` | One-page cheat sheet |
+| `quarto-generator.md` | `quarto-examark-generator.md` | Quarto guide |
+| `statistics.md` | `statistics-exam-generator.md` | Statistics patterns |
+
+### Auto-Lint Hook
+
+PostToolUse hook on Edit/Write that auto-lints exam `.md` files:
+- Multi-layer filtering: extension, filename, directory, content heuristic
+- Informational only (never blocks edits)
+- Prefers local `dist/index.js` over global `examark`
+
+### Installation
+
+```bash
+# Symlink for development
+ln -s /path/to/examark/.claude-plugin ~/.claude/plugins/examark
+```
+
+### Plugin Structure
+
+```
+.claude-plugin/
+  plugin.json              # Manifest (name, version, commands, skills)
+  hooks/
+    hooks.json             # PostToolUse auto-lint config
+    exam-lint.sh           # Lint script with smart file filtering
+  skills/
+    exam-formatting.md     # Syntax rules
+    exam-generation.md     # Question patterns
+    exam-quick-ref.md      # Cheat sheet
+    quarto-generator.md    # Quarto guide
+    statistics.md          # Statistics patterns
+commands/
+  convert.md               # /exam:convert command
+  check.md                 # /exam:check command
+  preview.md               # /exam:preview command
+```
+
+## Claude Desktop Skills
 
 **Location**: `.claude/skills/` (7 skill files + README)
 
-This project includes comprehensive Claude skills for exam generation. All skills are version-controlled in the repository.
-
-### Skill Files
-
-| File | Purpose | Target |
-|------|---------|--------|
-| `claude-desktop-exam-generation.md` | Question patterns & templates | Claude Desktop |
-| `claude-desktop-examark-formatting.md` | Syntax rules & validation | Claude Desktop |
-| `claude-desktop-project-setup-guide.md` | Setup instructions | Reference |
-| `examark-example-exam.md` | 26-question working example | Claude Desktop |
-| `examark-quick-reference.md` | One-page cheat sheet | Claude Desktop |
-| `quarto-examark-generator.md` | Comprehensive Quarto guide | Claude Code |
-| `statistics-exam-generator.md` | Statistics-specific patterns | Claude Code |
-
-### For Claude Desktop App
-
-**Setup**: Create a project and upload these 4 files:
+For Claude Desktop App, upload these 4 files to a project:
 1. `claude-desktop-exam-generation.md` - Core patterns
 2. `claude-desktop-examark-formatting.md` - Syntax rules
 3. `examark-example-exam.md` - Full example
 4. `examark-quick-reference.md` - Cheat sheet
 
-**Project Instructions**:
-```
-Generate exams in examark format for Canvas LMS.
-Always use [x] markers (never **bold**).
-Include LaTeX for math formulas.
-Follow examark syntax rules.
-```
-
-### For Claude Code CLI
-
-Skills are automatically available in this project:
-- `quarto-examark-generator.md` - All question types, YAML config, R/Python dynamic content
-- `statistics-exam-generator.md` - Stats topics, formulas, hypothesis testing
-
-### Coverage
-
-**Question Types**: All 8 types (MC, TF, MA, Essay, Short, Num, Match, FMB)
-**Formats**: Markdown, Quarto (.qmd), all output formats
-**Features**: LaTeX math, feedback, sections, dynamic content
-**Subjects**: Statistics (primary), Math, Science
-
-### Test Example
-
-`examples/quarto/test-skill-output.qmd`:
-- 11 questions across all major types
-- Demonstrates feedback, LaTeX math, solutions
-- Full render → convert → validate workflow verified
-
-### Documentation
-
-See `.claude/skills/README.md` for:
-- Detailed file descriptions
-- Upload instructions
-- Usage examples
-- Workflow guides
+See `.claude/skills/README.md` for detailed instructions.
 
 ## Release Automation
 

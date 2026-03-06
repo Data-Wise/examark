@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.6.6] - 2026-03-05
+
+### Added
+
+- **Claude Code Plugin**: 3 slash commands (`/exam:convert`, `/exam:check`, `/exam:preview`) with auto-lint hook
+- **Short Answer `= answer` syntax**: Multi-line format for multiple acceptable answers
+- **Canvas Workflow guide**: Step-by-step tutorial with mermaid diagram
+- **Canvas Quick Reference**: One-page reference card for Canvas import
+
+### Fixed
+
+- **Validator**: Skip "less than 2 options" check for essay and numerical question types
+- **QTI Generator**: MA questions now use `rcardinality="Multiple"` (fixes Canvas silent failures)
+- **QTI Generator**: XML-escape inline code content before wrapping in `<code>` tags
+- **Parser**: Figure blocks inside active questions now append to stem correctly
+- **Parser**: Quarto GFM escapes (`\[x\]`, unicode `→`) handled properly
+- **Post-render hook**: Prefer local `dist/index.js` over global examark
+
+### Changed
+
+- **Dependencies**: Updated vitest, tsup, fast-xml-parser, archiver, commander
+- **Documentation**: Plugin page added to docs site, homepage updated
+
 ## [0.4.2] - 2025-12-07
 
 ### Fixed

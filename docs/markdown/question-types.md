@@ -100,7 +100,7 @@ Students select all correct answers. Use `*` prefix for each correct option.
 
 ---
 
-## Short Answer `[Short]`
+## Short Answer `[Short]` { #short-answer }
 
 Fill-in-the-blank with typed response. Multiple accepted answers supported.
 
