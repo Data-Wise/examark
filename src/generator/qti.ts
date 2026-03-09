@@ -68,6 +68,16 @@ export function convertMarkdownTablesToHtml(text: string): string {
           j++;
         }
 
+        // XML-escape cell content so it's valid inside the QTI XML document.
+        // The table HTML will be placeholder-protected and skip the main XML escaping,
+        // so we must handle it here. Preserve __PLACEHOLDER__ tokens as-is.
+        const escapeCell = (content: string): string => {
+          return content
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+        };
+
         // Build HTML table
         const cellStyle = (colIdx: number) => {
           const align = alignments[colIdx] || 'left';
@@ -77,7 +87,7 @@ export function convertMarkdownTablesToHtml(text: string): string {
         let html = '<table class="ic-Table" style="border-collapse: collapse; border: 1px solid #ddd;">';
         html += '<thead><tr>';
         headerCells.forEach((cell, ci) => {
-          html += `<th ${cellStyle(ci)}>${cell}</th>`;
+          html += `<th ${cellStyle(ci)}>${escapeCell(cell)}</th>`;
         });
         html += '</tr></thead>';
 
@@ -86,7 +96,7 @@ export function convertMarkdownTablesToHtml(text: string): string {
           html += '<tr>';
           headerCells.forEach((_, ci) => {
             const cellContent = ci < row.length ? row[ci] : '';
-            html += `<td ${cellStyle(ci)}>${cellContent}</td>`;
+            html += `<td ${cellStyle(ci)}>${escapeCell(cellContent)}</td>`;
           });
           html += '</tr>';
         });

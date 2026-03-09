@@ -220,7 +220,7 @@ describe('Table conversion', () => {
     expect(html).toContain('text-align: right;">c</td>');
   });
 
-  it('should preserve LaTeX in cell content as-is', () => {
+  it('should XML-escape cell content for valid QTI output', () => {
     const md = [
       '| Statistic | Value |',
       '|-----------|-------|',
@@ -229,8 +229,9 @@ describe('Table conversion', () => {
 
     const html = convertMarkdownTablesToHtml(md);
 
+    // LaTeX delimiters preserved, but < is XML-escaped for valid XML output
     expect(html).toContain('>$F$</td>');
-    expect(html).toContain('>$p < 0.05$</td>');
+    expect(html).toContain('>$p &lt; 0.05$</td>');
   });
 
   it('should convert multiple tables separated by non-table content', () => {
