@@ -12,6 +12,51 @@
 
 ---
 
+## Three Ways to Use Examark
+
+<div class="grid cards" markdown>
+
+- :material-console:{ .lg .middle } **CLI Tool**
+
+    ---
+
+    Write exams in Markdown, convert to Canvas QTI packages. No coding required.
+
+    ```bash
+    npm install -g examark
+    examark quiz.md -o quiz.qti.zip
+    ```
+
+    [:octicons-arrow-right-24: Getting Started](getting-started.md)
+
+- :material-language-r:{ .lg .middle } **Quarto Extension**
+
+    ---
+
+    Author dynamic exams with R/Python code chunks. Randomized values, computed answers, auto-generated plots.
+
+    ```bash
+    quarto add Data-Wise/examark
+    ```
+
+    [:octicons-arrow-right-24: Quarto Guide](extensions/quarto.md)
+
+- :material-robot:{ .lg .middle } **Claude Code Plugin**
+
+    ---
+
+    AI-assisted exam authoring with slash commands and auto-lint. Generate, validate, and iterate without leaving Claude.
+
+    ```
+    /exam:convert  /exam:check  /exam:preview
+    ```
+
+    [:octicons-arrow-right-24: Plugin Guide](extensions/claude-plugin.md)
+
+</div>
+
+---
+
 ## ✨ Features
 
 <div class="grid cards" markdown>
