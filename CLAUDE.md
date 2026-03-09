@@ -8,8 +8,20 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 
 - **Repo**: Data-Wise/examark
 - **Docs**: https://data-wise.github.io/examark/
-- **Version**: 0.6.6 | **Tests**: 249 total (14 new torture tests: 11 passing, 3 with validator bugs)
+- **Version**: 0.6.6 | **Tests**: 276 total (10 new table conversion tests, 3 pre-existing validator bugs)
 - **Distribution**: npm (`examark`), Homebrew (`data-wise/tap/examark`), Quarto extension
+
+## Recent Changes (Mar 2026)
+
+**Markdown Table → HTML Conversion (Mar 6):**
+- Added: `convertMarkdownTablesToHtml()` converts GFM pipe tables to HTML `<table>` with Canvas `ic-Table` class
+- Added: Inline styles on cells (`padding`, `border`, `text-align`) for Canvas rendering fallback
+- Added: GFM alignment support (`:---` left, `:---:` center, `---:` right)
+- Added: Table placeholder protection in `escapeXmlPreserveLaTeX()` — tables survive XML escaping
+- Fixed: Parser now preserves consecutive pipe-table rows in stems (single `\n` instead of `\n\n`)
+- Added: 10 new table conversion tests + `tests/fixtures/table-questions.md` fixture (7 questions)
+- Coverage: Tables in stems, answer options, with LaTeX, alignment, empty cells, multiple tables per question
+- Pipeline order: images → HTML imgs → cross-refs → code → **tables** → LaTeX → XML escape → restore all
 
 ## Recent Changes (Dec 2025)
 
@@ -522,6 +534,9 @@ src/
 | Strip Quarto cross-refs | `src/generator/qti.ts:61-63` (remove `<a class="quarto-xref">` tags) |
 | Format inline code | `src/generator/qti.ts:65-69` (backtick → `<code>` conversion) |
 | Fix escaped characters | `src/generator/qti.ts:76-80` (remove Quarto `\<` and `\>` escapes) |
+| Convert markdown tables | `src/generator/qti.ts:convertMarkdownTablesToHtml()` |
+| Table placeholder protection | `src/generator/qti.ts:160-166` (extract/restore table HTML) |
+| Parser table row joining | `src/parser/markdown.ts:841` (single `\n` between pipe rows) |
 
 ## Common Workflows
 

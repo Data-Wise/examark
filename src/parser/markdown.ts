@@ -838,7 +838,11 @@ export function parseMarkdown(content: string): ParsedQuiz {
           currentQuestionLines.push(trimmed);
         } else {
           // Regular description text or image for stem
-          currentQuestion.stem += '\n\n' + trimmed;
+          // Use single newline between consecutive pipe-table rows to preserve table structure
+          const isTableRow = /^\|.+\|$/.test(trimmed);
+          const stemEndsWithTableRow = /\|$/.test(currentQuestion.stem.trimEnd());
+          const separator = (isTableRow && stemEndsWithTableRow) ? '\n' : '\n\n';
+          currentQuestion.stem += separator + trimmed;
         }
       }
     }

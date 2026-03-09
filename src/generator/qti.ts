@@ -22,6 +22,90 @@ export function generateCanvasId(seed: string): string {
 export type ImageResolver = (imagePath: string) => string | null;
 
 /**
+ * Convert markdown pipe tables to HTML tables with inline styles for Canvas.
+ * Handles GFM-style alignment specifiers (:---, :---:, ---:).
+ * Preserves cell content as-is for downstream processing (LaTeX, code, etc.).
+ */
+export function convertMarkdownTablesToHtml(text: string): string {
+  const lines = text.split('\n');
+  const result: string[] = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    // Check if current line could be start of a table (pipe-delimited)
+    if (/^\|(.+)\|$/.test(lines[i].trim())) {
+      // Look ahead for separator row (must be next line for a valid table)
+      const headerLine = lines[i].trim();
+      if (i + 1 < lines.length && /^\|[\s:]*-+[\s:]*(\|[\s:]*-+[\s:]*)*\|$/.test(lines[i + 1].trim())) {
+        const separatorLine = lines[i + 1].trim();
+
+        // Parse header cells
+        const headerCells = headerLine.slice(1, -1).split('|').map(c => c.trim());
+        const sepCells = separatorLine.slice(1, -1).split('|').map(c => c.trim());
+
+        // Skip single-column tables (degenerate)
+        if (headerCells.length < 2) {
+          result.push(lines[i]);
+          i++;
+          continue;
+        }
+
+        // Parse alignment from separator
+        const alignments: string[] = sepCells.map(cell => {
+          const left = cell.startsWith(':');
+          const right = cell.endsWith(':');
+          if (left && right) return 'center';
+          if (right) return 'right';
+          return 'left';
+        });
+
+        // Collect body rows
+        const bodyRows: string[][] = [];
+        let j = i + 2;
+        while (j < lines.length && /^\|(.+)\|$/.test(lines[j].trim())) {
+          const rowCells = lines[j].trim().slice(1, -1).split('|').map(c => c.trim());
+          bodyRows.push(rowCells);
+          j++;
+        }
+
+        // Build HTML table
+        const cellStyle = (colIdx: number) => {
+          const align = alignments[colIdx] || 'left';
+          return `style="padding: 8px; border: 1px solid #ddd; text-align: ${align};"`;
+        };
+
+        let html = '<table class="ic-Table" style="border-collapse: collapse; border: 1px solid #ddd;">';
+        html += '<thead><tr>';
+        headerCells.forEach((cell, ci) => {
+          html += `<th ${cellStyle(ci)}>${cell}</th>`;
+        });
+        html += '</tr></thead>';
+
+        html += '<tbody>';
+        bodyRows.forEach(row => {
+          html += '<tr>';
+          headerCells.forEach((_, ci) => {
+            const cellContent = ci < row.length ? row[ci] : '';
+            html += `<td ${cellStyle(ci)}>${cellContent}</td>`;
+          });
+          html += '</tr>';
+        });
+        html += '</tbody></table>';
+
+        result.push(html);
+        i = j;
+        continue;
+      }
+    }
+
+    result.push(lines[i]);
+    i++;
+  }
+
+  return result.join('\n');
+}
+
+/**
  * Escape XML special characters while converting LaTeX delimiters for Canvas
  * Canvas expects \(...\) for inline and \[...\] for display math
  * Also converts markdown images to HTML img tags with optional base64 embedding
@@ -70,6 +154,17 @@ function escapeXmlPreserveLaTeX(text: string, imageResolver?: ImageResolver): st
     return placeholder;
   });
 
+  // Convert markdown pipe tables to HTML tables
+  result = convertMarkdownTablesToHtml(result);
+
+  // Extract generated HTML tables as placeholders (protect from XML escaping)
+  const tables: string[] = [];
+  result = result.replace(/<table[\s\S]*?<\/table>/g, (match) => {
+    const placeholder = `__TABLE_PLACEHOLDER_${tables.length}__`;
+    tables.push(match);
+    return placeholder;
+  });
+
   // Convert LaTeX delimiters from Quarto/Pandoc format to Canvas format
   result = result
     // Convert display math: $$...$$ → \[...\]
@@ -98,6 +193,11 @@ function escapeXmlPreserveLaTeX(text: string, imageResolver?: ImageResolver): st
   // Restore code tags (they're already properly formatted HTML)
   codeSnippets.forEach((code, i) => {
     result = result.replace(`__CODE_PLACEHOLDER_${i}__`, code);
+  });
+
+  // Restore table tags (they're already properly formatted HTML)
+  tables.forEach((table, i) => {
+    result = result.replace(`__TABLE_PLACEHOLDER_${i}__`, table);
   });
 
   return result;
