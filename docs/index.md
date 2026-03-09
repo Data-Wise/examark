@@ -125,32 +125,14 @@
 
 ---
 
-## 🆕 Recent Updates (March 2026)
+## 🆕 What's New (March 2026)
 
-**Claude Code Plugin:**
+- **Three-pillar homepage** — CLI, Quarto Extension, and Claude Code Plugin front-and-center
+- **Cookbook** — Tutorials renamed with task-based categories and time estimates
+- **Claude Code Plugin** — 3 slash commands + auto-lint for exam authoring in Claude
+- **`= answer` syntax** — Cleaner multi-line format for short answer questions
 
-Use examark directly from [Claude Code](https://claude.ai/code) with 3 slash commands (`/exam:convert`, `/exam:check`, `/exam:preview`) and an auto-lint hook that catches errors as you write. See the [plugin guide](extensions/claude-plugin.md).
-
-**Short Answer `= answer` syntax:**
-
-Multiple acceptable answers for short answer questions now support a cleaner multi-line format:
-
-```markdown
-1. [Short] What pattern indicates unequal variance? [2pts]
-= funnel
-= funnel shape
-= fan shape
-```
-
-Both `Answer: text` (original) and `= text` (new) syntaxes are fully supported. See [Short Answer syntax](markdown/question-types.md#short-answer).
-
-**Canvas QTI reliability improvements:**
-
-The emulator and validator now catch additional Canvas import blockers:
-
-- Multiple Answers (`[MA]`) questions missing `rcardinality="Multiple"` — previously caused silent "couldn't determine correct answers" errors in Canvas
-- MA questions missing incorrect-option exclusions in resprocessing
-- Short answer questions with no accepted answers defined
+[:octicons-arrow-right-24: Full changelog](changelog.md)
 
 ---
 

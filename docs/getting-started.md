@@ -301,5 +301,5 @@ See [Configuration](config.md) for all options.
 - [Commands Reference](reference.md) — All CLI options
 - [Configuration](config.md) — Project settings
 - [Canvas Emulator](emulator.md) — Pre-import validation
-- [Cookbook](cookbook/index.md) — R/Quarto integration
+- [Cookbook](cookbook/index.md) — Recipes and step-by-step guides
 - [Quarto Extension](extensions/quarto.md) — Advanced authoring

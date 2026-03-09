@@ -133,6 +133,7 @@ nav:
       - Markdown: starter/markdown.md
       - Quarto: starter/quarto.md
   - Resources:
+      - What's New: changelog.md
       - Troubleshooting: troubleshooting.md
       - Site Design: DESIGN.md
       - Contributing: contributing.md
