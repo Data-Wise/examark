@@ -394,6 +394,9 @@ function parseOptionsWithFeedback(lines: string[]): { options: AnswerOption[]; g
       // Check for general feedback marker: > [feedback] text
       if (feedbackText.match(/^\[feedback\]/i)) {
         generalFeedback = feedbackText.replace(/^\[feedback\]\s*/i, '').trim();
+      } else if (generalFeedback !== undefined) {
+        // Continue appending to general feedback (multi-line blockquote)
+        generalFeedback += '\n' + feedbackText;
       } else if (lastOption) {
         // Attach to last option (append if already has inline feedback)
         if (lastOption.feedback) {
