@@ -361,4 +361,27 @@ describe('Table conversion', () => {
     const tableCount = (result.match(/<table/g) || []).length;
     expect(tableCount).toBe(1);
   });
+
+  it('should convert a table inside feedback text (Q6 scenario)', () => {
+    const md = [
+      'Here is general feedback with a grading table:',
+      '',
+      '| Grade | Range |',
+      '| --- | --- |',
+      '| A | 90-100 |',
+      '| B | 80-89 |',
+      '| F | Below 60 |',
+    ].join('\n');
+
+    const html = convertMarkdownTablesToHtml(md);
+
+    expect(html).toContain('<table class="ic-Table"');
+    expect(html).toContain('<th');
+    expect(html).toContain('Grade');
+    expect(html).toContain('Range');
+    expect(html).toContain('90-100');
+    expect(html).toContain('Below 60');
+    // Surrounding text preserved
+    expect(html).toContain('Here is general feedback');
+  });
 });

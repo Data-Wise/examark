@@ -36,7 +36,7 @@ export function convertMarkdownTablesToHtml(text: string): string {
     if (/^\|(.+)\|$/.test(lines[i].trim())) {
       // Look ahead for separator row (must be next line for a valid table)
       const headerLine = lines[i].trim();
-      if (i + 1 < lines.length && /^\|[\s:]*-+[\s:]*(\|[\s:]*-+[\s:]*)*\|$/.test(lines[i + 1].trim())) {
+      if (i + 1 < lines.length && /^\|[\s:]*-{3,}[\s:]*(\|[\s:]*-{3,}[\s:]*)*\|$/.test(lines[i + 1].trim())) {
         const separatorLine = lines[i + 1].trim();
 
         // Parse header cells
@@ -68,9 +68,13 @@ export function convertMarkdownTablesToHtml(text: string): string {
           j++;
         }
 
-        // XML-escape cell content for valid QTI XML.
-        // LaTeX is already in __LATEX_PLACEHOLDER__ tokens at this point,
-        // so we only need to escape raw XML characters in non-LaTeX content.
+        /**
+         * Escape raw XML characters in cell content.
+         * Only needed inside the table-building pipeline — LaTeX is already
+         * protected as __LATEX_PLACEHOLDER__ tokens at this point, and the
+         * outer escapeXmlPreserveLaTeX() won't run on table HTML (it's
+         * behind a __TABLE_PLACEHOLDER__).
+         */
         const escapeCell = (content: string): string => {
           return content
             .replace(/&/g, '&amp;')
