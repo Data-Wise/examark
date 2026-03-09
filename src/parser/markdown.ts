@@ -515,32 +515,6 @@ function parseOptionsWithFeedback(lines: string[]): { options: AnswerOption[]; g
       continue;
     }
 
-    // Match short answer lines: = Answer (each line is an acceptable answer)
-    const equalsMatch = trimmed.match(/^=\s+(.+)$/);
-    if (equalsMatch) {
-      const text = equalsMatch[1].trim();
-      lastOption = {
-        id: `answer${options.length + 1}`,
-        text,
-        isCorrect: true
-      };
-      options.push(lastOption);
-      continue;
-    }
-
-    // Match short answer lines: Answer: text (each line is an acceptable answer)
-    const answerColonMatch = trimmed.match(/^Answer:\s*(.+)$/i);
-    if (answerColonMatch) {
-      const text = answerColonMatch[1].trim();
-      lastOption = {
-        id: `answer${options.length + 1}`,
-        text,
-        isCorrect: true
-      };
-      options.push(lastOption);
-      continue;
-    }
-
     // Match standalone True/False options: *True, \[x\] True, True, False
     const tfMatch = trimmed.match(/^(?:\*|\\?\[x\\?\]\s*)?(True|False)$/i);
     if (tfMatch) {
