@@ -8,10 +8,28 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 
 - **Repo**: Data-Wise/examark
 - **Docs**: https://data-wise.github.io/examark/
-- **Version**: 0.6.6 | **Tests**: 265 passing (0 failures — all torture-quarto tests now fixed)
+- **Version**: 0.6.6 | **Tests**: 277 passing (0 failures)
 - **Distribution**: npm (`examark`), Homebrew (`data-wise/tap/examark`), Quarto extension, Claude Code plugin
 
 ## Recent Changes (Mar 2026)
+
+**Markdown Table → HTML Conversion (Mar 9):**
+- Added: `convertMarkdownTablesToHtml()` converts GFM pipe tables to HTML `<table>` with Canvas `ic-Table` class
+- Added: Inline styles on cells (`padding`, `border`, `text-align`) for Canvas rendering fallback
+- Added: GFM alignment support (`:---` left, `:---:` center, `---:` right)
+- Added: Table placeholder protection in `escapeXmlPreserveLaTeX()` — tables survive XML escaping
+- Fixed: Parser now preserves consecutive pipe-table rows in stems (single `\n` instead of `\n\n`)
+- Added: 10 new table conversion tests + `tests/fixtures/table-questions.md` fixture (7 questions)
+- Coverage: Tables in stems, answer options, with LaTeX, alignment, empty cells, multiple tables per question
+- Pipeline order: images → HTML imgs → cross-refs → code → **tables** → LaTeX → XML escape → restore all
+
+**Documentation Audit Completion (Mar 9):**
+- P1: Added TL;DR boxes to 10 pages (22/22 key pages = 100% coverage)
+- P2: Created `docs/tutorials/multiple-answers.md` — MA Canvas guide with grading formula, QTI internals, troubleshooting
+- P2: Updated `docs/tutorials/quarto.md` — added `= syntax`, TL;DR, canvas-workflow cross-link
+- P3: Reviewed — no action needed (TODO in code example, quarto.md size acceptable)
+- Updated `mkdocs.yml` — MA tutorial added to nav
+- ADHD score: ~92/100 (Grade A) — target achieved
 
 **Claude Code Plugin (Mar 5):**
 - Added: `.claude-plugin/` with plugin manifest, 3 commands, 5 skills, auto-lint hook
@@ -25,7 +43,7 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 - QTI generator emits multiple `<varequal>` in one `<conditionvar>` (implicit OR, per QTI 1.2 spec)
 - Both `Answer: text` (inline) and `= text` (multi-line) syntaxes supported
 - Files changed: `src/parser/markdown.ts`, `src/generator/qti.ts`
-- Tests: 265 passing (0 failures)
+- Tests: 277 passing (0 failures)
 
 **Quarto Post-Render Hook (Mar 4):**
 
@@ -45,14 +63,6 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 - Updated: `docs/extensions/quarto.md` — `= syntax` + automatic QTI post-render workflow
 - Updated: `mkdocs.yml` — both new pages in nav
 - Audit: `AUDIT-CONTENT-INVENTORY.md` — full doc audit (28 files, P3 gap: MA tutorial)
-
-**Documentation Audit Completion (Mar 9):**
-- P1: Added TL;DR boxes to 10 pages (22/22 key pages = 100% coverage)
-- P2: Created `docs/tutorials/multiple-answers.md` — MA Canvas guide with grading formula, QTI internals, troubleshooting
-- P2: Updated `docs/tutorials/quarto.md` — added `= syntax`, TL;DR, canvas-workflow cross-link
-- P3: Reviewed — no action needed (TODO in code example, quarto.md size acceptable)
-- Updated `mkdocs.yml` — MA tutorial added to nav
-- ADHD score: ~92/100 (Grade A) — target achieved
 
 ## Previous Changes (Dec 2025)
 
@@ -577,6 +587,9 @@ src/
 | Strip Quarto cross-refs | `src/generator/qti.ts:61-63` (remove `<a class="quarto-xref">` tags) |
 | Format inline code | `src/generator/qti.ts:65-69` (backtick → `<code>` conversion) |
 | Fix escaped characters | `src/generator/qti.ts:76-80` (remove Quarto `\<` and `\>` escapes) |
+| Convert markdown tables | `src/generator/qti.ts:convertMarkdownTablesToHtml()` |
+| Table placeholder protection | `src/generator/qti.ts:160-166` (extract/restore table HTML) |
+| Parser table row joining | `src/parser/markdown.ts:841` (single `\n` between pipe rows) |
 
 ## Common Workflows
 

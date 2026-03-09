@@ -106,6 +106,30 @@ Provide details...
 
 ---
 
+## Tables in Questions
+
+Pipe tables auto-convert to styled HTML for Canvas:
+
+```markdown
+1. [MC] Based on the ANOVA table, what is the F-statistic? [2pts]
+
+| Source  | df | MS    | F     |
+|---------|----|-------|-------|
+| Between | 2  | 45.30 | 12.11 |
+| Within  | 27 | 3.74  |       |
+
+a) 12.11 [x]
+b) 45.30
+```
+
+**Alignment:** `:---` left, `:---:` center, `---:` right
+
+**LaTeX in cells:** `| $\hat{\beta}$ | $p < 0.05$ |` works
+
+**Tables in options/feedback:** Supported
+
+---
+
 ## LaTeX Math
 
 ### Inline
