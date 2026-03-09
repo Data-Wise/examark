@@ -154,7 +154,15 @@
 
 - :material-school:{ .lg .middle } **[Cookbook](cookbook/index.md)**
 
-    R/Quarto integration and more.
+    Recipes and guides.
+
+- :material-console-line:{ .lg .middle } **[CLI Reference](reference.md)**
+
+    All commands, flags, and options.
+
+- :material-file-document-multiple:{ .lg .middle } **[Templates](starter/index.md)**
+
+    Ready-to-use Markdown and Quarto starters.
 
 </div>
 

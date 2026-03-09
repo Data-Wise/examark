@@ -24,14 +24,17 @@ Home                          # Landing page with features overview
 │   ├── YAML Options          # Config file reference
 │   ├── Configuration         # Project settings
 │   └── Canvas Emulator       # Pre-import validation
-├── Quarto Extension/         # R/Python integration
-│   └── Overview              # Extension docs
-├── Tutorials/                # Step-by-step guides
-│   ├── Index                 # Tutorial overview
-│   ├── Your First Quiz       # Beginner tutorial
-│   ├── R & Quarto            # Quarto integration
-│   ├── Dynamic Exams         # Randomization
-│   └── VS Code Snippets      # Editor setup
+├── Quarto Extension           # R/Python integration (top-level)
+├── Claude Code Plugin         # AI-assisted authoring (top-level)
+├── Cookbook/                   # Task-based recipes
+│   ├── Index                  # Categories with time/level
+│   ├── Your First Quiz        # Beginner
+│   ├── Canvas Workflow        # Import guide
+│   ├── Multiple Answers       # Select All questions
+│   ├── Item Banks             # Random quizzes
+│   ├── R & Quarto             # Quarto integration
+│   ├── Dynamic Exams          # Randomization
+│   └── VS Code Snippets       # Editor setup
 ├── Templates/                # Starter files
 │   ├── Index                 # Template overview
 │   ├── Markdown              # .md templates
@@ -58,12 +61,17 @@ docs/
 │   ├── feedback.md           # Feedback options
 │   └── structure.md          # Document organization
 ├── reference/                # Reference materials
-│   └── yaml-options.md       # YAML config reference
-├── extensions/               # Extension docs
-│   └── quarto.md             # Quarto extension
-├── cookbook/                 # Cookbook
-│   ├── index.md
+│   ├── yaml-options.md       # YAML config reference
+│   └── REFCARD-CANVAS.md     # Canvas quick reference
+├── extensions/               # Extension docs (top-level nav)
+│   ├── quarto.md             # Quarto extension
+│   └── claude-plugin.md      # Claude Code plugin
+├── cookbook/                  # Cookbook (task-based recipes)
+│   ├── index.md              # Category index with time/level
 │   ├── first-quiz.md
+│   ├── canvas-workflow.md
+│   ├── multiple-answers.md
+│   ├── item-banks.md
 │   ├── quarto.md
 │   ├── dynamic-exams.md
 │   └── vscode-snippets.md
@@ -73,11 +81,12 @@ docs/
 │   └── quarto.md
 ├── stylesheets/              # Custom CSS
 │   └── extra.css
-├── DESIGN.md                 # Documentation architecture
+├── changelog.md              # What's New / release history
 ├── config.md                 # Configuration
 ├── emulator.md               # Canvas emulator
 ├── reference.md              # CLI reference
 ├── troubleshooting.md        # Common issues
+├── workflows.md              # Visual workflow diagrams
 └── contributing.md           # Developer guide
 ```
 
@@ -112,7 +121,7 @@ Home → Getting Started → Markdown → Templates
 
 **Track B: Quarto/R Users**
 ```
-Home → Getting Started → Quarto Extension → Tutorials
+Home → Getting Started → Quarto Extension → Cookbook
 ```
 
 ### 4. Consistent Page Structure
