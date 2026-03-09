@@ -1,5 +1,13 @@
 # R & Quarto Integration Tutorial
 
+> **TL;DR** (30 seconds)
+> - **What:** Create dynamic statistics exams with R code chunks and export to Canvas
+> - **Why:** One `.qmd` source generates unique exam versions with computed answers and plots
+> - **How:** `quarto render exam.qmd` → `examark exam.md -o exam.qti.zip` → upload to Canvas
+> - **Next:** [Dynamic Exams](dynamic-exams.md) for advanced R/Python techniques
+
+**20 minutes** | Intermediate | Requires Quarto + R
+
 This tutorial walks you through creating a statistics exam using Quarto and R, then exporting it to Canvas.
 
 ## Why Use Quarto?
@@ -222,7 +230,30 @@ b) `r value_b` [correct]
 c) `r value_c`
 ```
 
-### 3. Preview Before Export
+### 3. Short Answer with `= answer` Syntax
+
+For short answer questions with multiple acceptable answers, use the `= answer` syntax:
+
+```markdown
+## 5. [Short] What test compares two group means? [2pts]
+= t-test
+= t test
+= independent samples t-test
+= two-sample t-test
+```
+
+Each `=` line adds an acceptable answer variant. Canvas auto-grades if the student's response matches any variant.
+
+!!! tip "Quarto Compatibility"
+    In `.qmd` files, wrap `= answer` lines in a `{=markdown}` raw block to prevent Pandoc from treating them as paragraph continuation:
+    ```markdown
+    ```{=markdown}
+    = t-test
+    = t test
+    ```
+    ```
+
+### 4. Preview Before Export
 
 Always preview in HTML first:
 
@@ -231,7 +262,7 @@ quarto render midterm.qmd --to exam-html
 open midterm.html  # Check formatting
 ```
 
-### 4. Verify the QTI Package
+### 5. Verify the QTI Package
 
 Run the Canvas emulator before uploading:
 
@@ -286,5 +317,6 @@ Ensure you have:
 ## Next Steps
 
 - [Dynamic Exams Tutorial](dynamic-exams.md) — Advanced R/Python techniques
+- [Canvas Workflow](canvas-workflow.md) — Full Canvas import and verification guide
 - [Extension Reference](../extensions/quarto.md) — Full configuration options
 - [Markdown Syntax](../markdown/syntax.md) — All question type syntax

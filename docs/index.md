@@ -58,6 +58,12 @@
 
     Use with R/Python for dynamic, randomized exam generation.
 
+- :material-robot:{ .lg .middle } **[Claude Code Plugin](extensions/claude-plugin.md)**
+
+    ---
+
+    Slash commands and auto-lint for exam authoring directly in Claude Code.
+
 - :material-folder-multiple:{ .lg .middle } **Batch Conversion**
 
     ---
@@ -71,6 +77,35 @@
     Import directly to Canvas Item Banks for random question selection across quizzes.
 
 </div>
+
+---
+
+## 🆕 Recent Updates (March 2026)
+
+**Claude Code Plugin:**
+
+Use examark directly from [Claude Code](https://claude.ai/code) with 3 slash commands (`/exam:convert`, `/exam:check`, `/exam:preview`) and an auto-lint hook that catches errors as you write. See the [plugin guide](extensions/claude-plugin.md).
+
+**Short Answer `= answer` syntax:**
+
+Multiple acceptable answers for short answer questions now support a cleaner multi-line format:
+
+```markdown
+1. [Short] What pattern indicates unequal variance? [2pts]
+= funnel
+= funnel shape
+= fan shape
+```
+
+Both `Answer: text` (original) and `= text` (new) syntaxes are fully supported. See [Short Answer syntax](markdown/question-types.md#short-answer).
+
+**Canvas QTI reliability improvements:**
+
+The emulator and validator now catch additional Canvas import blockers:
+
+- Multiple Answers (`[MA]`) questions missing `rcardinality="Multiple"` — previously caused silent "couldn't determine correct answers" errors in Canvas
+- MA questions missing incorrect-option exclusions in resprocessing
+- Short answer questions with no accepted answers defined
 
 ---
 

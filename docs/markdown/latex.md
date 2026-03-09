@@ -1,5 +1,11 @@
 # LaTeX Math
 
+> **TL;DR** (30 seconds)
+> - **What:** Use LaTeX math in exam questions — auto-converted for Canvas
+> - **Why:** Canvas uses MathJax; examark handles `$...$` to `\(...\)` conversion
+> - **How:** Inline `$\bar{x}$` or display `$$\sum x_i$$` — just write normal LaTeX
+> - **Next:** [Images & Media](images.md) for embedding figures
+
 Examark supports LaTeX math notation, automatically converting it for Canvas compatibility.
 
 ---

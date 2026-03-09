@@ -1,0 +1,22 @@
+{
+  "name": "examark",
+  "version": "0.1.0",
+  "description": "Convert markdown exams to Canvas QTI packages — 3 commands for convert, check, and preview workflows",
+  "author": {
+    "name": "Data-Wise",
+    "email": "dt@stat-wise.com"
+  },
+  "homepage": "https://data-wise.github.io/examark/",
+  "keywords": [
+    "examark",
+    "canvas",
+    "qti",
+    "exam",
+    "lms",
+    "education",
+    "quarto",
+    "markdown"
+  ],
+  "commands": "../commands",
+  "skills": "./skills"
+}

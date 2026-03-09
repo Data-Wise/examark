@@ -1,5 +1,11 @@
 # Question Types Gallery
 
+> **TL;DR** (30 seconds)
+> - **What:** Visual gallery of all 8 question types with copy-paste Markdown examples
+> - **Why:** See exactly what each question type looks like before writing your exam
+> - **How:** Pick a type below, copy the Markdown, customize for your content
+> - **Next:** [Syntax Reference](syntax.md) for the complete formatting rules
+
 Examark supports 8 question types for Canvas LMS. Each type includes examples showing the Markdown syntax and how it appears in Canvas.
 
 ---
@@ -100,7 +106,7 @@ Students select all correct answers. Use `*` prefix for each correct option.
 
 ---
 
-## Short Answer `[Short]`
+## Short Answer `[Short]` { #short-answer }
 
 Fill-in-the-blank with typed response. Multiple accepted answers supported.
 
@@ -112,7 +118,7 @@ Fill-in-the-blank with typed response. Multiple accepted answers supported.
     Answer: H2O
     ```
 
-=== "Multiple Accepted Answers"
+=== "Multiple Accepted Answers (inline)"
 
     ```markdown
     6. [Short] What is the SI unit of force? [2pts]
@@ -121,6 +127,16 @@ Fill-in-the-blank with typed response. Multiple accepted answers supported.
     Answer: N
     Answer: newton
     Answer: newtons
+    ```
+
+=== "Multiple Accepted Answers (= syntax)"
+
+    ```markdown
+    7. [Short] What pattern indicates unequal variance? [2pts]
+    = funnel
+    = funnel shape
+    = fan shape
+    = megaphone
     ```
 
 **Aliases:** `[ShortAnswer]`, `[FillIn]`, `[FITB]`, `[FIB]`
@@ -288,7 +304,7 @@ Multiple blanks within a single question stem.
 | Multiple Choice | `[MC]` | `[x]`, `**bold**`, `✓` | Single best answer |
 | True/False | `[TF]` | `→ True/False` or `[x]` | Binary facts |
 | Multiple Answers | `[MA]` | `*` prefix on each | Select all that apply |
-| Short Answer | `[Short]` | `Answer: text` | Fill in the blank |
+| Short Answer | `[Short]` | `Answer: text` or `= text` | Fill in the blank |
 | Numerical | `[Num]` | `Answer: N ± tolerance` | Calculated values |
 | Essay | `[Essay]` | None (manual grade) | Open-ended response |
 | Matching | `[Match]` | `item => match` | Pair relationships |

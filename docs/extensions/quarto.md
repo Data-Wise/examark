@@ -1,5 +1,11 @@
 # Quarto Exam Extension
 
+> **TL;DR** (30 seconds)
+> - **What:** Author exams in `.qmd` with R/Python, export to HTML, PDF, and Canvas QTI
+> - **Why:** Dynamic exams with computed answers, randomized values, and auto-generated plots
+> - **How:** `quarto add Data-Wise/examark` then `quarto render exam.qmd --to exam-gfm`
+> - **Next:** [Dynamic Exams Tutorial](../tutorials/dynamic-exams.md) for R/Python examples
+
 The Examark Quarto extension lets you author exams in `.qmd` files with R/Python code for dynamic content, then export to multiple formats: HTML preview, PDF, DOCX, and **QTI for Canvas**.
 
 !!! warning "Two Separate Components"
@@ -154,6 +160,9 @@ For multi-file projects, configure defaults in `_quarto.yml`:
 project:
   type: default
   output-dir: _output
+  render:
+    - "exam/*.qmd"       # Include your exam files
+  post-render: ./_quarto-post-render.sh  # Auto-generate QTI after render
 
 format:
   exam-html: default     # Default format for all documents
@@ -162,6 +171,11 @@ exam:
   solutions: false
   default-points: 2
 ```
+
+!!! tip "Automatic QTI generation"
+    With `post-render: ./_quarto-post-render.sh`, running `quarto render exam.qmd --to exam-gfm` automatically generates the `.qti.zip` file — no second command needed.
+
+    The script is included in the [starter template](https://github.com/Data-Wise/examark). Download it or copy from [_quarto-post-render.sh](https://github.com/Data-Wise/examark/blob/main/_quarto-post-render.sh).
 
 ### Full Configuration Reference
 
@@ -244,6 +258,16 @@ e) 9
 Answer: Paris
 ```
 
+For multiple acceptable answers, use `= answer` syntax (one per line):
+
+```markdown
+## 6. [Short] What is the term for non-constant residual variance?
+
+= heteroscedasticity
+= heteroskedasticity
+= non-constant variance
+```
+
 ### Numeric
 
 ```markdown
@@ -299,9 +323,34 @@ graph LR
     E --> F[Canvas Import]
 ```
 
-### QTI Export with `exam.qti: true`
+### Automatic QTI Generation (Recommended)
 
-When you enable `exam.qti: true`, Quarto displays the examark command after rendering:
+Add a post-render hook to `_quarto.yml` so `examark` runs automatically after every render:
+
+```yaml
+project:
+  type: default
+  output-dir: _output
+  render:
+    - "exam/*.qmd"
+  post-render: ./_quarto-post-render.sh
+```
+
+Then just render — QTI is generated automatically:
+
+```bash
+quarto render exam.qmd --to exam-gfm
+# ✅ QTI package ready: _output/exam/exam.qti.zip
+```
+
+Download `_quarto-post-render.sh` from the [starter template](https://github.com/Data-Wise/examark) or run `quarto use template Data-Wise/examark`.
+
+!!! note "Quarto 1.8+ requirement"
+    Use `post-render: ./_quarto-post-render.sh` (with `./` prefix). Bare filenames like `_quarto-post-render.sh` fail in Quarto 1.8+ due to Deno path resolution.
+
+### Manual Workflow
+
+If you prefer explicit control:
 
 ```yaml
 ---
@@ -318,9 +367,10 @@ quarto render exam.qmd
 # Output shows:
 # 📦 QTI Export: After render completes, run:
 #    examark exam.md -o exam.qti.zip
+examark exam.md -o exam.qti.zip
 ```
 
-This makes the two-step workflow clear and easy to follow.
+With `exam.qti: true`, Quarto prints the exact `examark` command to run after rendering.
 
 ## LaTeX Math
 
@@ -400,6 +450,38 @@ More examples in [`examples/quarto/`](https://github.com/Data-Wise/examark/tree/
 | `python-figures.qmd` | Python-generated plots |
 
 ## Troubleshooting
+
+### Post-render hook fails ("entity not found")
+
+```text
+ERROR: Error executing '_quarto-post-render.sh': Failed to spawn '_quarto-post-render.sh': entity not found
+```
+
+**Fix:** Add `./` prefix in `_quarto.yml`:
+
+```yaml
+project:
+  post-render: ./_quarto-post-render.sh  # ✅ Correct
+# post-render: _quarto-post-render.sh    # ❌ Fails in Quarto 1.8+
+```
+
+Quarto 1.8's Deno runtime requires an explicit `./` to resolve relative paths.
+
+### Extension not found when rendering
+
+```
+ERROR: Unable to read the extension 'exam'
+```
+
+**Fix:** Add your exam files to the `render:` list in `_quarto.yml`:
+
+```yaml
+project:
+  render:
+    - "exam/*.qmd"    # ← required for extension to be found
+```
+
+Without this, Quarto doesn't treat the project root as the context for files in subdirectories.
 
 ### Solutions appear in student version
 

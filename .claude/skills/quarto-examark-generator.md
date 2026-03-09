@@ -150,13 +150,21 @@ Provide a detailed explanation including assumptions and applications.
 Answer: Paris
 ```
 
-**Multiple acceptable answers:**
+**Multiple acceptable answers (inline syntax):**
 ```markdown
 10. [Short] Name the inventor of the telephone. [1pt]
 
 Answer: Alexander Graham Bell
 Answer: Bell
 Answer: A.G. Bell
+```
+
+**Multiple acceptable answers (`=` syntax):**
+```markdown
+10. [Short] Name the inventor of the telephone. [1pt]
+= Alexander Graham Bell
+= Bell
+= A.G. Bell
 ```
 
 ### 6. Numerical `[Num]` or `[Numeric]`

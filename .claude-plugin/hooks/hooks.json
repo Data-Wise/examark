@@ -1,0 +1,17 @@
+{
+  "description": "Auto-lint exam files after edits to catch errors early",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/bash ${CLAUDE_PLUGIN_ROOT}/hooks/exam-lint.sh",
+            "timeout": 10000
+          }
+        ]
+      }
+    ]
+  }
+}

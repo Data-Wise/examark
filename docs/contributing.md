@@ -1,5 +1,11 @@
 # Contributing
 
+> **TL;DR** (30 seconds)
+> - **What:** How to contribute bug reports, features, and code to Examark
+> - **Why:** PRs welcome — the project is actively maintained
+> - **How:** Fork, branch from `dev`, commit with conventional commits, open PR
+> - **Next:** [Development Setup](#development-setup) to get your local environment ready
+
 We love your input! We want to make contributing to this project as easy and transparent as possible.
 
 ## Ways to Contribute
@@ -35,11 +41,11 @@ npm link
 
 ## Development Workflow
 
-### 📦 Release Workflow
+### 📦 Release Workflow (Maintainers Only)
 
 We use **fully automated releases**. To release a new version:
 
-1. **Ensure you are on `main` branch** with a clean working tree.
+1. **Ensure you are on `dev` branch** with a clean working tree, merged to `main` via PR.
 2. Run the automated release command:
 
     ```bash
@@ -140,11 +146,11 @@ This token allows the release workflow to update the Homebrew formula.
 npm test
 
 # Run in watch mode (auto-rerun on changes)
-npm run test:watch
+npm test -- --watch
 ```
 
 !!! tip "Test Coverage"
-    We use Vitest for testing. All 233 tests should pass before submitting a PR.
+    We use Vitest for testing. All 265+ tests should pass before submitting a PR.
 
 ### Code Quality
 
@@ -187,7 +193,13 @@ examark/
 ## Pull Request Process
 
 1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+2. **Create** a feature branch from `dev`:
+
+    ```bash
+    git checkout dev
+    git checkout -b feature/amazing-feature
+    ```
+
 3. **Make** your changes with tests
 4. **Commit** using [conventional commits](https://www.conventionalcommits.org/)
 
@@ -197,7 +209,7 @@ examark/
    ```
 
 5. **Push** to your fork
-6. **Open** a Pull Request
+6. **Open** a Pull Request **targeting `dev`** (not `main`)
 
 ### PR Checklist
 

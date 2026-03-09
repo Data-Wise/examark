@@ -6,6 +6,10 @@ Learn how to create exams with Examark through step-by-step guides.
 
 ## Available Tutorials
 
+### [Canvas Import Workflow](canvas-workflow.md)
+
+Complete guide for getting exams from Markdown into Canvas. Covers question types, correct answer markers, short answer syntax, the validation pipeline, common import errors, and Quarto integration.
+
 ### [Item Banks & Random Quizzes](item-banks.md)
 
 Import questions into Canvas Item Banks for creating quizzes with randomly selected questions. Essential for reducing collaboration concerns in large classes.

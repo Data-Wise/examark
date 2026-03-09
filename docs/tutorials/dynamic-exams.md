@@ -1,5 +1,13 @@
 # Dynamic Exams with R & Python
 
+> **TL;DR** (30 seconds)
+> - **What:** Generate exam versions with randomized values, computed answers, and auto-generated plots
+> - **Why:** One `.qmd` source + different seeds = unique exam versions with correct answers
+> - **How:** R/Python code chunks compute values; `set.seed()` controls randomization
+> - **Next:** [Item Banks](item-banks.md) for random question selection in Canvas
+
+**15 minutes** | Intermediate | Requires Quarto + R or Python
+
 This advanced tutorial covers programmatic exam generation using R and Python code in Quarto documents.
 
 ## Overview

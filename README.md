@@ -552,6 +552,28 @@ examark exam.md -o exam.qti.zip
 
 ---
 
+## Claude Code Plugin
+
+Use examark directly from [Claude Code](https://claude.ai/code) with slash commands.
+
+### Commands
+
+| Command | Description |
+|---------|-------------|
+| `/exam:convert <file>` | Convert `.md` or `.qmd` to QTI package |
+| `/exam:check <file>` | Lint markdown or verify QTI package |
+| `/exam:preview <file>` | Show formatted question summary table |
+
+### Auto-Lint Hook
+
+The plugin includes a `PostToolUse` hook that automatically lints exam files after edits, catching errors as you write.
+
+### Installation
+
+Copy or symlink the `.claude-plugin/` directory and `commands/` directory to use with Claude Code. The plugin also includes migrated skills for exam generation and formatting knowledge.
+
+---
+
 ## Documentation
 
 | | |

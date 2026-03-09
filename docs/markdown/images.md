@@ -1,5 +1,11 @@
 # Images & Media
 
+> **TL;DR** (30 seconds)
+> - **What:** Embed images in exam questions — auto-bundled into QTI packages
+> - **Why:** Canvas needs images inside the ZIP; examark handles bundling automatically
+> - **How:** Standard Markdown `![alt](path.png)` — supports PNG, JPEG, GIF, SVG
+> - **Next:** [Feedback](feedback.md) for adding per-option explanations
+
 Examark automatically bundles images into QTI packages for Canvas import.
 
 ---

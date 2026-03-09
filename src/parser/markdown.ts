@@ -472,6 +472,32 @@ function parseOptionsWithFeedback(lines: string[]): { options: AnswerOption[]; g
       continue;
     }
 
+    // Match short answer lines: = Answer (each line is an acceptable answer)
+    const equalsMatch = trimmed.match(/^=\s+(.+)$/);
+    if (equalsMatch) {
+      const text = equalsMatch[1].trim();
+      lastOption = {
+        id: `answer${options.length + 1}`,
+        text,
+        isCorrect: true
+      };
+      options.push(lastOption);
+      continue;
+    }
+
+    // Match short answer lines: Answer: text (each line is an acceptable answer)
+    const answerColonMatch = trimmed.match(/^Answer:\s*(.+)$/i);
+    if (answerColonMatch) {
+      const text = answerColonMatch[1].trim();
+      lastOption = {
+        id: `answer${options.length + 1}`,
+        text,
+        isCorrect: true
+      };
+      options.push(lastOption);
+      continue;
+    }
+
     // Match dash options: - Answer or - **Answer** (correct) (but not matching pairs)
     const dashMatch = trimmed.match(/^-\s+(.+)$/s);
     if (dashMatch && !trimmed.includes('::') && !trimmed.includes('=>')) {
@@ -625,7 +651,7 @@ export function parseMarkdown(content: string): ParsedQuiz {
         type = 'true_false';
       }
 
-      // parse answer from stem if provided (e.g. -> True)
+      // parse answer from stem if provided (e.g. -> True or → True)
       if (type === 'true_false' && options.length === 0) {
         const answerMatch = currentQuestion.stem?.match(/(?:→|->|Answer:|Ans:)\s*(True|False)/i);
         const correctAnswer = answerMatch ? answerMatch[1].toLowerCase() : null;
@@ -888,6 +914,13 @@ export function parseMarkdown(content: string): ParsedQuiz {
       continue;
     }
 
+    // Short answer Answer: definitions (inline or Quarto GFM rendered form)
+    // Must be caught before stem-continuation fallthrough
+    if (currentQuestion && trimmed.match(/^Answer:\s*/i)) {
+      currentQuestionLines.push(trimmed);
+      continue;
+    }
+
     // Blank answer definitions: [blank1]: answer1, answer2
     if (currentQuestion && trimmed.match(/^\[blank\d+\]:/i)) {
       currentQuestionLines.push(trimmed);
@@ -896,8 +929,11 @@ export function parseMarkdown(content: string): ParsedQuiz {
 
     // Question description/stem continuation (paragraph after ##)
     if (currentQuestion && trimmed && !trimmed.startsWith('#') && !trimmed.startsWith('[') && !trimmed.startsWith('>')) {
-      // Skip LaTeX display math blocks
-      if (trimmed.startsWith('$$') || trimmed.startsWith('\\[')) {
+      // Escaped correct-answer markers from Quarto GFM line-wrapping: \[x\], \[correct\], \[✓\], \[✔\]
+      // These look like LaTeX \[...\] but are escaped [x] markers — must be caught before LaTeX check
+      const isEscapedCorrectMarker = /^\\\[(x|correct|✓|✔|checkmark)\\\]$/i.test(trimmed);
+      // Skip LaTeX display math blocks (but not escaped correct-answer markers)
+      if (!isEscapedCorrectMarker && (trimmed.startsWith('$$') || trimmed.startsWith('\\['))) {
         // Include LaTeX in stem
         currentQuestion.stem += '\n\n' + trimmed;
       } else if (!trimmed.match(/^\d+\)\s/) && !trimmed.match(/^[a-e]\)/i)) {

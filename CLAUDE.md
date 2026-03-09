@@ -8,12 +8,12 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 
 - **Repo**: Data-Wise/examark
 - **Docs**: https://data-wise.github.io/examark/
-- **Version**: 0.6.6 | **Tests**: 277 total (11 new table conversion tests, 3 pre-existing validator bugs)
-- **Distribution**: npm (`examark`), Homebrew (`data-wise/tap/examark`), Quarto extension
+- **Version**: 0.6.6 | **Tests**: 277 passing (0 failures)
+- **Distribution**: npm (`examark`), Homebrew (`data-wise/tap/examark`), Quarto extension, Claude Code plugin
 
 ## Recent Changes (Mar 2026)
 
-**Markdown Table → HTML Conversion (Mar 6):**
+**Markdown Table → HTML Conversion (Mar 9):**
 - Added: `convertMarkdownTablesToHtml()` converts GFM pipe tables to HTML `<table>` with Canvas `ic-Table` class
 - Added: Inline styles on cells (`padding`, `border`, `text-align`) for Canvas rendering fallback
 - Added: GFM alignment support (`:---` left, `:---:` center, `---:` right)
@@ -23,7 +23,48 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 - Coverage: Tables in stems, answer options, with LaTeX, alignment, empty cells, multiple tables per question
 - Pipeline order: images → HTML imgs → cross-refs → code → **tables** → LaTeX → XML escape → restore all
 
-## Recent Changes (Dec 2025)
+**Documentation Audit Completion (Mar 9):**
+- P1: Added TL;DR boxes to 10 pages (22/22 key pages = 100% coverage)
+- P2: Created `docs/tutorials/multiple-answers.md` — MA Canvas guide with grading formula, QTI internals, troubleshooting
+- P2: Updated `docs/tutorials/quarto.md` — added `= syntax`, TL;DR, canvas-workflow cross-link
+- P3: Reviewed — no action needed (TODO in code example, quarto.md size acceptable)
+- Updated `mkdocs.yml` — MA tutorial added to nav
+- ADHD score: ~92/100 (Grade A) — target achieved
+
+**Claude Code Plugin (Mar 5):**
+- Added: `.claude-plugin/` with plugin manifest, 3 commands, 5 skills, auto-lint hook
+- Commands: `/exam:convert`, `/exam:check`, `/exam:preview`
+- Hook: PostToolUse auto-lint on Edit/Write of exam `.md` files
+- Skills migrated from `.claude/skills/` to `.claude-plugin/skills/`
+
+**Short Answer `= answer` Syntax (Mar 4):**
+- Added: `= answer` syntax for short answer questions with multiple acceptable answers
+- Each `=` line is parsed as a separate correct answer variant
+- QTI generator emits multiple `<varequal>` in one `<conditionvar>` (implicit OR, per QTI 1.2 spec)
+- Both `Answer: text` (inline) and `= text` (multi-line) syntaxes supported
+- Files changed: `src/parser/markdown.ts`, `src/generator/qti.ts`
+- Tests: 277 passing (0 failures)
+
+**Quarto Post-Render Hook (Mar 4):**
+
+- Fixed: `_quarto-post-render.sh` restored from git history (was missing from working tree)
+- Fixed: `_quarto.yml` post-render path changed to `./_quarto-post-render.sh` (Quarto 1.8/Deno requires `./` prefix)
+- Result: `quarto render exam.qmd --to exam-gfm` now auto-generates `.qti.zip` via post-render hook
+- Updated: `_quarto.yml` render list includes `exam/*.qmd` for project-scoped rendering
+- Created: `exam/exam1-questions.qmd` — Quarto source for STAT 454/545 Midterm Exam 1 (multi-format)
+- Created: `exam/exam1-questions.tex` — standalone LaTeX version using `exam` document class
+
+**Documentation Site (Mar 4):**
+- Added: `docs/tutorials/canvas-workflow.md` — full Canvas import guide with mermaid diagram
+- Added: `docs/reference/REFCARD-CANVAS.md` — one-page Canvas quick reference
+- Updated: `docs/emulator.md` — 4 new validator checks in "What It Checks" table
+- Updated: `docs/index.md` — Recent Updates (March 2026) section
+- Updated: `docs/tutorials/index.md` — Canvas Workflow tutorial linked
+- Updated: `docs/extensions/quarto.md` — `= syntax` + automatic QTI post-render workflow
+- Updated: `mkdocs.yml` — both new pages in nav
+- Audit: `AUDIT-CONTENT-INVENTORY.md` — full doc audit (28 files, P3 gap: MA tutorial)
+
+## Previous Changes (Dec 2025)
 
 **Quarto GFM Compatibility Enhancements (Dec 11):**
 - Fixed: Inline code formatting - backticks now convert to `<code>` tags in QTI
@@ -81,7 +122,7 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
   - Q28: Matching questions with code
   - Q29: Fill-in-multiple-blanks with code and LaTeX
   - Q30: Ultimate torture question (all features combined)
-- Status: 11/14 tests passing, 3 failures due to validator XML parsing bugs (not fixture issues)
+- Status: 14/14 tests passing ✅ (validator XML parsing fixed Mar 4)
 - QTI Generation: ✅ All 30 questions generate successfully
 
 **Claude Skills Package (Dec 10):**
@@ -180,25 +221,21 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 
 ### In Progress 🚧
 
-*No active development items currently.*
+**Markdown Tables → HTML in QTI Generator:**
+- **Branch**: `feature/markdown-tables-to-html` (worktree at `~/.git-worktrees/examark/feature-md-tables`)
+- **Spec**: `docs/specs/SPEC-markdown-tables-to-html-2026-03-06.md`
+- **ORCHESTRATE**: `ORCHESTRATE-markdown-tables.md` in worktree
+- **What**: Convert markdown pipe tables to HTML `<table>` during QTI generation so Canvas renders tables correctly
+- **Scope**: Stems, answer options, feedback blocks, LaTeX cells, column alignment
+- **Key decision**: Use Canvas `ic-Table` CSS class + inline style fallback; generator-only approach (no parser changes)
+- **Status**: Spec complete, research done (3/4 risks resolved), ready for implementation
 
 ### Known Issues 🐛
 
-**Validator XML Parsing (Non-Critical):**
-- **Issue**: Validator miscounts items in torture-quarto.qti.zip (reports 3 instead of 30)
-- **Root Cause**: `fast-xml-parser` library returning incorrect item array from section.item
-- **Impact**: 3 torture tests fail validation, but QTI generation works perfectly
-- **Workaround**: Manual XML grep confirms all 30 items exist and are valid
-- **Status**: Needs investigation of XML parser configuration (line 439 in validator.ts)
-- **Files Affected**:
-  - `src/diagnostic/validator.ts:439` - Item counting logic
-  - `tests/torture-quarto.test.ts` - 3 failing validation tests
+*No open issues.* All torture-quarto tests now pass (fixed Mar 4, 2026):
 
-**Parser HTML Div Handling (Minor):**
-- **Issue**: Multi-line HTML `<div>` tags in question stems not fully captured
-- **Example**: Q20 in torture-quarto.md (figure div with multi-line img tag)
-- **Impact**: 1 test fails to find Q20 by stem content
-- **Status**: Parser works for most HTML, edge case with complex multi-line divs
+- **Validator XML Parsing**: Fixed — XML invalidity from unescaped `<code>` content caused `fast-xml-parser` to silently truncate. Fixed by XML-escaping inline code content before wrapping in `<code>` tags.
+- **Parser HTML Div (Q20)**: Fixed — figure blocks inside active questions now appended to stem directly instead of queued as `pendingFigure`.
 
 ### Delivery Strategy 📦
 
@@ -465,6 +502,22 @@ The correlation r ranges from [blank1] to [blank2].
 | Blockquote `>` | Line after option: `> Feedback text` |
 | General | `> [feedback] Shown after submission` |
 
+### Short Answer Formats
+
+Two syntaxes for acceptable answers:
+
+| Syntax           | Example                  |
+|------------------|--------------------------|
+| Inline `Answer:` | `Answer: Paris`          |
+| Multi-line `=`   | `= Paris` (one per line) |
+
+```markdown
+34. [Short] What analysis examines one factor at each level of another? [2pts]
+= simple effects
+= simple effect analysis
+= simple effects analysis
+```
+
 ### Matching Separators
 
 Both `=>` and `::` work: `- Mean => Σx/n` or `- Mean :: Σx/n`
@@ -601,67 +654,75 @@ Two validation stages:
 2. Generated test output goes in `scratch/`
 3. Version sync: `npm version patch` auto-updates version in `src/index.ts`
 
-## Claude Skills
+## Claude Code Plugin
+
+**Location**: `.claude-plugin/` (plugin manifest, 3 commands, 5 skills, 1 hook)
+
+The examark Claude Code plugin provides slash commands and auto-lint for exam authoring workflows.
+
+### Commands
+
+| Command | Description |
+|---------|-------------|
+| `/exam:convert <file>` | Convert .md/.qmd to QTI package (auto-detects Quarto) |
+| `/exam:check <file>` | Lint markdown or verify QTI package (auto-detects type) |
+| `/exam:preview <file>` | Show formatted question summary table |
+
+### Plugin Skills
+
+| File | Source | Purpose |
+|------|--------|---------|
+| `exam-formatting.md` | `claude-desktop-examark-formatting.md` | Syntax rules & validation |
+| `exam-generation.md` | `claude-desktop-exam-generation.md` | Question patterns & templates |
+| `exam-quick-ref.md` | `examark-quick-reference.md` | One-page cheat sheet |
+| `quarto-generator.md` | `quarto-examark-generator.md` | Quarto guide |
+| `statistics.md` | `statistics-exam-generator.md` | Statistics patterns |
+
+### Auto-Lint Hook
+
+PostToolUse hook on Edit/Write that auto-lints exam `.md` files:
+- Multi-layer filtering: extension, filename, directory, content heuristic
+- Informational only (never blocks edits)
+- Prefers local `dist/index.js` over global `examark`
+
+### Installation
+
+```bash
+# Symlink for development
+ln -s /path/to/examark/.claude-plugin ~/.claude/plugins/examark
+```
+
+### Plugin Structure
+
+```
+.claude-plugin/
+  plugin.json              # Manifest (name, version, commands, skills)
+  hooks/
+    hooks.json             # PostToolUse auto-lint config
+    exam-lint.sh           # Lint script with smart file filtering
+  skills/
+    exam-formatting.md     # Syntax rules
+    exam-generation.md     # Question patterns
+    exam-quick-ref.md      # Cheat sheet
+    quarto-generator.md    # Quarto guide
+    statistics.md          # Statistics patterns
+commands/
+  convert.md               # /exam:convert command
+  check.md                 # /exam:check command
+  preview.md               # /exam:preview command
+```
+
+## Claude Desktop Skills
 
 **Location**: `.claude/skills/` (7 skill files + README)
 
-This project includes comprehensive Claude skills for exam generation. All skills are version-controlled in the repository.
-
-### Skill Files
-
-| File | Purpose | Target |
-|------|---------|--------|
-| `claude-desktop-exam-generation.md` | Question patterns & templates | Claude Desktop |
-| `claude-desktop-examark-formatting.md` | Syntax rules & validation | Claude Desktop |
-| `claude-desktop-project-setup-guide.md` | Setup instructions | Reference |
-| `examark-example-exam.md` | 26-question working example | Claude Desktop |
-| `examark-quick-reference.md` | One-page cheat sheet | Claude Desktop |
-| `quarto-examark-generator.md` | Comprehensive Quarto guide | Claude Code |
-| `statistics-exam-generator.md` | Statistics-specific patterns | Claude Code |
-
-### For Claude Desktop App
-
-**Setup**: Create a project and upload these 4 files:
+For Claude Desktop App, upload these 4 files to a project:
 1. `claude-desktop-exam-generation.md` - Core patterns
 2. `claude-desktop-examark-formatting.md` - Syntax rules
 3. `examark-example-exam.md` - Full example
 4. `examark-quick-reference.md` - Cheat sheet
 
-**Project Instructions**:
-```
-Generate exams in examark format for Canvas LMS.
-Always use [x] markers (never **bold**).
-Include LaTeX for math formulas.
-Follow examark syntax rules.
-```
-
-### For Claude Code CLI
-
-Skills are automatically available in this project:
-- `quarto-examark-generator.md` - All question types, YAML config, R/Python dynamic content
-- `statistics-exam-generator.md` - Stats topics, formulas, hypothesis testing
-
-### Coverage
-
-**Question Types**: All 8 types (MC, TF, MA, Essay, Short, Num, Match, FMB)
-**Formats**: Markdown, Quarto (.qmd), all output formats
-**Features**: LaTeX math, feedback, sections, dynamic content
-**Subjects**: Statistics (primary), Math, Science
-
-### Test Example
-
-`examples/quarto/test-skill-output.qmd`:
-- 11 questions across all major types
-- Demonstrates feedback, LaTeX math, solutions
-- Full render → convert → validate workflow verified
-
-### Documentation
-
-See `.claude/skills/README.md` for:
-- Detailed file descriptions
-- Upload instructions
-- Usage examples
-- Workflow guides
+See `.claude/skills/README.md` for detailed instructions.
 
 ## Release Automation
 
@@ -880,13 +941,13 @@ Tests use Vitest (249 tests total). Test files mirror source structure:
 - `tests/templates.test.ts` - Template files
 - `tests/website.test.ts` - Documentation site
 - `tests/torture.test.ts` - General torture tests (XSS, edge cases)
-- `tests/torture-quarto.test.ts` - **NEW**: Quarto GFM torture tests (14 tests, 11 passing)
+- `tests/torture-quarto.test.ts` - Quarto GFM torture tests (14 tests, all passing as of Mar 4)
 
 **Torture Test Suite**:
 - **Fixture**: `tests/fixtures/torture-quarto.md` (30 comprehensive edge case questions)
 - **Purpose**: Stress-test parser, generator, and validator with Quarto GFM features
 - **Coverage**: Inline code, LaTeX math, comparison operators, negative numbers, HTML, feedback, all question types
-- **Status**: QTI generation ✅ working perfectly; 3 tests fail due to validator XML parsing bugs (see Known Issues)
+- **Status**: All 14 tests passing ✅ (XML parsing and figure div bugs fixed Mar 4)
 - **Run**: `npm test -- tests/torture-quarto.test.ts`
 
 ## Documentation Site

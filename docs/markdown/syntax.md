@@ -1,5 +1,11 @@
 # Syntax Reference
 
+> **TL;DR** (30 seconds)
+> - **What:** Complete Markdown syntax for writing Canvas-compatible exams
+> - **Why:** One syntax reference for all 8 question types, answer markers, and formatting
+> - **How:** Use `1. [MC] Question text` for clean syntax or `## 1. Question` for traditional
+> - **Next:** [Question Types Gallery](question-types.md) for visual examples
+
 Complete reference for Examark's Markdown syntax.
 
 ---
@@ -229,7 +235,7 @@ Answer: 3.14 ± 0.01
 
 ### Short Answer
 
-Multiple accepted answers:
+Multiple accepted answers (two equivalent syntaxes):
 
 ```markdown
 1. [Short] Capital of France? [2pts]
@@ -237,6 +243,15 @@ Multiple accepted answers:
 Answer: Paris
 Answer: paris
 Answer: PARIS
+```
+
+Or using `=` syntax (one answer per line):
+
+```markdown
+2. [Short] What pattern indicates unequal variance? [2pts]
+= funnel
+= funnel shape
+= fan shape
 ```
 
 ---

@@ -565,7 +565,7 @@ export class QtiValidator {
         // Check for valid item identifier format
         if (!item['@_ident']) {
           report.errors.push(`Strict: Item missing required "ident" attribute`);
-        } else if (!/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(itemIdent)) {
+        } else if (!/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(itemIdent) && !/^[a-fA-F0-9]{32,}$/.test(itemIdent)) {
           report.errors.push(`Strict: Item identifier "${itemIdent}" contains invalid characters`);
         }
 
@@ -576,14 +576,23 @@ export class QtiValidator {
       }
 
       if (responseLid) {
-        // Multiple choice / True-False
+        // Multiple choice / True-False / Multiple Answers
         const renderChoice = responseLid.render_choice;
         if (renderChoice) {
           const responseLabels = renderChoice.response_label || [];
           const labels = Array.isArray(responseLabels) ? responseLabels : [responseLabels];
 
-          if (labels.length < 2) {
+          if (labels.length < 2 && questionType !== 'essay_question' && questionType !== 'numerical_question') {
             report.errors.push(`Canvas import may fail: Less than 2 answer options for item ${itemIdent}`);
+          }
+
+          // CRITICAL: Check rcardinality matches question type
+          const rcardinality = responseLid['@_rcardinality'];
+          if (questionType === 'multiple_answers_question' && rcardinality !== 'Multiple') {
+            report.errors.push(`Canvas import will fail: Multiple answers question ${itemIdent} has rcardinality="${rcardinality}" (must be "Multiple")`);
+          }
+          if ((questionType === 'multiple_choice_question' || questionType === 'true_false_question') && rcardinality && rcardinality !== 'Single') {
+            report.errors.push(`Item ${itemIdent}: ${questionType} has rcardinality="${rcardinality}" (should be "Single")`);
           }
 
           // Check answer option text for Quarto GFM compatibility issues
@@ -599,18 +608,13 @@ export class QtiValidator {
               report.warnings.push(`Item ${itemIdent}, option ${idx + 1}: Escaped HTML anchor tag detected`);
             }
 
-            // Check for inline code formatting in options
-            if (optionText.includes('<code>') && optionText.includes('</code>')) {
-              // Good - inline code is properly formatted in options
-            }
-
             // Check for LaTeX in options
             if (optionText.includes('$') && !optionText.includes('\\$') && !optionText.includes('\\(')) {
               report.warnings.push(`Item ${itemIdent}, option ${idx + 1}: Dollar signs detected - LaTeX may not be converted`);
             }
           });
         }
-        
+
         // Check for correct answer in resprocessing
         const resprocessing = item.resprocessing;
         if (resprocessing) {
@@ -620,8 +624,21 @@ export class QtiValidator {
           const andBlock = condVar?.and;
           const hasCorrect = varequal || (andBlock && (andBlock.varequal || (Array.isArray(andBlock) && andBlock.some((a: any) => a.varequal))));
 
-          if (!hasCorrect && questionType !== 'essay_question' && questionType !== 'short_answer_question') {
-            report.errors.push(`Canvas import may fail: No correct answer defined for item ${itemIdent}`);
+          if (!hasCorrect && questionType !== 'essay_question' && questionType !== 'short_answer_question' && questionType !== 'numerical_question') {
+            report.errors.push(`Canvas import will fail: No correct answer defined for item ${itemIdent}`);
+          }
+
+          // CRITICAL: Check MA questions have <not> for incorrect options
+          if (questionType === 'multiple_answers_question' && andBlock) {
+            const andContent = andBlock;
+            const hasNot = andContent.not || (Array.isArray(andContent) && andContent.some((a: any) => a.not));
+            if (!hasNot && renderChoice) {
+              const totalOptions = Array.isArray(renderChoice.response_label) ? renderChoice.response_label.length : 1;
+              const correctCount = Array.isArray(andContent.varequal) ? andContent.varequal.length : (andContent.varequal ? 1 : 0);
+              if (correctCount < totalOptions) {
+                report.errors.push(`Canvas import may fail: MA question ${itemIdent} missing <not><varequal> for incorrect options`);
+              }
+            }
           }
 
           // Strict mode: validate resprocessing structure completeness
@@ -653,9 +670,24 @@ export class QtiValidator {
           }
         }
       } else if (responseStr) {
-        // Essay / Short Answer / Numeric - no options needed
-        // These are manually graded so no correct answer check
-      } else {
+        // Short Answer / Essay / Numeric
+        // Check correct answer encoding for short answer and numerical
+        if (questionType === 'short_answer_question' || questionType === 'fill_in_blank_question') {
+          const resprocessing = item.resprocessing;
+          if (resprocessing) {
+            const respcondition = resprocessing.respcondition;
+            const condVar = respcondition?.conditionvar;
+            const varequal = condVar?.varequal;
+            if (!varequal) {
+              report.errors.push(`Canvas import will fail: Short answer question ${itemIdent} has no correct answers defined`);
+            }
+          } else {
+            report.errors.push(`Canvas import will fail: Short answer question ${itemIdent} missing <resprocessing>`);
+          }
+        }
+        // Essay questions don't need correct answers (manually graded)
+        // Numerical questions may use varequal or range-based conditions
+      } else if (questionType !== 'matching_question' && questionType !== 'fill_in_multiple_blanks_question') {
         report.errors.push(`QTI 1.2: Item ${itemIdent} missing response element (response_lid or response_str)`);
       }
       

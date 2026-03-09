@@ -1,5 +1,7 @@
 # VS Code Snippets
 
+**5 minutes** | Beginner | VS Code, Positron, or VS Codium
+
 Examark includes built-in snippets for fast exam authoring in VS Code, Positron, and VS Codium.
 
 ## Installation

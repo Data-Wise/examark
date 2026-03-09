@@ -224,9 +224,10 @@ describe('Documentation Website Tests', () => {
       expect(config).toContain('Tutorials:');
     });
 
-    it('should have Quarto Extension in nav', () => {
+    it('should have Extensions section in nav', () => {
       const config = readFileSync(join(__dirname, '..', 'mkdocs.yml'), 'utf-8');
-      expect(config).toContain('Quarto Extension:');
+      expect(config).toContain('Extensions:');
+      expect(config).toContain('Quarto: extensions/quarto.md');
     });
   });
 });

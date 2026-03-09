@@ -76,6 +76,13 @@ Answer: text
 Answer: alt text
 ```
 
+Or using `=` syntax:
+```markdown
+5. [Short] Question? [1pt]
+= text
+= alt text
+```
+
 ### Numerical
 ```markdown
 6. [Num] Calculate. [2pts]

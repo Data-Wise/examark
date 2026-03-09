@@ -1,5 +1,11 @@
 # Configuration
 
+> **TL;DR** (30 seconds)
+> - **What:** Project-level settings via `.examarkrc.json`
+> - **Why:** Set default points, output directory, and auto-validation once per project
+> - **How:** Create `.examarkrc.json` with `{"defaultPoints": 2, "validate": true}`
+> - **Next:** [CLI Reference](reference.md) for all command-line options
+
 Examark supports project-level configuration through JSON config files.
 
 ---
