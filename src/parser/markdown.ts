@@ -208,7 +208,7 @@ function parseOptions(lines: string[]): AnswerOption[] {
     if (!trimmed) continue;
 
     // Match numbered options: 1) Answer, 2) Answer, or *1) Answer (correct)
-    const numMatch = trimmed.match(/^(\*)?(\d+)\)\s+(.+)$/);
+    const numMatch = trimmed.match(/^(\*)?(\d+)\)\s+(.+)$/s);
     if (numMatch) {
       const hasAsteriskPrefix = !!numMatch[1];
       const text = numMatch[3];
@@ -225,7 +225,7 @@ function parseOptions(lines: string[]): AnswerOption[] {
     }
 
     // Match lettered options: a) Answer, b) Answer, or *a) Answer (correct)
-    const letterMatch = trimmed.match(/^(\*)?([a-e])\)\s+(.+)$/i);
+    const letterMatch = trimmed.match(/^(\*)?([a-e])\)\s+(.+)$/is);
     if (letterMatch) {
       const hasAsteriskPrefix = !!letterMatch[1];
       const text = letterMatch[3];
@@ -242,7 +242,7 @@ function parseOptions(lines: string[]): AnswerOption[] {
     }
 
     // Match dash options: - Answer or -  **Answer** (correct)
-    const dashMatch = trimmed.match(/^-\s+(.+)$/);
+    const dashMatch = trimmed.match(/^-\s+(.+)$/s);
     if (dashMatch) {
       const text = dashMatch[1];
       const { cleanText: textWithoutFeedback, feedback } = extractInlineFeedback(text);
@@ -413,7 +413,7 @@ function parseOptionsWithFeedback(lines: string[]): { options: AnswerOption[]; g
     }
 
     // Match numbered options: 1) Answer, 2) Answer, or *1) Answer (correct)
-    const numMatch = trimmed.match(/^(\*)?(\d+)\)\s+(.+)$/);
+    const numMatch = trimmed.match(/^(\*)?(\d+)\)\s+(.+)$/s);
     if (numMatch) {
       const hasAsteriskPrefix = !!numMatch[1];
       const text = numMatch[3];
@@ -431,7 +431,7 @@ function parseOptionsWithFeedback(lines: string[]): { options: AnswerOption[]; g
     }
 
     // Match lettered options: a) Answer, b) Answer, or *a) Answer (correct)
-    const letterMatch = trimmed.match(/^(\*)?([a-e])\)\s+(.+)$/i);
+    const letterMatch = trimmed.match(/^(\*)?([a-e])\)\s+(.+)$/is);
     if (letterMatch) {
       const hasAsteriskPrefix = !!letterMatch[1];
       const text = letterMatch[3];
@@ -449,7 +449,7 @@ function parseOptionsWithFeedback(lines: string[]): { options: AnswerOption[]; g
     }
 
     // Match dash options: - Answer or - **Answer** (correct) (but not matching pairs)
-    const dashMatch = trimmed.match(/^-\s+(.+)$/);
+    const dashMatch = trimmed.match(/^-\s+(.+)$/s);
     if (dashMatch && !trimmed.includes('::') && !trimmed.includes('=>')) {
       const text = dashMatch[1];
       const { cleanText: textWithoutFeedback, feedback } = extractInlineFeedback(text);
