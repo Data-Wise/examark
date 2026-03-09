@@ -164,7 +164,9 @@ function escapeXmlPreserveLaTeX(text: string, imageResolver?: ImageResolver): st
   const codeSnippets: string[] = [];
   result = result.replace(/`([^`]+)`/g, (match, code) => {
     const placeholder = `__CODE_PLACEHOLDER_${codeSnippets.length}__`;
-    codeSnippets.push(`<code>${code}</code>`);
+    // XML-escape code content to prevent invalid XML (e.g., `x < 5` → `<code>x &lt; 5</code>`)
+    const escapedCode = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    codeSnippets.push(`<code>${escapedCode}</code>`);
     return placeholder;
   });
 

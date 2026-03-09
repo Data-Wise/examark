@@ -187,8 +187,8 @@ function parseOptions(lines: string[]): AnswerOption[] {
       continue;
     }
 
-    // Check if this line starts with option marker (1), a), -, etc.)
-    const isOptionStart = /^(\*)?([a-e]|\d+)\)\s+/i.test(trimmed) || /^-\s+/.test(trimmed) || /^(\*)?(True|False)$/i.test(trimmed);
+    // Check if this line starts with option marker (1), a), -, =, Answer:, etc.)
+    const isOptionStart = /^(\*)?([a-e]|\d+)\)\s+/i.test(trimmed) || /^-\s+/.test(trimmed) || /^(\*)?(True|False)$/i.test(trimmed) || /^=\s+/.test(trimmed) || /^Answer:\s*/i.test(trimmed);
 
     if (isOptionStart || joinedLines.length === 0) {
       joinedLines.push(line);
@@ -253,6 +253,30 @@ function parseOptions(lines: string[]): AnswerOption[] {
         text: cleanText,
         isCorrect,
         feedback
+      });
+      continue;
+    }
+
+    // Match short answer lines: = Answer (each line is an acceptable answer)
+    const equalsMatch = trimmed.match(/^=\s+(.+)$/);
+    if (equalsMatch) {
+      const text = equalsMatch[1].trim();
+      options.push({
+        id: `answer${options.length + 1}`,
+        text,
+        isCorrect: true
+      });
+      continue;
+    }
+
+    // Match short answer lines: Answer: text (each line is an acceptable answer)
+    const answerColonMatch = trimmed.match(/^Answer:\s*(.+)$/i);
+    if (answerColonMatch) {
+      const text = answerColonMatch[1].trim();
+      options.push({
+        id: `answer${options.length + 1}`,
+        text,
+        isCorrect: true
       });
       continue;
     }
@@ -367,8 +391,8 @@ function parseOptionsWithFeedback(lines: string[]): { options: AnswerOption[]; g
       continue;
     }
 
-    // Check if this line starts with option marker (1), a), -, etc.)
-    const isOptionStart = /^(\*)?([a-e]|\d+)\)\s+/i.test(trimmed) || /^-\s+/.test(trimmed) || /^(\*)?(True|False)$/i.test(trimmed);
+    // Check if this line starts with option marker (1), a), -, =, Answer:, etc.)
+    const isOptionStart = /^(\*)?([a-e]|\d+)\)\s+/i.test(trimmed) || /^-\s+/.test(trimmed) || /^(\*)?(True|False)$/i.test(trimmed) || /^=\s+/.test(trimmed) || /^Answer:\s*/i.test(trimmed);
 
     if (isOptionStart || joinedLines.length === 0) {
       joinedLines.push(line);
@@ -460,6 +484,32 @@ function parseOptionsWithFeedback(lines: string[]): { options: AnswerOption[]; g
         text: cleanText,
         isCorrect,
         feedback
+      };
+      options.push(lastOption);
+      continue;
+    }
+
+    // Match short answer lines: = Answer (each line is an acceptable answer)
+    const equalsMatch = trimmed.match(/^=\s+(.+)$/);
+    if (equalsMatch) {
+      const text = equalsMatch[1].trim();
+      lastOption = {
+        id: `answer${options.length + 1}`,
+        text,
+        isCorrect: true
+      };
+      options.push(lastOption);
+      continue;
+    }
+
+    // Match short answer lines: Answer: text (each line is an acceptable answer)
+    const answerColonMatch = trimmed.match(/^Answer:\s*(.+)$/i);
+    if (answerColonMatch) {
+      const text = answerColonMatch[1].trim();
+      lastOption = {
+        id: `answer${options.length + 1}`,
+        text,
+        isCorrect: true
       };
       options.push(lastOption);
       continue;
@@ -577,7 +627,7 @@ export function parseMarkdown(content: string): ParsedQuiz {
 
       // parse answer from stem if provided (e.g. -> True)
       if (type === 'true_false' && options.length === 0) {
-        const answerMatch = currentQuestion.stem?.match(/(?:->|Answer:|Ans:)\s*(True|False)/i);
+        const answerMatch = currentQuestion.stem?.match(/(?:→|->|Answer:|Ans:)\s*(True|False)/i);
         const correctAnswer = answerMatch ? answerMatch[1].toLowerCase() : null;
 
         options.push({ id: 'a', text: 'True', isCorrect: correctAnswer === 'true' });
@@ -676,14 +726,20 @@ export function parseMarkdown(content: string): ParsedQuiz {
     // Track figure blocks: <div id="fig-..."> ... </div>
     if (trimmed.includes('<div') && trimmed.includes('id="fig-')) {
       inFigureBlock = true;
-      figureLines = [];
+      figureLines = [trimmed]; // include the opening div tag
       continue;
     }
     if (trimmed.includes('</div>') && inFigureBlock) {
       inFigureBlock = false;
-      // Store the collected figure content to prepend to next question
-      pendingFigure = figureLines.join('\n\n');
+      const figContent = figureLines.join('\n');
       figureLines = [];
+      if (currentQuestion) {
+        // Figure is inside current question's body — append directly to stem
+        currentQuestion.stem += '\n\n' + figContent;
+      } else {
+        // Figure appears before any question — pend it for the next one
+        pendingFigure = figContent;
+      }
       continue;
     }
     if (inFigureBlock) {
@@ -826,12 +882,18 @@ export function parseMarkdown(content: string): ParsedQuiz {
       continue;
     }
 
+    // Short answer definitions: = answer (each line is an acceptable answer)
+    if (currentQuestion && trimmed.match(/^=\s+/)) {
+      currentQuestionLines.push(trimmed);
+      continue;
+    }
+
     // Blank answer definitions: [blank1]: answer1, answer2
     if (currentQuestion && trimmed.match(/^\[blank\d+\]:/i)) {
       currentQuestionLines.push(trimmed);
       continue;
     }
-    
+
     // Question description/stem continuation (paragraph after ##)
     if (currentQuestion && trimmed && !trimmed.startsWith('#') && !trimmed.startsWith('[') && !trimmed.startsWith('>')) {
       // Skip LaTeX display math blocks
