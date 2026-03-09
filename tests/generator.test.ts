@@ -229,7 +229,8 @@ describe('Table conversion', () => {
 
     const html = convertMarkdownTablesToHtml(md);
 
-    // LaTeX delimiters preserved, but < is XML-escaped for valid XML output
+    // When called directly, LaTeX $ delimiters are preserved as-is.
+    // The < is XML-escaped by escapeCell for valid XML output.
     expect(html).toContain('>$F$</td>');
     expect(html).toContain('>$p &lt; 0.05$</td>');
   });

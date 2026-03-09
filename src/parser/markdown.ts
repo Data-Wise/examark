@@ -376,7 +376,11 @@ function parseOptionsWithFeedback(lines: string[]): { options: AnswerOption[]; g
       // This is a continuation line - join with previous (if not a feedback line)
       const lastIdx = joinedLines.length - 1;
       if (lastIdx >= 0 && joinedLines[lastIdx].trim() && !joinedLines[lastIdx].trim().startsWith('>')) {
-        joinedLines[lastIdx] += ' ' + trimmed;
+        // Use newline between pipe-table rows to preserve table structure
+        const isTableRow = /^\|.+\|$/.test(trimmed);
+        const prevEndsWithTable = /\|$/.test(joinedLines[lastIdx].trimEnd());
+        const sep = (isTableRow || prevEndsWithTable) ? '\n' : ' ';
+        joinedLines[lastIdx] += sep + trimmed;
       } else {
         joinedLines.push(line);
       }

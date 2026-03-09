@@ -68,9 +68,9 @@ export function convertMarkdownTablesToHtml(text: string): string {
           j++;
         }
 
-        // XML-escape cell content so it's valid inside the QTI XML document.
-        // The table HTML will be placeholder-protected and skip the main XML escaping,
-        // so we must handle it here. Preserve __PLACEHOLDER__ tokens as-is.
+        // XML-escape cell content for valid QTI XML.
+        // LaTeX is already in __LATEX_PLACEHOLDER__ tokens at this point,
+        // so we only need to escape raw XML characters in non-LaTeX content.
         const escapeCell = (content: string): string => {
           return content
             .replace(/&/g, '&amp;')
@@ -164,8 +164,38 @@ function escapeXmlPreserveLaTeX(text: string, imageResolver?: ImageResolver): st
     return placeholder;
   });
 
+  // Extract LaTeX as placeholders BEFORE markdown formatting,
+  // so that * inside $...$ (e.g., $z^*$) isn't treated as bold/italic
+  const latexSnippets: string[] = [];
+  // Display math first: $$...$$
+  const escapeLatexForXml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  result = result.replace(/\$\$([\s\S]*?)\$\$/g, (match, content) => {
+    const placeholder = `__LATEX_PLACEHOLDER_${latexSnippets.length}__`;
+    latexSnippets.push('\\[' + escapeLatexForXml(content) + '\\]');
+    return placeholder;
+  });
+  // Inline math: $...$
+  result = result.replace(/(?<!\\)\$([^\$\n]+?)\$/g, (match, content) => {
+    const placeholder = `__LATEX_PLACEHOLDER_${latexSnippets.length}__`;
+    latexSnippets.push('\\(' + escapeLatexForXml(content) + '\\)');
+    return placeholder;
+  });
+
+  // Convert markdown formatting to HTML (bold, italic)
+  result = result
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/(?<!\*)\*([^*]+?)\*(?!\*)/g, '<em>$1</em>');
+
   // Convert markdown pipe tables to HTML tables
   result = convertMarkdownTablesToHtml(result);
+
+  // Extract generated HTML formatting tags as placeholders (protect from XML escaping)
+  const htmlTags: string[] = [];
+  result = result.replace(/<(strong|em)>([\s\S]*?)<\/\1>/g, (match) => {
+    const placeholder = `__HTML_PLACEHOLDER_${htmlTags.length}__`;
+    htmlTags.push(match);
+    return placeholder;
+  });
 
   // Extract generated HTML tables as placeholders (protect from XML escaping)
   const tables: string[] = [];
@@ -174,13 +204,6 @@ function escapeXmlPreserveLaTeX(text: string, imageResolver?: ImageResolver): st
     tables.push(match);
     return placeholder;
   });
-
-  // Convert LaTeX delimiters from Quarto/Pandoc format to Canvas format
-  result = result
-    // Convert display math: $$...$$ → \[...\]
-    .replace(/\$\$([\s\S]*?)\$\$/g, '\\[$1\\]')
-    // Convert inline math: $...$ → \(...\) (careful not to match \$)
-    .replace(/(?<!\\)\$([^\$\n]+?)\$/g, '\\($1\\)');
 
   // Remove Quarto's backslash escapes for < and > (e.g., \< and \>)
   // These should become HTML entities, not literal backslash + entity
@@ -195,19 +218,26 @@ function escapeXmlPreserveLaTeX(text: string, imageResolver?: ImageResolver): st
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 
-  // Restore image tags (they're already properly formatted HTML)
+  // Restore in reverse extraction order: outer containers first, inner content last.
+  // Tables may contain LaTeX/HTML/code placeholders, so restore tables first.
+  tables.forEach((table, i) => {
+    result = result.replace(`__TABLE_PLACEHOLDER_${i}__`, table);
+  });
+
+  htmlTags.forEach((tag, i) => {
+    result = result.replace(`__HTML_PLACEHOLDER_${i}__`, tag);
+  });
+
+  latexSnippets.forEach((latex, i) => {
+    result = result.replace(`__LATEX_PLACEHOLDER_${i}__`, latex);
+  });
+
   images.forEach((img, i) => {
     result = result.replace(`__IMG_PLACEHOLDER_${i}__`, img);
   });
 
-  // Restore code tags (they're already properly formatted HTML)
   codeSnippets.forEach((code, i) => {
     result = result.replace(`__CODE_PLACEHOLDER_${i}__`, code);
-  });
-
-  // Restore table tags (they're already properly formatted HTML)
-  tables.forEach((table, i) => {
-    result = result.replace(`__TABLE_PLACEHOLDER_${i}__`, table);
   });
 
   return result;
