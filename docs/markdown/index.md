@@ -131,4 +131,4 @@ Examark supports two syntax styles that can be mixed in the same file:
 
 - [Getting Started](../getting-started.md) — Installation and first quiz
 - [Templates](../starter/index.md) — Ready-to-use examples
-- [Tutorials](../tutorials/index.md) — Step-by-step guides
+- [Cookbook](../cookbook/index.md) — Step-by-step guides

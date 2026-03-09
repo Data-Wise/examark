@@ -262,4 +262,4 @@ npx tsc --noEmit
 - Check [GitHub Issues](https://github.com/Data-Wise/examark/issues)
 - See [Contributing Guide](contributing.md) to report bugs
 - Review [Markdown Syntax](markdown/syntax.md) for syntax reference
-- Try [Canvas Workflow](tutorials/canvas-workflow.md) for step-by-step import guide
+- Try [Canvas Workflow](cookbook/canvas-workflow.md) for step-by-step import guide

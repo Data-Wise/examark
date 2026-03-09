@@ -61,7 +61,7 @@ docs/
 │   └── yaml-options.md       # YAML config reference
 ├── extensions/               # Extension docs
 │   └── quarto.md             # Quarto extension
-├── tutorials/                # Tutorials
+├── cookbook/                 # Cookbook
 │   ├── index.md
 │   ├── first-quiz.md
 │   ├── quarto.md

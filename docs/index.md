@@ -70,7 +70,7 @@
 
     Convert multiple files at once with glob patterns: `examark *.md -o output/`
 
-- :material-bank:{ .lg .middle } **[Item Banks Support](tutorials/item-banks.md)**
+- :material-bank:{ .lg .middle } **[Item Banks Support](cookbook/item-banks.md)**
 
     ---
 
@@ -232,7 +232,7 @@ See [Commands Reference](reference.md) for all options.
 
     Pre-validate before uploading.
 
-- :material-school:{ .lg .middle } **[Tutorials](tutorials/index.md)**
+- :material-school:{ .lg .middle } **[Cookbook](cookbook/index.md)**
 
     R/Quarto integration and more.
 
