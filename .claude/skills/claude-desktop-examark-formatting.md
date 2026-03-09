@@ -49,6 +49,40 @@ Examark is a markdown-based format for creating educational assessments that exp
 
 **Critical Rule**: Always use `[x]` when answers contain LaTeX formulas!
 
+## Tables
+
+Markdown pipe tables automatically convert to styled HTML tables in Canvas.
+
+### In Question Stems
+```markdown
+1. [MC] Based on the ANOVA table, what is the F-statistic? [2pts]
+
+| Source  | df | MS    | F     |
+|---------|----|-------|-------|
+| Between | 2  | 45.30 | 12.11 |
+| Within  | 27 | 3.74  |       |
+
+a) 12.11 [x]
+b) 45.30
+```
+
+### Column Alignment
+```markdown
+| Left   | Center | Right |
+|:-------|:------:|------:|
+| data   | data   | data  |
+```
+
+### LaTeX in Cells
+```markdown
+| Predictor | $\hat{\beta}$ | $p$       |
+|-----------|---------------|-----------|
+| Age       | $0.87$        | $0.043$   |
+```
+
+### In Answer Options and Feedback
+Tables work inside `b)` option text and `> [feedback]` blocks.
+
 ## LaTeX Math Support
 
 ### Inline Math

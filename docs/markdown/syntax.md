@@ -285,6 +285,93 @@ Hidden from Canvas export.
 
 ---
 
+## Tables
+
+### Markdown Pipe Tables
+
+Examark automatically converts GFM pipe tables to styled HTML tables for Canvas. Tables can appear in question stems, answer options, and feedback blocks.
+
+```markdown
+1. [MC] Based on the ANOVA table, what is the F-statistic? [2pts]
+
+| Source  | df | MS    | F     |
+|---------|----|-------|-------|
+| Between | 2  | 45.30 | 12.11 |
+| Within  | 27 | 3.74  |       |
+
+a) 12.11 [x]
+b) 45.30
+c) 3.74
+```
+
+### Column Alignment
+
+Use colons in the separator row:
+
+```markdown
+| Left   | Center | Right |
+|:-------|:------:|------:|
+| data   | data   | data  |
+```
+
+- `:---` = left-aligned (default)
+- `:---:` = center-aligned
+- `---:` = right-aligned
+
+### LaTeX in Table Cells
+
+Math notation works inside cells — Canvas MathJax renders `\(...\)` within `<td>` elements:
+
+```markdown
+| Predictor | $\hat{\beta}$ | $p$        |
+|-----------|---------------|------------|
+| Intercept | $12.45$       | $< 0.001$  |
+| Age       | $0.87$        | $0.043$    |
+```
+
+### Tables in Answer Options
+
+Tables can appear within an answer option:
+
+```markdown
+1. [MC] Which result is statistically significant? [2pts]
+
+a) The test was not significant
+
+b) The following result was obtained:
+
+| Category   | Observed | Expected |
+|------------|----------|----------|
+| Category A | 25       | 20       |
+| Category B | 15       | 20       |
+
+with $\chi^2(2) = 2.50$, $p = 0.287$ [x]
+
+c) Cannot be determined
+```
+
+### Tables in Feedback
+
+Tables also work in general feedback blocks:
+
+```markdown
+> [feedback] The 95% CI calculation:
+>
+> | Component | Formula | Value |
+> |-----------|---------|-------|
+> | SE        | $s / \sqrt{n}$ | 1.945 |
+> | ME        | $z^* \times SE$ | 3.812 |
+```
+
+### How It Works
+
+- Tables render with Canvas's built-in `ic-Table` CSS class plus inline style fallbacks
+- Single-column tables are passed through unchanged (not converted)
+- Existing HTML tables (e.g., from `kableExtra`) pass through unchanged
+- Cell content is XML-escaped for valid QTI output
+
+---
+
 ## Escaping
 
 ### Literal Brackets

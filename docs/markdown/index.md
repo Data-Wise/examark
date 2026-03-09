@@ -70,6 +70,12 @@ Examark supports two syntax styles that can be mixed in the same file:
 
     Inline feedback, blockquote feedback, and general feedback options.
 
+- :material-table:{ .lg .middle } **[Tables](syntax.md#tables)**
+
+    ---
+
+    Pipe tables in stems, options, and feedback. Alignment, LaTeX in cells.
+
 - :material-file-document-multiple:{ .lg .middle } **[Document Structure](structure.md)**
 
     ---
