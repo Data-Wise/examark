@@ -124,6 +124,7 @@ nav:
       - tutorials/index.md
       - Your First Quiz: tutorials/first-quiz.md
       - Canvas Workflow: tutorials/canvas-workflow.md
+      - Multiple Answers (Select All): tutorials/multiple-answers.md
       - Item Banks & Random Quizzes: tutorials/item-banks.md
       - R & Quarto: tutorials/quarto.md
       - Dynamic Exams: tutorials/dynamic-exams.md

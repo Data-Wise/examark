@@ -1,5 +1,11 @@
 # Claude Code Plugin
 
+> **TL;DR** (30 seconds)
+> - **What:** Examark slash commands for Claude Code — convert, check, and preview exams
+> - **Why:** Author and validate exams without leaving your AI coding session
+> - **How:** Symlink `.claude-plugin/` → `~/.claude/plugins/examark`, then `/exam:convert`
+> - **Next:** [Quarto Extension](quarto.md) for R/Python dynamic exams
+
 Use examark directly from [Claude Code](https://claude.ai/code) with slash commands for converting, checking, and previewing exams.
 
 ## Installation

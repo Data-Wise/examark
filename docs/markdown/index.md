@@ -1,5 +1,11 @@
 # Markdown Syntax
 
+> **TL;DR** (30 seconds)
+> - **What:** Extended Markdown syntax for writing exam questions
+> - **Why:** Two syntax styles (Clean + Traditional) that convert to Canvas QTI
+> - **How:** `1. [MC] Question? [2pts]` with answer markers like `[x]` or `**bold**`
+> - **Next:** [Question Types](question-types.md) for a visual gallery of all 10 types
+
 Examark uses an extended Markdown syntax designed specifically for exam authoring. This section covers everything you need to write effective exam content.
 
 ---

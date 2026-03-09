@@ -46,9 +46,13 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 - Updated: `mkdocs.yml` — both new pages in nav
 - Audit: `AUDIT-CONTENT-INVENTORY.md` — full doc audit (28 files, P3 gap: MA tutorial)
 
-**Remaining P3 items:**
-- `docs/tutorials/multiple-answers.md` — dedicated MA Canvas guide (1-2 hrs, low urgency)
-- `docs/tutorials/quarto.md` — add `= syntax` + canvas-workflow cross-link (~10 min)
+**Documentation Audit Completion (Mar 9):**
+- P1: Added TL;DR boxes to 10 pages (22/22 key pages = 100% coverage)
+- P2: Created `docs/tutorials/multiple-answers.md` — MA Canvas guide with grading formula, QTI internals, troubleshooting
+- P2: Updated `docs/tutorials/quarto.md` — added `= syntax`, TL;DR, canvas-workflow cross-link
+- P3: Reviewed — no action needed (TODO in code example, quarto.md size acceptable)
+- Updated `mkdocs.yml` — MA tutorial added to nav
+- ADHD score: ~92/100 (Grade A) — target achieved
 
 ## Previous Changes (Dec 2025)
 
