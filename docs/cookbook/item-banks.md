@@ -4,7 +4,7 @@
 > - **What:** Import examark QTI packages into Canvas Item Banks for random quiz generation
 > - **Why:** Pull N random questions from a larger pool; share banks across courses
 > - **How:** Import QTI → Item Bank → Build Quiz → "Randomly select N" from bank
-> - **Next:** [Canvas Workflow](canvas-workflow.md) for full import and verification guide
+> - **Next:** [Import & Validate](import-validate.md) for full import and verification guide
 
 Learn how to use Examark with Canvas Item Banks for creating quizzes with randomly selected questions.
 
@@ -261,4 +261,4 @@ Each render produces different values → different Item Bank contents.
 - [Getting Started](../getting-started.md) — First exam in 5 minutes
 - [Markdown Syntax](../markdown/index.md) — Question format reference
 - [Canvas Emulator](../emulator.md) — Test before importing
-- [Dynamic Exams](dynamic-exams.md) — Randomized questions with R/Python
+- [Randomized Values](randomized-values.md) — Randomized questions with R/Python

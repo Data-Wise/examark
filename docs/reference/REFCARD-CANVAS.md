@@ -115,7 +115,7 @@ Settings → **Manage Item Banks** → **Import Content**
 
 ## See Also
 
-- [Canvas Workflow Guide](../cookbook/canvas-workflow.md)
+- [Import & Validate](../cookbook/import-validate.md)
 - [Question Types](../markdown/question-types.md)
 - [Canvas Emulator](../emulator.md)
 - [Item Banks Tutorial](../cookbook/item-banks.md)

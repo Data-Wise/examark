@@ -69,11 +69,15 @@ docs/
 ├── cookbook/                  # Cookbook (task-based recipes)
 │   ├── index.md              # Category index with time/level
 │   ├── first-quiz.md
-│   ├── canvas-workflow.md
+│   ├── import-validate.md
+│   ├── fix-import-errors.md
 │   ├── multiple-answers.md
 │   ├── item-banks.md
-│   ├── quarto.md
-│   ├── dynamic-exams.md
+│   ├── quarto-setup.md
+│   ├── quarto-workflow.md
+│   ├── randomized-values.md
+│   ├── auto-plots.md
+│   ├── multiple-versions.md
 │   └── vscode-snippets.md
 ├── starter/                  # Templates
 │   ├── index.md

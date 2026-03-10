@@ -10,9 +10,9 @@ describe('Documentation Website Tests', () => {
   // Build the site before running tests
   beforeAll(() => {
     try {
-      execSync('mkdocs build', { 
+      execSync('mkdocs build', {
         cwd: join(__dirname, '..'),
-        stdio: 'pipe' 
+        stdio: 'pipe'
       });
     } catch (e: any) {
       console.error('MkDocs build failed:', e.stderr?.toString());
@@ -72,8 +72,8 @@ describe('Documentation Website Tests', () => {
       expect(existsSync(join(docsDir, 'contributing.md'))).toBe(true);
     });
 
-    it('should have tutorials directory', () => {
-      expect(existsSync(join(docsDir, 'tutorials'))).toBe(true);
+    it('should have cookbook directory', () => {
+      expect(existsSync(join(docsDir, 'cookbook'))).toBe(true);
     });
 
     it('should have extensions directory', () => {
@@ -81,23 +81,31 @@ describe('Documentation Website Tests', () => {
     });
   });
 
-  describe('Tutorial Pages', () => {
-    const tutorialsDir = join(docsDir, 'tutorials');
+  describe('Cookbook Pages', () => {
+    const cookbookDir = join(docsDir, 'cookbook');
 
-    it('should have tutorials index', () => {
-      expect(existsSync(join(tutorialsDir, 'index.md'))).toBe(true);
+    it('should have cookbook index', () => {
+      expect(existsSync(join(cookbookDir, 'index.md'))).toBe(true);
     });
 
-    it('should have quarto tutorial', () => {
-      expect(existsSync(join(tutorialsDir, 'quarto.md'))).toBe(true);
+    it('should have import-validate recipe', () => {
+      expect(existsSync(join(cookbookDir, 'import-validate.md'))).toBe(true);
     });
 
-    it('should have dynamic-exams tutorial', () => {
-      expect(existsSync(join(tutorialsDir, 'dynamic-exams.md'))).toBe(true);
+    it('should have quarto-setup recipe', () => {
+      expect(existsSync(join(cookbookDir, 'quarto-setup.md'))).toBe(true);
     });
 
-    it('should have vscode-snippets tutorial', () => {
-      expect(existsSync(join(tutorialsDir, 'vscode-snippets.md'))).toBe(true);
+    it('should have quarto-workflow recipe', () => {
+      expect(existsSync(join(cookbookDir, 'quarto-workflow.md'))).toBe(true);
+    });
+
+    it('should have randomized-values recipe', () => {
+      expect(existsSync(join(cookbookDir, 'randomized-values.md'))).toBe(true);
+    });
+
+    it('should have vscode-snippets recipe', () => {
+      expect(existsSync(join(cookbookDir, 'vscode-snippets.md'))).toBe(true);
     });
   });
 
@@ -122,11 +130,6 @@ describe('Documentation Website Tests', () => {
       expect(content).toContain('Features');
     });
 
-    it('should have quick start section', () => {
-      const content = readFileSync(join(docsDir, 'index.md'), 'utf-8');
-      expect(content).toContain('Quick Start');
-    });
-
     it('should have npm badge', () => {
       const content = readFileSync(join(docsDir, 'index.md'), 'utf-8');
       expect(content).toContain('img.shields.io/npm/v/examark');
@@ -137,15 +140,10 @@ describe('Documentation Website Tests', () => {
       expect(content).toContain('ci.yml');
     });
 
-    it('should have workflow diagram', () => {
+    it('should have three-pillar hero', () => {
       const content = readFileSync(join(docsDir, 'index.md'), 'utf-8');
-      expect(content).toContain('mermaid');
-    });
-
-    it('should have templates section', () => {
-      const content = readFileSync(join(docsDir, 'index.md'), 'utf-8');
-      expect(content).toContain('Templates');
-      expect(content).toContain('starter.md');
+      expect(content).toContain('Claude Code Plugin');
+      expect(content).toContain('Quarto Extension');
     });
   });
 
@@ -195,8 +193,8 @@ describe('Documentation Website Tests', () => {
       expect(existsSync(join(siteDir, 'markdown', 'syntax', 'index.html'))).toBe(true);
     });
 
-    it('should generate tutorials section', () => {
-      expect(existsSync(join(siteDir, 'tutorials', 'index.html'))).toBe(true);
+    it('should generate cookbook section', () => {
+      expect(existsSync(join(siteDir, 'cookbook', 'index.html'))).toBe(true);
     });
 
     it('should generate quarto extension page', () => {
@@ -219,15 +217,14 @@ describe('Documentation Website Tests', () => {
       expect(config).toContain('CLI Reference:');
     });
 
-    it('should have Tutorials section in nav', () => {
+    it('should have Cookbook section in nav', () => {
       const config = readFileSync(join(__dirname, '..', 'mkdocs.yml'), 'utf-8');
-      expect(config).toContain('Tutorials:');
+      expect(config).toContain('Cookbook:');
     });
 
-    it('should have Extensions section in nav', () => {
+    it('should have Quarto Extension in nav', () => {
       const config = readFileSync(join(__dirname, '..', 'mkdocs.yml'), 'utf-8');
-      expect(config).toContain('Extensions:');
-      expect(config).toContain('Quarto: extensions/quarto.md');
+      expect(config).toContain('Quarto Extension: extensions/quarto.md');
     });
   });
 });

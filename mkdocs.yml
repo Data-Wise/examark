@@ -122,11 +122,23 @@ nav:
   - Cookbook:
       - cookbook/index.md
       - Your First Quiz: cookbook/first-quiz.md
-      - Canvas Workflow: cookbook/canvas-workflow.md
+      - Import & Validate: cookbook/import-validate.md
+      - Fix Import Errors: cookbook/fix-import-errors.md
       - Multiple Answers (Select All): cookbook/multiple-answers.md
       - Item Banks & Random Quizzes: cookbook/item-banks.md
-      - R & Quarto: cookbook/quarto.md
-      - Dynamic Exams: cookbook/dynamic-exams.md
+      - Validate Before Upload: cookbook/validate-before-upload.md
+      - Batch Convert: cookbook/batch-convert.md
+      - Quarto Setup: cookbook/quarto-setup.md
+      - Quarto Workflow: cookbook/quarto-workflow.md
+      - Randomized Values: cookbook/randomized-values.md
+      - Auto-Generated Plots: cookbook/auto-plots.md
+      - Multiple Versions: cookbook/multiple-versions.md
+      - Statistics Patterns: cookbook/statistics-patterns.md
+      - Matching & FMB: cookbook/matching-fmb.md
+      - Short Answer Variants: cookbook/short-answer-variants.md
+      - Generate Exam with Claude: cookbook/generate-exam-claude.md
+      - Iterative Editing with Claude: cookbook/iterative-editing-claude.md
+      - Quarto + Claude Pipeline: cookbook/quarto-claude-pipeline.md
       - VS Code Snippets: cookbook/vscode-snippets.md
   - Templates:
       - starter/index.md

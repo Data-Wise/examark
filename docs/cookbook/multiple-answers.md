@@ -4,7 +4,7 @@
 > - **What:** "Select all that apply" questions with 2+ correct answers for Canvas
 > - **Why:** Most common source of Canvas import failures — this guide prevents them
 > - **How:** Use `[MA]` type marker + mark 2+ options with `[x]`, `**bold**`, or `*` prefix
-> - **Next:** [Canvas Workflow](canvas-workflow.md) for the full import and validation guide
+> - **Next:** [Import & Validate](import-validate.md) for the full import and validation guide
 
 **10 minutes** | Beginner | No special tools required
 
@@ -255,7 +255,7 @@ Canvas always uses partial credit for MA. To simulate all-or-nothing:
 
 ## Next Steps
 
-- [Canvas Workflow](canvas-workflow.md) — Full import and validation guide
+- [Import & Validate](import-validate.md) — Full import and validation guide
 - [Question Types](../markdown/question-types.md) — All 10 question types at a glance
 - [Canvas Emulator](../emulator.md) — Pre-upload validation tool
 - [Item Banks](item-banks.md) — Build random quizzes from question pools
