@@ -20,12 +20,15 @@ A bash script that swaps the seed and renders each version:
 # build-versions.sh
 
 for seed in 100 200 300; do
-    sed -i '' "s/set.seed([0-9]*)/set.seed($seed)/" exam.qmd
+    # macOS: sed -i '' | Linux: sed -i
+    sed "s/set.seed([0-9]*)/set.seed($seed)/" exam.qmd > tmp.qmd && mv tmp.qmd exam.qmd
     quarto render exam.qmd
     mv exam.md "version-${seed}.md"
     examark "version-${seed}.md" -o "version-${seed}.qti.zip"
 done
 ```
+
+Strategy 2 (below) is recommended because it does not modify the source file.
 
 ### Strategy 2: Parameterized Documents
 

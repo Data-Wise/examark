@@ -78,6 +78,14 @@ docs/
 │   ├── randomized-values.md
 │   ├── auto-plots.md
 │   ├── multiple-versions.md
+│   ├── validate-before-upload.md
+│   ├── batch-convert.md
+│   ├── statistics-patterns.md
+│   ├── matching-fmb.md
+│   ├── short-answer-variants.md
+│   ├── generate-exam-claude.md
+│   ├── iterative-editing-claude.md
+│   ├── quarto-claude-pipeline.md
 │   └── vscode-snippets.md
 ├── starter/                  # Templates
 │   ├── index.md

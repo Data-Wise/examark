@@ -21,10 +21,10 @@ examark check exam.md
 ```
 
 ```
-✓ 25 questions found
-✓ All questions have stems
-✓ All questions have correct answers
-✓ No duplicate question IDs
+25 questions found
+All questions have stems
+All questions have correct answers
+No duplicate question IDs
 ```
 
 **Step 2: Validate the QTI package**
@@ -34,10 +34,10 @@ examark verify exam.qti.zip
 ```
 
 ```
-✓ Valid QTI 1.2 package
-✓ imsmanifest.xml present
-✓ 25 items found
-✓ All referenced files exist
+Valid QTI 1.2 package
+imsmanifest.xml present
+25 items found
+All referenced files exist
 ```
 
 **Step 3: Simulate a Canvas import**
@@ -47,10 +47,10 @@ examark emulate-canvas exam.qti.zip
 ```
 
 ```
-✓ Canvas import simulation: SUCCESS
-✓ 25/25 questions would import correctly
-✓ No unsupported question types
-✓ All correct answers defined
+Canvas import simulation: SUCCESS
+25/25 questions would import correctly
+No unsupported question types
+All correct answers defined
 ```
 
 **One-liner for all three stages:**
