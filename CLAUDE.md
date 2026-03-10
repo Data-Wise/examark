@@ -23,10 +23,20 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 - Coverage: Tables in stems, answer options, with LaTeX, alignment, empty cells, multiple tables per question
 - Pipeline order: images → HTML imgs → cross-refs → code → **tables** → LaTeX → XML escape → restore all
 
+**Website Restructure (Mar 10):**
+- Phase 1: Renamed `tutorials/` → `cookbook/`, promoted Quarto + Claude Plugin to top-level nav, added three-pillar hero to index
+- Phase 2: Split 3 long tutorials into focused recipes + created 8 new recipes (6→19 cookbook entries)
+  - `canvas-workflow.md` → `import-validate.md` + `fix-import-errors.md`
+  - `quarto.md` → `quarto-setup.md` + `quarto-workflow.md`
+  - `dynamic-exams.md` → `randomized-values.md` + `auto-plots.md` + `multiple-versions.md`
+  - New: `validate-before-upload`, `batch-convert`, `statistics-patterns`, `matching-fmb`, `short-answer-variants`, `generate-exam-claude`, `iterative-editing-claude`, `quarto-claude-pipeline`
+- Phase 3: Expanded `claude-plugin.md` from 150→398 lines (workflows, prompting strategies, auto-lint deep dive, troubleshooting)
+- All recipes follow template: TL;DR → Problem → Solution → Explanation → See Also
+
 **Documentation Audit Completion (Mar 9):**
 - P1: Added TL;DR boxes to 10 pages (22/22 key pages = 100% coverage)
-- P2: Created `docs/tutorials/multiple-answers.md` — MA Canvas guide with grading formula, QTI internals, troubleshooting
-- P2: Updated `docs/tutorials/quarto.md` — added `= syntax`, TL;DR, canvas-workflow cross-link
+- P2: Created `docs/cookbook/multiple-answers.md` — MA Canvas guide with grading formula, QTI internals, troubleshooting
+- P2: Updated `docs/cookbook/quarto-workflow.md` — added `= syntax`, TL;DR, canvas-workflow cross-link
 - P3: Reviewed — no action needed (TODO in code example, quarto.md size acceptable)
 - Updated `mkdocs.yml` — MA tutorial added to nav
 - ADHD score: ~92/100 (Grade A) — target achieved
@@ -55,11 +65,11 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 - Created: `exam/exam1-questions.tex` — standalone LaTeX version using `exam` document class
 
 **Documentation Site (Mar 4):**
-- Added: `docs/tutorials/canvas-workflow.md` — full Canvas import guide with mermaid diagram
+- Added: `docs/cookbook/import-validate.md` — full Canvas import guide with mermaid diagram
 - Added: `docs/reference/REFCARD-CANVAS.md` — one-page Canvas quick reference
 - Updated: `docs/emulator.md` — 4 new validator checks in "What It Checks" table
 - Updated: `docs/index.md` — Recent Updates (March 2026) section
-- Updated: `docs/tutorials/index.md` — Canvas Workflow tutorial linked
+- Updated: `docs/cookbook/index.md` — Canvas Workflow tutorial linked
 - Updated: `docs/extensions/quarto.md` — `= syntax` + automatic QTI post-render workflow
 - Updated: `mkdocs.yml` — both new pages in nav
 - Audit: `AUDIT-CONTENT-INVENTORY.md` — full doc audit (28 files, P3 gap: MA tutorial)
@@ -958,7 +968,7 @@ The website (https://data-wise.github.io/examark/) uses MkDocs with Material the
 
 ```
 docs/
-├── index.md                    # Homepage
+├── index.md                    # Homepage (three-pillar hero)
 ├── getting-started.md          # Quick start guide
 ├── DESIGN.md                   # Site design documentation
 ├── markdown/                   # Markdown syntax section
@@ -970,12 +980,33 @@ docs/
 │   ├── feedback.md            # Feedback options
 │   └── structure.md           # Document organization
 ├── reference/
-│   └── yaml-options.md        # YAML config reference
+│   ├── yaml-options.md        # YAML config reference
+│   └── REFCARD-CANVAS.md      # Canvas quick reference
 ├── extensions/
-│   └── quarto.md              # Quarto extension guide
-├── tutorials/                  # Step-by-step guides
+│   ├── quarto.md              # Quarto extension guide
+│   └── claude-plugin.md       # Claude Code plugin (~400 lines)
+├── cookbook/                    # Cookbook (19 task-based recipes)
+│   ├── index.md               # Category index with time/level
+│   ├── first-quiz.md
+│   ├── import-validate.md
+│   ├── fix-import-errors.md
+│   ├── multiple-answers.md
+│   ├── item-banks.md
+│   ├── validate-before-upload.md
+│   ├── batch-convert.md
+│   ├── quarto-setup.md
+│   ├── quarto-workflow.md
+│   ├── randomized-values.md
+│   ├── auto-plots.md
+│   ├── multiple-versions.md
+│   ├── statistics-patterns.md
+│   ├── matching-fmb.md
+│   ├── short-answer-variants.md
+│   ├── generate-exam-claude.md
+│   ├── iterative-editing-claude.md
+│   ├── quarto-claude-pipeline.md
+│   └── vscode-snippets.md
 ├── starter/                    # Template documentation
-├── DESIGN.md                   # Documentation architecture
 ├── config.md                   # Configuration
 ├── emulator.md                 # Canvas emulator
 ├── reference.md                # CLI commands
@@ -991,8 +1022,9 @@ nav:
   - Getting Started
   - Markdown/              # Syntax documentation
   - CLI Reference/         # Commands, config, emulator
-  - Quarto Extension/
-  - Tutorials/
+  - Quarto Extension       # Top-level (not nested)
+  - Claude Code Plugin     # Top-level (not nested)
+  - Cookbook/               # 19 recipes in 7 categories
   - Templates/
   - Resources/             # Troubleshooting, contributing
 ```
