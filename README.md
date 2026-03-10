@@ -415,7 +415,7 @@ npm link
 ### Install Specific Version
 
 ```bash
-npm install -g examark@0.6.6
+npm install -g examark@0.7.0
 ```
 
 ### Update to Latest

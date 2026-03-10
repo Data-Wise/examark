@@ -8,7 +8,7 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 
 - **Repo**: Data-Wise/examark
 - **Docs**: https://data-wise.github.io/examark/
-- **Version**: 0.6.6 | **Tests**: 277 passing (0 failures)
+- **Version**: 0.7.0 | **Tests**: 276 passing (0 failures)
 - **Distribution**: npm (`examark`), Homebrew (`data-wise/tap/examark`), Quarto extension, Claude Code plugin
 
 ## Recent Changes (Mar 2026)

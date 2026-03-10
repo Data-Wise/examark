@@ -145,7 +145,7 @@ Perfect for one-time conversions or trying Examark.
     **Install specific version:**
 
     ```bash
-    npm install -g examark@0.6.6
+    npm install -g examark@0.7.0
     ```
 
 ### ✅ Verify Installation
