@@ -4,7 +4,7 @@
 > - **What:** Install Examark and convert your first Markdown file to a Canvas quiz
 > - **Why:** Skip the manual quiz builder — write exams in Markdown, import in one click
 > - **How:** `npm install -g examark && examark quiz.md -o quiz.qti.zip`
-> - **Next:** [Your First Quiz](tutorials/first-quiz.md) for a step-by-step walkthrough
+> - **Next:** [Your First Quiz](cookbook/first-quiz.md) for a step-by-step walkthrough
 
 Get up and running with Examark in under 5 minutes.
 
@@ -301,5 +301,5 @@ See [Configuration](config.md) for all options.
 - [Commands Reference](reference.md) — All CLI options
 - [Configuration](config.md) — Project settings
 - [Canvas Emulator](emulator.md) — Pre-import validation
-- [Tutorials](tutorials/index.md) — R/Quarto integration
+- [Cookbook](cookbook/index.md) — Recipes and step-by-step guides
 - [Quarto Extension](extensions/quarto.md) — Advanced authoring

@@ -336,6 +336,7 @@ Or set a project default in `.examarkrc.json`:
 
 ## Related
 
+- [Canvas Quick Reference](../reference/REFCARD-CANVAS.md) — One-page cheat sheet
 - [Question Types Gallery](../markdown/question-types.md)
 - [Syntax Reference](../markdown/syntax.md)
 - [Canvas Emulator](../emulator.md)

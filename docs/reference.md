@@ -4,7 +4,7 @@
 > - **What:** Every CLI command, flag, and option for Examark
 > - **Why:** Quick lookup when you need the exact flag or syntax
 > - **How:** `examark <file> -o out.qti.zip` (convert) or `examark check <file>` (lint)
-> - **Next:** [Canvas Workflow](tutorials/canvas-workflow.md) for the full import process
+> - **Next:** [Canvas Workflow](cookbook/canvas-workflow.md) for the full import process
 
 Complete command reference for Examark CLI.
 
