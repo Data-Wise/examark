@@ -208,7 +208,7 @@ function parseOptions(lines: string[]): AnswerOption[] {
     if (!trimmed) continue;
 
     // Match numbered options: 1) Answer, 2) Answer, or *1) Answer (correct)
-    const numMatch = trimmed.match(/^(\*)?(\d+)\)\s+(.+)$/);
+    const numMatch = trimmed.match(/^(\*)?(\d+)\)\s+(.+)$/s);
     if (numMatch) {
       const hasAsteriskPrefix = !!numMatch[1];
       const text = numMatch[3];
@@ -225,7 +225,7 @@ function parseOptions(lines: string[]): AnswerOption[] {
     }
 
     // Match lettered options: a) Answer, b) Answer, or *a) Answer (correct)
-    const letterMatch = trimmed.match(/^(\*)?([a-e])\)\s+(.+)$/i);
+    const letterMatch = trimmed.match(/^(\*)?([a-e])\)\s+(.+)$/is);
     if (letterMatch) {
       const hasAsteriskPrefix = !!letterMatch[1];
       const text = letterMatch[3];
@@ -242,7 +242,7 @@ function parseOptions(lines: string[]): AnswerOption[] {
     }
 
     // Match dash options: - Answer or -  **Answer** (correct)
-    const dashMatch = trimmed.match(/^-\s+(.+)$/);
+    const dashMatch = trimmed.match(/^-\s+(.+)$/s);
     if (dashMatch) {
       const text = dashMatch[1];
       const { cleanText: textWithoutFeedback, feedback } = extractInlineFeedback(text);
@@ -400,7 +400,11 @@ function parseOptionsWithFeedback(lines: string[]): { options: AnswerOption[]; g
       // This is a continuation line - join with previous (if not a feedback line)
       const lastIdx = joinedLines.length - 1;
       if (lastIdx >= 0 && joinedLines[lastIdx].trim() && !joinedLines[lastIdx].trim().startsWith('>')) {
-        joinedLines[lastIdx] += ' ' + trimmed;
+        // Use newline between pipe-table rows to preserve table structure
+        const isTableRow = /^\|.+\|$/.test(trimmed);
+        const prevEndsWithTable = /\|$/.test(joinedLines[lastIdx].trimEnd());
+        const sep = (isTableRow || prevEndsWithTable) ? '\n' : ' ';
+        joinedLines[lastIdx] += sep + trimmed;
       } else {
         joinedLines.push(line);
       }
@@ -418,6 +422,9 @@ function parseOptionsWithFeedback(lines: string[]): { options: AnswerOption[]; g
       // Check for general feedback marker: > [feedback] text
       if (feedbackText.match(/^\[feedback\]/i)) {
         generalFeedback = feedbackText.replace(/^\[feedback\]\s*/i, '').trim();
+      } else if (generalFeedback !== undefined) {
+        // Continue appending to general feedback (multi-line blockquote)
+        generalFeedback += '\n' + feedbackText;
       } else if (lastOption) {
         // Attach to last option (append if already has inline feedback)
         if (lastOption.feedback) {
@@ -430,7 +437,7 @@ function parseOptionsWithFeedback(lines: string[]): { options: AnswerOption[]; g
     }
 
     // Match numbered options: 1) Answer, 2) Answer, or *1) Answer (correct)
-    const numMatch = trimmed.match(/^(\*)?(\d+)\)\s+(.+)$/);
+    const numMatch = trimmed.match(/^(\*)?(\d+)\)\s+(.+)$/s);
     if (numMatch) {
       const hasAsteriskPrefix = !!numMatch[1];
       const text = numMatch[3];
@@ -448,7 +455,7 @@ function parseOptionsWithFeedback(lines: string[]): { options: AnswerOption[]; g
     }
 
     // Match lettered options: a) Answer, b) Answer, or *a) Answer (correct)
-    const letterMatch = trimmed.match(/^(\*)?([a-e])\)\s+(.+)$/i);
+    const letterMatch = trimmed.match(/^(\*)?([a-e])\)\s+(.+)$/is);
     if (letterMatch) {
       const hasAsteriskPrefix = !!letterMatch[1];
       const text = letterMatch[3];
@@ -492,7 +499,7 @@ function parseOptionsWithFeedback(lines: string[]): { options: AnswerOption[]; g
     }
 
     // Match dash options: - Answer or - **Answer** (correct) (but not matching pairs)
-    const dashMatch = trimmed.match(/^-\s+(.+)$/);
+    const dashMatch = trimmed.match(/^-\s+(.+)$/s);
     if (dashMatch && !trimmed.includes('::') && !trimmed.includes('=>')) {
       const text = dashMatch[1];
       const { cleanText: textWithoutFeedback, feedback } = extractInlineFeedback(text);
@@ -893,7 +900,7 @@ export function parseMarkdown(content: string): ParsedQuiz {
       currentQuestionLines.push(trimmed);
       continue;
     }
-    
+
     // Question description/stem continuation (paragraph after ##)
     if (currentQuestion && trimmed && !trimmed.startsWith('#') && !trimmed.startsWith('[') && !trimmed.startsWith('>')) {
       // Escaped correct-answer markers from Quarto GFM line-wrapping: \[x\], \[correct\], \[✓\], \[✔\]
@@ -910,7 +917,11 @@ export function parseMarkdown(content: string): ParsedQuiz {
           currentQuestionLines.push(trimmed);
         } else {
           // Regular description text or image for stem
-          currentQuestion.stem += '\n\n' + trimmed;
+          // Use single newline between consecutive pipe-table rows to preserve table structure
+          const isTableRow = /^\|.+\|$/.test(trimmed);
+          const stemEndsWithTableRow = /\|$/.test(currentQuestion.stem.trimEnd());
+          const separator = (isTableRow && stemEndsWithTableRow) ? '\n' : '\n\n';
+          currentQuestion.stem += separator + trimmed;
         }
       }
     }

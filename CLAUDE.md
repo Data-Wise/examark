@@ -8,10 +8,38 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 
 - **Repo**: Data-Wise/examark
 - **Docs**: https://data-wise.github.io/examark/
-- **Version**: 0.6.6 | **Tests**: 265 passing (0 failures — all torture-quarto tests now fixed)
+- **Version**: 0.7.0 | **Tests**: 276 passing (0 failures)
 - **Distribution**: npm (`examark`), Homebrew (`data-wise/tap/examark`), Quarto extension, Claude Code plugin
 
 ## Recent Changes (Mar 2026)
+
+**Markdown Table → HTML Conversion (Mar 9):**
+- Added: `convertMarkdownTablesToHtml()` converts GFM pipe tables to HTML `<table>` with Canvas `ic-Table` class
+- Added: Inline styles on cells (`padding`, `border`, `text-align`) for Canvas rendering fallback
+- Added: GFM alignment support (`:---` left, `:---:` center, `---:` right)
+- Added: Table placeholder protection in `escapeXmlPreserveLaTeX()` — tables survive XML escaping
+- Fixed: Parser now preserves consecutive pipe-table rows in stems (single `\n` instead of `\n\n`)
+- Added: 10 new table conversion tests + `tests/fixtures/table-questions.md` fixture (7 questions)
+- Coverage: Tables in stems, answer options, with LaTeX, alignment, empty cells, multiple tables per question
+- Pipeline order: images → HTML imgs → cross-refs → code → **tables** → LaTeX → XML escape → restore all
+
+**Website Restructure (Mar 10):**
+- Phase 1: Renamed `tutorials/` → `cookbook/`, promoted Quarto + Claude Plugin to top-level nav, added three-pillar hero to index
+- Phase 2: Split 3 long tutorials into focused recipes + created 8 new recipes (6→19 cookbook entries)
+  - `canvas-workflow.md` → `import-validate.md` + `fix-import-errors.md`
+  - `quarto.md` → `quarto-setup.md` + `quarto-workflow.md`
+  - `dynamic-exams.md` → `randomized-values.md` + `auto-plots.md` + `multiple-versions.md`
+  - New: `validate-before-upload`, `batch-convert`, `statistics-patterns`, `matching-fmb`, `short-answer-variants`, `generate-exam-claude`, `iterative-editing-claude`, `quarto-claude-pipeline`
+- Phase 3: Expanded `claude-plugin.md` from 150→398 lines (workflows, prompting strategies, auto-lint deep dive, troubleshooting)
+- All recipes follow template: TL;DR → Problem → Solution → Explanation → See Also
+
+**Documentation Audit Completion (Mar 9):**
+- P1: Added TL;DR boxes to 10 pages (22/22 key pages = 100% coverage)
+- P2: Created `docs/cookbook/multiple-answers.md` — MA Canvas guide with grading formula, QTI internals, troubleshooting
+- P2: Updated `docs/cookbook/quarto-workflow.md` — added `= syntax`, TL;DR, canvas-workflow cross-link
+- P3: Reviewed — no action needed (TODO in code example, quarto.md size acceptable)
+- Updated `mkdocs.yml` — MA tutorial added to nav
+- ADHD score: ~92/100 (Grade A) — target achieved
 
 **Claude Code Plugin (Mar 5):**
 - Added: `.claude-plugin/` with plugin manifest, 3 commands, 5 skills, auto-lint hook
@@ -25,7 +53,7 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 - QTI generator emits multiple `<varequal>` in one `<conditionvar>` (implicit OR, per QTI 1.2 spec)
 - Both `Answer: text` (inline) and `= text` (multi-line) syntaxes supported
 - Files changed: `src/parser/markdown.ts`, `src/generator/qti.ts`
-- Tests: 265 passing (0 failures)
+- Tests: 277 passing (0 failures)
 
 **Quarto Post-Render Hook (Mar 4):**
 
@@ -37,18 +65,14 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 - Created: `exam/exam1-questions.tex` — standalone LaTeX version using `exam` document class
 
 **Documentation Site (Mar 4):**
-- Added: `docs/tutorials/canvas-workflow.md` — full Canvas import guide with mermaid diagram
+- Added: `docs/cookbook/import-validate.md` — full Canvas import guide with mermaid diagram
 - Added: `docs/reference/REFCARD-CANVAS.md` — one-page Canvas quick reference
 - Updated: `docs/emulator.md` — 4 new validator checks in "What It Checks" table
 - Updated: `docs/index.md` — Recent Updates (March 2026) section
-- Updated: `docs/tutorials/index.md` — Canvas Workflow tutorial linked
+- Updated: `docs/cookbook/index.md` — Canvas Workflow tutorial linked
 - Updated: `docs/extensions/quarto.md` — `= syntax` + automatic QTI post-render workflow
 - Updated: `mkdocs.yml` — both new pages in nav
 - Audit: `AUDIT-CONTENT-INVENTORY.md` — full doc audit (28 files, P3 gap: MA tutorial)
-
-**Remaining P3 items:**
-- `docs/tutorials/multiple-answers.md` — dedicated MA Canvas guide (1-2 hrs, low urgency)
-- `docs/tutorials/quarto.md` — add `= syntax` + canvas-workflow cross-link (~10 min)
 
 ## Previous Changes (Dec 2025)
 
@@ -207,7 +231,14 @@ Examark converts Markdown exam files to QTI 1.2 packages for Canvas LMS import.
 
 ### In Progress 🚧
 
-*No active development items currently.*
+**Markdown Tables → HTML in QTI Generator:**
+- **Branch**: `feature/markdown-tables-to-html` (worktree at `~/.git-worktrees/examark/feature-md-tables`)
+- **Spec**: `docs/specs/SPEC-markdown-tables-to-html-2026-03-06.md`
+- **ORCHESTRATE**: `ORCHESTRATE-markdown-tables.md` in worktree
+- **What**: Convert markdown pipe tables to HTML `<table>` during QTI generation so Canvas renders tables correctly
+- **Scope**: Stems, answer options, feedback blocks, LaTeX cells, column alignment
+- **Key decision**: Use Canvas `ic-Table` CSS class + inline style fallback; generator-only approach (no parser changes)
+- **Status**: Spec complete, research done (3/4 risks resolved), ready for implementation
 
 ### Known Issues 🐛
 
@@ -566,6 +597,9 @@ src/
 | Strip Quarto cross-refs | `src/generator/qti.ts:61-63` (remove `<a class="quarto-xref">` tags) |
 | Format inline code | `src/generator/qti.ts:65-69` (backtick → `<code>` conversion) |
 | Fix escaped characters | `src/generator/qti.ts:76-80` (remove Quarto `\<` and `\>` escapes) |
+| Convert markdown tables | `src/generator/qti.ts:convertMarkdownTablesToHtml()` |
+| Table placeholder protection | `src/generator/qti.ts:160-166` (extract/restore table HTML) |
+| Parser table row joining | `src/parser/markdown.ts:841` (single `\n` between pipe rows) |
 
 ## Common Workflows
 
@@ -934,7 +968,7 @@ The website (https://data-wise.github.io/examark/) uses MkDocs with Material the
 
 ```
 docs/
-├── index.md                    # Homepage
+├── index.md                    # Homepage (three-pillar hero)
 ├── getting-started.md          # Quick start guide
 ├── DESIGN.md                   # Site design documentation
 ├── markdown/                   # Markdown syntax section
@@ -946,12 +980,33 @@ docs/
 │   ├── feedback.md            # Feedback options
 │   └── structure.md           # Document organization
 ├── reference/
-│   └── yaml-options.md        # YAML config reference
+│   ├── yaml-options.md        # YAML config reference
+│   └── REFCARD-CANVAS.md      # Canvas quick reference
 ├── extensions/
-│   └── quarto.md              # Quarto extension guide
-├── tutorials/                  # Step-by-step guides
+│   ├── quarto.md              # Quarto extension guide
+│   └── claude-plugin.md       # Claude Code plugin (~400 lines)
+├── cookbook/                    # Cookbook (19 task-based recipes)
+│   ├── index.md               # Category index with time/level
+│   ├── first-quiz.md
+│   ├── import-validate.md
+│   ├── fix-import-errors.md
+│   ├── multiple-answers.md
+│   ├── item-banks.md
+│   ├── validate-before-upload.md
+│   ├── batch-convert.md
+│   ├── quarto-setup.md
+│   ├── quarto-workflow.md
+│   ├── randomized-values.md
+│   ├── auto-plots.md
+│   ├── multiple-versions.md
+│   ├── statistics-patterns.md
+│   ├── matching-fmb.md
+│   ├── short-answer-variants.md
+│   ├── generate-exam-claude.md
+│   ├── iterative-editing-claude.md
+│   ├── quarto-claude-pipeline.md
+│   └── vscode-snippets.md
 ├── starter/                    # Template documentation
-├── DESIGN.md                   # Documentation architecture
 ├── config.md                   # Configuration
 ├── emulator.md                 # Canvas emulator
 ├── reference.md                # CLI commands
@@ -967,8 +1022,9 @@ nav:
   - Getting Started
   - Markdown/              # Syntax documentation
   - CLI Reference/         # Commands, config, emulator
-  - Quarto Extension/
-  - Tutorials/
+  - Quarto Extension       # Top-level (not nested)
+  - Claude Code Plugin     # Top-level (not nested)
+  - Cookbook/               # 19 recipes in 7 categories
   - Templates/
   - Resources/             # Troubleshooting, contributing
 ```

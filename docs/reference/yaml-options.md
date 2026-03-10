@@ -1,5 +1,11 @@
 # YAML Options Reference
 
+> **TL;DR** (30 seconds)
+> - **What:** All Quarto YAML front matter options for exam configuration
+> - **Why:** Control QTI export, solutions visibility, points, and multi-format output
+> - **How:** Add `exam:` block to YAML with `qti: true`, `solutions: false`, `default-points: 2`
+> - **Next:** [Quarto Extension](../extensions/quarto.md) for full Quarto workflow
+
 Complete reference for Quarto exam YAML front matter options.
 
 ---

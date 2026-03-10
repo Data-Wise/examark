@@ -117,22 +117,35 @@ nav:
       - Configuration: config.md
       - Canvas Emulator: emulator.md
       - Canvas Quick Reference: reference/REFCARD-CANVAS.md
-  - Extensions:
-      - Quarto: extensions/quarto.md
-      - Claude Code Plugin: extensions/claude-plugin.md
-  - Tutorials:
-      - tutorials/index.md
-      - Your First Quiz: tutorials/first-quiz.md
-      - Canvas Workflow: tutorials/canvas-workflow.md
-      - Item Banks & Random Quizzes: tutorials/item-banks.md
-      - R & Quarto: tutorials/quarto.md
-      - Dynamic Exams: tutorials/dynamic-exams.md
-      - VS Code Snippets: tutorials/vscode-snippets.md
+  - Quarto Extension: extensions/quarto.md
+  - Claude Code Plugin: extensions/claude-plugin.md
+  - Cookbook:
+      - cookbook/index.md
+      - Your First Quiz: cookbook/first-quiz.md
+      - Import & Validate: cookbook/import-validate.md
+      - Fix Import Errors: cookbook/fix-import-errors.md
+      - Multiple Answers (Select All): cookbook/multiple-answers.md
+      - Item Banks & Random Quizzes: cookbook/item-banks.md
+      - Validate Before Upload: cookbook/validate-before-upload.md
+      - Batch Convert: cookbook/batch-convert.md
+      - Quarto Setup: cookbook/quarto-setup.md
+      - Quarto Workflow: cookbook/quarto-workflow.md
+      - Randomized Values: cookbook/randomized-values.md
+      - Auto-Generated Plots: cookbook/auto-plots.md
+      - Multiple Versions: cookbook/multiple-versions.md
+      - Statistics Patterns: cookbook/statistics-patterns.md
+      - Matching & FMB: cookbook/matching-fmb.md
+      - Short Answer Variants: cookbook/short-answer-variants.md
+      - Generate Exam with Claude: cookbook/generate-exam-claude.md
+      - Iterative Editing with Claude: cookbook/iterative-editing-claude.md
+      - Quarto + Claude Pipeline: cookbook/quarto-claude-pipeline.md
+      - VS Code Snippets: cookbook/vscode-snippets.md
   - Templates:
       - starter/index.md
       - Markdown: starter/markdown.md
       - Quarto: starter/quarto.md
   - Resources:
+      - What's New: changelog.md
       - Troubleshooting: troubleshooting.md
       - Site Design: DESIGN.md
       - Contributing: contributing.md

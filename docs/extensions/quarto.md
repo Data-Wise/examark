@@ -4,7 +4,7 @@
 > - **What:** Author exams in `.qmd` with R/Python, export to HTML, PDF, and Canvas QTI
 > - **Why:** Dynamic exams with computed answers, randomized values, and auto-generated plots
 > - **How:** `quarto add Data-Wise/examark` then `quarto render exam.qmd --to exam-gfm`
-> - **Next:** [Dynamic Exams Tutorial](../tutorials/dynamic-exams.md) for R/Python examples
+> - **Next:** [Randomized Values](../cookbook/randomized-values.md) for R/Python dynamic question examples
 
 The Examark Quarto extension lets you author exams in `.qmd` files with R/Python code for dynamic content, then export to multiple formats: HTML preview, PDF, DOCX, and **QTI for Canvas**.
 

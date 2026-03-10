@@ -1,89 +1,16 @@
-# R & Quarto Integration Tutorial
+# Quarto Daily Workflow
 
-This tutorial walks you through creating a statistics exam using Quarto and R, then exporting it to Canvas.
+> **TL;DR** Master the daily Quarto workflow: R code chunks for dynamic values, auto-generated plots, multiple exam versions, and the `= answer` syntax.
 
-## Why Use Quarto?
-
-| Feature | Benefit |
-|---------|---------|
-| **Dynamic Content** | Generate random numbers for unique question variants |
-| **Reproducibility** | Version control your exam source code |
-| **Embedded Plots** | Auto-generate and embed R/Python plots |
-| **Multi-Format** | One source → PDF, HTML, Canvas QTI |
-
-## Prerequisites
-
-- [Quarto](https://quarto.org) installed (≥ 1.4.0)
-- [R](https://r-project.org) installed (for dynamic questions)
-- [Examark](../getting-started.md) installed globally
-
-## Step 1: Install the Extension
-
-```bash
-quarto add Data-Wise/examark
-```
-
-This creates `_extensions/exam/` in your project with the Lua filters and styling.
-
-## Step 2: Create Your First Exam
-
-Create a file called `midterm.qmd`:
-
-```yaml
----
-title: "Statistics Midterm"
-format: exam-gfm
-
-exam:
-  qti: true
-  solutions: false
-  default-points: 2
----
-
-# Section: Descriptive Statistics
-
-## 1. Mean Calculation [2 pts]
-
-What is the mean of: 10, 20, 30, 40, 50?
-
-a) 25
-b) **30** [correct]
-c) 35
-d) 40
-
-## 2. [TF] The median is resistant to outliers. → True
-```
-
-## Step 3: Render to Markdown
-
-```bash
-quarto render midterm.qmd
-```
-
-This creates `midterm.md` with properly formatted questions for Examark.
-
-!!! tip "QTI Export Instructions"
-    With `exam.qti: true`, the render output shows the exact examark command to run.
-
-## Step 4: Convert to Canvas QTI
-
-```bash
-examark midterm.md -o midterm.qti.zip
-```
-
-## Step 5: Upload to Canvas
-
-1. Go to your Canvas course
-2. Navigate to **Settings → Import Course Content**
-3. Select **QTI .zip file**
-4. Upload `midterm.qti.zip`
-5. Select import options and click **Import**
-
-Your questions will appear in **Quizzes → Question Banks**.
+**15 minutes** | Intermediate | Quarto
 
 ---
 
-## Adding R Code for Dynamic Questions
+## Problem
+
+You have Quarto set up and want to use R/Python to generate randomized exam questions, embed plots, and create multiple exam versions.
+
+## Solution
 
 ### Random Values
 
@@ -112,8 +39,8 @@ Embed R-generated figures directly:
 
 ````markdown
 ```{r histogram, echo=FALSE, fig.cap="Score Distribution"}
-hist(rnorm(100, mean=75, sd=10), 
-     main="Exam Scores", 
+hist(rnorm(100, mean=75, sd=10),
+     main="Exam Scores",
      xlab="Score",
      col="steelblue")
 ```
@@ -123,7 +50,7 @@ hist(rnorm(100, mean=75, sd=10),
 What is the shape of the distribution shown above?
 
 a) Positively skewed
-b) Negatively skewed  
+b) Negatively skewed
 c) **Approximately normal** [correct]
 d) Uniform
 ````
@@ -150,11 +77,7 @@ c) `r slope + 0.5`
 d) `r slope + 1`
 ````
 
----
-
-## Creating Multiple Exam Versions
-
-### Version Strategy
+### Creating Multiple Exam Versions
 
 Use different seeds to create parallel exam versions:
 
@@ -162,16 +85,14 @@ Use different seeds to create parallel exam versions:
 # Version A
 set.seed(100)
 
-# Version B  
+# Version B
 set.seed(200)
 
 # Version C
 set.seed(300)
 ```
 
-### Automation Script
-
-Create a shell script `build_exams.sh`:
+Automate the build with a shell script (`build_exams.sh`):
 
 ```bash
 #!/bin/bash
@@ -199,7 +120,7 @@ examark verify version-b.qti.zip
 
 ### 1. Hiding Solutions
 
-Wrap solutions in a `.solution` div – they're automatically hidden:
+Wrap solutions in a `.solution` div — they are automatically hidden:
 
 ```markdown
 ## 1. What is the variance formula?
@@ -212,7 +133,7 @@ The variance formula divides by n-1 for sample variance...
 :::
 ```
 
-### 2. Use [correct] Markers
+### 2. Use `[correct]` Markers
 
 The `[correct]` suffix is more reliable than bold or checkmarks when using R code:
 
@@ -222,7 +143,31 @@ b) `r value_b` [correct]
 c) `r value_c`
 ```
 
-### 3. Preview Before Export
+### 3. Short Answer with `= answer` Syntax
+
+For short answer questions with multiple acceptable answers, use the `= answer` syntax:
+
+```markdown
+## 5. [Short] What test compares two group means? [2pts]
+= t-test
+= t test
+= independent samples t-test
+= two-sample t-test
+```
+
+Each `=` line adds an acceptable answer variant. Canvas auto-grades if the student's response matches any variant.
+
+!!! tip "Quarto Compatibility"
+    In `.qmd` files, wrap `= answer` lines in a `{=markdown}` raw block to prevent Pandoc from treating them as paragraph continuation:
+
+    ````markdown
+    ```{=markdown}
+    = t-test
+    = t test
+    ```
+    ````
+
+### 4. Preview Before Export
 
 Always preview in HTML first:
 
@@ -231,7 +176,7 @@ quarto render midterm.qmd --to exam-html
 open midterm.html  # Check formatting
 ```
 
-### 4. Verify the QTI Package
+### 5. Verify the QTI Package
 
 Run the Canvas emulator before uploading:
 
@@ -248,10 +193,10 @@ graph TD
     A[midterm.qmd] -->|quarto render| B[midterm.md]
     B -->|examark| C[midterm.qti.zip]
     C -->|upload| D[Canvas]
-    
+
     A -->|quarto render| E[midterm.pdf]
     A -->|quarto render| F[midterm.html]
-    
+
     E --> G[Print for Students]
     F --> H[Preview/Review]
     D --> I[Online Quiz]
@@ -263,11 +208,9 @@ graph TD
 
 ### R Code Not Executing
 
-Ensure you have:
-
-1. R installed
-2. `knitr` package installed: `install.packages("knitr")`
-3. Code chunks configured properly
+1. Ensure R is installed
+2. Install the `knitr` package: `install.packages("knitr")`
+3. Verify code chunks use proper syntax: `` ```{r} ``
 
 ### Figures Not Appearing in Canvas
 
@@ -281,10 +224,18 @@ Ensure you have:
 2. Ensure Canvas has MathJax enabled (course settings)
 3. Test with simple math first: `$x^2$`
 
----
+## Explanation
 
-## Next Steps
+- R code chunks execute during `quarto render` — Examark never sees R code, only the rendered values and images.
+- The `set.seed()` strategy ensures reproducibility: same seed always produces the same random values, making exam versions deterministic.
+- Figures generated by R are saved as image files alongside the Markdown output. Examark automatically bundles them into the QTI package.
+- The `[correct]` marker is preferred over `**bold**` in Quarto because R inline code (`` `r value` ``) inside bold markers can cause parsing ambiguity.
+- The `= answer` syntax requires `{=markdown}` raw blocks in `.qmd` files because Pandoc treats bare `= text` lines as paragraph continuation.
 
-- [Dynamic Exams Tutorial](dynamic-exams.md) — Advanced R/Python techniques
-- [Extension Reference](../extensions/quarto.md) — Full configuration options
+## See Also
+
+- [Quarto Extension Setup](quarto-setup.md) — Installation and first exam
+- [Randomized Values](randomized-values.md) — R code chunks for dynamic questions
+- [Import & Validate](import-validate.md) — Full Canvas import and verification guide
+- [Quarto Extension Reference](../extensions/quarto.md) — Full configuration options
 - [Markdown Syntax](../markdown/syntax.md) — All question type syntax

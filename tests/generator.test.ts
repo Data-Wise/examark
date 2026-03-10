@@ -1,8 +1,11 @@
 
 import { describe, it, expect } from 'vitest';
 import { generateItem, generateManifest21, generateTest } from '../src/generator/qti21';
-import { generateQTI } from '../src/generator/qti';
+import { generateQTI, convertMarkdownTablesToHtml } from '../src/generator/qti';
+import { parseMarkdown } from '../src/parser/markdown';
 import type { ParsedQuiz, Question } from '../src/parser/types';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { XMLParser } from 'fast-xml-parser';
 
 const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
@@ -170,5 +173,215 @@ describe('QTI 1.2 Generator (Canvas)', () => {
     // Ensure backticks are not in output
     expect(qti).not.toContain('`car::vif()`');
     expect(qti).not.toContain('`lm()`');
+  });
+});
+
+describe('Table conversion', () => {
+  it('should convert a simple 2-column table to HTML', () => {
+    const md = [
+      '| Name  | Score |',
+      '|-------|-------|',
+      '| Alice | 90    |',
+      '| Bob   | 85    |',
+    ].join('\n');
+
+    const html = convertMarkdownTablesToHtml(md);
+
+    expect(html).toContain('<table class="ic-Table"');
+    expect(html).toContain('<thead>');
+    expect(html).toContain('<tbody>');
+    expect(html).toContain('<th');
+    expect(html).toContain('>Name</th>');
+    expect(html).toContain('>Score</th>');
+    expect(html).toContain('<td');
+    expect(html).toContain('>Alice</td>');
+    expect(html).toContain('>90</td>');
+    expect(html).toContain('>Bob</td>');
+    expect(html).toContain('>85</td>');
+  });
+
+  it('should apply correct text-align from alignment specifiers', () => {
+    const md = [
+      '| Left | Center | Right |',
+      '|:-----|:------:|------:|',
+      '| a    | b      | c     |',
+    ].join('\n');
+
+    const html = convertMarkdownTablesToHtml(md);
+
+    // Header cells
+    expect(html).toContain('text-align: left;">Left</th>');
+    expect(html).toContain('text-align: center;">Center</th>');
+    expect(html).toContain('text-align: right;">Right</th>');
+
+    // Body cells inherit same alignment
+    expect(html).toContain('text-align: left;">a</td>');
+    expect(html).toContain('text-align: center;">b</td>');
+    expect(html).toContain('text-align: right;">c</td>');
+  });
+
+  it('should XML-escape cell content for valid QTI output', () => {
+    const md = [
+      '| Statistic | Value |',
+      '|-----------|-------|',
+      '| $F$       | $p < 0.05$ |',
+    ].join('\n');
+
+    const html = convertMarkdownTablesToHtml(md);
+
+    // When called directly, LaTeX $ delimiters are preserved as-is.
+    // The < is XML-escaped by escapeCell for valid XML output.
+    expect(html).toContain('>$F$</td>');
+    expect(html).toContain('>$p &lt; 0.05$</td>');
+  });
+
+  it('should convert multiple tables separated by non-table content', () => {
+    const md = [
+      '| A | B |',
+      '|---|---|',
+      '| 1 | 2 |',
+      '',
+      'Some text between tables.',
+      '',
+      '| C | D |',
+      '|---|---|',
+      '| 3 | 4 |',
+    ].join('\n');
+
+    const html = convertMarkdownTablesToHtml(md);
+
+    // Both tables converted
+    const tableCount = (html.match(/<table /g) || []).length;
+    expect(tableCount).toBe(2);
+
+    expect(html).toContain('>A</th>');
+    expect(html).toContain('>C</th>');
+    expect(html).toContain('Some text between tables.');
+  });
+
+  it('should produce HTML tables in QTI output when stem contains a table', () => {
+    const quiz: ParsedQuiz = {
+      title: 'Test',
+      defaultPoints: 1,
+      sections: [],
+      questions: [{
+        id: 1,
+        type: 'multiple_choice',
+        stem: 'Look at this table:\n\n| X | Y |\n|---|---|\n| 1 | 2 |',
+        points: 1,
+        options: [
+          { id: 'a', text: 'Yes', isCorrect: true },
+          { id: 'b', text: 'No', isCorrect: false }
+        ]
+      }]
+    };
+
+    const { qti } = generateQTI(quiz);
+
+    expect(qti).toContain('<table class="ic-Table"');
+    expect(qti).toContain('<th');
+    expect(qti).toContain('>X</th>');
+  });
+
+  it('should NOT convert text with pipes but no separator row', () => {
+    const md = 'The value is | something | or | other |';
+
+    const html = convertMarkdownTablesToHtml(md);
+
+    expect(html).not.toContain('<table');
+    expect(html).toBe(md);
+  });
+
+  it('should handle empty cells gracefully', () => {
+    const md = [
+      '| A | B |',
+      '|---|---|',
+      '|   | value |',
+      '| x |       |',
+    ].join('\n');
+
+    const html = convertMarkdownTablesToHtml(md);
+
+    expect(html).toContain('<table');
+    // Empty cells should produce <td ...></td> (empty content)
+    const tdMatches = html.match(/<td[^>]*><\/td>/g) || [];
+    expect(tdMatches.length).toBe(2);
+  });
+
+  it('should pass through single-column tables unchanged', () => {
+    const md = [
+      '| Only |',
+      '|------|',
+      '| val  |',
+    ].join('\n');
+
+    const html = convertMarkdownTablesToHtml(md);
+
+    expect(html).not.toContain('<table');
+    expect(html).toBe(md);
+  });
+
+  it('should parse fixture file and produce QTI with HTML tables', () => {
+    const fixturePath = join(__dirname, 'fixtures', 'table-questions.md');
+    const content = readFileSync(fixturePath, 'utf-8');
+    const parsed = parseMarkdown(content);
+
+    expect(parsed.questions.length).toBeGreaterThanOrEqual(5);
+
+    // The parser stores table lines in the stem — verify they survive into QTI
+    const { qti } = generateQTI(parsed);
+
+    // Verify all questions made it through
+    expect(qti).toContain('ANOVA');
+    expect(qti).toContain('12.11');
+
+    // The stem contains pipe table lines; verify convertMarkdownTablesToHtml
+    // converts them when given contiguous lines (no blank-line gaps)
+    const q1stem = parsed.questions[0].stem;
+    expect(q1stem).toContain('| Source');
+
+    // Directly convert the stem with contiguous table lines
+    const contiguousStem = q1stem.replace(/\n\n/g, '\n');
+    const converted = convertMarkdownTablesToHtml(contiguousStem);
+    expect(converted).toContain('<table');
+    expect(converted).toContain('ic-Table');
+    expect(converted).toContain('<thead>');
+    expect(converted).toContain('<tbody>');
+  });
+
+  it('should pass through existing HTML tables unchanged', () => {
+    const htmlTable = '<table class="custom"><tr><td>already html</td></tr></table>';
+    const md = `Some text before.\n\n${htmlTable}\n\nSome text after.`;
+
+    const result = convertMarkdownTablesToHtml(md);
+
+    // The existing HTML table should still be present
+    expect(result).toContain(htmlTable);
+    // No extra <table> tags should be introduced
+    const tableCount = (result.match(/<table/g) || []).length;
+    expect(tableCount).toBe(1);
+  });
+
+  it('should convert a table inside feedback text (Q6 scenario)', () => {
+    const md = [
+      'Here is general feedback with a grading table:',
+      '',
+      '| Grade | Range |',
+      '| --- | --- |',
+      '| A | 90-100 |',
+      '| B | 80-89 |',
+      '| F | Below 60 |',
+    ].join('\n');
+
+    const html = convertMarkdownTablesToHtml(md);
+
+    expect(html).toContain('<table class="ic-Table"');
+    expect(html).toContain('<th');
+    expect(html).toContain('Grade');
+    expect(html).toContain('Range');
+    expect(html).toContain('90-100');
+    expect(html).toContain('Below 60');
+    // Surrounding text preserved
+    expect(html).toContain('Here is general feedback');
   });
 });

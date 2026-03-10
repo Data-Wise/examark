@@ -1,5 +1,11 @@
 # Document Structure
 
+> **TL;DR** (30 seconds)
+> - **What:** How to organize exam files with titles, sections, and numbering
+> - **Why:** Sections map to Canvas question groups; structure affects import behavior
+> - **How:** `# Quiz Title` then `# Section: Name` then numbered questions
+> - **Next:** [Getting Started](../getting-started.md) for your first full exam
+
 How to organize your exam files for best results.
 
 ---

@@ -1,24 +1,26 @@
-# Canvas Import Workflow
+# Import and Validate a Canvas Quiz
 
-> **TL;DR** (30 seconds)
-> - **What:** End-to-end guide: Markdown file to working Canvas quiz
-> - **Why:** The complete happy path with validation at every step
-> - **How:** Write `.md` → `examark convert` → `emulate-canvas` → Canvas Import
-> - **Next:** [Your First Quiz](first-quiz.md) if you haven't installed Examark yet
+> **TL;DR** Write Markdown, convert to QTI, validate with the emulator, then upload to Canvas.
 
-Everything you need to get from Markdown to a successfully imported Canvas quiz.
+**10 minutes** | Beginner | CLI
 
 ---
 
-## How It Works
+## Problem
+
+You have an exam written in Markdown and need to get it into Canvas as a working quiz with correct answers, images, and point values intact.
+
+## Solution
+
+### How It Works
 
 ```mermaid
 flowchart LR
     A["exam.md"] --> B["examark"]
     B --> C["exam.qti.zip"]
     C --> D["emulate-canvas"]
-    D -->|"✅ Pass"| E["Canvas Import"]
-    D -->|"❌ Errors"| F["Fix Issues"]
+    D -->|"Pass"| E["Canvas Import"]
+    D -->|"Errors"| F["Fix Issues"]
     F --> A
 
     style A fill:#4A90D9,color:#fff
@@ -31,15 +33,11 @@ flowchart LR
 
 1. **Write** your exam in Markdown (`.md` or `.qmd`)
 2. **Convert** to QTI with `examark`
-3. **Validate** with `emulate-canvas` — catch errors before uploading
+3. **Validate** with `emulate-canvas` --- catch errors before uploading
 
-Run the emulator until you see `✅ PREDICTION: Canvas import will likely SUCCEED`, then upload.
+Run the emulator until you see `PREDICTION: Canvas import will likely SUCCEED`, then upload.
 
----
-
-## Supported Question Types
-
-Canvas supports these question types from Examark:
+### Supported Question Types
 
 | Type | Marker | Canvas Name | Notes |
 |------|--------|-------------|-------|
@@ -52,9 +50,7 @@ Canvas supports these question types from Examark:
 | Matching | `[Match]` | Matching | Pair relationships |
 | Fill in Multiple Blanks | `[FMB]` | Fill in Multiple Blanks | Multiple blanks in stem |
 
----
-
-## Correct Answer Markers
+### Correct Answer Markers
 
 All markers are case-insensitive and interchangeable:
 
@@ -94,9 +90,7 @@ All markers are case-insensitive and interchangeable:
 | `**bold**` | `b) **Answer**` | MC, TF (legacy) |
 | `*` prefix | `*b) Answer` | MA (select-all) |
 
----
-
-## Short Answer: Multiple Accepted Answers
+### Short Answer: Multiple Accepted Answers
 
 Two equivalent syntaxes:
 
@@ -122,15 +116,11 @@ Two equivalent syntaxes:
 The `=` syntax is preferred for readability when listing multiple acceptable answers. Both parse identically.
 
 !!! note "Case Sensitivity"
-    Canvas short answer matching is case-insensitive by default. List the most common spellings/phrasings.
+    Canvas short answer matching is case-insensitive by default. List the most common spellings and phrasings.
 
----
-
-## Multiple Answers: Getting Full Credit
+### Multiple Answers: Getting Full Credit
 
 Canvas Multiple Answers questions grade students on selecting **all correct** options and **none of the incorrect** ones. The QTI structure must explicitly exclude incorrect options.
-
-**Correct format:**
 
 ```markdown
 3. [MA] Which assumptions does OLS regression require? [4pts]
@@ -146,9 +136,7 @@ The `*` prefix marks correct answers. Examark automatically generates the requir
 !!! warning "Minimum 2 correct answers"
     Canvas rejects MA questions with fewer than 2 correct answers. The validator will flag this as a blocking error.
 
----
-
-## Validation Pipeline
+### Validation Pipeline
 
 Run validation before uploading:
 
@@ -163,7 +151,7 @@ examark exam.md -o exam.qti.zip
 examark emulate-canvas exam.qti.zip
 ```
 
-### What the emulator catches
+#### What the emulator catches
 
 | Check | What It Means |
 |-------|---------------|
@@ -175,42 +163,40 @@ examark emulate-canvas exam.qti.zip
 | **Image references** | All bundled images must exist |
 | **Security** | No XSS vectors allowed |
 
-### Success output
+#### Success output
 
 ```text
-🎓 Canvas Import Emulator
+Canvas Import Emulator
 
-📊 Analysis Results:
+Analysis Results:
    Items scanned: 18
    Resources: 19
    Has test structure: Yes
 
-✅ PREDICTION: Canvas import will likely SUCCEED
+PREDICTION: Canvas import will likely SUCCEED
 ```
 
-### Failure output (with fix hints)
+#### Failure output (with fix hints)
 
 ```text
-❌ PREDICTION: Canvas import will likely FAIL
+PREDICTION: Canvas import will likely FAIL
 
-🔴 Canvas Import Blockers:
-   • Multiple answers question q3: rcardinality="Single" (must be "Multiple")
-   • Short answer question q7: no correct answers defined
+Canvas Import Blockers:
+   - Multiple answers question q3: rcardinality="Single" (must be "Multiple")
+   - Short answer question q7: no correct answers defined
 
-🔧 Suggested Fixes:
-   → Q3: Add a second correct answer with * prefix
-   → Q7: Add "Answer: text" or "= text" line after question stem
+Suggested Fixes:
+   - Q3: Add a second correct answer with * prefix
+   - Q7: Add "Answer: text" or "= text" line after question stem
 ```
 
----
-
-## Quarto → Canvas Workflow
+### Quarto to Canvas Workflow
 
 For Quarto (`.qmd`) files with R/Python code:
 
-### Automatic (Recommended)
+#### Automatic (Recommended)
 
-Add a post-render hook to `_quarto.yml` — QTI is generated automatically after every render:
+Add a post-render hook to `_quarto.yml` --- QTI is generated automatically after every render:
 
 ```yaml
 project:
@@ -224,7 +210,7 @@ project:
 ```bash
 # One command does both steps
 quarto render exam.qmd --to exam-gfm
-# ✅ QTI package ready: _output/exam/exam.qti.zip
+# QTI package ready: _output/exam/exam.qti.zip
 ```
 
 The `_quarto-post-render.sh` script is included in the starter template (`quarto use template Data-Wise/examark`).
@@ -232,7 +218,7 @@ The `_quarto-post-render.sh` script is included in the starter template (`quarto
 !!! note "Quarto 1.8+ path requirement"
     Use `post-render: ./_quarto-post-render.sh` with the `./` prefix. Bare filenames fail in Quarto 1.8+ due to Deno path resolution.
 
-### Manual
+#### Manual
 
 ```bash
 # Step 1: Render to GFM (Markdown)
@@ -245,99 +231,42 @@ examark _output/exam/exam.md -o exam.qti.zip
 examark emulate-canvas exam.qti.zip
 ```
 
-Or add `exam.qti: true` to your YAML frontmatter — Quarto prints the exact `examark` command to run after rendering.
+Or add `exam.qti: true` to your YAML frontmatter --- Quarto prints the exact `examark` command to run after rendering.
 
 !!! tip "R-generated figures"
     Examark automatically bundles R-generated plots from Quarto code chunks into the QTI package. Run `quarto render` before `examark` so all figures are generated first.
 
----
+### Importing to Canvas
 
-## Importing to Canvas
+After `emulate-canvas` shows success:
 
-After `emulate-canvas` shows ✅:
-
-1. Go to **Course Settings** → **Import Course Content**
+1. Go to **Course Settings** > **Import Course Content**
 2. Select **QTI .zip file** as Content Type
 3. Upload your `.qti.zip` file
 4. Click **Import**
-5. Find imported questions in **Quizzes** → **Question Banks**
+5. Find imported questions in **Quizzes** > **Question Banks**
 
-### Item Banks (New Quizzes)
+#### Item Banks (New Quizzes)
 
 To import directly to an Item Bank:
 
-1. Go to **Course Settings** → **Manage Item Banks**
+1. Go to **Course Settings** > **Manage Item Banks**
 2. Click **Import Content**
 3. Upload your `.qti.zip`
 
-Item Banks work with Canvas New Quizzes and support random question selection. See the [Item Banks tutorial](item-banks.md).
+Item Banks work with Canvas New Quizzes and support random question selection. See the [Item Banks recipe](item-banks.md).
 
----
+## Explanation
 
-## Common Errors
+- The emulator runs the same checks Canvas performs during import, so errors caught here will not surprise you after uploading.
+- MA questions require both correct selections and incorrect exclusions in the QTI XML --- Examark handles this automatically when you use `*` prefix markers.
+- Short answer questions accept multiple phrasings via `=` lines. Canvas matches case-insensitively.
+- Quarto post-render hooks eliminate the manual conversion step entirely for `.qmd` workflows.
 
-### "Couldn't determine correct answers" for Multiple Answers
+## See Also
 
-**Cause:** QTI `rcardinality` set to `"Single"` instead of `"Multiple"`.
-
-**Fix:** Ensure your MA questions use `*` prefix markers:
-
-```markdown
-2. [MA] Which are valid? [2pts]
-*a) Option A   ← * marks correct
-b) Option B
-*c) Option C
-```
-
-Examark automatically sets `rcardinality="Multiple"` for `[MA]` questions.
-
----
-
-### "No correct answers" for Short Answer
-
-**Fix:** Add accepted answers after the question stem:
-
-```markdown
-6. [Short] Define heteroscedasticity. [2pts]
-= unequal variance
-= non-constant variance
-= heteroskedasticity
-```
-
----
-
-### Images Not Appearing in Canvas
-
-**Fix:** Ensure your image paths are relative and images are present at render time:
-
-```markdown
-![Residual Plot](images/residual-plot.png)
-```
-
-Examark bundles images relative to the input file directory.
-
----
-
-### Points Not Importing
-
-Canvas uses the points from QTI metadata. Specify per-question:
-
-```markdown
-1. [MC] Question text? [5pts]
-```
-
-Or set a project default in `.examarkrc.json`:
-
-```json
-{ "defaultPoints": 2 }
-```
-
----
-
-## Related
-
-- [Question Types Gallery](../markdown/question-types.md)
-- [Syntax Reference](../markdown/syntax.md)
-- [Canvas Emulator](../emulator.md)
-- [Item Banks](item-banks.md)
-- [Quarto Integration](quarto.md)
+- [Fix Import Errors](fix-import-errors.md) --- Troubleshoot common Canvas failures
+- [Your First Quiz](first-quiz.md) --- Start from scratch
+- [Canvas Emulator](../emulator.md) --- Full emulator documentation
+- [Canvas Quick Reference](../reference/REFCARD-CANVAS.md) --- One-page cheat sheet
+- [Item Banks](item-banks.md) --- Using Canvas New Quizzes Item Banks

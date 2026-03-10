@@ -1,5 +1,11 @@
 # Feedback
 
+> **TL;DR** (30 seconds)
+> - **What:** Add per-option and general feedback to exam questions
+> - **Why:** Students see explanations after answering — improves learning
+> - **How:** Inline `// feedback`, blockquote `> feedback`, or general `> [feedback] text`
+> - **Next:** [Document Structure](structure.md) for organizing multi-section exams
+
 Examark supports multiple feedback formats to help students learn from their answers.
 
 ---

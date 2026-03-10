@@ -98,6 +98,51 @@ d) $\sigma^2 = \frac{\sum (x_i - \mu)^2}{N}$
 - Standard error => $SE = \frac{s}{\sqrt{n}}$
 ```
 
+### Statistical Tables
+
+Use pipe tables for ANOVA, regression output, descriptive statistics, etc.:
+
+```markdown
+11. [MC] Based on the regression output, which predictor is significant at α = 0.05? [3pts]
+
+| Predictor | $\hat{\beta}$ | $SE$  | $t$   | $p$       |
+|-----------|---------------|-------|-------|-----------|
+| Intercept | $12.45$       | $2.31$ | $5.39$ | $< 0.001$ |
+| Age       | $0.87$        | $0.42$ | $2.07$ | $0.043$   |
+| Income    | $0.12$        | $0.15$ | $0.80$ | $0.427$   |
+
+a) Only Age [x]
+b) Only Income
+c) Both Age and Income
+d) Neither
+
+12. [MC] Compare the distributions. Which interpretation is correct? [3pts]
+
+**Pre-intervention:**
+
+| Statistic | Value |
+|-----------|-------|
+| Mean      | 42.7  |
+| Median    | 44.0  |
+| SD        | 11.3  |
+| Skewness  | -0.85 |
+
+**Post-intervention:**
+
+| Statistic | Value |
+|-----------|-------|
+| Mean      | 31.2  |
+| Median    | 30.5  |
+| SD        | 8.6   |
+| Skewness  | 0.12  |
+
+a) The intervention reduced anxiety and the post distribution is more symmetric [x]
+b) The intervention had no meaningful effect
+c) The post distribution is more skewed
+```
+
+Tables auto-convert to styled HTML with Canvas `ic-Table` class. LaTeX in cells works via MathJax. Column alignment uses `:---` (left), `:---:` (center), `---:` (right).
+
 ### Interpretation
 
 ```markdown

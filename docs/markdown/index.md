@@ -1,5 +1,11 @@
 # Markdown Syntax
 
+> **TL;DR** (30 seconds)
+> - **What:** Extended Markdown syntax for writing exam questions
+> - **Why:** Two syntax styles (Clean + Traditional) that convert to Canvas QTI
+> - **How:** `1. [MC] Question? [2pts]` with answer markers like `[x]` or `**bold**`
+> - **Next:** [Question Types](question-types.md) for a visual gallery of all 10 types
+
 Examark uses an extended Markdown syntax designed specifically for exam authoring. This section covers everything you need to write effective exam content.
 
 ---
@@ -70,6 +76,12 @@ Examark supports two syntax styles that can be mixed in the same file:
 
     Inline feedback, blockquote feedback, and general feedback options.
 
+- :material-table:{ .lg .middle } **[Tables](syntax.md#tables)**
+
+    ---
+
+    Pipe tables in stems, options, and feedback. Alignment, LaTeX in cells.
+
 - :material-file-document-multiple:{ .lg .middle } **[Document Structure](structure.md)**
 
     ---
@@ -119,4 +131,4 @@ Examark supports two syntax styles that can be mixed in the same file:
 
 - [Getting Started](../getting-started.md) — Installation and first quiz
 - [Templates](../starter/index.md) — Ready-to-use examples
-- [Tutorials](../tutorials/index.md) — Step-by-step guides
+- [Cookbook](../cookbook/index.md) — Step-by-step guides

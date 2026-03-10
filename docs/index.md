@@ -12,6 +12,51 @@
 
 ---
 
+## Three Ways to Use Examark
+
+<div class="grid cards" markdown>
+
+- :material-console:{ .lg .middle } **CLI Tool**
+
+    ---
+
+    Write exams in Markdown, convert to Canvas QTI packages. No coding required.
+
+    ```bash
+    npm install -g examark
+    examark quiz.md -o quiz.qti.zip
+    ```
+
+    [:octicons-arrow-right-24: Getting Started](getting-started.md)
+
+- :material-language-r:{ .lg .middle } **Quarto Extension**
+
+    ---
+
+    Author dynamic exams with R/Python code chunks. Randomized values, computed answers, auto-generated plots.
+
+    ```bash
+    quarto add Data-Wise/examark
+    ```
+
+    [:octicons-arrow-right-24: Quarto Guide](extensions/quarto.md)
+
+- :material-robot:{ .lg .middle } **Claude Code Plugin**
+
+    ---
+
+    AI-assisted exam authoring with slash commands and auto-lint. Generate, validate, and iterate without leaving Claude.
+
+    ```
+    /exam:convert  /exam:check  /exam:preview
+    ```
+
+    [:octicons-arrow-right-24: Plugin Guide](extensions/claude-plugin.md)
+
+</div>
+
+---
+
 ## ✨ Features
 
 <div class="grid cards" markdown>
@@ -46,6 +91,12 @@
 
     Multiple choice, true/false, multiple answer, essay, short answer, numeric, matching, and fill-in-blanks.
 
+- :material-table:{ .lg .middle } **Markdown Tables**
+
+    ---
+
+    Pipe tables in questions convert to styled HTML for Canvas. Alignment, LaTeX in cells, and `ic-Table` class supported.
+
 - :material-printer:{ .lg .middle } **Multiple Export Formats**
 
     ---
@@ -70,7 +121,7 @@
 
     Convert multiple files at once with glob patterns: `examark *.md -o output/`
 
-- :material-bank:{ .lg .middle } **[Item Banks Support](tutorials/item-banks.md)**
+- :material-bank:{ .lg .middle } **[Item Banks Support](cookbook/item-banks.md)**
 
     ---
 
@@ -80,139 +131,14 @@
 
 ---
 
-## 🆕 Recent Updates (March 2026)
+## 🆕 What's New (March 2026)
 
-**Claude Code Plugin:**
+- **Markdown tables** — Pipe tables in question stems and answers now convert to styled HTML for Canvas rendering
+- **19 cookbook recipes** — Focused, task-based guides covering Canvas import, Quarto, question patterns, and Claude Code workflows
+- **Claude Code Plugin expanded** — Workflows, prompting strategies, auto-lint deep dive, and troubleshooting (~400 lines)
+- **`= answer` syntax** — Cleaner multi-line format for short answer questions
 
-Use examark directly from [Claude Code](https://claude.ai/code) with 3 slash commands (`/exam:convert`, `/exam:check`, `/exam:preview`) and an auto-lint hook that catches errors as you write. See the [plugin guide](extensions/claude-plugin.md).
-
-**Short Answer `= answer` syntax:**
-
-Multiple acceptable answers for short answer questions now support a cleaner multi-line format:
-
-```markdown
-1. [Short] What pattern indicates unequal variance? [2pts]
-= funnel
-= funnel shape
-= fan shape
-```
-
-Both `Answer: text` (original) and `= text` (new) syntaxes are fully supported. See [Short Answer syntax](markdown/question-types.md#short-answer).
-
-**Canvas QTI reliability improvements:**
-
-The emulator and validator now catch additional Canvas import blockers:
-
-- Multiple Answers (`[MA]`) questions missing `rcardinality="Multiple"` — previously caused silent "couldn't determine correct answers" errors in Canvas
-- MA questions missing incorrect-option exclusions in resprocessing
-- Short answer questions with no accepted answers defined
-
----
-
-## 🚀 Quick Start
-
-```bash
-# No install needed!
-npx examark quiz.md -o quiz.qti.zip
-
-# Or install globally
-npm install -g examark
-examark quiz.md -o quiz.qti.zip
-```
-
----
-
-## 📝 Example
-
-=== "Clean Syntax (Recommended)"
-
-    ```markdown
-    # Statistics Quiz
-
-    1. [MC] What is the mean of 2, 4, 6? [2pts]
-    a) Three
-    b) Four [x] // Correct answer
-    c) Five
-
-    2. [TF] Variance can be negative. [1pt]
-    a) True
-    b) False [x]
-
-    3. [Essay, 5pts] Explain the Central Limit Theorem.
-    ```
-
-=== "Traditional Syntax"
-
-    ```markdown
-    # Statistics Quiz
-
-    ## 1. What is the mean of 2, 4, 6? [2 pts]
-    a) Three
-    b) **Four** ✓
-    c) Five
-
-    ## 2. [TF] Variance can be negative. → False
-
-    ## 3. [Essay, 5pts] Explain the Central Limit Theorem.
-    ```
-
-=== "Output"
-
-    ```text
-    ✓ Generated QTI Package: quiz.qti.zip
-      • 3 questions (MC, TF, Essay)
-      • 1 section
-      • 0 images bundled
-
-    ✅ Ready for Canvas import!
-    ```
-
----
-
-## 🎯 Workflow
-
-```mermaid
-graph LR
-    A[quiz.md] --> B[examark]
-    B --> C[quiz.qti.zip]
-    C --> D[Canvas Import]
-    B --> E[emulate-canvas]
-    E -->|✅ Success| D
-    E -->|❌ Errors| F[Fix Issues]
-    F --> A
-```
-
----
-
-## 📚 Templates
-
-Start with a ready-made template:
-
-**Markdown (no Quarto needed):**
-
-| Template | Questions | Best For |
-|----------|-----------|----------|
-| [`minimal.md`](https://github.com/Data-Wise/examark/blob/main/templates/markdown/minimal.md) | 3 | Quickest start |
-| [`starter.md`](https://github.com/Data-Wise/examark/blob/main/templates/markdown/starter.md) | 6 | Beginners |
-| [`all-question-types.md`](https://github.com/Data-Wise/examark/blob/main/templates/markdown/all-question-types.md) | 15+ | All 8 question types |
-
-**Quarto (R/Python):** See the [Quarto Extension](extensions/quarto.md) for `.qmd` templates with dynamic code chunks.
-
----
-
-## 🔧 Commands
-
-| Command | Description |
-|---------|-------------|
-| `examark file.md -o output.qti.zip` | Convert Markdown to QTI package |
-| `examark file.md -f text` | Export as printable plain text |
-| `examark *.md -o output/` | Batch convert multiple files |
-| `examark verify package.qti.zip` | Validate package structure |
-| `examark emulate-canvas package.qti.zip` | Simulate Canvas import |
-| `examark check file.md` | Lint input file for errors |
-| `examark file.md --preview` | Preview parsed questions |
-
-See [Commands Reference](reference.md) for all options.
+[:octicons-arrow-right-24: Full changelog](changelog.md)
 
 ---
 
@@ -232,9 +158,17 @@ See [Commands Reference](reference.md) for all options.
 
     Pre-validate before uploading.
 
-- :material-school:{ .lg .middle } **[Tutorials](tutorials/index.md)**
+- :material-school:{ .lg .middle } **[Cookbook](cookbook/index.md)**
 
-    R/Quarto integration and more.
+    Recipes and guides.
+
+- :material-console-line:{ .lg .middle } **[CLI Reference](reference.md)**
+
+    All commands, flags, and options.
+
+- :material-file-document-multiple:{ .lg .middle } **[Templates](starter/index.md)**
+
+    Ready-to-use Markdown and Quarto starters.
 
 </div>
 

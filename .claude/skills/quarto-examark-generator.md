@@ -447,6 +447,55 @@ b) Approximately normal [x]
 c) Right-skewed
 ```
 
+## Tables in Questions
+
+Markdown pipe tables auto-convert to styled HTML tables for Canvas. Especially useful for statistics exams with ANOVA, regression, and descriptive statistics output.
+
+### Basic Table in Stem
+```markdown
+1. [MC] Based on the ANOVA table, what is the F-statistic? [2pts]
+
+| Source  | df | MS    | F     |
+|---------|----|-------|-------|
+| Between | 2  | 45.30 | 12.11 |
+| Within  | 27 | 3.74  |       |
+
+a) 12.11 [x]
+b) 45.30
+```
+
+### Column Alignment
+```markdown
+| Left   | Center | Right |
+|:-------|:------:|------:|
+| data   | data   | data  |
+```
+
+### LaTeX in Cells
+```markdown
+| Predictor | $\hat{\beta}$ | $SE$  | $p$       |
+|-----------|---------------|-------|-----------|
+| Intercept | $12.45$       | $2.31$ | $< 0.001$ |
+| Age       | $0.87$        | $0.42$ | $0.043$   |
+```
+
+### R-Generated Tables (Quarto)
+
+R's `knitr::kable()` produces pipe tables in GFM output — these convert automatically:
+
+```markdown
+```{r}
+#| echo: false
+knitr::kable(summary_stats, align = c("l", "r", "r"))
+```
+```
+
+Tables from `kableExtra` that produce raw HTML pass through unchanged.
+
+### Tables in Options and Feedback
+
+Tables work inside answer options and `> [feedback]` blocks for showing detailed statistical output alongside questions.
+
 ## Templates and Patterns
 
 ### Minimal Exam (3 questions)
