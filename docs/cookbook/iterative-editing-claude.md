@@ -62,6 +62,7 @@ Run these anytime for on-demand validation:
 
 ## See Also
 
-- [Generate an Exam with Claude](generate-exam-claude.md) -- create an exam from scratch
-- [Fix Import Errors](fix-import-errors.md) -- troubleshoot Canvas import failures
-- [Short Answer Variants](short-answer-variants.md) -- adding `= answer` alternatives
+- [Generate an Exam with Claude](generate-exam-claude.md) — create an exam from scratch
+- [Claude Code Plugin](../extensions/claude-plugin.md) — auto-lint deep dive and skills reference
+- [Fix Import Errors](fix-import-errors.md) — troubleshoot Canvas import failures
+- [Short Answer Variants](short-answer-variants.md) — adding `= answer` alternatives

@@ -104,7 +104,8 @@ Claude can create a shell script that renders each version with a different `set
 
 ## See Also
 
-- [Generate an Exam with Claude](generate-exam-claude.md) -- plain markdown exams without R
-- [Quarto Setup](quarto-setup.md) -- initial Quarto extension installation
-- [Quarto Workflow](quarto-workflow.md) -- rendering and converting `.qmd` exams
-- [Randomized Values](randomized-values.md) -- using R for randomized exam content
+- [Generate an Exam with Claude](generate-exam-claude.md) — plain markdown exams without R
+- [Claude Code Plugin](../extensions/claude-plugin.md) — Quarto + Claude workflow details
+- [Quarto Setup](quarto-setup.md) — initial Quarto extension installation
+- [Quarto Workflow](quarto-workflow.md) — rendering and converting `.qmd` exams
+- [Randomized Values](randomized-values.md) — using R for randomized exam content

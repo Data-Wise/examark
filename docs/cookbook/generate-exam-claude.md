@@ -68,6 +68,7 @@ examark emulate-canvas exam.qti.zip
 
 ## See Also
 
-- [Iterative Editing with Claude](iterative-editing-claude.md) -- refine and improve exam questions
-- [Quarto + Claude Pipeline](quarto-claude-pipeline.md) -- dynamic exams with R code chunks
-- [Import and Validate](import-validate.md) -- verify QTI packages before uploading
+- [Iterative Editing with Claude](iterative-editing-claude.md) — refine and improve exam questions
+- [Quarto + Claude Pipeline](quarto-claude-pipeline.md) — dynamic exams with R code chunks
+- [Claude Code Plugin](../extensions/claude-plugin.md) — full plugin reference with workflows and prompting strategies
+- [Import & Validate](import-validate.md) — verify QTI packages before uploading
