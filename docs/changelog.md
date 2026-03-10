@@ -9,11 +9,39 @@
 
 ## March 2026
 
+### Markdown Tables in QTI
+
+Pipe tables in question stems, answer options, and feedback blocks now convert to styled HTML during QTI generation. Canvas renders them with the `ic-Table` CSS class and inline style fallback.
+
+- GFM alignment support (`:---` left, `:---:` center, `---:` right)
+- LaTeX math inside table cells preserved through the conversion pipeline
+- Tables in stems, answers, and feedback all supported
+
 ### Website Restructure
 
-- **Three-pillar homepage** — CLI, Quarto Extension, and Claude Code Plugin are now front-and-center on the [homepage](index.md)
-- **Cookbook** — Tutorials renamed to Cookbook with task-based categories, time estimates, and difficulty levels. Browse by [what you're trying to do](cookbook/index.md).
-- **Top-level nav** — Quarto Extension and Claude Code Plugin promoted from nested "Extensions" section to top-level navigation
+**Phase 1:**
+
+- Three-pillar homepage — CLI, Quarto Extension, and Claude Code Plugin front-and-center
+- Tutorials renamed to [Cookbook](cookbook/index.md) with task-based categories
+- Quarto Extension and Claude Code Plugin promoted to top-level navigation
+
+**Phase 2 — Cookbook Recipes (19 total):**
+
+Split 3 long tutorials into focused recipes and created 8 new ones:
+
+| Category | Recipes |
+|----------|---------|
+| Getting Started | Your First Quiz |
+| Canvas Import | Import & Validate, Fix Import Errors, Multiple Answers, Item Banks, Validate Before Upload |
+| CLI | Batch Convert |
+| Dynamic Content | Quarto Setup, Quarto Workflow, Randomized Values, Auto-Generated Plots, Multiple Versions |
+| Question Patterns | Statistics Patterns, Matching & FMB, Short Answer Variants |
+| Claude Code | Generate Exam, Iterative Editing, Quarto + Claude Pipeline |
+| IDE Integration | VS Code Snippets |
+
+**Phase 3 — Claude Plugin Expansion:**
+
+Expanded [Claude Code Plugin page](extensions/claude-plugin.md) from 150 to ~400 lines with new sections: Workflows, Prompting Strategies, Auto-Lint Deep Dive, Skills Reference, Plugin Architecture, and Troubleshooting.
 
 ### Claude Code Plugin
 

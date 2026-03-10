@@ -91,6 +91,12 @@
 
     Multiple choice, true/false, multiple answer, essay, short answer, numeric, matching, and fill-in-blanks.
 
+- :material-table:{ .lg .middle } **Markdown Tables**
+
+    ---
+
+    Pipe tables in questions convert to styled HTML for Canvas. Alignment, LaTeX in cells, and `ic-Table` class supported.
+
 - :material-printer:{ .lg .middle } **Multiple Export Formats**
 
     ---
@@ -127,9 +133,9 @@
 
 ## 🆕 What's New (March 2026)
 
-- **Three-pillar homepage** — CLI, Quarto Extension, and Claude Code Plugin front-and-center
-- **Cookbook** — Tutorials renamed with task-based categories and time estimates
-- **Claude Code Plugin** — 3 slash commands + auto-lint for exam authoring in Claude
+- **Markdown tables** — Pipe tables in question stems and answers now convert to styled HTML for Canvas rendering
+- **19 cookbook recipes** — Focused, task-based guides covering Canvas import, Quarto, question patterns, and Claude Code workflows
+- **Claude Code Plugin expanded** — Workflows, prompting strategies, auto-lint deep dive, and troubleshooting (~400 lines)
 - **`= answer` syntax** — Cleaner multi-line format for short answer questions
 
 [:octicons-arrow-right-24: Full changelog](changelog.md)
