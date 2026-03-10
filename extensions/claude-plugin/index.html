@@ -18,14 +18,14 @@
         <link rel="prev" href="../quarto/">
       
       
-        <link rel="next" href="../../tutorials/">
+        <link rel="next" href="../../cookbook/">
       
       
         
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -354,23 +354,39 @@
   
   
   
-    
   
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../quarto/" class="md-tabs__link">
-          
+    <li class="md-tabs__item">
+      <a href="../quarto/" class="md-tabs__link">
+        
   
   
     
   
-  Extensions
+  Quarto Extension
 
-        </a>
-      </li>
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
     
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Claude Code Plugin
+
+      </a>
+    </li>
   
 
       
@@ -382,13 +398,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../tutorials/" class="md-tabs__link">
+        <a href="../../cookbook/" class="md-tabs__link">
           
   
   
     
   
-  Tutorials
+  Cookbook
 
         </a>
       </li>
@@ -426,7 +442,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../troubleshooting/" class="md-tabs__link">
+        <a href="../../changelog/" class="md-tabs__link">
           
   
   
@@ -1041,69 +1057,6 @@
       
   
   
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-        
-        
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Extensions
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Extensions
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
   
   
     <li class="md-nav__item">
@@ -1114,7 +1067,7 @@
   <span class="md-ellipsis">
     
   
-    Quarto
+    Quarto Extension
   
 
     
@@ -1126,10 +1079,9 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
     
@@ -1206,6 +1158,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#author-a-new-exam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Author a New Exam
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-an-existing-exam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edit an Existing Exam
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quarto-claude-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quarto + Claude Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#commands" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1256,43 +1258,271 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#auto-lint-hook" class="md-nav__link">
+  <a href="#prompting-strategies" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Auto-Lint Hook
+        Prompting Strategies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prompting Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#be-specific-about-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Be Specific About Structure
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#skills" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#ask-for-specific-question-types" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Skills
+        Ask for Specific Question Types
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#cli-detection" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#request-feedback-and-solutions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CLI Detection
+        Request Feedback and Solutions
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#plugin-structure" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#iterate-on-difficulty" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Plugin Structure
+        Iterate on Difficulty
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-lint-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-Lint Deep Dive
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auto-Lint Deep Dive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-triggers-the-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Triggers the Hook
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-catches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What It Catches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skills-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skills Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skills Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-skills-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Skills Work
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugin Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manifest-pluginjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manifest (plugin.json)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directory-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directory Layout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hook-configuration-hooksjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hook Configuration (hooks.json)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli-detection-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI Detection Order
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cli-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-lint-not-firing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-Lint Not Firing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hook-blocked-by-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hook Blocked by Permissions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wrong-file-getting-linted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wrong File Getting Linted
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
       
     </span>
   </a>
@@ -1302,14 +1532,6 @@
     </ul>
   
 </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1326,6 +1548,32 @@
       
         
           
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1353,18 +1601,18 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../tutorials/" class="md-nav__link ">
+            <a href="../../cookbook/" class="md-nav__link ">
               
   
   
   <span class="md-ellipsis">
     
   
-    Tutorials
+    Cookbook
   
 
     
@@ -1375,18 +1623,18 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Tutorials
+    Cookbook
   
 
           </label>
@@ -1401,7 +1649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorials/first-quiz/" class="md-nav__link">
+      <a href="../../cookbook/first-quiz/" class="md-nav__link">
         
   
   
@@ -1429,14 +1677,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorials/canvas-workflow/" class="md-nav__link">
+      <a href="../../cookbook/import-validate/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Canvas Workflow
+    Import & Validate
   
 
     
@@ -1457,7 +1705,63 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorials/item-banks/" class="md-nav__link">
+      <a href="../../cookbook/fix-import-errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fix Import Errors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbook/multiple-answers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multiple Answers (Select All)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbook/item-banks/" class="md-nav__link">
         
   
   
@@ -1485,14 +1789,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorials/quarto/" class="md-nav__link">
+      <a href="../../cookbook/validate-before-upload/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    R & Quarto
+    Validate Before Upload
   
 
     
@@ -1513,14 +1817,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorials/dynamic-exams/" class="md-nav__link">
+      <a href="../../cookbook/batch-convert/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Dynamic Exams
+    Batch Convert
   
 
     
@@ -1541,7 +1845,315 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorials/vscode-snippets/" class="md-nav__link">
+      <a href="../../cookbook/quarto-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quarto Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbook/quarto-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quarto Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbook/randomized-values/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Randomized Values
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbook/auto-plots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Generated Plots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbook/multiple-versions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multiple Versions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbook/statistics-patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Statistics Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbook/matching-fmb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matching & FMB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbook/short-answer-variants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Short Answer Variants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbook/generate-exam-claude/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generate Exam with Claude
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbook/iterative-editing-claude/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Iterative Editing with Claude
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbook/quarto-claude-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quarto + Claude Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbook/vscode-snippets/" class="md-nav__link">
         
   
   
@@ -1599,7 +2211,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -1621,14 +2233,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1718,6 +2330,8 @@
       
         
       
+        
+      
     
     
     
@@ -1731,10 +2345,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
             
   
   
@@ -1752,8 +2366,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1762,6 +2376,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What's New
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1892,6 +2534,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#author-a-new-exam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Author a New Exam
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-an-existing-exam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edit an Existing Exam
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quarto-claude-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quarto + Claude Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#commands" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1942,43 +2634,271 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#auto-lint-hook" class="md-nav__link">
+  <a href="#prompting-strategies" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Auto-Lint Hook
+        Prompting Strategies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prompting Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#be-specific-about-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Be Specific About Structure
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#skills" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#ask-for-specific-question-types" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Skills
+        Ask for Specific Question Types
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#cli-detection" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#request-feedback-and-solutions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CLI Detection
+        Request Feedback and Solutions
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#plugin-structure" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#iterate-on-difficulty" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Plugin Structure
+        Iterate on Difficulty
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-lint-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-Lint Deep Dive
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auto-Lint Deep Dive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-triggers-the-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Triggers the Hook
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-catches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What It Catches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skills-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skills Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skills Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-skills-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Skills Work
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugin Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manifest-pluginjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manifest (plugin.json)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directory-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directory Layout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hook-configuration-hooksjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hook Configuration (hooks.json)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli-detection-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI Detection Order
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cli-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-lint-not-firing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-Lint Not Firing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hook-blocked-by-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hook Blocked by Permissions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wrong-file-getting-linted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wrong File Getting Linted
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
       
     </span>
   </a>
@@ -2003,46 +2923,6 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-        
-  
-  
-    <li class="md-path__item">
-      <a href="../.." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    Home
-  </span>
-
-      </a>
-    </li>
-  
-
-      
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../quarto/" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Extensions
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
-
               
               <article class="md-content__inner md-typeset">
                 
@@ -2059,6 +2939,13 @@
 
 
 <h1 id="claude-code-plugin">Claude Code Plugin</h1>
+<blockquote>
+<p><strong>TL;DR</strong> (30 seconds)
+- <strong>What:</strong> Examark slash commands for Claude Code — convert, check, and preview exams
+- <strong>Why:</strong> Author and validate exams without leaving your AI coding session
+- <strong>How:</strong> Symlink <code>.claude-plugin/</code> → <code>~/.claude/plugins/examark</code>, then <code>/exam:convert</code>
+- <strong>Next:</strong> <a href="../quarto/">Quarto Extension</a> for R/Python dynamic exams</p>
+</blockquote>
 <p>Use examark directly from <a href="https://claude.ai/code">Claude Code</a> with slash commands for converting, checking, and previewing exams.</p>
 <h2 id="installation">Installation</h2>
 <p>Symlink the plugin directory into your Claude Code plugins:</p>
@@ -2068,13 +2955,80 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ln<span class="w"> </span>-s<span class="w"> </span><span class="k">$(</span>npm<span class="w"> </span>root<span class="w"> </span>-g<span class="k">)</span>/examark/.claude-plugin<span class="w"> </span>~/.claude/plugins/examark
 </span></code></pre></div>
 <p>Restart Claude Code to load the plugin.</p>
+<hr />
+<h2 id="workflows">Workflows</h2>
+<h3 id="author-a-new-exam">Author a New Exam</h3>
+<p>The fastest way to create an exam from scratch:</p>
+<ol>
+<li>
+<p><strong>Describe your exam</strong> — give Claude the topic, question count, types, and difficulty:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Create a 10-question statistics exam on hypothesis testing.
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Include: 5 MC, 2 Short Answer, 1 Matching, 1 TF, 1 Essay.
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Points: 2pts each for MC/TF/Short, 4pts for Matching, 5pts for Essay.
+</span></code></pre></div>
+</li>
+<li>
+<p><strong>Claude writes the markdown</strong> — the plugin's skills teach Claude proper examark syntax</p>
+</li>
+<li><strong>Auto-lint runs on each edit</strong> — the PostToolUse hook catches issues immediately</li>
+<li><strong>Convert</strong> — <code>/exam:convert exam.md</code></li>
+<li><strong>Preview</strong> — <code>/exam:preview exam.md</code> to verify the question summary</li>
+</ol>
+<h3 id="edit-an-existing-exam">Edit an Existing Exam</h3>
+<p>Iterative editing with instant validation:</p>
+<ol>
+<li>
+<p><strong>Open your exam file</strong> and ask Claude to make changes:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Add inline feedback to questions 3-5 explaining why each option is right/wrong
+</span></code></pre></div>
+</li>
+<li>
+<p><strong>Auto-lint validates after each edit</strong> — issues appear as system reminders</p>
+</li>
+<li><strong>Check manually anytime</strong> — <code>/exam:check exam.md</code></li>
+<li><strong>Preview the result</strong> — <code>/exam:preview exam.md</code></li>
+</ol>
+<p>Common editing requests:</p>
+<ul>
+<li>"Add <code>//</code> inline feedback to all MC questions"</li>
+<li>"Convert questions 3 and 4 from MC to MA (select all that apply)"</li>
+<li>"Add <code>= answer</code> variants for the short answer questions"</li>
+<li>"Change all questions to 3pts each"</li>
+<li>"Add <code>&gt; [feedback]</code> general feedback to questions 1-5"</li>
+</ul>
+<h3 id="quarto-claude-workflow">Quarto + Claude Workflow</h3>
+<p>For R/Python dynamic exams:</p>
+<ol>
+<li>
+<p><strong>Set up the extension</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Set up a Quarto exam project with the examark extension
+</span></code></pre></div>
+</li>
+<li>
+<p><strong>Describe the exam with R requirements</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Create a statistics midterm in Quarto (.qmd) with:
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>- R setup chunk with set.seed(42)
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>- 3 MC questions with R-computed values
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>- 1 question with an R-generated histogram
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>- Use exam-gfm format with solutions hidden
+</span></code></pre></div>
+</li>
+<li>
+<p><strong>Render and convert</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Render this exam and convert to QTI
+</span></code></pre></div>
+<p>Claude runs <code>quarto render</code> → <code>examark convert</code> → <code>examark emulate-canvas</code></p>
+</li>
+</ol>
+<p>See <a href="../../cookbook/quarto-claude-pipeline/">Quarto + Claude Pipeline</a> for the full recipe.</p>
+<hr />
 <h2 id="commands">Commands</h2>
 <h3 id="examconvert">/exam:convert</h3>
 <p>Convert a markdown or Quarto exam file to a Canvas QTI package.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>/exam:convert exam.md                # Convert markdown to QTI
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>/exam:convert exam.qmd               # Render Quarto first, then convert
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>/exam:convert exam.md --strict       # Strict validation (New Quizzes)
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>/exam:convert exam.md --format text  # Export as plain text
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>/exam:convert exam.md                # Convert markdown to QTI
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>/exam:convert exam.qmd               # Render Quarto first, then convert
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>/exam:convert exam.md --strict       # Strict validation (New Quizzes)
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>/exam:convert exam.md --format text  # Export as plain text
 </span></code></pre></div>
 <p><strong>What it does:</strong></p>
 <ol>
@@ -2086,9 +3040,9 @@
 </ol>
 <h3 id="examcheck">/exam:check</h3>
 <p>Validate an exam file — auto-detects whether to lint markdown or verify a QTI package.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>/exam:check exam.md                  # Lint markdown for errors
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>/exam:check exam.qti.zip             # Verify QTI + emulate Canvas import
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>/exam:check exam.qti.zip --strict    # Strict mode for New Quizzes
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>/exam:check exam.md                  # Lint markdown for errors
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>/exam:check exam.qti.zip             # Verify QTI + emulate Canvas import
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>/exam:check exam.qti.zip --strict    # Strict mode for New Quizzes
 </span></code></pre></div>
 <p><strong>For markdown files</strong>, it checks:</p>
 <ul>
@@ -2105,91 +3059,246 @@
 </ul>
 <h3 id="exampreview">/exam:preview</h3>
 <p>Display a formatted summary table of all questions in an exam file.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>/exam:preview exam.md                # Show question summary table
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>/exam:preview exam.qmd               # Auto-render Quarto, then preview
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>/exam:preview exam.md                # Show question summary table
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>/exam:preview exam.qmd               # Auto-render Quarto, then preview
 </span></code></pre></div>
 <p><strong>Example output:</strong></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Preview: exam.md
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Title: &quot;Midterm Exam 1&quot;
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>| #  | Type  | Pts | Stem                                              |
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>|----|-------|-----|---------------------------------------------------|
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>| 1  | MC    | 2   | What is the mean of the following data...          |
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>| 2  | TF    | 1   | The p-value is always between 0 and 1             |
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>| 3  | MA    | 3   | Select all assumptions of linear regr...           |
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>| 4  | Essay | 10  | Explain the difference between Type I...           |
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>-------------------------------------------------------------
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>Total: 4 questions, 16 points
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Preview: exam.md
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>Title: &quot;Midterm Exam 1&quot;
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>| #  | Type  | Pts | Stem                                              |
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>|----|-------|-----|---------------------------------------------------|
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>| 1  | MC    | 2   | What is the mean of the following data...          |
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>| 2  | TF    | 1   | The p-value is always between 0 and 1             |
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>| 3  | MA    | 3   | Select all assumptions of linear regr...           |
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>| 4  | Essay | 10  | Explain the difference between Type I...           |
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>-------------------------------------------------------------
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>Total: 4 questions, 16 points
 </span></code></pre></div>
-<h2 id="auto-lint-hook">Auto-Lint Hook</h2>
-<p>The plugin includes a <code>PostToolUse</code> hook that automatically lints exam markdown files whenever you edit them with Claude Code. If the linter finds issues, they appear as system reminders in your conversation.</p>
-<p><strong>What triggers the hook:</strong></p>
+<hr />
+<h2 id="prompting-strategies">Prompting Strategies</h2>
+<h3 id="be-specific-about-structure">Be Specific About Structure</h3>
+<p>Good prompts include topic, question count, types, and difficulty:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Specific (Better)</label><label for="__tabbed_1_2">Vague (Less Effective)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Create a 10-question exam on ANOVA for an intro stats course.
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Include: 4 MC, 2 Short Answer (with = answer variants), 1 Matching,
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>1 FMB, 1 TF, 1 Essay (5pts). Use [2pts] for all others.
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>Add inline feedback with // for each MC option.
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Make me a stats exam about ANOVA.
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="ask-for-specific-question-types">Ask for Specific Question Types</h3>
+<p>Claude knows all 10 examark question types. Use the type markers in your prompt:</p>
 <ul>
-<li>Any <code>Edit</code> or <code>Write</code> operation on a <code>.md</code> file</li>
-<li>Only fires for files that look like exams (contain question markers)</li>
-<li>Skips README, CHANGELOG, docs, and other non-exam files</li>
+<li>"Add a <code>[Match]</code> question pairing statistical tests to their assumptions"</li>
+<li>"Write 3 <code>[Short]</code> questions with <code>= answer</code> variants for common spellings"</li>
+<li>"Create an <code>[FMB]</code> question with 3 blanks about the regression equation"</li>
 </ul>
-<p><strong>What it checks:</strong></p>
-<ul>
-<li>Runs <code>examark check</code> on the modified file</li>
-<li>Reports errors and warnings inline</li>
-</ul>
-<h2 id="skills">Skills</h2>
-<p>The plugin includes knowledge files that help Claude generate well-formatted exams:</p>
+<h3 id="request-feedback-and-solutions">Request Feedback and Solutions</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Add inline feedback (// comments) to all MC and TF questions
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>explaining why each option is correct or incorrect.
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Add general feedback (&gt; [feedback]) to questions 1-5 with
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>the complete solution shown after submission.
+</span></code></pre></div>
+<h3 id="iterate-on-difficulty">Iterate on Difficulty</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Questions 3 and 7 are too easy. Make the distractors more plausible
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>by using common student misconceptions about p-values.
+</span></code></pre></div>
+<hr />
+<h2 id="auto-lint-deep-dive">Auto-Lint Deep Dive</h2>
+<p>The PostToolUse hook (<code>hooks/exam-lint.sh</code>) runs automatically after every <code>Edit</code> or <code>Write</code> operation in Claude Code.</p>
+<h3 id="what-triggers-the-hook">What Triggers the Hook</h3>
+<p>The hook applies <strong>multi-layer filtering</strong> to avoid false positives:</p>
 <table>
 <thead>
 <tr>
-<th>Skill</th>
-<th>Description</th>
+<th>Filter</th>
+<th>Logic</th>
+<th>Skips</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Exam Formatting</td>
-<td>Syntax rules, answer markers, type markers</td>
+<td>Extension</td>
+<td>Must be <code>.md</code></td>
+<td><code>.qmd</code>, <code>.ts</code>, <code>.json</code>, etc.</td>
 </tr>
 <tr>
-<td>Exam Generation</td>
-<td>Question patterns, templates for all 8 types</td>
+<td>Filename</td>
+<td>Rejects known non-exam names</td>
+<td>README, CHANGELOG, CLAUDE, DESIGN, ORCHESTRATE, etc.</td>
 </tr>
 <tr>
-<td>Quick Reference</td>
-<td>One-page cheat sheet for examark syntax</td>
+<td>Directory</td>
+<td>Rejects documentation paths</td>
+<td><code>docs/</code>, <code>commands/</code>, <code>skills/</code>, <code>.claude/</code>, <code>templates/</code>, <code>examples/</code></td>
 </tr>
 <tr>
-<td>Quarto Generator</td>
-<td>Quarto-specific exam authoring guide</td>
-</tr>
-<tr>
-<td>Statistics</td>
-<td>Statistics-specific question patterns and formulas</td>
+<td>Content</td>
+<td>Must contain question markers</td>
+<td>Files without <code>## 1.</code> or <code>1. [</code> patterns</td>
 </tr>
 </tbody>
 </table>
-<h2 id="cli-detection">CLI Detection</h2>
-<p>All commands automatically find the examark CLI in this order:</p>
-<ol>
-<li>Local build: <code>node dist/index.js</code> (for development)</li>
-<li>Global install: <code>examark</code> (npm global)</li>
-<li>npx fallback: <code>npx examark</code></li>
-</ol>
-<h2 id="plugin-structure">Plugin Structure</h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>.claude-plugin/
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  plugin.json           # Plugin manifest
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  hooks/
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    hooks.json          # Hook configuration
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    exam-lint.sh        # PostToolUse auto-lint script
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>  skills/
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    exam-formatting.md
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    exam-generation.md
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    exam-quick-ref.md
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    quarto-generator.md
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    statistics.md
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>commands/
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>  convert.md            # /exam:convert command
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>  check.md              # /exam:check command
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>  preview.md            # /exam:preview command
+<h3 id="what-it-catches">What It Catches</h3>
+<p>The hook runs <code>examark check</code> on the file and reports:</p>
+<ul>
+<li>Missing correct answer markers (<code>[x]</code>, <code>**bold**</code>, <code>✓</code>, <code>[correct]</code>, <code>*</code>)</li>
+<li>Questions without stems</li>
+<li>Invalid or unrecognized type markers</li>
+<li>Multiple correct answers on single-choice (MC/TF) questions</li>
+<li>Missing answers on short answer questions</li>
+</ul>
+<h3 id="behavior">Behavior</h3>
+<ul>
+<li><strong>Informational only</strong> — the hook never blocks edits (always exits 0)</li>
+<li>Lint warnings appear as system reminders in the Claude conversation</li>
+<li>Claude sees the warnings and can self-correct on the next edit</li>
+<li>Only fires when <code>examark</code> CLI is available (local build or global install)</li>
+</ul>
+<hr />
+<h2 id="skills-reference">Skills Reference</h2>
+<p>The plugin includes 5 skill files that teach Claude how to author exams correctly. Skills are loaded automatically when the plugin is active.</p>
+<table>
+<thead>
+<tr>
+<th>Skill File</th>
+<th>What Claude Learns</th>
+<th>When It Helps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>exam-formatting.md</code></td>
+<td>All syntax rules: type markers, answer markers, points syntax, feedback formats, <code>= answer</code> syntax</td>
+<td>Every exam authoring session</td>
+</tr>
+<tr>
+<td><code>exam-generation.md</code></td>
+<td>Question templates for all 10 types, pedagogical patterns, distractor strategies</td>
+<td>Creating new exams from scratch</td>
+</tr>
+<tr>
+<td><code>exam-quick-ref.md</code></td>
+<td>One-page cheat sheet: markers, types, CLI commands</td>
+<td>Quick syntax lookups</td>
+</tr>
+<tr>
+<td><code>quarto-generator.md</code></td>
+<td><code>.qmd</code> authoring: YAML frontmatter, R code chunks, <code>{=markdown}</code> blocks, fig.cap, solution divs</td>
+<td>Quarto/R exam creation</td>
+</tr>
+<tr>
+<td><code>statistics.md</code></td>
+<td>Statistics-specific patterns: hypothesis testing, CI, regression, distributions, common formulas</td>
+<td>Statistics course exams</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-skills-work">How Skills Work</h3>
+<p>Skills are markdown files in <code>.claude-plugin/skills/</code> that Claude reads as context. They act as reference documentation that Claude consults when authoring exams:</p>
+<ul>
+<li>Claude uses <code>exam-formatting.md</code> to ensure correct syntax for any question type</li>
+<li>When asked to create statistics questions, Claude references <code>statistics.md</code> for domain-specific patterns</li>
+<li>For Quarto exams, <code>quarto-generator.md</code> provides the R code chunk patterns and YAML configuration</li>
+</ul>
+<hr />
+<h2 id="plugin-architecture">Plugin Architecture</h2>
+<p>For developers who want to understand or extend the plugin.</p>
+<h3 id="manifest-pluginjson">Manifest (<code>plugin.json</code>)</h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">{</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;examark&quot;</span><span class="p">,</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Convert markdown exams to Canvas QTI packages&quot;</span><span class="p">,</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">  </span><span class="nt">&quot;commands&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;../commands&quot;</span><span class="p">,</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">  </span><span class="nt">&quot;skills&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./skills&quot;</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="p">}</span>
 </span></code></pre></div>
+<ul>
+<li><code>commands</code> points to <code>commands/</code> (relative to repo root, outside <code>.claude-plugin/</code>)</li>
+<li><code>skills</code> points to <code>skills/</code> inside the plugin directory</li>
+</ul>
+<h3 id="directory-layout">Directory Layout</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>.claude-plugin/
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>  plugin.json              # Plugin manifest
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>  hooks/
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    hooks.json             # Hook configuration (PostToolUse)
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    exam-lint.sh           # Auto-lint script
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>  skills/
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    exam-formatting.md     # Syntax rules
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    exam-generation.md     # Question patterns
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    exam-quick-ref.md      # Cheat sheet
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    quarto-generator.md    # Quarto guide
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>    statistics.md          # Statistics patterns
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>commands/
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>  convert.md               # /exam:convert command
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>  check.md                 # /exam:check command
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>  preview.md               # /exam:preview command
+</span></code></pre></div>
+<h3 id="hook-configuration-hooksjson">Hook Configuration (<code>hooks.json</code>)</h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="p">{</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span><span class="nt">&quot;hooks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">      </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PostToolUse&quot;</span><span class="p">,</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">      </span><span class="nt">&quot;script&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./hooks/exam-lint.sh&quot;</span><span class="p">,</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">      </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Edit&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Write&quot;</span><span class="p">]</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">  </span><span class="p">]</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>The hook fires on <code>Edit</code> and <code>Write</code> tool uses. The script receives JSON on stdin with <code>tool_name</code> and <code>tool_input.file_path</code>.</p>
+<h3 id="cli-detection-order">CLI Detection Order</h3>
+<p>All commands find the examark CLI automatically:</p>
+<ol>
+<li><strong>Local build</strong>: <code>node dist/index.js</code> (development — in the repo)</li>
+<li><strong>Global install</strong>: <code>examark</code> (npm global or Homebrew)</li>
+<li><strong>npx fallback</strong>: <code>npx examark</code> (downloads if needed)</li>
+</ol>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="cli-not-found">CLI Not Found</h3>
+<p><strong>Symptom:</strong> Commands return "examark not found" or similar.</p>
+<p><strong>Fix:</strong> Ensure examark is installed globally:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>examark
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="c1"># or</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>brew<span class="w"> </span>install<span class="w"> </span>data-wise/tap/examark
+</span></code></pre></div>
+<p>Or build locally for development:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>npm<span class="w"> </span>run<span class="w"> </span>build<span class="w">   </span><span class="c1"># Creates dist/index.js</span>
+</span></code></pre></div>
+<h3 id="auto-lint-not-firing">Auto-Lint Not Firing</h3>
+<p><strong>Symptom:</strong> Editing exam files but no lint output appears.</p>
+<p><strong>Possible causes:</strong></p>
+<ol>
+<li>Plugin not loaded — restart Claude Code after symlinking</li>
+<li>File doesn't match filters — must be <code>.md</code>, contain question markers, not in <code>docs/</code> directory</li>
+<li>examark CLI not available — install globally or build locally</li>
+</ol>
+<h3 id="hook-blocked-by-permissions">Hook Blocked by Permissions</h3>
+<p><strong>Symptom:</strong> Hook script errors about permission denied.</p>
+<p><strong>Fix:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>.claude-plugin/hooks/exam-lint.sh
+</span></code></pre></div>
+<h3 id="wrong-file-getting-linted">Wrong File Getting Linted</h3>
+<p><strong>Symptom:</strong> Non-exam markdown files triggering lint warnings.</p>
+<p>The hook filters by filename pattern and content heuristic. If a file contains <code>## 1.</code> or <code>1. [</code> patterns, it may trigger. Rename the file or move it to a filtered directory (<code>docs/</code>, <code>templates/</code>).</p>
+<hr />
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../../cookbook/generate-exam-claude/">Generate Exam with Claude</a> — Step-by-step exam generation</li>
+<li><a href="../../cookbook/iterative-editing-claude/">Iterative Editing with Claude</a> — Edit-check-preview loop</li>
+<li><a href="../../cookbook/quarto-claude-pipeline/">Quarto + Claude Pipeline</a> — Dynamic exams with R</li>
+<li><a href="../quarto/">Quarto Extension</a> — R/Python exam authoring</li>
+<li><a href="../../markdown/syntax/">Syntax Reference</a> — Complete examark syntax</li>
+</ul>
 
 
 
@@ -2227,7 +3336,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../quarto/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quarto">
+          <a href="../quarto/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quarto Extension">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2237,20 +3346,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Quarto
+                Quarto Extension
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../tutorials/" class="md-footer__link md-footer__link--next" aria-label="Next: Tutorials">
+          <a href="../../cookbook/" class="md-footer__link md-footer__link--next" aria-label="Next: Cookbook">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Tutorials
+                Cookbook
               </div>
             </div>
             <div class="md-footer__button md-icon">
