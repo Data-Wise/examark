@@ -62,4 +62,4 @@ jobs:
       source_type: npm
       auto_merge: ${{ github.event.inputs.auto_merge == 'true' || github.event_name == 'release' }}
     secrets:
-      tap_token: ${{ secrets.HOMEBREW_TAP_GITHUB_TOKEN }}
+      tap_token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
