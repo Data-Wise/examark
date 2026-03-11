@@ -2,186 +2,182 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://data-wise.github.io/examark/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/DESIGN/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/changelog/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/config/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/contributing/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/emulator/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/getting-started/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/reference/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/troubleshooting/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/workflows/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/auto-plots/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/batch-convert/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/first-quiz/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/fix-import-errors/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/generate-exam-claude/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/import-validate/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/item-banks/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/iterative-editing-claude/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/matching-fmb/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/multiple-answers/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/multiple-versions/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/quarto-claude-pipeline/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/quarto-setup/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/quarto-workflow/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/randomized-values/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/short-answer-variants/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/statistics-patterns/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/validate-before-upload/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/cookbook/vscode-snippets/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/extensions/claude-plugin/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/extensions/quarto/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/markdown/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/markdown/feedback/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/markdown/images/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/markdown/latex/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/markdown/question-types/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/markdown/structure/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/markdown/syntax/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/reference/REFCARD-CANVAS/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/reference/yaml-options/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/specs/SPEC-markdown-tables-to-html-2026-03-06/</loc>
-         <lastmod>2026-03-10</lastmod>
-    </url>
-    <url>
-         <loc>https://data-wise.github.io/examark/specs/SPEC-website-restructure-2026-03-09/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/starter/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/starter/markdown/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
     <url>
          <loc>https://data-wise.github.io/examark/starter/quarto/</loc>
-         <lastmod>2026-03-10</lastmod>
+         <lastmod>2026-03-11</lastmod>
     </url>
 </urlset>
